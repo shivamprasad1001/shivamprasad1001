@@ -1,5 +1,5 @@
 - 👋 Hi, I’m @shivamprasad1001
-- 👀 I’m interested in machine learning
+- 👀 I’m interested in machine learning & web Development.
 - 🌱 I’m currently learning python , java, java script
 - 💞️ I’m looking to collaborate on ...
 - 📫 How to reach me ...
