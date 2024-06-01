@@ -11,14 +11,14 @@
   <p>🔭 I’m currently working on various projects including machine learning and web applications.</p>
   <p>🌱 I’m currently learning Python, Java, and JavaScript.</p>
   <p>💬 Ask me about web development, machine learning, and Python.</p>
-  <p>📫 How to reach me: [email@example.com]</p>
+  <p>📫 How to reach me:</p>
 </div>
 
 <!-- Social Media Icons -->
 <div align="center">
-  <a href="https://yourwebsite.com"><img src="https://img.shields.io/badge/Website-4285F4?style=for-the-badge&logo=Google-Chrome&logoColor=white" alt="Website"></a>
-  <a href="mailto:youremail@example.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=Gmail&logoColor=white" alt="Email"></a>
-  <a href="https://linkedin.com/in/yourusername"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a>
+  <!---<a href="https://yourwebsite.com"><img src="https://img.shields.io/badge/Website-4285F4?style=for-the-badge&logo=Google-Chrome&logoColor=white" alt="Website"></a>-->
+  <a href="mailto:shivamprasad1001@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=Gmail&logoColor=white" alt="Email"></a>
+  <a href="https://www.linkedin.com/in/shivam-prasad1001?"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a>
 </div>
 
 <!-- Recent Projects Section -->
@@ -44,13 +44,14 @@
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=shivamprasad1001&layout=compact&theme=radical" alt="Shivam's Top Languages">
 </div>
 
-<!-- Contribution Graph -->
+<!-- Contribution Graph 
 ## 🗓 Contribution Graph
 <div align="center">
   <img src="https://activity-graph.herokuapp.com/graph?username=shivamprasad1001&theme=rogue" alt="Shivam's Contribution Graph">
 </div>
 
-<!-- Footer Section -->
+Footer Section 
 <div align="center">
   <p>✨ Inspired by [John Mwenda](https://github.com/JohnMwenda)</p>
 </div>
+-->
