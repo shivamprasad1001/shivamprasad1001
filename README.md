@@ -17,7 +17,7 @@
 <!-- Social Media Icons -->
 <div align="center">
   <!---<a href="https://yourwebsite.com"><img src="https://img.shields.io/badge/Website-4285F4?style=for-the-badge&logo=Google-Chrome&logoColor=white" alt="Website"></a>-->
-  <a href="mailto:shivamprasad1001@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=Gmail&logoColor=white" alt="Email"></a>
+ 
   <a href="https://www.linkedin.com/in/shivam-prasad1001?"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a>
 </div>
 
