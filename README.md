@@ -16,9 +16,7 @@
 
 <!-- Social Media Icons -->
 <div align="center">
-  <!---<a href="https://yourwebsite.com"><img src="https://img.shields.io/badge/Website-4285F4?style=for-the-badge&logo=Google-Chrome&logoColor=white" alt="Website"></a>-->
- 
-  <a href="https://www.linkedin.com/in/shivam-prasad1001?"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a>
+  <a href="https://shivamprasad.netlify.app/"><img src="https://img.shields.io/badge/Website-4285F4?style=for-the-badge&logo=Google-Chrome&logoColor=white" alt="Website"></a>            <a href="https://www.linkedin.com/in/shivam-prasad1001?"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white" alt="LinkedIn"></a>
 </div>
 
 <!-- Recent Projects Section -->
