@@ -1,6 +1,7 @@
 
 
 <!-- Header Section -->
+<img src="https://github.com/Jamesoliverz/shivamprasad.com/blob/main/github-header-image.png">
 <div align="center">
   <h1>Hi... I'm Shivam Prasad 👋</h1>
   <p>A passionate developer interested in Machine Learning and Web Development.</p>
