@@ -43,14 +43,5 @@
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=shivamprasad1001&layout=compact&theme=radical" alt="Shivam's Top Languages">
 </div>
 
-<!-- Contribution Graph 
-## 🗓 Contribution Graph
-<div align="center">
-  <img src="https://activity-graph.herokuapp.com/graph?username=shivamprasad1001&theme=rogue" alt="Shivam's Contribution Graph">
-</div>
 
-Footer Section 
-<div align="center">
-  <p>✨ Inspired by [John Mwenda](https://github.com/JohnMwenda)</p>
-</div>
--->
+
