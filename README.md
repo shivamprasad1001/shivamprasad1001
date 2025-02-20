@@ -5,7 +5,7 @@
 <h1 align="center">👨‍💻 Welcome to My Hacker Space 🖥️</h1>
 <p align="center">
   <img src="https://raw.githubusercontent.com/YourUsername/YourUsername/main/matrix.gif" alt="Matrix Terminal" width="100%"/> <br><!-- Replace with your own GIF -->
-  <b>Developer & �Web Developer</b>
+  <b>AI & ML  Developer & �Web Developer</b>
 </p>
 
 <h1 align="center">
