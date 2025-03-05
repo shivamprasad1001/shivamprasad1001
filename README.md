@@ -1,7 +1,9 @@
 <p align="center">
   <img src="https://media.giphy.com/media/HEPwfdu6T6svpPE1eN/giphy.gif" alt="Hacker GIF" width="300"/>
 </p>
-![Profile Views](https://komarev.com/ghpvc/?username=shivamprasad1001&style=flat-square&color=green)
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=shivamprasad1001&style=flat-square&color=green" alt="Profile Views"/>
+</p>
 <h1 align="center">👨‍💻 Welcome to My Hacker Space 🖥️</h1>
 <p align="center">
   <img src="https://raw.githubusercontent.com/YourUsername/YourUsername/main/matrix.gif" alt="Matrix Terminal" width="100%"/> <br><!-- Replace with your own GIF -->
@@ -43,17 +45,17 @@ I wield **data magic** to build **sentient systems** and craft **pixel-perfect u
 
 
 **Web Dev**:  
-![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat&logo=html5&logoColor=white)  
-![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat&logo=css3&logoColor=white)  
-![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)  
-![React](https://img.shields.io/badge/-React-61DAFB?style=flat&logo=react&logoColor=black)  
-![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)  
-![Django](https://img.shields.io/badge/-Django-092E20?style=flat&logo=django&logoColor=white)  
-![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)  
-![Express.js](https://img.shields.io/badge/-Express.js-000000?style=flat&logo=express&logoColor=white)  
-![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)  
-![Bootstrap](https://img.shields.io/badge/-Bootstrap-7952B3?style=flat&logo=bootstrap&logoColor=white)  
-![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat&logo=mysql&logoColor=white)  
+![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![React](https://img.shields.io/badge/-React-61DAFB?style=flat&logo=react&logoColor=black)
+![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
+![Django](https://img.shields.io/badge/-Django-092E20?style=flat&logo=django&logoColor=white)
+![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
+![Express.js](https://img.shields.io/badge/-Express.js-000000?style=flat&logo=express&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/-Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/-Bootstrap-7952B3?style=flat&logo=bootstrap&logoColor=white)
+![MySQL](https://img.shields.io/badge/-MySQL-4479A1?style=flat&logo=mysql&logoColor=white)
 
 
 ---
@@ -80,49 +82,49 @@ I wield **data magic** to build **sentient systems** and craft **pixel-perfect u
 
 #### 2️⃣ **Mopdify-AI Emotion-Based Stress Relief** | [GitHub](https://github.com/shivamprasad1001/MoodifyAI)  
    - *An AI model that detects emotions and provides personalized stress relief techniques.*  
-   ![TensorFlow](https://img.shields.io/badge/-TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)  
-   ![OpenCV](https://img.shields.io/badge/-OpenCV-5C3EE8?style=flat&logo=opencv&logoColor=white)  
-   ![Keras](https://img.shields.io/badge/-Keras-D00000?style=flat&logo=keras&logoColor=white)  
-   ![Pandas](https://img.shields.io/badge/-Pandas-150458?style=flat&logo=pandas&logoColor=white)  
-   ![Matplotlib](https://img.shields.io/badge/-Matplotlib-008080?style=flat)  
+   ![TensorFlow](https://img.shields.io/badge/-TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)
+   ![OpenCV](https://img.shields.io/badge/-OpenCV-5C3EE8?style=flat&logo=opencv&logoColor=white)
+   ![Keras](https://img.shields.io/badge/-Keras-D00000?style=flat&logo=keras&logoColor=white)
+   ![Pandas](https://img.shields.io/badge/-Pandas-150458?style=flat&logo=pandas&logoColor=white)
+   ![Matplotlib](https://img.shields.io/badge/-Matplotlib-008080?style=flat)
 
 ---
 
 #### 3️⃣ **Human Emotion Recognition** | [GitHub](https://github.com/shivamprasad1001/Facial_Emotion_Recognition)
    - *A CNN-based model that classifies human emotions from facial expressions.*  
-   ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white)  
-   ![TensorFlow](https://img.shields.io/badge/-TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)  
-   ![Keras](https://img.shields.io/badge/-Keras-D00000?style=flat&logo=keras&logoColor=white)  
-   ![OpenCV](https://img.shields.io/badge/-OpenCV-5C3EE8?style=flat&logo=opencv&logoColor=white)  
-   ![NumPy](https://img.shields.io/badge/-NumPy-013243?style=flat&logo=numpy&logoColor=white)  
+   ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white)
+   ![TensorFlow](https://img.shields.io/badge/-TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)
+   ![Keras](https://img.shields.io/badge/-Keras-D00000?style=flat&logo=keras&logoColor=white)
+   ![OpenCV](https://img.shields.io/badge/-OpenCV-5C3EE8?style=flat&logo=opencv&logoColor=white)
+   ![NumPy](https://img.shields.io/badge/-NumPy-013243?style=flat&logo=numpy&logoColor=white)
 
 ---
 
 #### 4️⃣ **NFT Marketplace** | [GitHub](https://github.com/shivamprasad1001/NFT-Marketplace)  
    - *A decentralized marketplace built using Solidity and Next.js for seamless NFT trading.*  
-   ![Solidity](https://img.shields.io/badge/-Solidity-363636?style=flat&logo=solidity&logoColor=white)  
-   ![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)  
-   ![Ethereum](https://img.shields.io/badge/-Ethereum-3C3C3D?style=flat&logo=ethereum&logoColor=white)  
-   ![IPFS](https://img.shields.io/badge/-IPFS-65C2CB?style=flat&logo=ipfs&logoColor=white)  
-   ![Web3.js](https://img.shields.io/badge/-Web3.js-F16822?style=flat)  
+   ![Solidity](https://img.shields.io/badge/-Solidity-363636?style=flat&logo=solidity&logoColor=white)
+   ![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
+   ![Ethereum](https://img.shields.io/badge/-Ethereum-3C3C3D?style=flat&logo=ethereum&logoColor=white)
+   ![IPFS](https://img.shields.io/badge/-IPFS-65C2CB?style=flat&logo=ipfs&logoColor=white)
+   ![Web3.js](https://img.shields.io/badge/-Web3.js-F16822?style=flat)
 
 ---
 
 #### 5️⃣ **EchoHive- Chat Room with Real-Time Translation** | [GitHub](https://github.com/shivamprasad1001/EchoHive)  
    - *A Flask-based chat system that enables real-time multilingual communication.*  
-   ![Flask](https://img.shields.io/badge/-Flask-000000?style=flat&logo=flask&logoColor=white)  
-   ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white)  
-   ![Google Translate API](https://img.shields.io/badge/-Google_Translate-4285F4?style=flat&logo=googletranslate&logoColor=white)  
-   ![Socket.io](https://img.shields.io/badge/-Socket.io-010101?style=flat&logo=socket.io&logoColor=white)  
+   ![Flask](https://img.shields.io/badge/-Flask-000000?style=flat&logo=flask&logoColor=white)
+   ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white)
+   ![Google Translate API](https://img.shields.io/badge/-Google_Translate-4285F4?style=flat&logo=googletranslate&logoColor=white)
+   ![Socket.io](https://img.shields.io/badge/-Socket.io-010101?style=flat&logo=socket.io&logoColor=white)
 
 ---
 
 #### 6️⃣ **Face Recognition Model** | [GitHub](https://github.com/shivamprasad1001/Image-Classification)  
    - *A deep learning model for real-time face recognition and identity verification.*  
-   ![OpenCV](https://img.shields.io/badge/-OpenCV-5C3EE8?style=flat&logo=opencv&logoColor=white)  
-   ![TensorFlow](https://img.shields.io/badge/-TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)  
-   ![Dlib](https://img.shields.io/badge/-Dlib-FF4500?style=flat)  
-   ![Haar Cascades](https://img.shields.io/badge/-Haar_Cascades-008000?style=flat)  
+   ![OpenCV](https://img.shields.io/badge/-OpenCV-5C3EE8?style=flat&logo=opencv&logoColor=white)
+   ![TensorFlow](https://img.shields.io/badge/-TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)
+   ![Dlib](https://img.shields.io/badge/-Dlib-FF4500?style=flat)
+   ![Haar Cascades](https://img.shields.io/badge/-Haar_Cascades-008000?style=flat)
 
 
 ---
