@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://media.giphy.com/media/HEPwfdu6T6svpPE1eN/giphy.gif" alt="Hacker GIF" width="300"/>
 </p>
-
+![Profile Views](https://komarev.com/ghpvc/?username=shivamprasad1001&style=flat-square&color=green)
 <h1 align="center">👨‍💻 Welcome to My Hacker Space 🖥️</h1>
 <p align="center">
   <img src="https://raw.githubusercontent.com/YourUsername/YourUsername/main/matrix.gif" alt="Matrix Terminal" width="100%"/> <br><!-- Replace with your own GIF -->
