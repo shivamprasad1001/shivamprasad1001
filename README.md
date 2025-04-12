@@ -133,6 +133,9 @@ I wield **data magic** to build **sentient systems** and craft **pixel-perfect u
 ### **📊 𝙶𝙸𝚃𝙷𝚄𝙱 𝚂𝚃𝙰𝚃𝚂**
 
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=shivamprasad1001&show_icons=true&theme=radical)             ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=shivamprasad1001&layout=compact&theme=radical)
+### **🎉 Fun fact**
+
+When I'm not coding, you can find me exploring the outdoors, reading sci-fi novels, or experimenting with new recipes in the kitchen.
 
 ---
 
@@ -144,4 +147,3 @@ I wield **data magic** to build **sentient systems** and craft **pixel-perfect u
   <em>Stay curious, keep hacking!</em>
 </p>
 <h6 align="center">"𝙰𝙸 𝚠𝚒𝚕𝚕 𝚗𝚘𝚝 𝚛𝚎𝚙𝚕𝚊𝚌𝚎 𝚢𝚘𝚞. 𝙰 𝙿𝚎𝚛𝚜𝚘𝚗 𝚞𝚜𝚒𝚗𝚐 𝙰𝙸 𝚠𝚒𝚕𝚕."</h6>
-
