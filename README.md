@@ -5,14 +5,17 @@
   <img src="https://komarev.com/ghpvc/?username=shivamprasad1001&style=flat-square&color=green" alt="Profile Views"/>
 </p>
 
-<h1 align="center">👨‍💻 Welcome to My Hacker Space 🖥️</h1>
+<h1 align="center">Shivam Prasad</h1>
+<h3 align="center">AI/ML Engineer & Full Stack Developer</h3>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/YourUsername/YourUsername/main/matrix.gif" width="100%" alt="Matrix Effect"/>
-  <br />
-  <b>AI/ML Enthusiast | Web Wizard | Blockchain Explorer</b>
+  <a href="https://www.linkedin.com/in/shivam-prasad1001/">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+  <a href="https://medium.com/@shivamprasad1001">
+    <img src="https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white" alt="Medium"/>
+  </a>
 </p>
-
 ---
 
 ### ⚡ ABOUT ME  
