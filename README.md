@@ -1,3 +1,4 @@
+
 <p align="center">
   <img src="https://media.giphy.com/media/HEPwfdu6T6svpPE1eN/giphy.gif" width="300" alt="Hacker GIF"/>
 </p>
@@ -16,7 +17,6 @@
     <img src="https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white" alt="Medium"/>
   </a>
 </p>
----
 
 ### ⚡ ABOUT ME  
 Hey there! I’m a **code sorcerer** blending **AI alchemy** 🧙‍♂️ with **web wizardry** ✨.  
