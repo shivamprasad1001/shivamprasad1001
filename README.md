@@ -97,6 +97,6 @@ When I'm not coding, you can find me exploring the outdoors, reading sci-fi nove
   <img src="https://media.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif" width="200" alt="Hacker Code"/>
 </p>
 
-<p align="center"><em>Stay curious, keep hacking.</em></p>
+<p align="center"><em>Stay curious, keep coding</em></p>
 
 <h6 align="center">"AI won't replace you. A person using AI will."</h6>
