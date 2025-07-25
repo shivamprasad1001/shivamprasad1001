@@ -73,8 +73,8 @@ Decentralized marketplace for NFTs using smart contracts.
 Multilingual real-time chatroom with translation.  
 `Flask` | `Google Translate API` | `Socket.io`
 
-#### 🔹 [Face Recognition](https://github.com/shivamprasad1001/papermind-ai)
-An AI PDF assistant that allows natural language chat with any document. Powered by FAISS, LangChain.  
+#### 🔹 [Face Recognition](https://github.com/shivamprasad1001/Image-Classification)
+Real-time deep learning face recognition app.  
 `OpenCV ` | `TensorFlow ` | `Dlib` 
 
 ---
