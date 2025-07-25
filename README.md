@@ -61,7 +61,7 @@ From **sentient systems** to **pixel-perfect portals**, I love creating things t
 AI model that detects emotions & offers stress relief solutions.  
 `TensorFlow` | `OpenCV` | `Keras` | `Matplotlib` | `Pandas`
 
-#### 🔹 [Facial Emotion Recognition](https://github.com/shivamprasad1001/Facial_Emotion_Recognition)
+#### 🔹 [PaperMind AI ](https://github.com/shivamprasad1001/Facial_Emotion_Recognition)
 Real-time CNN-based emotion classifier.  
 `Python` | `TensorFlow` | `OpenCV`
 
@@ -73,9 +73,9 @@ Decentralized marketplace for NFTs using smart contracts.
 Multilingual real-time chatroom with translation.  
 `Flask` | `Google Translate API` | `Socket.io`
 
-#### 🔹 [Face Recognition](https://github.com/shivamprasad1001/Image-Classification)
-Real-time deep learning face recognition app.  
-`OpenCV` | `TensorFlow` | `Dlib`
+#### 🔹 [Face Recognition](https://github.com/shivamprasad1001/papermind-ai)
+An AI PDF assistant that allows natural language chat with any document. Powered by FAISS, LangChain.  
+`RAG` | `LangChain` | `PyTorch` | `Dlib` 
 
 ---
 
