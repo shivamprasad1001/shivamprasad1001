@@ -1,16 +1,107 @@
-## Hi there 👋
 
-<!--
-**shivamprasad1001/shivamprasad1001** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<p align="center">
+  <img src="https://media.giphy.com/media/HEPwfdu6T6svpPE1eN/giphy.gif" width="300" alt="Hacker GIF"/>
+</p>
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=shivamprasad1001&style=flat-square&color=green" alt="Profile Views"/>
+</p>
 
-Here are some ideas to get you started:
+<h1 align="center">Shivam Prasad</h1>
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=3000&pause=1000&color=000&center=true&vCenter=true&width=600&lines=Welcome+to+my+Neural+Hub...;AI+Developer+%7C+Automation+Architect+%7C+Engineer;Boot+Sequence+Complete...;System+Status:+ONLINE" />
+</p>
+<p align="center">
+  <a href="https://www.linkedin.com/in/shivam-prasad1001/">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+  </a>
+  <a href="https://medium.com/@shivamprasad1001">
+    <img src="https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white" alt="Medium"/>
+  </a>
+</p>
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### ⚡ ABOUT ME  
+Hey there! I’m a **code sorcerer** blending **AI alchemy** 🧙‍♂️ with **web wizardry** ✨.  
+From **sentient systems** to **pixel-perfect portals**, I love creating things that feel magical and functional.
+
+#### 🔍 Current Focus:
+- 🤖 AI & ML | NLP | Face & Emotion Recognition  
+- 🌐 Web Dev | Flask | Next.js | Python  
+- 🔗 Blockchain | NFTs | Tokenized Assets  
+- 🧠 Smart Assistants | JARVIS-like AI | Conversational Tech  
+- 🎶 Emotion-Based Music AI  
+- ☁️ Cloud & Crypto Mining
+
+---
+
+### 🛠️ TECH STACK
+
+#### AI / ML
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat&logo=openai&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat&logo=opencv&logoColor=white)
+![Hugging Face](https://img.shields.io/badge/HuggingFace-FFCC4D?style=flat&logo=huggingface&logoColor=white)
+
+#### Web & Blockchain
+![Flask](https://img.shields.io/badge/Flask-000000?style=flat&logo=flask&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
+![Solidity](https://img.shields.io/badge/Solidity-363636?style=flat&logo=solidity&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white)
+
+---
+
+### 🚀 FEATURED PROJECTS
+
+#### 🔹 [MoodifyAI](https://github.com/shivamprasad1001/MoodifyAI)
+AI model that detects emotions & offers stress relief solutions.  
+`TensorFlow` | `OpenCV` | `Keras` | `Matplotlib` | `Pandas`
+
+#### 🔹 [PaperMind AI ](https://github.com/shivamprasad1001/papermind-ai)
+An AI PDF assistant that allows natural language chat with any document. Powered by FAISS, LangChain.    
+`RAG` | `LangChain` | `PyTorch` | 
+
+### 🔹 [YouTube-RAG-Chatbot](https://github.com/shivamprasad1001/YouTube-RAG-Chatbot)
+YouTube question-answering chatbot built using Retrieval-Augmented Generation (RAG), implemented in a Jupyter Notebook.  
+`RAG` | `LangChain ` | `python` | `Jupyter`
+
+#### 🔹 [NFT Marketplace](https://github.com/shivamprasad1001/NFT-Marketplace)
+Decentralized marketplace for NFTs using smart contracts.  
+`Solidity` | `Next.js` | `IPFS` | `Web3.js`
+
+#### 🔹 [EchoHive](https://github.com/shivamprasad1001/EchoHive)
+Multilingual real-time chatroom with translation.  
+`Flask` | `Google Translate API` | `Socket.io`
+
+#### 🔹 [Face Recognition](https://github.com/shivamprasad1001/Image-Classification)
+Real-time deep learning face recognition app.  
+`OpenCV ` | `TensorFlow ` | `Dlib` 
+
+---
+
+### 🏆 HACKATHONS
+
+🏅 **Hacknovate-V** – Real-time Weather App  
+🏅 **EDU Chain** – NFT Marketplace for EdTech  
+
+---
+
+
+### 🎉 FUN FACT
+
+When I'm not coding, you can find me exploring the outdoors, reading sci-fi novels, or experimenting with new recipes in the kitchen.
+
+---
+
+<p align="center">
+  <img src="https://media.giphy.com/media/LmNwrBhejkK9EFP504/giphy.gif" width="200" alt="Hacker Code"/>
+</p>
+
+<p align="center"><em>Stay curious, keep coding</em></p>
+
+<h6 align="center">"AI won't replace you. A person using AI will."</h6>
