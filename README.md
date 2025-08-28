@@ -5,7 +5,7 @@
 <h1 align="center">⚡ Shivam Prasad ⚡</h1>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=2800&pause=1000&color=00FF00&center=true&vCenter=true&width=650&lines=Welcome+to+my+Neural+Hub...;AI+Developer+%7C+Automation+Architect+%7C+Engineer;Boot+Sequence+Complete...;System+Status:+ONLINE"/>
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=2800&pause=1000&color=000000&center=true&vCenter=true&width=650&lines=Welcome+to+my+Neural+Hub...;AI+Developer+%7C+Automation+Architect+%7C+Engineer;Boot+Sequence+Complete...;System+Status:+ONLINE"/>
 </p>
 
 <p align="center">
