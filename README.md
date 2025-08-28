@@ -120,7 +120,7 @@ Chat with any PDF using RAG + LangChain.
 Emotion detection → stress relief music and solutions.  
 `TensorFlow` | `OpenCV` | `Keras`  
 
-🔹 **[YOLOv8 Object Detection](https://github.com/shivamprasad1001/YOLO-Object-Detection)**  
+🔹 **[YOLOv8 Object Detection](https://github.com/shivamprasad1001/yolo-custom-trainer)**  
 Custom dataset annotation + training pipeline.  
 `YOLOv8` | `Label Studio` | `Python`  
 
