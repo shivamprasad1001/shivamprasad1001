@@ -29,12 +29,12 @@ I thrive on blending **deep learning**, **system design**, and **cybersecurity**
 
 ## 🔭 Current Focus  
 
-- 🤖 **AI Assistants** → JARVIS-like desktop AI (intent detection + NER + app control)  
-- 📄 **RAG Systems** → [PaperMind AI](https://github.com/shivamprasad1001/papermind-ai) (chat with PDFs)  
-- 👁️ **Computer Vision** → YOLOv8 object detection, face clustering, deepfake research  
-- 🎶 **Emotion-based Experiences** → MoodifyAI (AI music therapy based on facial emotions)  
-- 📡 **Cybersecurity Tools** → SSH + Netcat handbook, automation scripts  
-- 🚀 **Startups** → AI tools for businesses (DM responder, lead qualification, fitness bots)  
+-  **AI Assistants** → JARVIS-like desktop AI (intent detection + NER + app control)  
+-  **RAG Systems** → [PaperMind AI](https://github.com/shivamprasad1001/papermind-ai) (chat with PDFs)  
+-  **Computer Vision** → YOLOv8 object detection, face clustering, deepfake research  
+-  **Emotion-based Experiences** → MoodifyAI (AI music therapy based on facial emotions)  
+-  **Cybersecurity Tools** → SSH + Netcat handbook, automation scripts  
+-  **Startups** → AI tools for businesses (DM responder, lead qualification, fitness bots)  
 
 ---
 ## 🛠️ Skills & Tech Arsenal  
@@ -112,32 +112,32 @@ I thrive on blending **deep learning**, **system design**, and **cybersecurity**
 
 ## 🚀 Featured Projects  
 
-🔹 **[PaperMind AI](https://github.com/shivamprasad1001/papermind-ai)**  
+- **[PaperMind AI](https://github.com/shivamprasad1001/papermind-ai)**  
 Chat with any PDF using RAG + LangChain.  
 `FastAPI` | `FAISS` | `TinyLLaMA` | `all-MiniLM-L6-v2`  
 
-🔹 **[MoodifyAI](https://github.com/shivamprasad1001/MoodifyAI)**  
+- **[MoodifyAI](https://github.com/shivamprasad1001/MoodifyAI)**  
 Emotion detection → stress relief music and solutions.  
 `TensorFlow` | `OpenCV` | `Keras`  
 
-🔹 **[YOLOv8 Object Detection](https://github.com/shivamprasad1001/yolo-custom-trainer)**  
+- **[YOLOv8 Object Detection](https://github.com/shivamprasad1001/yolo-custom-trainer)**  
 Custom dataset annotation + training pipeline.  
 `YOLOv8` | `Label Studio` | `Python`  
 
-🔹 **[AIDesktopAssistant](https://github.com/shivamprasad1001/AIDesktopAssistant)**  
+- **[AIDesktopAssistant](https://github.com/shivamprasad1001/AIDesktopAssistant)**  
 Local JARVIS-like assistant with intent classification + NER.  
 `TinyLLaMA` | `Speech-to-Text` | `TTS` | `App Control`  
 
-🔹 **[ssh-nc-handbook](https://github.com/shivamprasad1001/ssh-nc-handbook)**  
+- **[ssh-nc-handbook](https://github.com/shivamprasad1001/ssh-nc-handbook)**  
 Guide + scripts for communication & file transfer with SSH & Netcat.  
 
-🔹 **[YouTube-RAG-Chatbot](https://github.com/shivamprasad1001/YouTube-RAG-Chatbot)**  
+- **[YouTube-RAG-Chatbot](https://github.com/shivamprasad1001/YouTube-RAG-Chatbot)**  
 Ask questions from YouTube videos using RAG.  
 
-🔹 **[NFT Marketplace](https://github.com/shivamprasad1001/NFT-Marketplace)**  
+- **[NFT Marketplace](https://github.com/shivamprasad1001/NFT-Marketplace)**  
 Decentralized NFT platform with Solidity + Next.js.  
 
-🔹 **[EchoHive](https://github.com/shivamprasad1001/EchoHive)**  
+- **[EchoHive](https://github.com/shivamprasad1001/EchoHive)**  
 Real-time multilingual chat app with live translation.  
 
 ---
