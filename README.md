@@ -5,7 +5,13 @@
 <h1 align="center">⚡ Shivam Prasad ⚡</h1>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=2800&pause=1000&color=000000&center=true&vCenter=true&width=650&lines=Welcome+to+my+Neural+Hub...;AI+Developer+%7C+Automation+Architect+%7C+Engineer;Boot+Sequence+Complete...;System+Status:+ONLINE"/>
+  <!-- Light mode -->
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=2800&pause=1000&color=000000&center=true&vCenter=true&width=650&lines=Welcome+to+my+Neural+Hub...;AI+Developer+%7C+Automation+Architect+%7C+Engineer;Boot+Sequence+Complete...;System+Status:+ONLINE"
+       alt="Typing SVG Light" class="gh-light-mode-only" />
+  
+  <!-- Dark mode -->
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&duration=2800&pause=1000&color=FFFFFF&center=true&vCenter=true&width=650&lines=Welcome+to+my+Neural+Hub...;AI+Developer+%7C+Automation+Architect+%7C+Engineer;Boot+Sequence+Complete...;System+Status:+ONLINE"
+       alt="Typing SVG Dark" class="gh-dark-mode-only" />
 </p>
 
 <p align="center">
