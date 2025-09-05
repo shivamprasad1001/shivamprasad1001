@@ -1,0 +1,37 @@
+[
+    {
+      "title": "MoodifyAI",
+      "year": 2025,
+      "description": "Real-time chat and music room app with Spotify integration for shared listening experiences.",
+      "imageUrl": "https://raw.githubusercontent.com/shivamprasad1001/MoodifyAI/main/static/Home.png",
+      "liveUrl": "https://huggingface.co/spaces/shivamprasad1001/moodify",
+      "repoUrl": "https://github.com/shivamprasad1001/MoodifyAI"
+    },
+    
+    {
+      "title": "PaperMind AI",
+      "year": 2025,
+      "description": "PaperMind AI is a modern PDF document chat application powered by AI that allows you to upload PDF documents and have intelligent conversations about their content",
+      "imageUrl": "https://github.com/shivamprasad1001/papermind-ai/raw/runLocal/assets/PapermindAI_logo.png",
+      "liveUrl": "https://papermind-chat.vercel.app/",
+      "repoUrl": "https://github.com/shivamprasad1001/PaperMindAI"
+    },
+    {
+      "title": "AIDesktopAssistant",
+      "year": 2025,
+      "description": "Local AI assistant for desktop control, personal tasks, and voice commands using TinyLLaMA.",
+      "imageUrl": "https://montymobile.com/wp-content/uploads/2024/05/Chatbot-Design-Blog-Cover-1920x1080-1-960x540.webp",
+      "liveUrl": "",
+      "repoUrl": "https://github.com/shivamprasad1001/AIDesktopAssistant"
+    },
+    {
+      "title": "Password Manager System",
+      "year": 2025,
+      "description": "Local AI assistant for desktop control, personal tasks, and voice commands using TinyLLaMA.",
+      "imageUrl": "https://github.com/shivamprasad1001/password_manager_system/raw/main/assets/logo.png",
+      "liveUrl": "",
+      "repoUrl": "https://github.com/shivamprasad1001/password_manager_system"
+    }
+    
+  ]
+  
