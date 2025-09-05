@@ -23,7 +23,7 @@ const App: React.FC = () => {
         <Blog />
       </main>
       <Footer />
-      <Chatbot />
+      {/* <Chatbot /> */}
     </div>
   );
 };
