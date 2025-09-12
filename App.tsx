@@ -9,7 +9,8 @@ import Testimonials from './src/components/Testimonials';
 import Blog from './src/components/Blog';
 import Footer from './src/components/Footer';
 import Chatbot from './src/components/Chatbot';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
+
 
 const App: React.FC = () => {
   return (
