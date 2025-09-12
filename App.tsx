@@ -24,6 +24,7 @@ const App: React.FC = () => {
         <Blog />
       </main>
       <Footer />
+      <Analytics />
       {/* <Chatbot /> */}
     </div>
   );
