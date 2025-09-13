@@ -65,7 +65,8 @@ const Footer: React.FC = () => {
                                 <p>Email: shivamprasad1001@gmail.com</p>
                                 <p>City: New Delhi, India</p>
                             </div>
-                            <a href="#" className="inline-block mt-4 text-xs font-bold tracking-widest text-gray-800 dark:text-white underline underline-offset-4 decoration-2 decoration-gray-300 dark:decoration-gray-600 hover:decoration-gray-800 dark:hover:decoration-white transition">
+                            <a href="./shivam's-resume.pdf" download="shivam's-resume.pdf"
+                            className="inline-block mt-4 text-xs font-bold tracking-widest text-gray-800 dark:text-white underline underline-offset-4 decoration-2 decoration-gray-300 dark:decoration-gray-600 hover:decoration-gray-800 dark:hover:decoration-white transition">
                                 DOWNLOAD CV
                             </a>
                         </div>

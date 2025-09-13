@@ -164,7 +164,7 @@ const Biography: React.FC = () => {
             {/* CV Download */}
             <div>
               <a
-                href="#"
+                href="./shivam's-resume.pdf" download="shivam's-resume.pdf"
                 className="text-sm font-bold tracking-wider text-gray-800 dark:text-white underline underline-offset-4 decoration-2 decoration-gray-300 dark:decoration-gray-600 hover:decoration-gray-800 dark:hover:decoration-white transition"
               >
                 DOWNLOAD CV
