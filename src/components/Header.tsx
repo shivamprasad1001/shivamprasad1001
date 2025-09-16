@@ -61,7 +61,7 @@ const Header: React.FC = () => {
         <div className="flex items-center space-x-4">
           <ThemeToggle />
           <a
-            href="./shivam's-resume.pdf" download="shivam's-resume.pdf"
+            href="./resume.pdf" download="shivam's-resume.pdf"
             className="hidden sm:inline-block px-5 py-2 text-sm font-semibold text-white 
                        bg-gray-900 dark:bg-gray-800 rounded-full 
                        hover:bg-gray-700 dark:hover:bg-gray-600 
