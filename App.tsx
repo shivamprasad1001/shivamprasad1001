@@ -20,7 +20,7 @@ const App: React.FC = () => {
         <Biography />
         <Achievements />
         <FeaturedWorks />
-        <WorkExperience />
+        {/* <WorkExperience /> */}
         {/* <Testimonials /> */}
         <Blog />
       </main>
