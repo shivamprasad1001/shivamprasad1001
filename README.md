@@ -7,7 +7,7 @@
   / ___// /_  (_)   ______ _____ ___     / __ \_________ ___________  ____/ /
   \__ \/ __ \/ / | / / __ `/ __ `__ \   / /_/ / ___/ __ `/ ___/ __ \/ __  /
  ___/ / / / / /| |/ / /_/ / / / / / /  / ____/ /  / /_/ (__  ) /_/ / /_/ /
-/____/_/ /_/_/ |___/\__,_/_/ /_/ /_/  /_/   /_/   \__,_/____/\__,_/\__,_/
+/____/_/ /_/_/ |___/\__,_/_/ /_/ /_/  /_/   /_/   \__,_/____/\__,_/\__,_/```
 ```
 ### `architect of intelligent systems` • `deep learning researcher` • `mlops innovator`
 
@@ -19,7 +19,7 @@
 
 <img align="right" width="400" src="https://github-readme-stats.vercel.app/api?username=shivamprasad1001&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=58A6FF&icon_color=1F6FEB&text_color=C9D1D9&count_private=true&include_all_commits=true" />
 
-## ⚡ About My Work
+##  About My Work
 I am an AI/ML Engineer focused on architecting intelligent systems that bridge advanced research with real-world applications. My expertise covers the entire machine learning lifecycle—designing neural architectures, building training pipelines, and deploying models that power large-scale, high-impact solutions.
 
 I specialize in translating cutting-edge research into production-ready systems, with experience in optimizing transformer models for efficiency, developing robust intent and NER models for assistants, and scaling distributed training for foundation models.
@@ -28,10 +28,10 @@ My approach blends strong mathematical fundamentals with pragmatic engineering p
 <br clear="right"/>
 
 
-## 🧠 Technical Mastery
+##  Technical Mastery
 
 <details open>  
-<summary><b>🔬 Core ML & Deep Learning</b></summary>  
+<summary><b> Core ML & Deep Learning</b></summary>  
 <br>  
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square\&logo=python\&logoColor=white)
@@ -46,7 +46,7 @@ My approach blends strong mathematical fundamentals with pragmatic engineering p
 </details>  
 
 <details>  
-<summary><b>🤖 Advanced AI Frameworks</b></summary>  
+<summary><b> Advanced AI Frameworks</b></summary>  
 <br>  
 
 ![Hugging Face](https://img.shields.io/badge/🤗_Hugging_Face-FFD21E?style=flat-square\&logoColor=black)
@@ -59,7 +59,7 @@ My approach blends strong mathematical fundamentals with pragmatic engineering p
 </details>  
 
 <details>  
-<summary><b>☁️ Cloud & Backend</b></summary>  
+<summary><b> Cloud & Backend</b></summary>  
 <br>  
 
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat-square\&logo=amazon-aws\&logoColor=white)
@@ -71,7 +71,7 @@ My approach blends strong mathematical fundamentals with pragmatic engineering p
 
 </details>  
 
-## 🎯 Signature Projects
+##  Signature Projects
 
 <table>
 <tr>
@@ -118,7 +118,7 @@ A secure, full-stack Password Manager Web App built with Flask, MySQL, and HTML/
 </tr>
 </table>
 
-## 📈 Performance Metrics
+##  Performance Metrics
 
 <div align="center">
 <table>
@@ -145,14 +145,14 @@ A secure, full-stack Password Manager Web App built with Flask, MySQL, and HTML/
 
 </div>
 
-### 🔥 Contribution Heatmap
+###  Contribution Heatmap
 <img src="https://ghchart.rshah.org/F85149/shivamprasad1001" alt="GitHub Contributions Chart" width="100%"/>
 
-## 🔬 Research & Innovation
+##  Research & Innovation
 
 My current research explores the boundaries of efficient model architectures, investigating novel compression techniques that maintain model performance while reducing computational requirements by orders of magnitude. I am particularly focused on developing sparse attention mechanisms, dynamic neural networks, and hardware-aware architecture design. This work bridges academic research with industrial deployment requirements, ensuring that theoretical advances translate into practical benefits for production systems.
 
-## 🎯 Current Research Focus
+##  Current Research Focus
 
 ```mermaid
 mindmap
@@ -181,7 +181,7 @@ mindmap
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-## 🎯 2025 Goals & Roadmap
+##  2025 Goals & Roadmap
 
 ```mermaid
 gantt
@@ -201,7 +201,7 @@ gantt
     System Design Mastery            :2025-05, 3M
 ```
 
-## 🌐 Professional Network
+##  Professional Network
 
 <div align="center">
 
