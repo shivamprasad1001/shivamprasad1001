@@ -71,52 +71,68 @@ My approach blends strong mathematical fundamentals with pragmatic engineering p
 
 </details>  
 
-##  Signature Projects
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### 📄 [PaperMind AI](https://github.com/shivamprasad1001/papermind-ai)
+## Signature Projects
+<table> <tr> <td width="50%" valign="top">
+📄 PaperMind AI
 
 <a href="https://github.com/shivamprasad1001/papermind-ai"><img src="https://img.shields.io/github/stars/shivamprasad1001/papermind-ai?style=social" /></a>
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
 
-A modern PDF document chat application powered by AI that allows you to upload PDF documents and have intelligent conversations about their content.
+A modern PDF chatbot powered by RAG + LangChain that lets users upload PDFs and query them with natural language. Built with FastAPI backend and interactive frontend.
 
-`#ai` `#pdf` `#chat-app` `#typescript`
+`#ai` `#rag` `#pdf-chatbot` `#typescript`
 
-</td>
-<td width="50%" valign="top">
-
-### 🎵 [MoodifyAI](https://github.com/shivamprasad1001/MoodifyAI)
+</td> <td width="50%" valign="top">
+🎵 MoodifyAI
 
 <a href="https://github.com/shivamprasad1001/MoodifyAI"><img src="https://img.shields.io/github/stars/shivamprasad1001/MoodifyAI?style=social" /></a>
 <img src="https://img.shields.io/badge/HTML-E34F26?style=flat-square&logo=html5&logoColor=white" />
 
-An AI-powered music recommendation system that detects emotions from facial expressions and suggests songs tailored to the user's mood.
+An AI-powered music recommendation system that detects emotions from facial expressions and suggests songs tailored to the user’s mood.
 
-`#ai` `#music-recommendation` `#facial-expression-recognition` `#html`
+`#ai` `#music-recommendation` `#facial-expression-recognition`
 
-</td>
-</tr>
-<tr>
-<td width="50%" valign="top">
+</td> </tr> <tr> <td width="50%" valign="top">
+🖥️ AI Desktop Assistant
 
-### 🔑 [Password Manager System](https://github.com/shivamprasad1001/password_manager_system)
+<a href="https://github.com/shivamprasad1001/AIDesktopAssistant"><img src="https://img.shields.io/github/stars/shivamprasad1001/AIDesktopAssistant?style=social" /></a>
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
+
+A fully functional AI assistant with speech-to-text, text-to-speech, intent detection, NER, and app-launching capabilities. Built with custom-trained models for natural command understanding.
+
+#desktop-assistant #intent-classification #ner #nlp
+
+</td> <td width="50%" valign="top">
+🧠 YOLO Object Detection
+
+<a href="https://github.com/shivamprasad1001/yolo-object-detection"><img src="https://img.shields.io/github/stars/shivamprasad1001/yolo-object-detection?style=social" /></a>
+<img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" />
+
+Object detection pipeline using YOLOv8 with a custom dataset. Includes dataset annotation, training scripts, and Telegram bot integration for real-time detection.
+
+#object-detection #yolov8 #computer-vision
+
+</td> </tr> <tr> <td width="50%" valign="top">
+🎭 Deepfake Face Swap
+
+<a href="https://github.com/shivamprasad1001/deepfake-faceswap"><img src="https://img.shields.io/github/stars/shivamprasad1001/deepfake-faceswap?style=social" /></a>
+<img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white" />
+
+Exploration into deepfake technology with face swap video generation using GANs and OpenCV. Built as a research project to study ethical AI applications.
+
+#deepfake #gan #opencv
+
+</td> <td width="50%" valign="top">
+🔑 Password Manager System
 
 <a href="https://github.com/shivamprasad1001/password_manager_system"><img src="https://img.shields.io/github/stars/shivamprasad1001/password_manager_system?style=social" /></a>
-<img src="https://img.shields.io/badge/HTML-E34F26?style=flat-square&logo=html5&logoColor=white" />
+<img src="https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white" />
 
-A secure, full-stack Password Manager Web App built with Flask, MySQL, and HTML/CSS/JS. It features user authentication, password generation, and encrypted storage.
+A secure password manager web app with Flask, MySQL, and JS. Features include authentication, encryption, and password generation.
 
-`#password-manager` `#flask` `#mysql` `#full-stack`
+#password-manager #flask #mysql #security
 
-</td>
-<td width="50%" valign="top">
-</td>
-</tr>
-</table>
+</td> </tr> </table>
 
 ##  Performance Metrics
 
