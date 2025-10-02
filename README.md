@@ -100,7 +100,7 @@ An AI-powered music recommendation system that detects emotions from facial expr
 
 A fully functional AI assistant with speech-to-text, text-to-speech, intent detection, NER, and app-launching capabilities. Built with custom-trained models for natural command understanding.
 
-#desktop-assistant #intent-classification #ner #nlp
+`#desktop-assistant` `#intent-classification` `#ner` `#nlp`
 
 </td> <td width="50%" valign="top">
 🧠 YOLO Object Detection
@@ -110,17 +110,7 @@ A fully functional AI assistant with speech-to-text, text-to-speech, intent dete
 
 Object detection pipeline using YOLOv8 with a custom dataset. Includes dataset annotation, training scripts, and Telegram bot integration for real-time detection.
 
-#object-detection #yolov8 #computer-vision
-
-</td> </tr> <tr> <td width="50%" valign="top">
-🎭 Deepfake Face Swap
-
-<a href="https://github.com/shivamprasad1001/deepfake-faceswap"><img src="https://img.shields.io/github/stars/shivamprasad1001/deepfake-faceswap?style=social" /></a>
-<img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white" />
-
-Exploration into deepfake technology with face swap video generation using GANs and OpenCV. Built as a research project to study ethical AI applications.
-
-#deepfake #gan #opencv
+`#object-detection` `#yolov8` `#computer-vision`
 
 </td> <td width="50%" valign="top">
 🔑 Password Manager System
@@ -130,7 +120,7 @@ Exploration into deepfake technology with face swap video generation using GANs 
 
 A secure password manager web app with Flask, MySQL, and JS. Features include authentication, encryption, and password generation.
 
-#password-manager #flask #mysql #security
+`#password-manager` `#flask` `#mysql` `#security`
 
 </td> </tr> </table>
 
