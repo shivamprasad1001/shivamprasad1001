@@ -71,58 +71,121 @@ My approach blends strong mathematical fundamentals with pragmatic engineering p
 
 </details>  
 
-## Signature Projects
-<table> <tr> <td width="50%" valign="top">
-📄 PaperMind AI
+## Signature Projects  
 
-<a href="https://github.com/shivamprasad1001/papermind-ai"><img src="https://img.shields.io/github/stars/shivamprasad1001/papermind-ai?style=social" /></a>
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
+<table>  
+<tr>  
+<td width="50%" valign="top">  
+📄  PaperMind AI   
 
-A modern PDF chatbot powered by RAG + LangChain that lets users upload PDFs and query them with natural language. Built with FastAPI backend and interactive frontend.
+<a href="https://github.com/shivamprasad1001/papermind-ai">
+<img src="https://img.shields.io/github/stars/shivamprasad1001/papermind-ai?style=social" />
+<img src="https://img.shields.io/github/forks/shivamprasad1001/papermind-ai?style=social" />
+<img src="https://img.shields.io/github/issues/shivamprasad1001/papermind-ai?style=social" />
+</a>  
+<br/>  
+<img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" />  
+<img src="https://img.shields.io/badge/LangChain-2E8B57?style=flat-square&logo=chainlink&logoColor=white" />  
 
-`#ai` `#rag` `#pdf-chatbot` `#typescript`
+A modern PDF chatbot powered by **RAG + LangChain** that lets users upload PDFs and query them with natural language. Built with **FastAPI backend** and interactive frontend.  
 
-</td> <td width="50%" valign="top">
-🎵 MoodifyAI
+`#ai` `#rag` `#pdf-chatbot`  
 
-<a href="https://github.com/shivamprasad1001/MoodifyAI"><img src="https://img.shields.io/github/stars/shivamprasad1001/MoodifyAI?style=social" /></a>
-<img src="https://img.shields.io/badge/HTML-E34F26?style=flat-square&logo=html5&logoColor=white" />
+</td>  
+<td width="50%" valign="top">  
+🎵  MoodifyAI   
 
-An AI-powered music recommendation system that detects emotions from facial expressions and suggests songs tailored to the user’s mood.
+<a href="https://github.com/shivamprasad1001/MoodifyAI">
+<img src="https://img.shields.io/github/stars/shivamprasad1001/MoodifyAI?style=social" />
+<img src="https://img.shields.io/github/forks/shivamprasad1001/MoodifyAI?style=social" />
+<img src="https://img.shields.io/github/issues/shivamprasad1001/MoodifyAI?style=social" />
+</a>  
+<br/>  
+<img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white" />  
+<img src="https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white" />  
 
-`#ai` `#music-recommendation` `#facial-expression-recognition`
+An AI-powered **music recommendation system** that detects emotions from **facial expressions** and suggests songs tailored to the user’s mood.  
 
-</td> </tr> <tr> <td width="50%" valign="top">
-🖥️ AI Desktop Assistant
+`#ai` `#music-recommendation` `#facial-expression-recognition`  
 
-<a href="https://github.com/shivamprasad1001/AIDesktopAssistant"><img src="https://img.shields.io/github/stars/shivamprasad1001/AIDesktopAssistant?style=social" /></a>
-<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
+</td>  
+</tr>  
 
-A fully functional AI assistant with speech-to-text, text-to-speech, intent detection, NER, and app-launching capabilities. Built with custom-trained models for natural command understanding.
+<tr>  
+<td width="50%" valign="top">  
+🖥️  AI Desktop Assistant   
 
-`#desktop-assistant` `#intent-classification` `#ner` `#nlp`
+<a href="https://github.com/shivamprasad1001/AIDesktopAssistant">
+<img src="https://img.shields.io/github/stars/shivamprasad1001/AIDesktopAssistant?style=social" />
+<img src="https://img.shields.io/github/forks/shivamprasad1001/AIDesktopAssistant?style=social" />
+<img src="https://img.shields.io/github/issues/shivamprasad1001/AIDesktopAssistant?style=social" />
+</a>  
+<br/>  
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />  
+<img src="https://img.shields.io/badge/NLP-FF6F00?style=flat-square&logo=google&logoColor=white" />  
 
-</td> <td width="50%" valign="top">
-🧠 YOLO Object Detection
+A fully functional **AI assistant** with speech-to-text, text-to-speech, intent detection, NER, and app-launching capabilities. Built with **custom-trained models** for natural command understanding.  
 
-<a href="https://github.com/shivamprasad1001/yolo-object-detection"><img src="https://img.shields.io/github/stars/shivamprasad1001/yolo-object-detection?style=social" /></a>
-<img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" />
+`#desktop-assistant` `#intent-classification` `#ner` `#nlp`  
 
-Object detection pipeline using YOLOv8 with a custom dataset. Includes dataset annotation, training scripts, and Telegram bot integration for real-time detection.
+</td>  
+<td width="50%" valign="top">  
+🧠  YOLO Object Detection     
 
-`#object-detection` `#yolov8` `#computer-vision`
+<a href="https://github.com/shivamprasad1001/yolo-object-detection">
+<img src="https://img.shields.io/github/stars/shivamprasad1001/yolo-object-detection?style=social" />
+<img src="https://img.shields.io/github/forks/shivamprasad1001/yolo-object-detection?style=social" />
+<img src="https://img.shields.io/github/issues/shivamprasad1001/yolo-object-detection?style=social" />
+</a>  
+<br/>  
+<img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white" />  
+<img src="https://img.shields.io/badge/YOLOv8-00FFFF?style=flat-square&logo=ai&logoColor=black" />  
 
-</td> <td width="50%" valign="top">
-🔑 Password Manager System
+Object detection pipeline using **YOLOv8** with a custom dataset. Includes **dataset annotation, training scripts, and Telegram bot integration** for real-time detection.  
 
-<a href="https://github.com/shivamprasad1001/password_manager_system"><img src="https://img.shields.io/github/stars/shivamprasad1001/password_manager_system?style=social" /></a>
-<img src="https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white" />
+`#object-detection` `#yolov8` `#computer-vision`  
 
-A secure password manager web app with Flask, MySQL, and JS. Features include authentication, encryption, and password generation.
+</td>  
+</tr>  
 
-`#password-manager` `#flask` `#mysql` `#security`
+<tr>  
+<td width="50%" valign="top">  
+🔑  Password Manager System   
 
-</td> </tr> </table>
+<a href="https://github.com/shivamprasad1001/password_manager_system">
+<img src="https://img.shields.io/github/stars/shivamprasad1001/password_manager_system?style=social" />
+<img src="https://img.shields.io/github/forks/shivamprasad1001/password_manager_system?style=social" />
+<img src="https://img.shields.io/github/issues/shivamprasad1001/password_manager_system?style=social" />
+</a>  
+<br/>  
+<img src="https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white" />  
+<img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white" />  
+
+A secure **password manager web app** with Flask, MySQL, and JS. Features include **authentication, encryption, and password generation**.  
+
+`#password-manager` `#flask` `#mysql` `#security`  
+
+</td>  
+<td width="50%" valign="top">  
+🛡️  SSH-NC Handbook   
+
+<a href="https://github.com/shivamprasad1001/ssh-nc-handbook">
+<img src="https://img.shields.io/github/stars/shivamprasad1001/ssh-nc-handbook?style=social" />
+<img src="https://img.shields.io/github/forks/shivamprasad1001/ssh-nc-handbook?style=social" />
+<img src="https://img.shields.io/github/issues/shivamprasad1001/ssh-nc-handbook?style=social" />
+</a>  
+<br/>  
+<img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black" />  
+<img src="https://img.shields.io/badge/Security-4E9A06?style=flat-square&logo=gnupg&logoColor=white" />  
+
+A **practical handbook** documenting **SSH & Netcat** for secure communication and file transfer. Includes usage notes, scripts, and examples for developers & security enthusiasts.  
+
+`#ssh` `#netcat` `#security` `#handbook`  
+
+</td>  
+</tr>  
+</table>  
+
 
 ##  Performance Metrics
 
