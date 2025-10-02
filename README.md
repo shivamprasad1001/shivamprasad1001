@@ -145,8 +145,6 @@ A secure, full-stack Password Manager Web App built with Flask, MySQL, and HTML/
 
 </div>
 
-###  Contribution Heatmap
-<img src="https://ghchart.rshah.org/F85149/shivamprasad1001" alt="GitHub Contributions Chart" width="100%"/>
 
 ##  Research & Innovation
 
