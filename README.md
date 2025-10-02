@@ -228,12 +228,12 @@ By bridging cutting-edge research with industrial deployment, my work ensures th
 mindmap
   root((AI/ML Research))
     Efficient Models
-      Sparse Attention
+      Sparse Attention Mechanisms
       Knowledge Distillation
       Quantization & Pruning
-      Hardware-Aware NAS
+      Hardware-Aware Neural Architecture Search
     Large Language Models
-      Parameter-Efficient Fine-Tuning
+      Parameter-Efficient Fine-Tuning (PEFT)
       Instruction Tuning
       RLHF & DPO
       Multi-Modal LLMs
@@ -241,7 +241,7 @@ mindmap
       Model Serving Optimization
       Online Learning Systems
       Feature Store Architecture
-      ML Observability
+      ML Observability & Monitoring
     Emerging Areas
       Diffusion Models
       Mixture of Experts
@@ -255,20 +255,21 @@ mindmap
 
 ```mermaid
 gantt
-    title ML Research & Development Roadmap 2025
+    title AI/ML Research & Development Roadmap 2025
     dateFormat YYYY-MM
     section Research
     Efficient Transformers Paper     :2025-01, 3M
     Mixture of Experts Study         :2025-04, 4M
     Neuromorphic Computing           :2025-08, 4M
-    section Open Source
+    section Open Source Projects
     NAS Framework v2.0               :2025-01, 2M
     LLM Toolkit Enhancement          :2025-03, 3M
-    MLOps Platform Features          :2025-06, 4M
-    section Learning
+    Production ML Platform Features  :2025-06, 4M
+    section Learning & Skills
     Advanced Rust for ML             :2025-01, 2M
     Triton GPU Programming           :2025-03, 2M
     System Design Mastery            :2025-05, 3M
+
 ```
 
 ##  Professional Network
