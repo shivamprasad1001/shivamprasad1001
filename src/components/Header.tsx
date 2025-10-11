@@ -40,7 +40,7 @@ const Header: React.FC = () => {
       <div className="absolute top-1/2 left-1/3 w-60 h-60 sm:w-80 sm:h-80 bg-teal-200 rounded-full opacity-30 blur-3xl"></div>
 
       {/* Top Navbar */}
-      <nav className="z-10 py-6 flex justify-between items-center max-w-7xl mx-auto w-full px-6 sm:px-8">
+      <nav className="z-20 py-6 flex justify-between items-center max-w-7xl mx-auto w-full px-6 sm:px-8">
         <a
           href="#"
           className="text-2xl font-serif font-bold text-gray-800 dark:text-white"
@@ -61,7 +61,7 @@ const Header: React.FC = () => {
         <div className="flex items-center space-x-4">
           <ThemeToggle />
           <a
-            href="./resume.pdf" download="shivam's-resume.pdf"
+            href="./resume.pdf" download="shivam-resume.pdf"
             className="hidden sm:inline-block px-5 py-2 text-sm font-semibold text-white 
                        bg-gray-900 dark:bg-gray-800 rounded-full 
                        hover:bg-gray-700 dark:hover:bg-gray-600 
@@ -86,16 +86,16 @@ const Header: React.FC = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu with animation */}
+      {/* Mobile Menu with smooth animation */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             key="mobile-menu"
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden bg-white dark:bg-gray-800 shadow-lg rounded-lg mx-4 mt-2 p-4 space-y-3 z-20"
+            exit={{ opacity: 0, y: -30 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="md:hidden rounded-lg mx-4 mt-2 p-4 space-y-3 z-10 "
           >
             <NavLink href="#about">About Me</NavLink>
             <NavLink href="#toolkit">Toolkit</NavLink>
@@ -106,8 +106,16 @@ const Header: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Hero Section */}
-      <div className="flex-grow flex flex-col items-center justify-center text-center px-4 relative">
+      {/* Hero Section with sliding animation when menu opens */}
+      <motion.div
+        animate={{ 
+          y: menuOpen ? 50 : 0, 
+          opacity: menuOpen ? 0.85 : 1,
+        
+        }}
+        transition={{ type: "spring", stiffness: 100, damping: 55 }}
+        className="flex-grow flex flex-col items-center justify-center text-center px-4 relative z-0"
+      >
         {/* Avatar */}
         <div className="relative mb-10 sm:mb-12">
           <div className="w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 rounded-full overflow-hidden 
@@ -120,7 +128,7 @@ const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Floating badge (hidden on small) */}
+        {/* Floating badge */}
         <div className="hidden md:block absolute top-24 right-10 md:right-40">
           <svg viewBox="0 0 220 220" className="w-36 h-36 sm:w-44 sm:h-44">
             <defs>
@@ -181,9 +189,9 @@ const Header: React.FC = () => {
             </button>
           </a>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Left Side Social Links */}
+      {/* Social Links */}
       <div className="hidden lg:flex absolute left-10 top-1/2 -translate-y-1/2 flex-col items-center space-y-6">
         <div className="h-16 w-px bg-gray-300 dark:bg-gray-600 my-4"></div>
         <div className="flex flex-col space-y-6">
