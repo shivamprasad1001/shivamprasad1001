@@ -20,16 +20,6 @@ const experiences: Experience[] = [
     fullDescription:
       "As an AI/ML Engineer at Truwix, I develop and implement end-to-end AI solutions, including chatbots, automation pipelines, and intelligent analytics systems. My role involves leveraging machine learning, deep learning, and natural language processing to create adaptive and human-like AI experiences. I collaborate with cross-functional teams to design scalable architectures, integrate AI models into production systems, and automate complex workflows. I also focus on optimizing model performance, improving user interactions, and deploying AI-driven assistants that enhance productivity and operational efficiency. Through continuous research and experimentation, I aim to bridge innovation with practicality—transforming how businesses interact with technology through intelligent automation.",
   },
-  {
-    company: "Masai School",
-    period: "Aug 2021 - Apr 2022",
-    location: "Remote",
-    title: "Full Stack Web Developer (Trainee)",
-    description:
-      "Completed an intensive, 30-week full-time program focused on full-stack web development.",
-    fullDescription:
-      "Completed an intensive, 30-week full-time program focused on full-stack web development. Gained hands-on experience in the MERN stack, data structures, and algorithms through various projects and assignments. Built multiple applications under tight deadlines while learning agile workflows.",
-  },
 ];
 
 const WorkExperience: React.FC = () => {
