@@ -11,14 +11,14 @@ type Experience = {
 
 const experiences: Experience[] = [
   {
-    company: "Celebal Technologies",
-    period: "May 2022 - Present",
-    location: "Remote",
-    title: "Software Engineer",
+    company: "Truwix Tech Solutions pvt. ltd ",
+    period: "Sep 2025 - Present",
+    location: "Onsite",
+    title: "AI/ML Engineer (Trainee)",
     description:
-      "As a Software Engineer, I develop and maintain scalable web applications using modern technologies like React and Next.js.",
+      "As an AI/ML Engineer at Truwix, I design and deploy intelligent systems that power chatbots, automation tools, and predictive models using machine learning, deep learning, and NLP. My work focuses on building scalable, data-driven solutions that enhance efficiency, user engagement, and real-world decision-making",
     fullDescription:
-      "As a Software Engineer, I develop and maintain scalable web applications using modern technologies like React and Next.js. I collaborate with cross-functional teams to deliver high-quality features and user experiences. I also take ownership of deployment pipelines, performance optimization, and mentoring junior developers.",
+      "As an AI/ML Engineer at Truwix, I develop and implement end-to-end AI solutions, including chatbots, automation pipelines, and intelligent analytics systems. My role involves leveraging machine learning, deep learning, and natural language processing to create adaptive and human-like AI experiences. I collaborate with cross-functional teams to design scalable architectures, integrate AI models into production systems, and automate complex workflows. I also focus on optimizing model performance, improving user interactions, and deploying AI-driven assistants that enhance productivity and operational efficiency. Through continuous research and experimentation, I aim to bridge innovation with practicality—transforming how businesses interact with technology through intelligent automation.",
   },
   {
     company: "Masai School",
