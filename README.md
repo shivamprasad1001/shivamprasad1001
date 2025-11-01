@@ -132,7 +132,7 @@ A fully functional **AI assistant** with speech-to-text, text-to-speech, intent 
 <td width="50%" valign="top">  
 🧠  YOLO Object Detection     
 
-<a href="https://github.com/shivamprasad1001/yolo-object-detection">
+<a href="https://github.com/shivamprasad1001/yolo-custom-trainer">
 <img src="https://img.shields.io/github/stars/shivamprasad1001/yolo-object-detection?style=social" />
 <img src="https://img.shields.io/github/forks/shivamprasad1001/yolo-object-detection?style=social" />
 <img src="https://img.shields.io/github/issues/shivamprasad1001/yolo-object-detection?style=social" />
