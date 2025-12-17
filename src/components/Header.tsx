@@ -1,18 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GitHubIcon, LinkedInIcon, TwitterIcon, ArrowRightIcon } from './Icons';
-import { motion, AnimatePresence } from "framer-motion";
-import ThemeToggle from './ThemeToggle';
-
-const NavLink: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
-  <a
-    href={href}
-    className="block md:inline-block text-sm font-medium text-gray-600 hover:text-gray-900 
-               dark:text-gray-300 dark:hover:text-white 
-               transition-colors duration-300 px-3 py-2 md:px-0"
-  >
-    {children}
-  </a>
-);
+import Navbar from './Navbar';
+import WelcomeIntro from './WelcomeIntro';
 
 const SocialLink: React.FC<{ href: string; children: React.ReactNode }> = ({ href, children }) => (
   <a
@@ -28,98 +17,26 @@ const SocialLink: React.FC<{ href: string; children: React.ReactNode }> = ({ hre
 );
 
 const Header: React.FC = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="relative w-full min-h-screen flex flex-col 
+    <header id="main-header" className="relative w-full min-h-screen flex flex-col 
                        bg-[#FCFCFC] dark:bg-gray-900 overflow-hidden">
 
       {/* Decorative blurred circles */}
-      <div className="absolute top-20 left-10 w-52 h-52 sm:w-72 sm:h-72 bg-pink-200 rounded-full opacity-40 blur-3xl"></div>
-      <div className="absolute bottom-40 right-10 w-72 h-72 sm:w-96 sm:h-96 bg-purple-200 rounded-full opacity-40 blur-3xl"></div>
-      <div className="absolute top-1/2 left-1/3 w-60 h-60 sm:w-80 sm:h-80 bg-teal-200 rounded-full opacity-30 blur-3xl"></div>
+      <div className="absolute top-16 left-8 w-44 h-44 sm:w-60 sm:h-60 bg-pink-200 rounded-full opacity-40 blur-3xl"></div>
+      <div className="absolute bottom-32 right-8 w-60 h-60 sm:w-80 sm:h-80 bg-purple-200 rounded-full opacity-40 blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/3 w-48 h-48 sm:w-64 sm:h-64 bg-teal-200 rounded-full opacity-30 blur-3xl"></div>
 
-      {/* Top Navbar */}
-      <nav className="z-20 py-6 flex justify-between items-center max-w-7xl mx-auto w-full px-6 sm:px-8">
-        <a
-          href="#"
-          className="text-2xl font-serif font-bold text-gray-800 dark:text-white"
-        >
-          Shivam<span className="text-pink-500">.</span>
-        </a>
+      <Navbar />
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
-          <NavLink href="#about">About Me</NavLink>
-          <NavLink href="#toolkit">Toolkit</NavLink>
-          <NavLink href="#portfolio">Portfolio</NavLink>
-          <NavLink href="#experience">Experience</NavLink>
-          <NavLink href="#contact">Contact</NavLink>
-        </div>
 
-        {/* Right side */}
-        <div className="flex items-center space-x-4">
-          <ThemeToggle />
-          <a
-            href="./resume.pdf" download="shivam-resume.pdf"
-            className="hidden sm:inline-block px-5 py-2 text-sm font-semibold text-white 
-                       bg-gray-900 dark:bg-gray-800 rounded-full 
-                       hover:bg-gray-700 dark:hover:bg-gray-600 
-                       transition-all duration-300 shadow-md"
-          >
-            Download CV
-          </a>
-          {/* Mobile Hamburger */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-md 
-                       text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 
-                       transition"
-          >
-            <span className="sr-only">Toggle Menu</span>
-            <div className="space-y-1">
-              <div className="w-6 h-0.5 bg-current"></div>
-              <div className="w-6 h-0.5 bg-current"></div>
-              <div className="w-6 h-0.5 bg-current"></div>
-            </div>
-          </button>
-        </div>
-      </nav>
 
-      {/* Mobile Menu with smooth animation */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            key="mobile-menu"
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -30 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            className="md:hidden rounded-lg mx-4 mt-2 p-4 space-y-3 z-10 "
-          >
-            <NavLink href="#about">About Me</NavLink>
-            <NavLink href="#toolkit">Toolkit</NavLink>
-            <NavLink href="#portfolio">Portfolio</NavLink>
-            <NavLink href="#experience">Experience</NavLink>
-            <NavLink href="#contact">Contact</NavLink>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Hero Section with sliding animation when menu opens */}
-      <motion.div
-        animate={{ 
-          y: menuOpen ? 50 : 0, 
-          opacity: menuOpen ? 0.85 : 1,
-        
-        }}
-        transition={{ type: "spring", stiffness: 100, damping: 55 }}
-        className="flex-grow flex flex-col items-center justify-center text-center px-4 relative z-0"
-      >
+      {/* Hero Section */}
+      <div className="flex-grow flex flex-col items-center justify-center text-center px-4 relative z-0">
         {/* Avatar */}
-        <div className="relative mb-10 sm:mb-12">
-          <div className="w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 rounded-full overflow-hidden 
-                          shadow-2xl border-[6px] border-white/70 dark:border-gray-700">
+        <div className="relative mb-8 sm:mb-10">
+          <div className="w-40 h-40 sm:w-60 sm:h-60 lg:w-80 lg:h-80 rounded-full overflow-hidden 
+                          shadow-2xl border-[5px] border-white/70 dark:border-gray-700">
             <img
               src="https://avatars.githubusercontent.com/u/161421872?q=80&w=400&h=400&fit=crop"
               alt="Shivam Prasad"
@@ -129,8 +46,8 @@ const Header: React.FC = () => {
         </div>
 
         {/* Floating badge */}
-        <div className="hidden md:block absolute top-24 right-10 md:right-40">
-          <svg viewBox="0 0 220 220" className="w-36 h-36 sm:w-44 sm:h-44">
+        <div className="hidden md:block absolute top-20 right-8 md:right-32">
+          <svg viewBox="0 0 220 220" className="w-30 h-30 sm:w-36 sm:h-36">
             <defs>
               <path
                 id="circleTextPath"
@@ -167,48 +84,48 @@ const Header: React.FC = () => {
         </div>
 
         {/* Name & Role */}
-        <div className="flex flex-col items-center mt-6 sm:mt-8">
-          <h1 className="font-serif text-4xl sm:text-6xl lg:text-8xl font-bold text-gray-800 dark:text-white leading-tight">
+        <div className="flex flex-col items-center mt-5 sm:mt-6">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-7xl font-bold text-gray-800 dark:text-white leading-tight">
             Shivam Prasad
           </h1>
-          <p className="text-base sm:text-lg text-gray-500 dark:text-gray-400 mt-2 tracking-widest">
+          <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-2 tracking-widest">
             // AI/ML Developer //
           </p>
 
           {/* Write me button */}
-          <a href="#contact" className="mt-6 sm:mt-10">
+          <a href="#contact" className="mt-5 sm:mt-8">
             <button
-              className="flex items-center justify-center px-6 py-3 rounded-full 
+              className="flex items-center justify-center px-5 py-2 rounded-full 
                          border border-gray-300 dark:border-gray-600 
                          text-gray-700 dark:text-gray-300  
                          hover:bg-white dark:hover:bg-gray-800 
                          hover:shadow-lg transition-all duration-300 group"
             >
               <span className="mr-2 text-sm font-medium">Write me</span>
-              <ArrowRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1 rotate-[330deg]" />
+              <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1 rotate-[330deg]" />
             </button>
           </a>
         </div>
-      </motion.div>
+      </div>
 
       {/* Social Links */}
-      <div className="hidden lg:flex absolute left-10 top-1/2 -translate-y-1/2 flex-col items-center space-y-6">
-        <div className="h-16 w-px bg-gray-300 dark:bg-gray-600 my-4"></div>
-        <div className="flex flex-col space-y-6">
-          <SocialLink href="https://github.com/shivamprasad1001"><GitHubIcon className="w-5 h-5" /></SocialLink>
-          <SocialLink href="https://www.linkedin.com/in/shivamprasad1001/"><LinkedInIcon className="w-5 h-5" /></SocialLink>
-          <SocialLink href="https://twitter.com/Shivampr101"><TwitterIcon className="w-5 h-5" /></SocialLink>
+      <div className="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 flex-col items-center space-y-5">
+        <div className="h-12 w-px bg-gray-300 dark:bg-gray-600 my-3"></div>
+        <div className="flex flex-col space-y-5">
+          <SocialLink href="https://github.com/shivamprasad1001"><GitHubIcon className="w-4 h-4" /></SocialLink>
+          <SocialLink href="https://www.linkedin.com/in/shivamprasad1001/"><LinkedInIcon className="w-4 h-4" /></SocialLink>
+          <SocialLink href="https://twitter.com/Shivampr101"><TwitterIcon className="w-4 h-4" /></SocialLink>
         </div>
-        <span className="text-xs tracking-widest text-gray-500 dark:text-gray-400 transform -rotate-90 p-20">
+        <span className="text-xs tracking-widest text-gray-500 dark:text-gray-400 transform -rotate-90 p-16">
           FOLLOW ME
         </span>
       </div>
 
       {/* Bottom Social Links for mobile */}
-      <div className="lg:hidden flex justify-center space-x-6 mt-8 mb-6">
-        <SocialLink href="https://github.com/shivamprasad1001"><GitHubIcon className="w-5 h-5" /></SocialLink>
-        <SocialLink href="https://www.linkedin.com/in/shivamprasad1001/"><LinkedInIcon className="w-5 h-5" /></SocialLink>
-        <SocialLink href="https://twitter.com/Shivampr101"><TwitterIcon className="w-5 h-5" /></SocialLink>
+      <div className="lg:hidden flex justify-center space-x-5 mt-6 mb-5">
+        <SocialLink href="https://github.com/shivamprasad1001"><GitHubIcon className="w-4 h-4" /></SocialLink>
+        <SocialLink href="https://www.linkedin.com/in/shivamprasad1001/"><LinkedInIcon className="w-4 h-4" /></SocialLink>
+        <SocialLink href="https://twitter.com/Shivampr101"><TwitterIcon className="w-4 h-4" /></SocialLink>
       </div>
     </header>
   );

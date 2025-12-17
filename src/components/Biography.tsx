@@ -58,41 +58,41 @@ const Biography: React.FC = () => {
   return (
     <section
       id="about"
-      className="py-20 sm:py-28 bg-[#FDFDFD] dark:bg-gray-900 relative scroll-mt-20"
+      className="py-16 sm:py-24 bg-[#FDFDFD] dark:bg-gray-900 relative scroll-mt-20"
     >
       {/* Decorative circles */}
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1 }}
-        className="absolute top-10 right-10 w-40 h-40 border-2 border-gray-200 dark:border-gray-700 rounded-full opacity-50"
+        className="absolute top-8 right-8 w-32 h-32 border-2 border-gray-200 dark:border-gray-700 rounded-full opacity-50"
       ></motion.div>
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1, delay: 0.3 }}
-        className="absolute bottom-1/4 left-10 w-24 h-24 border-2 border-gray-200 dark:border-gray-700 rounded-full opacity-50"
+        className="absolute bottom-1/4 left-8 w-20 h-20 border-2 border-gray-200 dark:border-gray-700 rounded-full opacity-50"
       ></motion.div>
 
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <motion.h2
           initial={{ y: -30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
-          className="font-serif text-4xl sm:text-5xl font-bold text-center text-gray-800 dark:text-white mb-16"
+          className="font-serif text-3xl sm:text-4xl font-bold text-center text-gray-800 dark:text-white mb-12"
         >
           Biography
         </motion.h2>
 
         {/* Content grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-start">
           {/* Left Column */}
           <motion.div
             initial={{ x: -50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="space-y-8 lg:pl-12"
+            className="space-y-6 lg:pl-10"
           >
             {/* Personal Info */}
             <div>
@@ -112,7 +112,7 @@ const Biography: React.FC = () => {
                 // TECHNICAL SKILLS
               </p>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <SkillSection
                   title="AI & Machine Learning"
                   skills={[
@@ -177,7 +177,7 @@ const Biography: React.FC = () => {
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="space-y-6"
+            className="space-y-5"
           >
             <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
               <b>Hello!</b> I'm Shivam Prasad, an{" "}

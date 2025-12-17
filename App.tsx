@@ -1,4 +1,5 @@
 import React from 'react';
+import AppWrapper from './src/components/AppWrapper';
 import Header from './src/components/Header';
 import Services from './src/components/Services';
 import Biography from './src/components/Biography';
@@ -15,21 +16,23 @@ import { Analytics } from "@vercel/analytics/react"
 
 const App: React.FC = () => {
   return (
-    <div className="bg-[#FDFDFD] dark:bg-gray-900 text-gray-700 dark:text-gray-300 overflow-x-hidden">
-      <Header />
-      <main>
-        <Biography />
-        <Achievements />
-        <FeaturedWorks />
-        <WorkExperience />
-        {/* <Testimonials /> */}
-        <Blog />
-        <ContactForm />
-      </main>
-      <Footer />
-      <Analytics />
-      {/* <Chatbot /> */}
-    </div>
+    <AppWrapper>
+      <div className="bg-[#FDFDFD] dark:bg-gray-900 text-gray-700 dark:text-gray-300 overflow-x-hidden">
+        <Header />
+        <main>
+          <Biography />
+          <Achievements />
+          <FeaturedWorks />
+          <WorkExperience />
+          {/* <Testimonials /> */}
+          <Blog />
+          <ContactForm />
+        </main>
+        <Footer />
+        <Analytics />
+        {/* <Chatbot /> */}
+      </div>
+    </AppWrapper>
   );
 };
 

@@ -20,14 +20,14 @@ const ProjectCard: React.FC<{ project: WorkProject }> = ({ project }) => (
       />
     </div>
 
-    <div className="p-4 flex flex-col flex-grow justify-between">
+    <div className="p-3 flex flex-col flex-grow justify-between">
       <div>
         <h3 className="font-bold text-gray-800 dark:text-white">{project.title}</h3>
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{project.year}</p>
         <p className="text-gray-600 dark:text-gray-300 text-sm">{project.description}</p>
       </div>
 
-      <div className="mt-4 flex gap-2">
+      <div className="mt-3 flex gap-2">
         {project.liveUrl && (
           <a
             href={project.liveUrl}
@@ -57,13 +57,13 @@ const FeaturedWorks: React.FC = () => {
   return (
     <section
       id="portfolio"
-      className="py-20 sm:py-28 bg-[#FDFDFD] dark:bg-gray-900 relative overflow-hidden"
+      className="py-16 sm:py-24 bg-[#FDFDFD] dark:bg-gray-900 relative overflow-hidden"
     >
-      <div className="absolute top-0 left-0 w-48 h-48 border-4 border-gray-200 dark:border-gray-700 rounded-full opacity-50 -translate-x-1/4 -translate-y-1/4"></div>
-      <div className="absolute bottom-1/2 right-0 w-32 h-32 border-2 border-gray-200 dark:border-gray-700 rounded-full opacity-50 translate-x-1/4"></div>
+      <div className="absolute top-0 left-0 w-40 h-40 border-3 border-gray-200 dark:border-gray-700 rounded-full opacity-50 -translate-x-1/4 -translate-y-1/4"></div>
+      <div className="absolute bottom-1/2 right-0 w-26 h-26 border-2 border-gray-200 dark:border-gray-700 rounded-full opacity-50 translate-x-1/4"></div>
 
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10">
           <div className="text-left">
             <p className="text-xs text-gray-400 dark:text-gray-500 font-semibold tracking-widest">// FIND ALL MY PROJECTS ON</p>
             <a
@@ -75,7 +75,7 @@ const FeaturedWorks: React.FC = () => {
               github.com/shivamprasad1001
             </a>
           </div>
-          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-gray-800 dark:text-white mt-4 md:mt-0">
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mt-4 md:mt-0">
             Projects
           </h2>
         </div>
@@ -83,7 +83,7 @@ const FeaturedWorks: React.FC = () => {
         {/* Swiper Slider */}
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={30}
+          spaceBetween={24}
           slidesPerView={1}
           navigation
           pagination={{ clickable: true }}
@@ -97,7 +97,7 @@ const FeaturedWorks: React.FC = () => {
             1024: { slidesPerView: 3 },
             1280: { slidesPerView: 4 },
           }}
-          className="pb-10"
+          className="pb-8"
         >
           {(projectsData as WorkProject[]).map((p) => (
             <SwiperSlide key={p.title}>

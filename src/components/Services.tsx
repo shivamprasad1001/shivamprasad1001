@@ -63,13 +63,13 @@ const ServiceItem: React.FC<ServiceItemProps> = ({ icon, title, description, isV
     className={`flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 p-4 transition-all duration-500 ${isVisible ? 'opacity-100 transform translate-x-0' : 'opacity-0 transform translate-x-4'
       }`}
   >
-    <div className="bg-white dark:bg-gray-800 rounded-xl p-6 h-full shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-100 dark:border-gray-700 hover:border-indigo-200 dark:hover:border-indigo-600">
-      <div className="flex items-center justify-center mb-6">
-        <div className="p-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 rounded-xl group-hover:from-indigo-50 group-hover:to-indigo-100 dark:group-hover:from-indigo-900 dark:group-hover:to-indigo-800 transition-all duration-300 transform group-hover:scale-110">
+    <div className="bg-white dark:bg-gray-800 rounded-xl p-5 h-full shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-100 dark:border-gray-700 hover:border-indigo-200 dark:hover:border-indigo-600">
+      <div className="flex items-center justify-center mb-5">
+        <div className="p-3 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 rounded-xl group-hover:from-indigo-50 group-hover:to-indigo-100 dark:group-hover:from-indigo-900 dark:group-hover:to-indigo-800 transition-all duration-300 transform group-hover:scale-110">
           {icon}
         </div>
       </div>
-      <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300">
+      <h3 className="text-base font-bold text-gray-800 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300">
         {title}
       </h3>
       <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
@@ -214,7 +214,7 @@ const Services: React.FC = () => {
 
   return (
     <section
-      className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-16 overflow-hidden"
+      className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-14 overflow-hidden"
       onKeyDown={handleKeyDown}
       tabIndex={0}
       style={{
@@ -252,7 +252,7 @@ const Services: React.FC = () => {
           animation: float 6s ease-in-out infinite;
         }
       `}</style>
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
 
 
@@ -293,7 +293,7 @@ const Services: React.FC = () => {
         
 
         {/* Pagination Dots */}
-        <div className="flex justify-center mt-8 space-x-2">
+        <div className="flex justify-center mt-6 space-x-2">
           {Array.from({ length: maxIndex + 1 }).map((_, index) => (
             <button
               key={index}
@@ -308,7 +308,7 @@ const Services: React.FC = () => {
         </div>
 
         {/* Auto-play toggle */}
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-5">
           <button
             onClick={() => setIsAutoPlaying(!isAutoPlaying)}
             className="text-sm text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-300"
