@@ -11,12 +11,14 @@ import Blog from './src/components/Blog';
 import Footer from './src/components/Footer';
 import Chatbot from './src/components/Chatbot';
 import ContactForm from './src/components/ContactForm';
+import SEO from './src/components/SEO';
 import { Analytics } from "@vercel/analytics/react"
 
 
 const App: React.FC = () => {
   return (
     <AppWrapper>
+      <SEO />
       <div className="bg-[#FDFDFD] dark:bg-gray-900 text-gray-700 dark:text-gray-300 overflow-x-hidden">
         <Header />
         <main>
