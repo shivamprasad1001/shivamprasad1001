@@ -12,6 +12,7 @@ import Footer from './src/components/Footer';
 import Chatbot from './src/components/Chatbot';
 import ContactForm from './src/components/ContactForm';
 import SEO from './src/components/SEO';
+import SkillsRadar from './src/components/SkillsRadar';
 import { Analytics } from "@vercel/analytics/react"
 
 
@@ -23,6 +24,7 @@ const App: React.FC = () => {
         <Header />
         <main>
           <Biography />
+          <SkillsRadar />
           <Achievements />
           <FeaturedWorks />
           <WorkExperience />
