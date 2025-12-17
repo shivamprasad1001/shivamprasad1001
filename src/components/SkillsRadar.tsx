@@ -51,7 +51,7 @@ const SkillsRadar: React.FC = () => {
   ];
 
   return (
-    <section id="toolkit" className="py-20 px-8 bg-gradient-to-br from-gray-900 via-teal-900 to-gray-900">
+    <section className="py-20 px-8 bg-[#FDFDFD] dark:bg-gray-900">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -60,8 +60,8 @@ const SkillsRadar: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold text-white mb-4">Technical Mastery</h2>
-          <p className="text-gray-300">Comprehensive skill assessment across domains</p>
+          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-gray-800 dark:text-white mb-4">Technical Mastery</h2>
+          <p className="text-gray-600 dark:text-gray-300">Comprehensive skill assessment across domains</p>
         </motion.div>
 
         {/* Legend */}
@@ -69,7 +69,7 @@ const SkillsRadar: React.FC = () => {
           {metrics.map((metric) => (
             <div key={metric.key} className="flex items-center gap-2">
               <div className="w-4 h-4 rounded-full" style={{ backgroundColor: metric.color, boxShadow: `0 0 10px ${metric.glow}` }} />
-              <span className="text-gray-300 text-sm">{metric.label}</span>
+              <span className="text-gray-600 dark:text-gray-300 text-sm font-medium">{metric.label}</span>
             </div>
           ))}
         </div>
@@ -103,8 +103,10 @@ const SkillsRadar: React.FC = () => {
                   cy={center}
                   r={(radius / levels) * (i + 1)}
                   fill="none"
-                  stroke="rgba(255, 255, 255, 0.1)"
+                  stroke="currentColor"
                   strokeWidth="1"
+                  className="stroke-gray-300 dark:stroke-gray-700"
+                  opacity="0.3"
                 />
               ))}
 
@@ -118,8 +120,10 @@ const SkillsRadar: React.FC = () => {
                     y1={center}
                     x2={point.x}
                     y2={point.y}
-                    stroke="rgba(255, 255, 255, 0.1)"
+                    stroke="currentColor"
                     strokeWidth="1"
+                    className="stroke-gray-300 dark:stroke-gray-700"
+                    opacity="0.3"
                   />
                 );
               })}
@@ -178,7 +182,7 @@ const SkillsRadar: React.FC = () => {
                     y={point.y}
                     textAnchor="middle"
                     dominantBaseline="middle"
-                    className="text-xs font-medium fill-gray-300"
+                    className="text-xs font-semibold fill-gray-700 dark:fill-gray-300"
                   >
                     {skill.category}
                   </text>
@@ -191,10 +195,10 @@ const SkillsRadar: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-4 py-2 rounded-lg shadow-xl border border-gray-700"
+                className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700"
               >
-                <div className="text-sm font-semibold">{hoveredPoint.category}</div>
-                <div className="text-xs text-gray-300">{hoveredPoint.metric}: {hoveredPoint.value}%</div>
+                <div className="text-sm font-semibold text-gray-800 dark:text-white">{hoveredPoint.category}</div>
+                <div className="text-xs text-gray-600 dark:text-gray-300">{hoveredPoint.metric}: {hoveredPoint.value}%</div>
               </motion.div>
             )}
           </motion.div>
