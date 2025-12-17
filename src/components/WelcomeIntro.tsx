@@ -13,16 +13,6 @@ const WelcomeIntro: React.FC = () => {
   const [titleIndex, setTitleIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
 
-  /* ───────── Scroll Lock ───────── */
-  useEffect(() => {
-    const originalStyle = window.getComputedStyle(document.body).overflow;
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      document.body.style.overflow = originalStyle;
-    };
-  }, []);
-
   /* ───────── Title Typing ───────── */
   useEffect(() => {
     if (titleIndex < TITLE_TEXT.length) {
@@ -32,7 +22,7 @@ const WelcomeIntro: React.FC = () => {
       }, 90);
       return () => clearTimeout(timer);
     } else {
-      setTimeout(() => setShowSub(true), 200);
+      setTimeout(() => setShowSub(true), 250);
     }
   }, [titleIndex]);
 
@@ -47,13 +37,11 @@ const WelcomeIntro: React.FC = () => {
     }
 
     if (subIndex === SUB_TEXT.length) {
-      setTimeout(() => setShowButton(true), 350);
+      setTimeout(() => setShowButton(true), 400);
     }
   }, [showSub, subIndex]);
 
-  /* ───────── Unlock Scroll + Move On ───────── */
   const scrollToHeader = () => {
-    document.body.style.overflow = '';
     document.getElementById('main-header')?.scrollIntoView({
       behavior: 'smooth',
     });
@@ -63,7 +51,6 @@ const WelcomeIntro: React.FC = () => {
     <section
       className="relative h-screen w-full flex flex-col items-center 
                  justify-center bg-white dark:bg-gray-900 overflow-hidden"
-      aria-label="Intro Section"
     >
       {/* Content */}
       <div className="z-10 text-center px-4">
@@ -72,11 +59,10 @@ const WelcomeIntro: React.FC = () => {
         <h1
           className="text-5xl sm:text-6xl lg:text-7xl font-extrabold 
                      text-gray-900 dark:text-white mb-6
-                     transition-all duration-700 ease-out
                      animate-[fadeScaleIn_0.8s_ease-out_forwards]"
         >
           {title}
-          <span className="text-sky-400 animate-pulse ml-1">|</span>
+          <span className="ml-1 text-sky-400 animate-pulse">|</span>
         </h1>
 
         {/* Subtitle */}
