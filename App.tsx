@@ -9,6 +9,7 @@ import Testimonials from './src/components/Testimonials';
 import Blog from './src/components/Blog';
 import Footer from './src/components/Footer';
 import Chatbot from './src/components/Chatbot';
+import ContactForm from './src/components/ContactForm';
 import { Analytics } from "@vercel/analytics/react"
 
 
@@ -23,6 +24,7 @@ const App: React.FC = () => {
         <WorkExperience />
         {/* <Testimonials /> */}
         <Blog />
+        <ContactForm />
       </main>
       <Footer />
       <Analytics />
