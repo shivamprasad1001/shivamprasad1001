@@ -223,17 +223,30 @@ By bridging cutting-edge research with industrial deployment, my work ensures th
 
 
 ##  Current Research Focus
-
 ```mermaid
+%%{init: {
+  "theme": "dark",
+  "themeVariables": {
+    "background": "#0f172a",
+    "primaryColor": "#38bdf8",
+    "primaryTextColor": "#ffffff",
+    "primaryBorderColor": "#7dd3fc",
+    "lineColor": "#94a3b8",
+    "secondaryColor": "#22c55e",
+    "tertiaryColor": "#a855f7",
+    "fontFamily": "Inter, Segoe UI, Arial"
+  }
+}}%%
+
 mindmap
   root((AI/ML Research))
     Efficient Models
       Sparse Attention Mechanisms
       Knowledge Distillation
       Quantization & Pruning
-      Hardware-Aware Neural Architecture Search
+      Hardware-Aware NAS
     Large Language Models
-      Parameter-Efficient Fine-Tuning (PEFT)
+      PEFT
       Instruction Tuning
       RLHF & DPO
       Multi-Modal LLMs
@@ -254,22 +267,34 @@ mindmap
 ##  2025 Goals & Roadmap
 
 ```mermaid
-gantt
-    title AI/ML Research & Development Roadmap 2025
-    dateFormat YYYY-MM
-    section Research
-    Efficient Transformers Paper     :2025-01, 3M
-    Mixture of Experts Study         :2025-04, 4M
-    Neuromorphic Computing           :2025-08, 4M
-    section Open Source Projects
-    NAS Framework v2.0               :2025-01, 2M
-    LLM Toolkit Enhancement          :2025-03, 3M
-    Production ML Platform Features  :2025-06, 4M
-    section Learning & Skills
-    Advanced Rust for ML             :2025-01, 2M
-    Triton GPU Programming           :2025-03, 2M
-    System Design Mastery            :2025-05, 3M
+%%{init: {"theme":"dark"}}%%
 
+mindmap
+  root((AI/ML Research))
+
+    Efficient_Models["Efficient Models"]
+      Sparse_Attention["Sparse Attention Mechanisms"]
+      Knowledge_Distillation["Knowledge Distillation"]
+      Quantization_Pruning["Quantization & Pruning"]
+      Hardware_Aware_NAS["Hardware-Aware NAS"]
+
+    Large_Language_Models["Large Language Models"]
+      PEFT["PEFT"]
+      Instruction_Tuning["Instruction Tuning"]
+      RLHF_DPO["RLHF & DPO"]
+      Multi_Modal_LLMs["Multi-Modal LLMs"]
+
+    Production_ML["Production ML"]
+      Model_Serving["Model Serving Optimization"]
+      Online_Learning["Online Learning Systems"]
+      Feature_Store["Feature Store Architecture"]
+      Observability["ML Observability & Monitoring"]
+
+    Emerging_Areas["Emerging Areas"]
+      Diffusion["Diffusion Models"]
+      MoE["Mixture of Experts"]
+      Neuromorphic["Neuromorphic Computing"]
+      Federated["Federated Learning"]
 ```
 
 ##  Professional Network
