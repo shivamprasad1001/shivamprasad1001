@@ -224,77 +224,67 @@ By bridging cutting-edge research with industrial deployment, my work ensures th
 
 ##  Current Research Focus
 ```mermaid
-%%{init: {
-  "theme": "dark",
-  "themeVariables": {
-    "background": "#0f172a",
-    "primaryColor": "#38bdf8",
-    "primaryTextColor": "#ffffff",
-    "primaryBorderColor": "#7dd3fc",
-    "lineColor": "#94a3b8",
-    "secondaryColor": "#22c55e",
-    "tertiaryColor": "#a855f7",
-    "fontFamily": "Inter, Segoe UI, Arial"
-  }
-}}%%
+%%{init: {"theme":"dark"}}%%
 
-mindmap
-  root((AI/ML Research))
-    Efficient Models
-      Sparse Attention Mechanisms
-      Knowledge Distillation
-      Quantization & Pruning
-      Hardware-Aware NAS
-    Large Language Models
-      PEFT
-      Instruction Tuning
-      RLHF & DPO
-      Multi-Modal LLMs
-    Production ML
-      Model Serving Optimization
-      Online Learning Systems
-      Feature Store Architecture
-      ML Observability & Monitoring
-    Emerging Areas
-      Diffusion Models
-      Mixture of Experts
-      Neuromorphic Computing
-      Federated Learning
+flowchart TB
+    A["AI / ML Research"]
+
+    subgraph B["Efficient Models"]
+      B1["Sparse Attention Mechanisms"]
+      B2["Knowledge Distillation"]
+      B3["Quantization & Pruning"]
+      B4["Hardware-Aware NAS"]
+    end
+
+    subgraph C["Large Language Models"]
+      C1["PEFT"]
+      C2["Instruction Tuning"]
+      C3["RLHF & DPO"]
+      C4["Multi-Modal LLMs"]
+    end
+
+    subgraph D["Production ML"]
+      D1["Model Serving Optimization"]
+      D2["Online Learning Systems"]
+      D3["Feature Store Architecture"]
+      D4["ML Observability & Monitoring"]
+    end
+
+    subgraph E["Emerging Areas"]
+      E1["Diffusion Models"]
+      E2["Mixture of Experts"]
+      E3["Neuromorphic Computing"]
+      E4["Federated Learning"]
+    end
+
+    A --> B
+    A --> C
+    A --> D
+    A --> E
+
 ```
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 ##  2025 Goals & Roadmap
 
+
 ```mermaid
-%%{init: {"theme":"dark"}}%%
-
-mindmap
-  root((AI/ML Research))
-
-    Efficient_Models["Efficient Models"]
-      Sparse_Attention["Sparse Attention Mechanisms"]
-      Knowledge_Distillation["Knowledge Distillation"]
-      Quantization_Pruning["Quantization & Pruning"]
-      Hardware_Aware_NAS["Hardware-Aware NAS"]
-
-    Large_Language_Models["Large Language Models"]
-      PEFT["PEFT"]
-      Instruction_Tuning["Instruction Tuning"]
-      RLHF_DPO["RLHF & DPO"]
-      Multi_Modal_LLMs["Multi-Modal LLMs"]
-
-    Production_ML["Production ML"]
-      Model_Serving["Model Serving Optimization"]
-      Online_Learning["Online Learning Systems"]
-      Feature_Store["Feature Store Architecture"]
-      Observability["ML Observability & Monitoring"]
-
-    Emerging_Areas["Emerging Areas"]
-      Diffusion["Diffusion Models"]
-      MoE["Mixture of Experts"]
-      Neuromorphic["Neuromorphic Computing"]
-      Federated["Federated Learning"]
+gantt
+    title AI/ML Research & Development Roadmap 2025
+    dateFormat YYYY-MM
+    section Research
+    Efficient Transformers Paper     :2025-01, 3M
+    Mixture of Experts Study         :2025-04, 4M
+    Neuromorphic Computing           :2025-08, 4M
+    section Open Source Projects
+    NAS Framework v2.0               :2025-01, 2M
+    LLM Toolkit Enhancement          :2025-03, 3M
+    Production ML Platform Features  :2025-06, 4M
+    section Learning & Skills
+    Advanced Rust for ML             :2025-01, 2M
+    Triton GPU Programming           :2025-03, 2M
+    System Design Mastery            :2025-05, 3M
 ```
 
 ##  Professional Network
