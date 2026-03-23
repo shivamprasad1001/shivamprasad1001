@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivam's AGI Roadmap</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --border: #1e1e1e;
+    --border-bright: #2a2a2a;
+    --text: #e8e8e8;
+    --text-dim: #555;
+    --text-mid: #888;
+    --accent: #00ff88;
+    --accent-dim: #00ff8820;
+    --accent-mid: #00ff8840;
+    --warn: #ffaa00;
+    --warn-dim: #ffaa0015;
+    --phase1: #00aaff;
+    --phase2: #aa00ff;
+    --phase3: #ff6600;
+    --phase4: #00ff88;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Syne', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Subtle grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,255,136,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,136,0.015) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 60px 24px 120px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  .header {
+    margin-bottom: 60px;
+  }
+
+  .header-tag {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .header h1 {
+    font-family: var(--sans);
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.1s forwards;
+  }
+
+  .header h1 span { color: var(--accent); }
+
+  .header-meta {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.2s forwards;
+  }
+
+  .header-meta span { color: var(--text-mid); }
+
+  /* Warning box */
+  .warning {
+    background: var(--warn-dim);
+    border: 1px solid #ffaa0030;
+    border-left: 3px solid var(--warn);
+    padding: 14px 18px;
+    margin-bottom: 48px;
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--text-mid);
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.3s forwards;
+  }
+
+  .warning strong { color: var(--warn); font-weight: 500; }
+
+  /* Timeline spine */
+  .timeline {
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--border-bright), var(--border), transparent);
+  }
+
+  /* Phase block */
+  .phase {
+    position: relative;
+    margin-bottom: 8px;
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+
+  .phase:nth-child(1) { animation-delay: 0.4s; }
+  .phase:nth-child(2) { animation-delay: 0.5s; }
+  .phase:nth-child(3) { animation-delay: 0.6s; }
+  .phase:nth-child(4) { animation-delay: 0.7s; }
+
+  .phase-dot {
+    position: absolute;
+    left: 12px;
+    top: 20px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 2px solid var(--border-bright);
+    background: var(--bg);
+    transition: all 0.3s ease;
+    z-index: 2;
+  }
+
+  .phase.open .phase-dot,
+  .phase-header:hover .phase-dot {
+    border-color: currentColor;
+    box-shadow: 0 0 8px currentColor;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 16px 14px 44px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background: transparent;
+    transition: all 0.2s ease;
+    user-select: none;
+  }
+
+  .phase-header:hover {
+    background: rgba(255,255,255,0.02);
+    border-color: var(--border);
+  }
+
+  .phase.open .phase-header {
+    border-color: var(--border-bright);
+    background: rgba(255,255,255,0.02);
+  }
+
+  .phase-num {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--text-dim);
+    min-width: 60px;
+  }
+
+  .phase-title {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    flex: 1;
+  }
+
+  .phase-period {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .phase-toggle {
+    font-size: 14px;
+    color: var(--text-dim);
+    transition: transform 0.3s ease, color 0.2s ease;
+    min-width: 16px;
+    text-align: center;
+  }
+
+  .phase.open .phase-toggle {
+    transform: rotate(45deg);
+    color: var(--text-mid);
+  }
+
+  /* Phase content */
+  .phase-content {
+    display: none;
+    padding: 0 16px 16px 44px;
+    border: 1px solid var(--border-bright);
+    border-top: none;
+    background: rgba(255,255,255,0.01);
+  }
+
+  .phase.open .phase-content {
+    display: block;
+  }
+
+  /* Section inside phase */
+  .section {
+    margin-bottom: 6px;
+    border: 1px solid var(--border);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+    user-select: none;
+  }
+
+  .section-header:hover {
+    background: rgba(255,255,255,0.02);
+  }
+
+  .section.open .section-header {
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-icon {
+    font-size: 13px;
+    min-width: 20px;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    flex: 1;
+    color: var(--text);
+  }
+
+  .section-badge {
+    font-size: 10px;
+    padding: 2px 8px;
+    border: 1px solid;
+    letter-spacing: 0.08em;
+  }
+
+  .section-arrow {
+    font-size: 11px;
+    color: var(--text-dim);
+    transition: transform 0.25s ease;
+  }
+
+  .section.open .section-arrow {
+    transform: rotate(90deg);
+  }
+
+  /* Section body */
+  .section-body {
+    display: none;
+    padding: 16px 14px;
+  }
+
+  .section.open .section-body {
+    display: block;
+  }
+
+  /* Content elements */
+  .month-block {
+    margin-bottom: 20px;
+  }
+
+  .month-label {
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .item-list {
+    list-style: none;
+  }
+
+  .item-list li {
+    font-size: 12px;
+    color: var(--text-mid);
+    padding: 4px 0;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .item-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--text-dim);
+  }
+
+  .item-list li strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .item-list li a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 11px;
+  }
+
+  .item-list li a:hover { text-decoration: underline; }
+
+  /* Resource table */
+  .res-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    margin-top: 8px;
+  }
+
+  .res-table th {
+    text-align: left;
+    padding: 6px 10px;
+    color: var(--text-dim);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid var(--border);
+    font-size: 10px;
+  }
+
+  .res-table td {
+    padding: 7px 10px;
+    color: var(--text-mid);
+    border-bottom: 1px solid var(--border);
+    line-height: 1.5;
+    vertical-align: top;
+  }
+
+  .res-table td:first-child { color: var(--text); }
+  .res-table tr:last-child td { border-bottom: none; }
+  .res-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .tag-free {
+    color: var(--accent);
+    font-size: 10px;
+    padding: 1px 6px;
+    border: 1px solid var(--accent-mid);
+    letter-spacing: 0.05em;
+  }
+
+  .tag-paid {
+    color: var(--warn);
+    font-size: 10px;
+    padding: 1px 6px;
+    border: 1px solid #ffaa0040;
+    letter-spacing: 0.05em;
+  }
+
+  /* Key thing highlight */
+  .key-thing {
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-mid);
+    border-left: 3px solid var(--accent);
+    padding: 12px 14px;
+    margin: 12px 0;
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--text-mid);
+  }
+
+  .key-thing strong { color: var(--accent); font-weight: 500; }
+
+  /* Schedule grid */
+  .schedule-grid {
+    display: grid;
+    gap: 4px;
+    margin-top: 8px;
+  }
+
+  .schedule-row {
+    display: grid;
+    grid-template-columns: 120px 1fr 60px;
+    gap: 8px;
+    padding: 7px 10px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    font-size: 11px;
+    align-items: center;
+  }
+
+  .schedule-time { color: var(--text-dim); font-size: 10px; }
+  .schedule-task { color: var(--text-mid); }
+  .schedule-dur { color: var(--accent); font-size: 10px; text-align: right; }
+
+  /* Finance grid */
+  .finance-grid {
+    display: grid;
+    gap: 4px;
+    margin-top: 8px;
+  }
+
+  .finance-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    font-size: 11px;
+  }
+
+  .finance-row:first-child {
+    background: rgba(255,255,255,0.04);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  .finance-row:not(:first-child):hover { background: rgba(255,255,255,0.02); }
+
+  /* Professor email template */
+  .email-template {
+    background: #0d0d0d;
+    border: 1px solid var(--border-bright);
+    padding: 16px;
+    font-size: 11px;
+    line-height: 2;
+    color: var(--text-mid);
+    margin-top: 8px;
+  }
+
+  .email-template .email-line { color: var(--text); }
+  .email-template .email-var {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  /* Paper list */
+  .paper-item {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: start;
+  }
+
+  .paper-item:last-child { border-bottom: none; }
+  .paper-name { font-size: 12px; color: var(--text); line-height: 1.4; }
+  .paper-why { font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+  .paper-level {
+    font-size: 10px;
+    padding: 2px 8px;
+    border: 1px solid;
+    white-space: nowrap;
+    align-self: start;
+  }
+
+  .level-1 { color: #00aaff; border-color: #00aaff40; }
+  .level-2 { color: #aa00ff; border-color: #aa00ff40; }
+  .level-3 { color: #ff6600; border-color: #ff660040; }
+
+  /* Phase color theming */
+  .phase[data-phase="1"] .phase-dot { color: var(--phase1); }
+  .phase[data-phase="1"] .phase-title { color: var(--phase1); }
+  .phase[data-phase="1"] .phase-header:hover .phase-dot { border-color: var(--phase1); box-shadow: 0 0 8px var(--phase1); }
+  .phase[data-phase="1"].open .phase-dot { border-color: var(--phase1); box-shadow: 0 0 8px var(--phase1); }
+
+  .phase[data-phase="2"] .phase-dot { color: var(--phase2); }
+  .phase[data-phase="2"] .phase-title { color: var(--phase2); }
+  .phase[data-phase="2"] .phase-header:hover .phase-dot { border-color: var(--phase2); box-shadow: 0 0 8px var(--phase2); }
+  .phase[data-phase="2"].open .phase-dot { border-color: var(--phase2); box-shadow: 0 0 8px var(--phase2); }
+
+  .phase[data-phase="3"] .phase-dot { color: var(--phase3); }
+  .phase[data-phase="3"] .phase-title { color: var(--phase3); }
+  .phase[data-phase="3"] .phase-header:hover .phase-dot { border-color: var(--phase3); box-shadow: 0 0 8px var(--phase3); }
+  .phase[data-phase="3"].open .phase-dot { border-color: var(--phase3); box-shadow: 0 0 8px var(--phase3); }
+
+  .phase[data-phase="4"] .phase-dot { color: var(--phase4); }
+  .phase[data-phase="4"] .phase-title { color: var(--phase4); }
+  .phase[data-phase="4"] .phase-header:hover .phase-dot { border-color: var(--phase4); box-shadow: 0 0 8px var(--phase4); }
+  .phase[data-phase="4"].open .phase-dot { border-color: var(--phase4); box-shadow: 0 0 8px var(--phase4); }
+
+  /* Section badge colors */
+  .badge-blue { color: #00aaff; border-color: #00aaff40; }
+  .badge-purple { color: #aa00ff; border-color: #aa00ff40; }
+  .badge-orange { color: #ff6600; border-color: #ff660040; }
+  .badge-green { color: #00ff88; border-color: #00ff8840; }
+  .badge-yellow { color: #ffaa00; border-color: #ffaa0040; }
+
+  /* Progress summary */
+  .summary-bar {
+    display: flex;
+    gap: 0;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.5s ease 0.35s forwards;
+  }
+
+  .summary-seg {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-right: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .summary-seg:last-child { border-right: 1px solid var(--border); }
+  .summary-seg:hover { background: rgba(255,255,255,0.03); }
+
+  .summary-seg-label {
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+
+  .summary-seg-val {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 16px 0;
+  }
+
+  .sub-label {
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    margin-top: 16px;
+  }
+
+  .sub-label:first-child { margin-top: 0; }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border-bright); }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    .schedule-row { grid-template-columns: 100px 1fr; }
+    .schedule-dur { display: none; }
+    .finance-row { grid-template-columns: 1fr 1fr; }
+    .summary-seg-val { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="header-tag">// AGI Research Roadmap — Shivam</div>
+    <h1>From <span>Ghaziabad</span><br>to AGI Research</h1>
+    <div class="header-meta">
+      <span>Nitra Technical Campus → PhD → Frontier AI</span><br>
+      Target: RL + Multi-Agent Systems · Timeline: 2026 → 2032+
+    </div>
+  </div>
+
+  <div class="warning">
+    <strong>⚠ Honest Assessment:</strong> CGPA 6.0–7.0 from a tier-3 college is a real weakness. It won't disqualify you from PhD but everything else must be stronger than average. Your DL experience and real shipped projects compensate — but only if packaged correctly.
+  </div>
+
+  <!-- Summary bar -->
+  <div class="summary-bar">
+    <div class="summary-seg" onclick="openPhase(0)">
+      <div class="summary-seg-label">PHASE 1</div>
+      <div class="summary-seg-val" style="color:var(--phase1)">Final Year</div>
+    </div>
+    <div class="summary-seg" onclick="openPhase(1)">
+      <div class="summary-seg-label">PHASE 2</div>
+      <div class="summary-seg-val" style="color:var(--phase2)">Gap Year</div>
+    </div>
+    <div class="summary-seg" onclick="openPhase(2)">
+      <div class="summary-seg-label">PHASE 3</div>
+      <div class="summary-seg-val" style="color:var(--phase3)">PhD</div>
+    </div>
+    <div class="summary-seg" onclick="openPhase(3)">
+      <div class="summary-seg-label">PHASE 4</div>
+      <div class="summary-seg-val" style="color:var(--phase4)">The Goal</div>
+    </div>
+  </div>
+
+  <div class="timeline" id="timeline">
+
+    <!-- ═══════════════ PHASE 1 ═══════════════ -->
+    <div class="phase" data-phase="1">
+      <div class="phase-dot"></div>
+      <div class="phase-header" onclick="togglePhase(this)">
+        <span class="phase-num">PHASE 01</span>
+        <span class="phase-title">Final Semester</span>
+        <span class="phase-period">Now → Aug 2026</span>
+        <span class="phase-toggle">+</span>
+      </div>
+      <div class="phase-content">
+
+        <!-- Daily Schedule -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">⏱</span>
+            <span class="section-title">Daily Schedule (6 hrs)</span>
+            <span class="section-badge badge-blue">STRUCTURE</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <div class="schedule-grid">
+              <div class="schedule-row">
+                <span class="schedule-time">Morning</span>
+                <span class="schedule-task">DSA / Competitive Programming</span>
+                <span class="schedule-dur">1.5 hrs</span>
+              </div>
+              <div class="schedule-row">
+                <span class="schedule-time">Late Morning</span>
+                <span class="schedule-task">RL Study + Math</span>
+                <span class="schedule-dur">1.5 hrs</span>
+              </div>
+              <div class="schedule-row">
+                <span class="schedule-time">Afternoon</span>
+                <span class="schedule-task">TriviLabs / Freelance work</span>
+                <span class="schedule-dur">1.5 hrs</span>
+              </div>
+              <div class="schedule-row">
+                <span class="schedule-time">Evening</span>
+                <span class="schedule-task">GRE Prep</span>
+                <span class="schedule-dur">1 hr</span>
+              </div>
+              <div class="schedule-row">
+                <span class="schedule-time">Night</span>
+                <span class="schedule-task">Project building / Paper reading</span>
+                <span class="schedule-dur">30 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DSA -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">⚡</span>
+            <span class="section-title">DSA + Competitive Programming</span>
+            <span class="section-badge badge-blue">120 PROBLEMS</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <div class="month-block">
+              <div class="month-label">March – April</div>
+              <ul class="item-list">
+                <li>Arrays, Strings, Hashing, Two Pointers, Sliding Window</li>
+                <li>Target: <strong>40 problems</strong> — 70% medium</li>
+              </ul>
+            </div>
+            <div class="month-block">
+              <div class="month-label">May</div>
+              <ul class="item-list">
+                <li>Trees, Graphs, BFS/DFS, Recursion</li>
+                <li>Target: <strong>30 problems</strong></li>
+              </ul>
+            </div>
+            <div class="month-block">
+              <div class="month-label">June</div>
+              <ul class="item-list">
+                <li>DP (basic → medium), Backtracking</li>
+                <li>Target: <strong>30 problems</strong></li>
+              </ul>
+            </div>
+            <div class="month-block">
+              <div class="month-label">July</div>
+              <ul class="item-list">
+                <li>Heaps, Tries, Greedy, Mock interviews</li>
+                <li>Target: <strong>20 problems + 4 mock interviews</strong></li>
+              </ul>
+            </div>
+            <div class="sub-label">Competitive Programming</div>
+            <ul class="item-list">
+              <li>Codeforces Div 3 contests — participate weekly</li>
+              <li>Topics: Sorting, prefix sums, basic number theory</li>
+              <li>Goal: Rating <strong>1200–1400</strong>. Nothing more needed for your path.</li>
+            </ul>
+            <div class="sub-label">Resources</div>
+            <table class="res-table">
+              <tr><th>Resource</th><th>Type</th><th>Cost</th></tr>
+              <tr><td>Striver's A2Z DSA Sheet</td><td>Structured sheet</td><td><span class="tag-free">FREE</span></td></tr>
+              <tr><td>NeetCode.io</td><td>Video explanations</td><td><span class="tag-free">FREE</span></td></tr>
+              <tr><td>LeetCode company filters</td><td>Practice</td><td><span class="tag-free">FREE</span></td></tr>
+              <tr><td>Codeforces</td><td>CP contests</td><td><span class="tag-free">FREE</span></td></tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- Math -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">∑</span>
+            <span class="section-title">Math for RL</span>
+            <span class="section-badge badge-blue">NON-NEGOTIABLE</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <table class="res-table">
+              <tr><th>Topic</th><th>Resource</th><th>Time</th></tr>
+              <tr><td>Linear Algebra</td><td>3Blue1Brown — Essence of Linear Algebra (YouTube)</td><td>2 weeks</td></tr>
+              <tr><td>Probability & Stats</td><td>Khan Academy + Seeing Theory (website)</td><td>3 weeks</td></tr>
+              <tr><td>Calculus / Gradients</td><td>3Blue1Brown — Essence of Calculus (YouTube)</td><td>1 week</td></tr>
+              <tr><td>Reference Book</td><td>Mathematics for ML — Deisenroth (free PDF)</td><td>ongoing</td></tr>
+            </table>
+            <div class="key-thing">
+              <strong>Critical:</strong> Solve exercises in the MML book chapter by chapter. Don't just watch videos — practice builds the intuition RL research demands.
+            </div>
+          </div>
+        </div>
+
+        <!-- RL Foundations -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">🤖</span>
+            <span class="section-title">Reinforcement Learning Foundations</span>
+            <span class="section-badge badge-blue">CORE SKILL</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <div class="sub-label">Month 1–2 · Core RL</div>
+            <table class="res-table">
+              <tr><th>Resource</th><th>Action</th></tr>
+              <tr><td>Sutton & Barto — RL Introduction</td><td>Read Ch 1–6 carefully · incompleteideas.net (free)</td></tr>
+              <tr><td>David Silver RL Course (YouTube)</td><td>Watch all 10 lectures · DeepMind/UCL</td></tr>
+              <tr><td>OpenAI Spinning Up in Deep RL</td><td>Follow entire guide, run all code</td></tr>
+            </table>
+            <div class="sub-label">Month 2–3 · Deep RL Papers</div>
+            <div class="paper-item">
+              <div><div class="paper-name">DQN — Mnih et al. 2013</div><div class="paper-why">First deep RL paper, absolute must-read</div></div>
+              <span class="paper-level level-1">LEVEL 1</span>
+            </div>
+            <div class="paper-item">
+              <div><div class="paper-name">PPO — Schulman et al. 2017</div><div class="paper-why">Most used algorithm today, used in ChatGPT training</div></div>
+              <span class="paper-level level-1">LEVEL 1</span>
+            </div>
+            <div class="paper-item">
+              <div><div class="paper-name">A3C — Mnih et al. 2016</div><div class="paper-why">Actor-critic foundation</div></div>
+              <span class="paper-level level-1">LEVEL 1</span>
+            </div>
+            <div class="paper-item">
+              <div><div class="paper-name">SAC — Haarnoja et al. 2018</div><div class="paper-why">Best continuous control algorithm</div></div>
+              <span class="paper-level level-1">LEVEL 1</span>
+            </div>
+            <div class="sub-label">Tools to Install & Run</div>
+            <ul class="item-list">
+              <li><strong>Gymnasium</strong> — pip install gymnasium — standard RL environments</li>
+              <li><strong>Stable Baselines3</strong> — clean PPO, SAC, DQN implementations</li>
+              <li>Train agents: CartPole → LunarLander → Atari (in that order)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- MARL -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">🤝</span>
+            <span class="section-title">Multi-Agent RL (MARL)</span>
+            <span class="section-badge badge-blue">SPECIALIZATION</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <div class="sub-label">Month 3–4 · MARL Papers</div>
+            <div class="paper-item">
+              <div><div class="paper-name">MADDPG — Lowe et al., OpenAI 2017</div><div class="paper-why">Foundation of cooperative MARL</div></div>
+              <span class="paper-level level-2">LEVEL 2</span>
+            </div>
+            <div class="paper-item">
+              <div><div class="paper-name">QMIX — Rashid et al. 2018</div><div class="paper-why">Cooperative value decomposition</div></div>
+              <span class="paper-level level-2">LEVEL 2</span>
+            </div>
+            <div class="paper-item">
+              <div><div class="paper-name">MAPPO — Yu et al. 2021</div><div class="paper-why">Multi-agent PPO, current standard</div></div>
+              <span class="paper-level level-2">LEVEL 2</span>
+            </div>
+            <div class="paper-item">
+              <div><div class="paper-name">Emergent Tool Use (Hide & Seek) — OpenAI 2019</div><div class="paper-why">Most exciting MARL paper ever written</div></div>
+              <span class="paper-level level-2">LEVEL 2</span>
+            </div>
+            <div class="paper-item">
+              <div><div class="paper-name">MARL Book — Albrecht, Christianos, Schäfer</div><div class="paper-why">Best MARL textbook — read Ch 1–5 (free PDF)</div></div>
+              <span class="paper-level level-2">LEVEL 2</span>
+            </div>
+            <div class="sub-label">Environments</div>
+            <ul class="item-list">
+              <li><strong>PettingZoo</strong> — multi-agent environments, companion to Gymnasium</li>
+              <li><strong>SMAC</strong> — StarCraft Multi-Agent Challenge, standard benchmark</li>
+              <li><strong>MPE</strong> — Multi-Particle Environments, cooperative/competitive</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- CS Fundamentals -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">💾</span>
+            <span class="section-title">CS Fundamentals</span>
+            <span class="section-badge badge-yellow">INTERVIEW PREP</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <table class="res-table">
+              <tr><th>Subject</th><th>Resource</th><th>Time</th></tr>
+              <tr><td>Operating Systems</td><td>Gate Smashers YouTube — OS playlist</td><td>3 weeks</td></tr>
+              <tr><td>DBMS</td><td>Gate Smashers YouTube — DBMS playlist</td><td>2 weeks</td></tr>
+              <tr><td>Computer Networks</td><td>Gate Smashers YouTube — CN playlist</td><td>2 weeks</td></tr>
+              <tr><td>OOP Concepts</td><td>Striver OOP playlist (YouTube)</td><td>1 week</td></tr>
+            </table>
+            <div class="key-thing">Study 30–45 min/day in parallel with DSA. Don't dedicate separate days — it slows you down.</div>
+          </div>
+        </div>
+
+        <!-- GRE -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">📝</span>
+            <span class="section-title">GRE Preparation</span>
+            <span class="section-badge badge-yellow">TARGET 320+</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <div class="month-block">
+              <div class="month-label">March – May</div>
+              <ul class="item-list">
+                <li>Vocabulary building — <strong>30 words/day</strong> via Magoosh app</li>
+                <li>Quant revision — should be near perfect for CS background</li>
+                <li>Target breakdown: <strong>Quant 167+, Verbal 153+</strong></li>
+              </ul>
+            </div>
+            <div class="month-block">
+              <div class="month-label">May – June</div>
+              <ul class="item-list">
+                <li>Full-length mock tests — <strong>one per week minimum</strong></li>
+                <li>Review every wrong answer, understand why</li>
+              </ul>
+            </div>
+            <div class="month-block">
+              <div class="month-label">Give exam: June–July 2026</div>
+              <ul class="item-list">
+                <li>TOEFL after GRE — target <strong>100+</strong>. If GRE Verbal 155+, TOEFL is easy.</li>
+              </ul>
+            </div>
+            <table class="res-table">
+              <tr><th>Resource</th><th>For</th><th>Cost</th></tr>
+              <tr><td>Magoosh GRE Vocab App</td><td>Daily vocabulary</td><td><span class="tag-free">FREE</span></td></tr>
+              <tr><td>ETS Official GRE Guide</td><td>Official practice</td><td><span class="tag-paid">~₹800</span></td></tr>
+              <tr><td>GregMat+</td><td>Best structured GRE course</td><td><span class="tag-paid">₹1,500/mo</span></td></tr>
+              <tr><td>Manhattan Prep 5lb Book</td><td>Quant practice</td><td><span class="tag-paid">~₹600</span></td></tr>
+              <tr><td>GRE Prep Club</td><td>Free practice questions</td><td><span class="tag-free">FREE</span></td></tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- Project 1 -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">🏗</span>
+            <span class="section-title">Project 1 — Cooperative Multi-Agent Debate System</span>
+            <span class="section-badge badge-green">PUBLISHABLE</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <div class="key-thing">
+              <strong>What you build:</strong> 3 LLM agents debate a topic. A judge agent scores argument quality. PPO trains agents to improve debate strategy over time. Agents develop emergent specialization — attacker, defender, mediator.
+            </div>
+            <div class="sub-label">Why This Is Powerful</div>
+            <ul class="item-list">
+              <li>Combines your existing LLM skills + new RL knowledge — zero wasted work</li>
+              <li>Directly relevant to RLHF (how ChatGPT is trained)</li>
+              <li>Publishable as a NeurIPS/ICLR workshop paper if done rigorously</li>
+              <li>Shows PhD committees you can do independent research</li>
+            </ul>
+            <div class="sub-label">Tech Stack</div>
+            <ul class="item-list">
+              <li>Python + PyTorch — you already know this ✓</li>
+              <li>Gymnasium — custom multi-agent environment</li>
+              <li>Stable Baselines3 PPO — training loop</li>
+              <li>Groq API / OpenAI API — LLM agents</li>
+              <li><strong>Weights & Biases (free)</strong> — experiment tracking, essential for research</li>
+            </ul>
+            <div class="sub-label">Timeline</div>
+            <ul class="item-list">
+              <li><strong>April:</strong> Build basic environment, 2-agent setup</li>
+              <li><strong>May:</strong> Add PPO training, run first experiments</li>
+              <li><strong>June:</strong> Scale to 3 agents + judge, measure emergent behaviors</li>
+              <li><strong>July:</strong> Write up results, clean code for GitHub</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- TriviLabs Phase 1 -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">💰</span>
+            <span class="section-title">TriviLabs Targets</span>
+            <span class="section-badge badge-yellow">SCHOLARSHIP FUND</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <div class="finance-grid">
+              <div class="finance-row"><span>MONTH</span><span>TARGET</span><span>FOCUS</span></div>
+              <div class="finance-row"><span>March</span><span style="color:var(--accent)">₹15,000</span><span style="color:var(--text-dim)">Close 1 lead</span></div>
+              <div class="finance-row"><span>April</span><span style="color:var(--accent)">₹25,000</span><span style="color:var(--text-dim)">Web + automation</span></div>
+              <div class="finance-row"><span>May</span><span style="color:var(--accent)">₹35,000</span><span style="color:var(--text-dim)">Productize a service</span></div>
+              <div class="finance-row"><span>June</span><span style="color:var(--accent)">₹40,000</span><span style="color:var(--text-dim)">Recurring retainer</span></div>
+              <div class="finance-row"><span>July</span><span style="color:var(--accent)">₹40,000</span><span style="color:var(--text-dim)">Maintain while job hunting</span></div>
+            </div>
+            <div class="key-thing" style="margin-top:12px">
+              <strong>Savings goal by graduation: ₹1.5–2 lakhs minimum.</strong> This is not optional — it funds your GRE, applications, and visa.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════ PHASE 2 ═══════════════ -->
+    <div class="phase" data-phase="2">
+      <div class="phase-dot"></div>
+      <div class="phase-header" onclick="togglePhase(this)">
+        <span class="phase-num">PHASE 02</span>
+        <span class="phase-title">Gap Year + PhD Applications</span>
+        <span class="phase-period">Aug 2026 → Aug 2027</span>
+        <span class="phase-toggle">+</span>
+      </div>
+      <div class="phase-content">
+
+        <div class="key-thing" style="margin-bottom:12px">
+          <strong>Most important year of the entire roadmap.</strong> Everything in your PhD application depends on what you build here. Do NOT rush into a bad MS program to avoid a gap year.
+        </div>
+
+        <!-- Job Search -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">💼</span>
+            <span class="section-title">Job Search — Start June 2026</span>
+            <span class="section-badge badge-purple">GET JOB BY OCT 2026</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <div class="sub-label">Target Companies</div>
+            <table class="res-table">
+              <tr><th>Tier</th><th>Companies</th><th>Package</th></tr>
+              <tr><td style="color:var(--accent)">Best case</td><td>Sarvam AI, Krutrim, Postman, Turing</td><td>₹12–20 LPA</td></tr>
+              <tr><td style="color:var(--warn)">Realistic</td><td>Sigmoid, Fractal Analytics, Sprinklr, InMobi</td><td>₹8–14 LPA</td></tr>
+              <tr><td style="color:var(--text-dim)">Backup</td><td>Any funded AI startup NCR/Bangalore</td><td>₹6–10 LPA</td></tr>
+            </table>
+            <div class="sub-label">Where to Apply</div>
+            <ul class="item-list">
+              <li>LinkedIn Easy Apply — set alerts for "ML Engineer", "AI Engineer", "RL Engineer"</li>
+              <li>Instahyre, Cutshort — best for startup hiring in India</li>
+              <li>AngelList (Wellfound) — funded startup jobs</li>
+              <li>Direct referrals through LinkedIn connections</li>
+            </ul>
+            <div class="sub-label">What Gets You Interviews</div>
+            <ul class="item-list">
+              <li>GitHub with running, documented RL projects</li>
+              <li>TriviLabs as real work experience</li>
+              <li>Multi-agent debate project (Project 1)</li>
+              <li>Clean 1-page resume with quantified impact</li>
+            </ul>
+            <div class="sub-label">Interview Prep</div>
+            <ul class="item-list">
+              <li>DSA: LeetCode medium — these companies ask 2 medium problems</li>
+              <li>ML Theory: bias-variance, overfitting, transformers, attention</li>
+              <li>RL Theory: explain MDP, Q-learning, PPO in simple terms</li>
+              <li>ML System Design: how to deploy a model, handle scale</li>
+              <li><strong>Book:</strong> Designing ML Systems — Chip Huyen (~₹1,200)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- LLM + RL Papers -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">📄</span>
+            <span class="section-title">Frontier Papers — LLM + RL</span>
+            <span class="section-badge badge-purple">LEVEL 3</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <div class="paper-item">
+              <div><div class="paper-name">RLHF — Christiano et al. 2017</div><div class="paper-why">Foundation of how ChatGPT was trained</div></div>
+              <span class="paper-level level-3">LEVEL 3</span>
+            </div>
+            <div class="paper-item">
+              <div><div class="paper-name">InstructGPT — OpenAI 2022</div><div class="paper-why">How GPT-3 became ChatGPT</div></div>
+              <span class="paper-level level-3">LEVEL 3</span>
+            </div>
+            <div class="paper-item">
+              <div><div class="paper-name">Constitutional AI — Anthropic 2022</div><div class="paper-why">Anthropic's core alignment approach</div></div>
+              <span class="paper-level level-3">LEVEL 3</span>
+            </div>
+            <div class="paper-item">
+              <div><div class="paper-name">Self-Play Fine-Tuning (SPIN) 2024</div><div class="paper-why">Multi-agent self-improvement in LLMs</div></div>
+              <span class="paper-level level-3">LEVEL 3</span>
+            </div>
+            <div class="paper-item">
+              <div><div class="paper-name">Voyager — Wang et al. 2023</div><div class="paper-why">LLM agent with lifelong RL in Minecraft</div></div>
+              <span class="paper-level level-3">LEVEL 3</span>
+            </div>
+            <div class="paper-item">
+              <div><div class="paper-name">ReAct — Yao et al. 2022</div><div class="paper-why">Reasoning + acting in LLMs</div></div>
+              <span class="paper-level level-3">LEVEL 3</span>
+            </div>
+            <div class="paper-item">
+              <div><div class="paper-name">AgentBench 2023</div><div class="paper-why">Evaluating LLM agents rigorously</div></div>
+              <span class="paper-level level-3">LEVEL 3</span>
+            </div>
+            <div class="paper-item">
+              <div><div class="paper-name">OpenAI Five 2019</div><div class="paper-why">MARL at superhuman level in Dota 2</div></div>
+              <span class="paper-level level-3">LEVEL 3</span>
+            </div>
+            <div class="paper-item">
+              <div><div class="paper-name">AlphaZero — Silver et al. 2017</div><div class="paper-why">Self-play MARL masterpiece</div></div>
+              <span class="paper-level level-3">LEVEL 3</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">🏗</span>
+            <span class="section-title">Project 2 — LLM Agents Negotiation via Self-Play RL</span>
+            <span class="section-badge badge-green">PUBLISHABLE</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <div class="key-thing">
+              <strong>What you build:</strong> Two LLM agents negotiate a deal (price, resource allocation). Use self-play + PPO to improve negotiation strategy. Measure emergent behaviors — bluffing, cooperation, deception. Benchmark against human negotiation baselines.
+            </div>
+            <div class="sub-label">Why This Is Publishable</div>
+            <ul class="item-list">
+              <li>Novel, timely, connects LLMs + MARL + game theory</li>
+              <li>Relevant to every top lab (OpenAI, DeepMind, Anthropic)</li>
+              <li>Demonstrates exactly the research taste PhD committees want</li>
+            </ul>
+            <div class="sub-label">Where to Submit</div>
+            <table class="res-table">
+              <tr><th>Venue</th><th>Deadline (approx)</th><th>Difficulty</th></tr>
+              <tr><td>NeurIPS 2026 workshops</td><td>Sept–Oct 2026</td><td style="color:var(--warn)">Medium</td></tr>
+              <tr><td>ICLR 2027 workshops</td><td>Oct–Nov 2026</td><td style="color:var(--warn)">Medium</td></tr>
+              <tr><td>AAMAS 2027</td><td>Nov 2026</td><td style="color:var(--warn)">Medium — perfect for MARL</td></tr>
+              <tr><td>arXiv preprint</td><td>Anytime</td><td style="color:var(--accent)">Easy — just upload</td></tr>
+            </table>
+            <div class="key-thing" style="margin-top:12px"><strong>Even if rejected, upload to arXiv. A preprint counts for PhD applications.</strong></div>
+            <div class="sub-label">How to Write the Paper</div>
+            <ul class="item-list">
+              <li>Read 10 papers first — absorb the structure (Intro → Related Work → Method → Experiments → Results → Conclusion)</li>
+              <li>Use <strong>Overleaf</strong> — free online LaTeX editor, no install needed</li>
+              <li>Watch: "How to write a great research paper" — Simon Peyton Jones (YouTube, 1 hr)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- RA Position -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">🔬</span>
+            <span class="section-title">RA Position — Email 50 Professors</span>
+            <span class="section-badge badge-purple">PROFILE TRANSFORMER</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <div class="sub-label">Target Institutes</div>
+            <ul class="item-list">
+              <li>IIT Delhi, IIT Bombay, IIT Kanpur — closest + strongest</li>
+              <li>IIIT Hyderabad — very strong in AI/ML</li>
+              <li>IISc Bangalore — best research institute in India</li>
+              <li>IIIT Delhi — close to Ghaziabad, strong ML faculty</li>
+            </ul>
+            <div class="sub-label">Email Template</div>
+            <div class="email-template">
+              <div><strong>Subject:</strong> Research Assistant Inquiry — Multi-Agent RL — BTech CS, Nitra Technical Campus</div>
+              <div class="divider"></div>
+              <div>Dear Prof. <span class="email-var">[Name]</span>,</div>
+              <br>
+              <div class="email-line">I am a final-year CS student at Nitra Technical Campus, Ghaziabad, graduating in August 2026.</div>
+              <br>
+              <div>I read your paper on <span class="email-var">[specific paper title]</span> and found <span class="email-var">[specific finding]</span> particularly interesting because <span class="email-var">[specific reason]</span>.</div>
+              <br>
+              <div>I have built a multi-agent LLM system using PPO where agents develop emergent debate strategies — the repo is at <span class="email-var">[GitHub link]</span>.</div>
+              <br>
+              <div>I have a specific idea for extending your work by <span class="email-var">[specific research idea]</span>. Would you be open to a 15-minute call to discuss?</div>
+            </div>
+            <div class="key-thing" style="margin-top:12px">Email 50 professors. Expect 3–5 replies. <strong>Even unpaid RA for 6 months at IIT transforms your PhD application completely.</strong></div>
+          </div>
+        </div>
+
+        <!-- PhD Applications -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">🎓</span>
+            <span class="section-title">PhD Applications — Oct 2026 → Jan 2027</span>
+            <span class="section-badge badge-purple">18–22 PROGRAMS</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <div class="sub-label">Application Timeline</div>
+            <table class="res-table">
+              <tr><th>Month</th><th>Action</th></tr>
+              <tr><td>August 2026</td><td>Finalize university list, start SOP draft</td></tr>
+              <tr><td>September</td><td>Email professors, get GRE/TOEFL scores ready</td></tr>
+              <tr><td>October</td><td>SOP final draft, request LORs from professors</td></tr>
+              <tr><td>November</td><td>Submit first batch of applications</td></tr>
+              <tr><td>December</td><td>Submit remaining applications</td></tr>
+              <tr><td>Jan–March 2027</td><td>Interview calls from interested professors</td></tr>
+              <tr><td>April 2027</td><td>Offers arrive — decide and commit</td></tr>
+              <tr><td>August 2027</td><td>Start PhD ✓</td></tr>
+            </table>
+            <div class="sub-label">Target Universities</div>
+            <table class="res-table">
+              <tr><th>Reach</th><th>Target</th><th>Safe</th></tr>
+              <tr><td>UMass Amherst</td><td>University of Alberta ⭐</td><td>UT Dallas</td></tr>
+              <tr><td>UNC Chapel Hill</td><td>McGill University</td><td>University of Idaho</td></tr>
+              <tr><td>Stony Brook</td><td>Waterloo</td><td>University of Wyoming</td></tr>
+              <tr><td>UC Santa Cruz</td><td>Simon Fraser University</td><td>New Mexico State</td></tr>
+            </table>
+            <div class="key-thing"><strong>University of Alberta ⭐ is your #1 target</strong> — home of the Alberta Machine Intelligence Institute (Amii), founded by Rich Sutton (wrote the RL bible). Best RL research center outside USA.</div>
+            <div class="sub-label">Professors to Cold Email Now</div>
+            <table class="res-table">
+              <tr><th>Professor</th><th>University</th><th>Focus</th></tr>
+              <tr><td>Martha White</td><td>Alberta</td><td>RL foundations, runs RLAI lab</td></tr>
+              <tr><td>Doina Precup</td><td>McGill / DeepMind</td><td>Core RL, very approachable</td></tr>
+              <tr><td>Pascal Poupart</td><td>Waterloo</td><td>MARL, cooperative AI</td></tr>
+              <tr><td>Balaraman Ravindran</td><td>IIT Madras</td><td>RL legend — good for RA too</td></tr>
+              <tr><td>Sham Kakade</td><td>Harvard</td><td>RL theory</td></tr>
+              <tr><td>Michael Littman</td><td>Brown</td><td>MARL pioneer</td></tr>
+              <tr><td>Peter Stone</td><td>UT Austin</td><td>Multi-agent systems, robotics</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- Financial Phase 2 -->
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">💰</span>
+            <span class="section-title">Financial Plan — Gap Year</span>
+            <span class="section-badge badge-yellow">SAVE ₹4–6L</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <ul class="item-list">
+              <li>Job salary: ₹8–15 LPA → ~₹55,000–100,000/month take-home</li>
+              <li>TriviLabs continued: ₹20,000–30,000/month</li>
+              <li>Monthly expenses (Ghaziabad): ~₹20,000–25,000</li>
+              <li><strong>Save: ₹4–6 lakhs total by August 2027</strong></li>
+            </ul>
+            <div class="sub-label">What the money pays for</div>
+            <table class="res-table">
+              <tr><th>Expense</th><th>Cost</th></tr>
+              <tr><td>GRE + TOEFL exam fees</td><td>~₹30,000</td></tr>
+              <tr><td>University application fees (18–22 apps)</td><td>~₹1.5–2.5 lakhs</td></tr>
+              <tr><td>Visa + travel to Canada/USA</td><td>~₹1.5 lakhs</td></tr>
+              <tr><td>First month abroad buffer</td><td>~₹1 lakh</td></tr>
+              <tr><td><strong>Total needed</strong></td><td><strong>~₹4.5–5.5 lakhs</strong></td></tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════ PHASE 3 ═══════════════ -->
+    <div class="phase" data-phase="3">
+      <div class="phase-dot"></div>
+      <div class="phase-header" onclick="togglePhase(this)">
+        <span class="phase-num">PHASE 03</span>
+        <span class="phase-title">PhD Program</span>
+        <span class="phase-period">2027 → 2032</span>
+        <span class="phase-toggle">+</span>
+      </div>
+      <div class="phase-content">
+
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">📅</span>
+            <span class="section-title">Year 1 — 2027–28</span>
+            <span class="section-badge badge-orange">SETTLE IN</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <ul class="item-list">
+              <li>Survive coursework — typically 3–4 courses per semester</li>
+              <li>Rotate through 2 labs — pick your advisor <strong>very carefully</strong></li>
+              <li>Start TA work — this pays your stipend ($1,800–2,200/month)</li>
+              <li>Begin first research project with advisor</li>
+              <li>Attend lab meetings, read <strong>3 papers/week minimum</strong></li>
+              <li>Submit one paper to a top venue (NeurIPS / ICML / ICLR)</li>
+            </ul>
+            <div class="key-thing"><strong>Advisor choice is the most important decision of your PhD.</strong> Their research direction = your career direction. Do not pick based on prestige alone — check if their students graduate and get good jobs.</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">📅</span>
+            <span class="section-title">Year 2 — 2028–29</span>
+            <span class="section-badge badge-orange">FIRST PAPER</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <ul class="item-list">
+              <li>First major paper published or under review</li>
+              <li>Apply for summer internships at frontier labs</li>
+            </ul>
+            <div class="sub-label">Internship Targets</div>
+            <table class="res-table">
+              <tr><th>Company</th><th>Team</th><th>Pay/month</th></tr>
+              <tr><td>Google DeepMind</td><td>RL team</td><td>$8,000–12,000</td></tr>
+              <tr><td>Meta FAIR</td><td>MARL team</td><td>$8,000–12,000</td></tr>
+              <tr><td>Microsoft Research</td><td>AI research</td><td>$7,000–10,000</td></tr>
+              <tr><td>OpenAI</td><td>Alignment / RL team</td><td>$10,000–15,000</td></tr>
+              <tr><td>Anthropic</td><td>Research (if hiring)</td><td>$10,000–15,000</td></tr>
+            </table>
+            <div class="key-thing"><strong>These internships very frequently convert to full-time research scientist offers.</strong> This is how most researchers enter frontier AI labs.</div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">📅</span>
+            <span class="section-title">Year 3–5 — 2029–32</span>
+            <span class="section-badge badge-orange">THESIS + JOB</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <ul class="item-list">
+              <li>Core thesis research — your contribution to the field</li>
+              <li>2–3 papers published at <strong>NeurIPS, ICML, ICLR, AAMAS</strong></li>
+              <li>Second internship at a frontier lab — deepen the relationship</li>
+              <li>Start building full-time job relationships through internship mentors</li>
+              <li>Thesis proposal (Year 3–4) → defense (Year 5)</li>
+              <li>Job market (Year 5) — apply to Research Scientist roles</li>
+            </ul>
+            <div class="sub-label">PhD Stipend Income</div>
+            <ul class="item-list">
+              <li>TA/RA stipend: <strong>$1,800–2,200/month</strong> — covers living costs</li>
+              <li>Internship savings: <strong>$15,000–25,000/year</strong> during summers</li>
+              <li>By end of PhD: $60,000–80,000 saved from internships alone</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════ PHASE 4 ═══════════════ -->
+    <div class="phase" data-phase="4">
+      <div class="phase-dot"></div>
+      <div class="phase-header" onclick="togglePhase(this)">
+        <span class="phase-num">PHASE 04</span>
+        <span class="phase-title">The Goal — AGI Research</span>
+        <span class="phase-period">2032+</span>
+        <span class="phase-toggle">+</span>
+      </div>
+      <div class="phase-content">
+
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">🎯</span>
+            <span class="section-title">Target Roles + Companies</span>
+            <span class="section-badge badge-green">THE DESTINATION</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <table class="res-table">
+              <tr><th>Company</th><th>Role</th><th>Why</th></tr>
+              <tr><td style="color:var(--accent)">Anthropic</td><td>Research Scientist</td><td>RL + alignment, Claude's successor</td></tr>
+              <tr><td style="color:var(--accent)">OpenAI</td><td>Research Scientist</td><td>o-series reasoning via RL</td></tr>
+              <tr><td style="color:var(--accent)">Google DeepMind</td><td>Research Scientist</td><td>AlphaGo successors, Gemini</td></tr>
+              <tr><td style="color:var(--accent)">Meta FAIR</td><td>Research Scientist</td><td>MARL, open research</td></tr>
+              <tr><td style="color:var(--text-mid)">Your own lab</td><td>Founder</td><td>TriviLabs → AGI research startup</td></tr>
+            </table>
+            <div class="sub-label">Compensation at this level</div>
+            <ul class="item-list">
+              <li>Base salary: <strong>$150,000–250,000/year</strong></li>
+              <li>Total comp with equity: <strong>$200,000–500,000+/year</strong></li>
+              <li>In INR: ₹1.7 crore – ₹4+ crore per year</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">🗺</span>
+            <span class="section-title">Full Timeline Summary</span>
+            <span class="section-badge badge-green">OVERVIEW</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <table class="res-table">
+              <tr><th>Year</th><th>Where</th><th>What</th><th>Money</th></tr>
+              <tr><td>2026</td><td>Ghaziabad</td><td>Final year + GRE + TriviLabs</td><td>Earn ₹30–40k/mo</td></tr>
+              <tr><td>2026–27</td><td>India</td><td>Job + paper + PhD applications</td><td>Save ₹4–6L total</td></tr>
+              <tr><td>2027–29</td><td>USA/Canada</td><td>PhD Year 1–2</td><td>TA stipend covers living</td></tr>
+              <tr><td>2029–32</td><td>USA/Canada</td><td>PhD Year 3–5 + thesis</td><td>$25–30k/yr + internships</td></tr>
+              <tr><td style="color:var(--accent)">2032+</td><td style="color:var(--accent)">Anywhere</td><td style="color:var(--accent)">Frontier AI Research</td><td style="color:var(--accent)">$200k–500k+/yr</td></tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══════════════ RESOURCES ═══════════════ -->
+    <div class="phase" data-phase="1" style="animation-delay:0.8s">
+      <div class="phase-dot"></div>
+      <div class="phase-header" onclick="togglePhase(this)">
+        <span class="phase-num">MASTER</span>
+        <span class="phase-title">Complete Resource Stack</span>
+        <span class="phase-period">All Phases</span>
+        <span class="phase-toggle">+</span>
+      </div>
+      <div class="phase-content">
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">📚</span>
+            <span class="section-title">Free Resources</span>
+            <span class="section-badge badge-green">₹0</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <table class="res-table">
+              <tr><th>Resource</th><th>For</th></tr>
+              <tr><td>Sutton & Barto (incompleteideas.net)</td><td>RL bible — start here</td></tr>
+              <tr><td>David Silver RL lectures (YouTube)</td><td>Best RL video course</td></tr>
+              <tr><td>OpenAI Spinning Up</td><td>Deep RL practical guide</td></tr>
+              <tr><td>MARL Book — Albrecht et al. (PDF)</td><td>MARL textbook</td></tr>
+              <tr><td>Mathematics for ML — Deisenroth (PDF)</td><td>Math foundation</td></tr>
+              <tr><td>3Blue1Brown (YouTube)</td><td>Linear algebra + calculus intuition</td></tr>
+              <tr><td>Striver's A2Z DSA Sheet</td><td>DSA structured prep</td></tr>
+              <tr><td>NeetCode.io</td><td>DSA video solutions</td></tr>
+              <tr><td>Gate Smashers (YouTube)</td><td>OS, DBMS, CN</td></tr>
+              <tr><td>Overleaf (overleaf.com)</td><td>LaTeX paper writing</td></tr>
+              <tr><td>arXiv.org</td><td>Read and upload papers</td></tr>
+              <tr><td>Weights & Biases (free tier)</td><td>Experiment tracking</td></tr>
+              <tr><td>PettingZoo</td><td>Multi-agent environments</td></tr>
+              <tr><td>Gymnasium</td><td>RL environments</td></tr>
+              <tr><td>Stable Baselines3</td><td>RL algorithm implementations</td></tr>
+              <tr><td>Magoosh GRE Vocab App</td><td>GRE vocabulary daily</td></tr>
+              <tr><td>GRE Prep Club</td><td>Free GRE practice questions</td></tr>
+            </table>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-header" onclick="toggleSection(this)">
+            <span class="section-icon">💳</span>
+            <span class="section-title">Paid Resources (Worth Every Rupee)</span>
+            <span class="section-badge badge-yellow">~₹6,000 TOTAL</span>
+            <span class="section-arrow">›</span>
+          </div>
+          <div class="section-body">
+            <table class="res-table">
+              <tr><th>Resource</th><th>Cost</th><th>For</th></tr>
+              <tr><td>ETS Official GRE Guide</td><td>~₹800</td><td>Official GRE practice</td></tr>
+              <tr><td>GregMat+</td><td>₹1,500/mo × 3</td><td>Best structured GRE course</td></tr>
+              <tr><td>Designing ML Systems — Chip Huyen</td><td>~₹1,200</td><td>ML system design interviews</td></tr>
+              <tr><td>Manhattan Prep 5lb Book</td><td>~₹600</td><td>GRE Quant practice</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end timeline -->
+
+</div><!-- end container -->
+
+<script>
+  function togglePhase(header) {
+    const phase = header.closest('.phase');
+    phase.classList.toggle('open');
+  }
+
+  function toggleSection(header) {
+    const section = header.closest('.section');
+    section.classList.toggle('open');
+  }
+
+  function openPhase(index) {
+    const phases = document.querySelectorAll('.phase');
+    if (phases[index]) {
+      // Close all first
+      phases.forEach(p => p.classList.remove('open'));
+      // Open target
+      phases[index].classList.add('open');
+      phases[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+</script>
+</body>
+</html>
