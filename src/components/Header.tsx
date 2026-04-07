@@ -114,6 +114,7 @@ const Header: React.FC = () => {
         <div className="flex flex-col space-y-5">
           <SocialLink href="https://github.com/shivamprasad1001"><GitHubIcon className="w-4 h-4" /></SocialLink>
           <SocialLink href="https://www.linkedin.com/in/shivamprasad1001/"><LinkedInIcon className="w-4 h-4" /></SocialLink>
+          {/* <SocialLink href="https://huggingface.co/shivamprasad1001"> <HuggingFaceIcon className="w-6 h-6 text-yellow-400" /> </SocialLink> */}
           <SocialLink href="https://twitter.com/Shivampr101"><TwitterIcon className="w-4 h-4" /></SocialLink>
         </div>
         <span className="text-xs tracking-widest text-gray-500 dark:text-gray-400 transform -rotate-90 p-16">
@@ -125,6 +126,7 @@ const Header: React.FC = () => {
       <div className="lg:hidden flex justify-center space-x-5 mt-6 mb-5">
         <SocialLink href="https://github.com/shivamprasad1001"><GitHubIcon className="w-4 h-4" /></SocialLink>
         <SocialLink href="https://www.linkedin.com/in/shivamprasad1001/"><LinkedInIcon className="w-4 h-4" /></SocialLink>
+        {/* <SocialLink href="https://huggingface.co/shivamprasad1001"><HuggingFaceIcon className="w-4 h-4" /></SocialLink> */}
         <SocialLink href="https://twitter.com/Shivampr101"><TwitterIcon className="w-4 h-4" /></SocialLink>
       </div>
     </header>
