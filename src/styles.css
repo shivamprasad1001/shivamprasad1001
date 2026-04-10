@@ -241,19 +241,16 @@ body::after {
 }
 
 .panel-right {
-  width: 100%;
-  min-height: 80vh; /* Visible on all screens, stacks on mobile */
+  display: none;
   background: white;
-  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  box-shadow: -8px 0 24px rgba(15, 23, 42, 0.02);
 }
 
 @media (min-width: 1280px) {
   .panel-right {
-    min-height: 0;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
     width: 50%;
-    border-top: none;
-    border-left: 1px solid var(--border);
-    box-shadow: -8px 0 24px rgba(15, 23, 42, 0.02);
   }
 }
