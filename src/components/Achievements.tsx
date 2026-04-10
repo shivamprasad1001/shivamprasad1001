@@ -1,17 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import type { Achievement, Skill } from '../../types';
-import { Brain, Cloud, Code2, Eye, GitBranch, MessageSquare, Network, Workflow } from 'lucide-react';
+import { Brain, BookOpenText, Code2, Eye, FlaskConical, GitBranch, MessageSquare, Network } from 'lucide-react';
 
 const skills: Skill[] = [
-  { name: 'Python', level: 95, icon: Code2, description: 'Training scripts, automation, backend APIs, data pipelines, and model-serving glue.' },
-  { name: 'PyTorch & TensorFlow', level: 90, icon: Brain, description: 'Model experimentation, deep learning workflows, fine-tuning, and practical research builds.' },
-  { name: 'NLP Systems', level: 85, icon: MessageSquare, description: 'Embeddings, text processing, conversational systems, and retrieval-aware assistant behavior.' },
-  { name: 'Computer Vision', level: 80, icon: Eye, description: 'Detection, classification, image understanding, and applied CV workflows.' },
-  { name: 'RAG & Agents', level: 85, icon: Network, description: 'Retriever pipelines, chunking strategies, grounded answers, and multi-step orchestration.' },
-  { name: 'MLOps & Deployment', level: 75, icon: Cloud, description: 'Containers, hosting, CI, inference APIs, and getting AI systems into usable environments.' },
-  { name: 'Versioning & CI/CD', level: 90, icon: GitBranch, description: 'Git-driven collaboration, repeatable workflows, and stable delivery pipelines.' },
-  { name: 'AI Product Integration', level: 78, icon: Workflow, description: 'Wrapping models with frontend flows, backend orchestration, and product-ready UX.' },
+  { name: 'Python', level: 95, icon: Code2, description: 'My primary language for experiments, model training, analysis, and research prototypes.' },
+  { name: 'Deep Learning', level: 90, icon: Brain, description: 'Neural network fundamentals, model experimentation, fine-tuning, and implementation-heavy learning.' },
+  { name: 'NLP', level: 86, icon: MessageSquare, description: 'Text processing, embeddings, LLM applications, document intelligence, and language-focused systems.' },
+  { name: 'Computer Vision', level: 81, icon: Eye, description: 'Image understanding, classification, emotion-aware interfaces, and applied vision workflows.' },
+  { name: 'Paper Reading', level: 78, icon: BookOpenText, description: 'Actively building the habit of reading papers, extracting ideas, and translating them into experiments.' },
+  { name: 'Experimentation', level: 82, icon: FlaskConical, description: 'Testing ideas, comparing approaches, iterating on results, and learning from model behavior.' },
+  { name: 'Research Collaboration', level: 88, icon: GitBranch, description: 'Working with teammates on shared ideas, technical discussion, version control, and paper progress.' },
+  { name: 'LLM & RAG Systems', level: 85, icon: Network, description: 'Retriever pipelines, document chat systems, grounded generation, and multi-stage AI workflows.' },
 ];
 
 const timeline: Array<Achievement & { kind: 'Education' | 'Certification' }> = [
@@ -20,6 +20,13 @@ const timeline: Array<Achievement & { kind: 'Education' | 'Certification' }> = [
     title: 'B.Tech in Computer Science & Engineering',
     institution: 'Dr. A.P.J. Abdul Kalam Technical University',
     kind: 'Education',
+  },
+  {
+    period: '2025 - Present',
+    title: 'Collaborative Research Paper in Progress',
+    institution: 'With 3 college teammates',
+    description: 'Working as a four-member student team on an AI/ML paper with focus on idea development, implementation, evaluation, and technical writing.',
+    kind: 'Certification',
   },
   {
     period: '2025',
@@ -118,10 +125,12 @@ const Achievements: React.FC = () => {
     <section id="toolkit" className="py-20 sm:py-28">
       <div className="section-shell">
         <div className="mb-12">
-          <p className="section-kicker">AI / ML toolkit</p>
-          <h2 className="section-title mt-4">A practical AI/ML stack for building, deploying, and shipping intelligent systems.</h2>
+          <p className="section-kicker">Research foundation</p>
+          <h2 className="section-title mt-4">The skills, habits, and milestones shaping my path toward AI/ML research.</h2>
           <p className="section-copy mt-4">
-            This is the stack I reach for when turning AI ideas into working products, from model experimentation and retrieval pipelines to inference APIs, deployment, and user-facing integration.
+            This section highlights the technical foundation behind my long-term goal. I am building depth in core machine
+            learning areas while also learning how to read papers, design experiments, collaborate on ideas, and turn
+            promising concepts into research-ready work.
           </p>
         </div>
 
@@ -134,7 +143,7 @@ const Achievements: React.FC = () => {
 
           <div className="glass-panel mt-8 rounded-[2rem] p-6 sm:p-8 lg:mt-0">
             <div className="mb-8">
-              <p className="font-mono text-xs uppercase tracking-[0.28em] text-slate-500">[education_and_certifications]</p>
+              <p className="font-mono text-xs uppercase tracking-[0.28em] text-slate-500">[education_research_and_certifications]</p>
             </div>
             <div className="relative pl-8 sm:pl-10">
               <div className="absolute bottom-0 left-3 top-2 w-px bg-gradient-to-b from-cyan-400/70 via-violet-500/45 to-transparent sm:left-4" />

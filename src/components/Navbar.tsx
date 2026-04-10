@@ -116,6 +116,13 @@ const Navbar: React.FC = () => {
 
             <div className="flex items-center gap-3">
               <a
+                href="/papers"
+                className="hidden rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 sm:inline-flex"
+              >
+                Read Papers
+              </a>
+
+              <a
                 href="./resume.pdf"
                 download="shivam-resume.pdf"
                 className="group hidden rounded-full p-[1px] sm:inline-block"
@@ -186,9 +193,17 @@ const Navbar: React.FC = () => {
               </div>
 
               <a
+                href="/papers"
+                onClick={() => setMenuOpen(false)}
+                className="mt-6 flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900"
+              >
+                Read Papers
+              </a>
+
+              <a
                 href="./resume.pdf"
                 download="shivam-resume.pdf"
-                className="mt-6 flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900"
+                className="mt-3 flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900"
               >
                 <Download className="h-4 w-4" />
                 Download CV

@@ -36,16 +36,16 @@ const FeaturedWorks: React.FC = () => {
       <div className="section-shell">
         <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="section-kicker">Featured work</p>
-            <h2 className="section-title mt-4">Selected builds from my AI and product engineering work.</h2>
+            <p className="section-kicker">Research-aligned projects</p>
+            <h2 className="section-title mt-4">Selected projects that reflect the problems I want to study more deeply.</h2>
           </div>
           <div className="quiet-panel rounded-[1.5rem] px-5 py-4">
-            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">github summary</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">portfolio summary</p>
             <div className="mt-3 flex gap-6 text-sm text-slate-600">
-              <span>{projectCount}+ featured builds</span>
+              <span>{projectCount}+ featured projects</span>
               <span className="inline-flex items-center gap-2">
                 <Star className="h-4 w-4 text-amber-300" />
-                AI-focused open-source work
+                AI work with research potential
               </span>
             </div>
           </div>
@@ -160,6 +160,7 @@ const FeaturedWorks: React.FC = () => {
                     <span className="text-sm text-slate-500">{project.year}</span>
                   </div>
                   <p className="mt-3 text-sm leading-7 text-slate-600">{project.description}</p>
+                  <p className="mt-3 text-xs uppercase tracking-[0.24em] text-slate-500">Research direction signal</p>
                   <div className="mt-5 flex flex-wrap gap-2">
                     {getProjectTags(project.title).map((tag) => (
                       <span key={`${project.title}-${tag}`} className="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-600">

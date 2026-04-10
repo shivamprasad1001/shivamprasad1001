@@ -21,6 +21,16 @@ export interface WorkProject {
   repoUrl?: string;
 }
 
+export interface ResearchPaper {
+  title: string;
+  year: number;
+  status: string;
+  venue: string;
+  summary: string;
+  collaborators: string[];
+  pdfPath?: string;
+}
+
 export interface Experience {
   company: string;
   period: string;

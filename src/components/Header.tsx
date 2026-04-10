@@ -4,10 +4,10 @@ import { ArrowRight, BriefcaseBusiness, Github, Linkedin, Mail, Twitter } from '
 import Navbar from './Navbar';
 
 const roles = [
-  'AI/ML engineer',
-  'RAG systems builder',
-  'NLP and automation developer',
-  'LLM product engineer',
+  'aspiring AI/ML researcher',
+  'deep learning builder',
+  'NLP and computer vision explorer',
+  'research-driven AI engineer',
 ];
 
 const socials = [
@@ -124,7 +124,7 @@ const Header: React.FC = () => {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-75" />
                   <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-300" />
                 </span>
-                Available for freelance work
+                Focused on research collaborations
               </motion.div>
 
               <div className="mb-6 space-y-2">
@@ -166,7 +166,7 @@ const Header: React.FC = () => {
                 transition={{ delay: 0.55, duration: 0.6 }}
                 className="mb-8 flex min-h-[2rem] items-center gap-3 text-base text-slate-600 sm:text-xl"
               >
-                <span className="font-mono text-xs uppercase tracking-[0.28em] text-slate-500">Current focus</span>
+                <span className="font-mono text-xs uppercase tracking-[0.28em] text-slate-500">Research focus</span>
                 <span className="font-display text-slate-900">{typedRole}</span>
                 <span className="h-5 w-[2px] animate-pulse bg-cyan-400" />
               </motion.div>
@@ -177,9 +177,10 @@ const Header: React.FC = () => {
                 transition={{ delay: 0.7, duration: 0.6 }}
                 className="max-w-2xl text-base leading-8 text-slate-600 sm:text-lg"
               >
-                I build applied AI systems, from document intelligence and conversational workflows to production-ready
-                web apps that wrap models in a usable product surface. My work usually spans model integration, inference
-                pipelines, backend APIs, and the frontend layer that makes the intelligence practical.
+                I am building my portfolio around one clear goal: becoming an AI/ML researcher who can connect strong
+                theory with practical systems. My work spans deep learning, NLP, computer vision, and LLM applications,
+                and I am especially interested in projects that can grow into research papers, experiments, and
+                meaningful real-world impact.
               </motion.p>
 
               <motion.div
@@ -188,7 +189,7 @@ const Header: React.FC = () => {
                 transition={{ delay: 0.78, duration: 0.6 }}
                 className="mt-6 flex flex-wrap gap-2"
               >
-                {['LLMs', 'RAG', 'NLP', 'Computer Vision', 'FastAPI', 'PyTorch'].map((tag) => (
+                {['AI Research', 'Deep Learning', 'NLP', 'Computer Vision', 'PyTorch', 'Paper Writing'].map((tag) => (
                   <span
                     key={tag}
                     className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700"
@@ -214,7 +215,7 @@ const Header: React.FC = () => {
                   data-cursor="interactive"
                   className="group inline-flex w-fit items-center gap-3 rounded-full bg-slate-100 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_12px_32px_rgba(0,0,0,0.18)]"
                 >
-                  Write me
+                  Contact me
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </motion.a>
 
@@ -222,7 +223,7 @@ const Header: React.FC = () => {
                   href="#portfolio"
                   className="inline-flex w-fit items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-sm text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
                 >
-                  View selected work
+                  View research projects
                   <BriefcaseBusiness className="h-4 w-4" />
                 </a>
               </motion.div>

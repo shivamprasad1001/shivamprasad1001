@@ -1,0 +1,28 @@
+[
+  {
+    "title": "Adaptive Multi-Agent Orchestration with Human-in-the-Loop for Automated Code Generation",
+    "year": 2026,
+    "status": "Completed",
+    "venue": "Student Research Project",
+    "summary": "A research paper proposing OrchestratorFlow, a multi-agent automated code generation framework that adaptively coordinates planning, design, coding, review, and testing agents with human-in-the-loop support to improve reliability and reduce runtime errors.",
+    "collaborators": [
+      "Shivam Prasad",
+      "Shalini Pandey",
+      "Raj Kumar Mishra",
+      "Mayank Patel",
+      "Divya Pachauri"
+    ],
+    "pdfPath": "/papers/final-paper.pdf"
+  },
+  {
+    "title": "Deep learning Based Defect Dection in Fire Redundant System",
+    "year": 2026,
+    "status": "Completed",
+    "venue": "Student Research Project",
+    "summary": "A research paper proposing OrchestratorFlow, a multi-agent automated code generation framework that adaptively coordinates planning, design, coding, review, and testing agents with human-in-the-loop support to improve reliability and reduce runtime errors.",
+    "collaborators": [
+      "Shivam Prasad"
+    ],
+    "pdfPath": "/papers/shivamFinalPDF.pdf"
+  }
+]

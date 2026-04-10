@@ -13,10 +13,51 @@ import SEO from './src/components/SEO';
 import SkillsRadar from './src/components/SkillsRadar';
 import CustomCursor from './src/components/CustomCursor';
 import BackToTop from './src/components/BackToTop';
+import PapersPage from './src/components/PapersPage';
+import NotFound from './src/components/NotFound';
 import { Analytics } from "@vercel/analytics/react"
 
+const usePathname = () => {
+  const [pathname, setPathname] = React.useState(window.location.pathname);
+
+  React.useEffect(() => {
+    const onPopState = () => setPathname(window.location.pathname);
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
+
+  return pathname;
+};
 
 const App: React.FC = () => {
+  const pathname = usePathname();
+
+  if (pathname === '/papers' || pathname === '/papers/') {
+    return (
+      <AppWrapper>
+        <SEO
+          title="Shivam Prasad - Research Papers"
+          description="Read research papers and research-in-progress by Shivam Prasad, including collaborative AI/ML work and future paper uploads."
+          keywords="Shivam Prasad papers, AI ML papers, research portfolio, machine learning paper"
+          url="https://shivamprasad1001.vercel.app/papers"
+        />
+        <div className="overflow-x-hidden bg-white text-slate-900">
+          <CustomCursor />
+          <PapersPage />
+          <Analytics />
+        </div>
+      </AppWrapper>
+    );
+  }
+
+  if (pathname !== '/') {
+    return (
+      <AppWrapper>
+        <NotFound />
+      </AppWrapper>
+    );
+  }
+
   return (
     <AppWrapper>
       <SEO />

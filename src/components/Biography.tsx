@@ -3,30 +3,30 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronRight, FolderTree, MapPin, Mail, Sparkles } from 'lucide-react';
 
 const stats = [
-  { label: 'AI builds shipped', value: 24, suffix: '+' },
-  { label: 'Years building', value: 3, suffix: '+' },
-  { label: 'ML domains used', value: 8, suffix: '' },
+  { label: 'Research paper collaborators', value: 4, suffix: '' },
+  { label: 'Years building with AI/ML', value: 3, suffix: '+' },
+  { label: 'Core ML domains explored', value: 4, suffix: '' },
 ];
 
 const skillGroups = [
   {
-    title: 'ai-stack.ts',
-    items: ['PyTorch', 'TensorFlow', 'RAG pipelines', 'NLP', 'Computer Vision', 'LLM apps'],
+    title: 'research-interests.ts',
+    items: ['Deep Learning', 'Natural Language Processing', 'Computer Vision', 'LLMs', 'Model evaluation', 'Experiment design'],
   },
   {
-    title: 'frontend-ui.ts',
-    items: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vite'],
+    title: 'research-workflow.ts',
+    items: ['Literature review', 'Paper reading', 'Ablation thinking', 'Prototyping ideas', 'Result analysis', 'Technical writing'],
   },
   {
-    title: 'systems-backend.ts',
-    items: ['FastAPI', 'Flask', 'Docker', 'PostgreSQL', 'MongoDB', 'Automation'],
+    title: 'engineering-foundation.ts',
+    items: ['Python', 'PyTorch', 'TensorFlow', 'FastAPI', 'React', 'Deployment basics'],
   },
 ];
 
 const infoRows = [
   ['Name', 'Shivam Prasad'],
   ['Location', 'Lucknow / New Delhi, India'],
-  ['Freelance', 'Available'],
+  ['Goal', 'AI/ML Researcher'],
   ['Email', 'shivamprasad1001@gmail.com'],
 ];
 
@@ -98,20 +98,20 @@ const Biography: React.FC = () => {
             className="quiet-panel noise-mask rounded-[2rem] p-7 sm:p-10"
           >
             <h2 className="editorial-divider font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-              I like building AI systems that are useful, legible, and ready for real users.
+              I am shaping my work around becoming an AI/ML researcher with strong practical depth.
             </h2>
             <div className="mt-8 space-y-5 text-base leading-8 text-slate-600">
               <p>
-                Most of my work sits where <span className="glow-underline text-slate-900">machine learning meets product design</span>.
-                I enjoy taking ideas that start out technical and shaping them into interfaces, tools, and workflows people can actually navigate without friction.
+                My portfolio is centered on the path from <span className="glow-underline text-slate-900">student builder to serious research contributor</span>.
+                I enjoy studying how machine learning ideas work, implementing them carefully, and turning them into systems that can be tested, improved, and eventually written up clearly.
               </p>
               <p>
-                I&apos;m especially drawn to <span className="glow-underline text-slate-900">LLM products, RAG systems, automation, and full-stack AI apps</span>,
-                because they demand more than model work alone. Retrieval quality, API design, latency, evaluation, and UI clarity all have to work together.
+                I&apos;m especially drawn to <span className="glow-underline text-slate-900">deep learning, NLP, computer vision, and LLM-based systems</span>,
+                because these areas combine strong mathematical ideas with visible real-world impact. I like going beyond implementation and asking why a method works, where it fails, and how it can be improved.
               </p>
               <p>
-                I care a lot about <span className="glow-underline text-slate-900">taking AI projects past the demo stage</span>.
-                That means thinking about deployment, grounded outputs, practical workflows, and an interface that makes the system feel trustworthy instead of gimmicky.
+                Right now, one of the most meaningful parts of my journey is <span className="glow-underline text-slate-900">writing a research paper with three college teammates</span>.
+                That collaboration is helping me build the habits I care about most: reading papers, discussing ideas, designing experiments, documenting results, and learning how research becomes shared knowledge.
               </p>
             </div>
 
@@ -198,15 +198,15 @@ const Biography: React.FC = () => {
               <div className="mt-6 flex flex-wrap gap-3 text-sm text-slate-600">
                 <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2">
                   <Sparkles className="h-4 w-4 text-cyan-500" />
-                  AI-first product builder
+                  Research-driven AI builder
                 </div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2">
                   <MapPin className="h-4 w-4 text-cyan-300" />
-                  Remote + onsite friendly
+                  Open to labs and internships
                 </div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2">
                   <Mail className="h-4 w-4 text-violet-300" />
-                  Fast replies
+                  Research collaboration welcome
                 </div>
               </div>
             </motion.div>

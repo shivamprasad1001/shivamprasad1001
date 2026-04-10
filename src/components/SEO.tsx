@@ -9,9 +9,9 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = 'Shivam Prasad - AI/ML Developer & Innovator',
-  description = 'AI/ML Developer specializing in Deep Learning, NLP, and LLMs. Building intelligent systems that bridge research with real-world applications.',
-  keywords = 'AI Developer, Machine Learning, Deep Learning, NLP, LLM, Python, PyTorch, TensorFlow, Shivam Prasad',
+  title = 'Shivam Prasad - Aspiring AI/ML Researcher',
+  description = 'Portfolio of Shivam Prasad, an aspiring AI/ML researcher focused on deep learning, NLP, computer vision, LLM systems, and collaborative research work.',
+  keywords = 'Shivam Prasad, AI ML Researcher, Machine Learning, Deep Learning, NLP, Computer Vision, LLM, Research Paper, PyTorch, TensorFlow',
   image = 'https://shivamprasad1001.vercel.app/shivam.png',
   url = 'https://shivamprasad1001.vercel.app/'
 }) => {
