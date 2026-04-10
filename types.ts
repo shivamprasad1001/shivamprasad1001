@@ -1,9 +1,8 @@
-import { StepId } from "framer-motion";
-
 export interface Skill {
   name: string;
   level: number; // 0-100
   icon: React.ComponentType<{ className?: string }>;
+  description?: string;
 }
 
 export interface Achievement {
@@ -16,7 +15,10 @@ export interface Achievement {
 export interface WorkProject {
   title: string;
   year: number;
+  description?: string;
   imageUrl: string;
+  liveUrl?: string;
+  repoUrl?: string;
 }
 
 export interface Experience {
@@ -25,6 +27,7 @@ export interface Experience {
   location: string;
   title: string;
   description: string;
+  fullDescription?: string;
 }
 
 export interface Testimonial {

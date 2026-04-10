@@ -1,83 +1,105 @@
 import React from 'react';
-import { ArrowRightIcon, GitHubIcon, TwitterIcon, LinkedInIcon } from './Icons';
-
-const FooterLink: React.FC<{ href: string, children: React.ReactNode }> = ({ href, children }) => (
-    <a href={href} className="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors">{children}</a>
-);
+import { ArrowUpRight, Github, Linkedin, Twitter } from 'lucide-react';
 
 const Footer: React.FC = () => {
-    return (
-        <footer id="contact" className="bg-[#FDFDFD] dark:bg-gray-900">
-            <div className="bg-[#FEF7F7] dark:bg-slate-800/50 py-16">
-                <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <p className="text-xs font-semibold tracking-widest text-gray-500 dark:text-gray-400 mb-2"><b>Ready to Elevate Your Brand with AI-Powered Innovation?</b></p>
-                            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                If you're looking for intelligent, scalable, and future-ready AI solutions that transform your ideas into reality, you’re in the right place!
-                                As an <b>AI/ML developer</b>, I specialize in building everything from <b>custom AI assistants and deep learning models to smart automation tools and data-driven applications</b> — designed to help your brand stay ahead in the AI-first era.
-                            </p>
-                        </div>
-                        <div className="flex items-center justify-end space-x-6">
-                            <p className="font-serif text-xl font-medium text-gray-800 dark:text-white text-right max-w-xs">
-                                Let's turn your creative ideas into stunning AI applications!
-                            </p>
-                            <a href="https://www.linkedin.com/messaging/compose/?recipient=shivamprasad1001" target="_blank">
-                               <button className="flex-shrink-0 flex items-center justify-center w-20 h-20 rounded-full border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-800 hover:shadow-lg transition-all duration-300 group">
-                                <ArrowRightIcon className="w-8 h-8 transform group-hover:rotate-45 transition-transform" />
-                            </button>
-                            </a>
+  return (
+    <footer className="pb-10 pt-6">
+      <div className="section-shell">
+        <div className="glass-panel overflow-hidden rounded-[2rem]">
+          <div className="relative border-b border-slate-200 px-6 py-10 sm:px-8">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(6,182,212,0.18),transparent_25%),radial-gradient(circle_at_80%_20%,rgba(139,92,246,0.18),transparent_24%)]" />
+            <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <p className="section-kicker">Next move</p>
+                <h2 className="mt-4 font-display text-3xl font-semibold text-slate-900 sm:text-4xl">
+                  Let&apos;s build something sharp, useful, and a little ambitious.
+                </h2>
+              </div>
+              <a
+                href="https://www.linkedin.com/messaging/compose/?recipient=shivamprasad1001"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-slate-950"
+              >
+                Start the conversation
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+          </div>
 
-                            
-                        </div>
-                    </div>
-                </div>
+          <div className="grid gap-8 px-6 py-8 sm:px-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <div>
+              <h3 className="font-display text-2xl font-semibold text-slate-900">Shivam Prasad</h3>
+              <p className="mt-3 max-w-xl text-sm leading-7 text-slate-600">
+                AI/ML developer focused on thoughtful product experiences, practical intelligence, and shipping systems that are useful in the real world.
+              </p>
+              <div className="mt-6 flex gap-3">
+                {[
+                  ['https://github.com/shivamprasad1001/', Github, 'hover:text-slate-900 hover:border-slate-300'],
+                  ['https://www.linkedin.com/in/shivamprasad1001/', Linkedin, 'hover:text-sky-300 hover:border-sky-300/40'],
+                  ['https://x.com/Shivampr101', Twitter, 'hover:text-violet-300 hover:border-violet-300/40'],
+                ].map(([href, Icon, hoverClass]) => {
+                  const ResolvedIcon = Icon as typeof Github;
+
+                  return (
+                    <a
+                      key={href}
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={`flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition ${hoverClass}`}
+                    >
+                      <ResolvedIcon className="h-4 w-4" />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
-            <div className="py-16 sm:py-24">
-                <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-                        {/* Column 1: Hire Me & Socials */}
-                        <div className="md:col-span-2 lg:col-span-2">
-                            <h3 className="font-serif text-3xl font-bold text-gray-800 dark:text-white">Hire Me for Your Next Big Project!</h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-300 mt-4">Contact me in any convenient way to discuss your idea.</p>
-                            <div className="flex flex-wrap gap-4 mt-6">
-                                <a href="https://github.com/shivamprasad1001/" target="_blank" rel="noopener noreferrer" className="text-xs font-bold tracking-wider text-gray-800 dark:text-white underline underline-offset-4 decoration-2 decoration-gray-300 dark:decoration-gray-600 hover:decoration-gray-800 dark:hover:decoration-white transition">GITHUB</a>
-                                <a href="https://www.linkedin.com/in/shivamprasad1001/" target="_blank" rel="noopener noreferrer" className="text-xs font-bold tracking-wider text-gray-800 dark:text-white underline underline-offset-4 decoration-2 decoration-gray-300 dark:decoration-gray-600 hover:decoration-gray-800 dark:hover:decoration-white transition">LINKEDIN</a>
-                                <a href="https://x.com/Shivampr101" target="_blank" rel="noopener noreferrer" className="text-xs font-bold tracking-wider text-gray-800 dark:text-white underline underline-offset-4 decoration-2 decoration-gray-300 dark:decoration-gray-600 hover:decoration-gray-800 dark:hover:decoration-white transition">TWITTER</a>
-                            </div>
-                        </div>
-                        {/* Column 2: Navigation */}
-                        <div>
-                            <h4 className="text-xs font-bold tracking-widest text-gray-500 dark:text-gray-400 mb-4">NAVIGATION</h4>
-                            <div className="flex flex-col space-y-3">
-                                <FooterLink href="#about">About Me</FooterLink>
-                                <FooterLink href="#toolkit">My Toolkit</FooterLink>
-                                <FooterLink href="#portfolio">Portfolio</FooterLink>
-                                <FooterLink href="#experience">Experience</FooterLink>
-                                <FooterLink href="#contact">Contacts</FooterLink>
-                            </div>
-                        </div>
-                        {/* Column 3: Information */}
-                        <div>
-                            <h4 className="text-xs font-bold tracking-widest text-gray-500 dark:text-gray-400 mb-4">INFORMATION</h4>
-                            <div className="space-y-1.5 text-sm text-gray-600 dark:text-gray-300">
-                                <p>Name: Shivam Prasad</p>
-                                <p>Email: shivamprasad1001@gmail.com</p>
-                                <p>City: New Delhi, India</p>
-                            </div>
-                            <a href="./resume.pdf" download="shivam's-resume.pdf"
-                            className="inline-block mt-4 text-xs font-bold tracking-widest text-gray-800 dark:text-white underline underline-offset-4 decoration-2 decoration-gray-300 dark:decoration-gray-600 hover:decoration-gray-800 dark:hover:decoration-white transition">
-                                DOWNLOAD CV
-                            </a>
-                        </div>
-                    </div>
-                    <div className="mt-16 sm:mt-20 pt-8 border-t border-gray-200 dark:border-gray-700 flex justify-between items-center text-xs text-gray-500 dark:text-gray-400">
-                        <p>CREATED BY SHIVAM PRASAD</p>
-                        <p>ALL RIGHTS RESERVED</p>
-                    </div>
+
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">Navigation</p>
+                <div className="mt-4 space-y-3 text-sm text-slate-700">
+                  {[
+                    ['#about', 'About'],
+                    ['#toolkit', 'Toolkit'],
+                    ['#portfolio', 'Projects'],
+                    ['#experience', 'Experience'],
+                    ['#contact', 'Contact'],
+                  ].map(([href, label]) => (
+                    <a key={href} href={href} className="block transition hover:text-slate-900">
+                      {label}
+                    </a>
+                  ))}
                 </div>
+              </div>
+              <div>
+                <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">Info</p>
+                <div className="mt-4 space-y-3 text-sm text-slate-700">
+                  <p>shivamprasad1001@gmail.com</p>
+                  <p>New Delhi, India</p>
+                  <a href="./resume.pdf" download="shivam-resume.pdf" className="inline-block text-cyan-300 transition hover:text-cyan-200">
+                    Download CV
+                  </a>
+                </div>
+              </div>
             </div>
-        </footer>
-    );
+          </div>
+
+          <div className="border-t border-slate-200 px-6 py-4 text-xs text-slate-500 sm:px-8">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <p className="inline-flex items-center gap-2">
+                <span>Created by Shivam Prasad</span>
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-300" />
+                <span>All rights reserved</span>
+              </p>
+              <p>Built with React, TypeScript, Vite, and a dark bias.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 };
+
 export default Footer;

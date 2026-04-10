@@ -1,115 +1,92 @@
 import React, { useEffect, useState } from 'react';
 
-const TITLE_TEXT = 'Welcome';
-const SUB_TEXT =
-  'Explore my portfolio and see my journey as an AI/ML Developer.';
+const TITLE_TEXT = 'Welcome.';
+const SUB_TEXT = 'Loading Shivam Prasad portfolio';
 
-const WelcomeIntro: React.FC = () => {
+interface WelcomeIntroProps {
+  onComplete: () => void;
+}
+
+const WelcomeIntro: React.FC<WelcomeIntroProps> = ({ onComplete }) => {
   const [title, setTitle] = useState('');
   const [subText, setSubText] = useState('');
   const [showSub, setShowSub] = useState(false);
-  const [showButton, setShowButton] = useState(false);
+  const [closing, setClosing] = useState(false);
 
   const [titleIndex, setTitleIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
 
-  /* ───────── Title Typing ───────── */
   useEffect(() => {
     if (titleIndex < TITLE_TEXT.length) {
       const timer = setTimeout(() => {
         setTitle((prev) => prev + TITLE_TEXT[titleIndex]);
         setTitleIndex((prev) => prev + 1);
-      }, 90);
+      }, 85);
       return () => clearTimeout(timer);
-    } else {
-      setTimeout(() => setShowSub(true), 250);
     }
+
+    const timer = setTimeout(() => setShowSub(true), 180);
+    return () => clearTimeout(timer);
   }, [titleIndex]);
 
-  /* ───────── Subtitle Typing ───────── */
   useEffect(() => {
     if (showSub && subIndex < SUB_TEXT.length) {
       const timer = setTimeout(() => {
         setSubText((prev) => prev + SUB_TEXT[subIndex]);
         setSubIndex((prev) => prev + 1);
-      }, 35);
+      }, 26);
       return () => clearTimeout(timer);
     }
 
     if (subIndex === SUB_TEXT.length) {
-      setTimeout(() => setShowButton(true), 400);
-    }
-  }, [showSub, subIndex]);
+      const fadeTimer = setTimeout(() => setClosing(true), 700);
+      const completeTimer = setTimeout(() => onComplete(), 1250);
 
-  const scrollToHeader = () => {
-    document.getElementById('main-header')?.scrollIntoView({
-      behavior: 'smooth',
-    });
-  };
+      return () => {
+        clearTimeout(fadeTimer);
+        clearTimeout(completeTimer);
+      };
+    }
+  }, [onComplete, showSub, subIndex]);
 
   return (
     <section
       className="relative h-screen w-full flex flex-col items-center 
-                 justify-center bg-white dark:bg-gray-900 overflow-hidden"
+                 justify-center bg-white overflow-hidden fixed inset-0 z-[140] transition-opacity duration-500"
+      style={{ opacity: closing ? 0 : 1 }}
     >
-      {/* Content */}
-      <div className="z-10 text-center px-4">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(6,182,212,0.08),transparent_24%),radial-gradient(circle_at_78%_12%,rgba(139,92,246,0.08),transparent_18%),linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(15,23,42,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.03)_1px,transparent_1px)] bg-[size:56px_56px]" />
 
-        {/* Welcome */}
+      <div className="z-10 text-center px-4">
         <h1
-          className="text-5xl sm:text-6xl lg:text-7xl font-extrabold 
-                     text-gray-900 dark:text-white mb-6
-                     animate-[fadeScaleIn_0.8s_ease-out_forwards]"
+          className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold 
+                     text-slate-900 mb-5 tracking-tight"
         >
           {title}
-          <span className="ml-1 text-sky-400 animate-pulse">|</span>
+          <span className="ml-1 text-cyan-500 animate-pulse">|</span>
         </h1>
 
-        {/* Subtitle */}
         <p
-          className={`text-base sm:text-lg text-gray-600 dark:text-gray-400 
-                      max-w-xl mx-auto min-h-[2rem]
+          className={`text-base sm:text-lg text-slate-600 
+                      max-w-xl mx-auto min-h-[2rem] font-mono tracking-[0.08em]
                       transition-all duration-700 ease-out
                       ${showSub ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
         >
           {subText}
         </p>
 
-        {/* Button */}
-        {showButton && (
-          <button
-            onClick={scrollToHeader}
-            className="mt-10 px-7 py-3 rounded-full 
-                       bg-sky-500 text-white font-medium
-                       hover:bg-sky-600 hover:shadow-xl
-                       transition-all duration-500 ease-out
-                       animate-[fadeUp_0.6s_ease-out_forwards]"
-          >
-            Explore My Work
-          </button>
-        )}
-      </div>
-
-      {/* Animated Wave */}
-      <div className="absolute bottom-0 left-0 w-full">
-        <svg viewBox="0 0 1440 120" className="w-full">
-          <path
-            fill="#38bdf8"
-            fillOpacity="0.15"
-            d="M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,0L0,0Z"
-          >
-            <animate
-              attributeName="d"
-              dur="10s"
-              repeatCount="indefinite"
-              values="
-              M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,0L0,0Z;
-              M0,48L48,53.3C96,59,192,69,288,64C384,59,480,37,576,32C672,27,768,37,864,48C960,59,1056,69,1152,64C1248,59,1344,37,1392,26.7L1440,16L1440,0L0,0Z;
-              M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,0L0,0Z
-              "
+        <div className="mt-8 flex items-center justify-center gap-2">
+          {[0, 1, 2].map((item) => (
+            <span
+              key={item}
+              className="h-2.5 w-2.5 rounded-full bg-slate-300"
+              style={{
+                animation: `pulse 1.2s ${item * 0.18}s infinite`,
+              }}
             />
-          </path>
-        </svg>
+          ))}
+        </div>
       </div>
     </section>
   );

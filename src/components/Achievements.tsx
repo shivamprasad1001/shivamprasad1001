@@ -1,254 +1,161 @@
-import React, { useState } from "react";
-import type { Skill, Achievement } from "../../types";
-import {
-  ReactIcon,
-  NextjsIcon,
-  TypeScriptIcon,
-  JavaScriptIcon,
-  TailwindCssIcon,
-} from "./Icons";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown,Brain,
-  Cpu,
-  Code2,
-  GitBranch,
-  Database,
-  Cloud,
-  Eye,
-  MessageSquare,
-  Network,
- } from "lucide-react";
+import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import type { Achievement, Skill } from '../../types';
+import { Brain, Cloud, Code2, Eye, GitBranch, MessageSquare, Network, Workflow } from 'lucide-react';
 
-// Skill Card with dropdown animation
-const SkillRating: React.FC<{ skill: Skill }> = ({ skill }) => {
-  const [expanded, setExpanded] = useState(false);
+const skills: Skill[] = [
+  { name: 'Python', level: 95, icon: Code2, description: 'Training scripts, automation, backend APIs, data pipelines, and model-serving glue.' },
+  { name: 'PyTorch & TensorFlow', level: 90, icon: Brain, description: 'Model experimentation, deep learning workflows, fine-tuning, and practical research builds.' },
+  { name: 'NLP Systems', level: 85, icon: MessageSquare, description: 'Embeddings, text processing, conversational systems, and retrieval-aware assistant behavior.' },
+  { name: 'Computer Vision', level: 80, icon: Eye, description: 'Detection, classification, image understanding, and applied CV workflows.' },
+  { name: 'RAG & Agents', level: 85, icon: Network, description: 'Retriever pipelines, chunking strategies, grounded answers, and multi-step orchestration.' },
+  { name: 'MLOps & Deployment', level: 75, icon: Cloud, description: 'Containers, hosting, CI, inference APIs, and getting AI systems into usable environments.' },
+  { name: 'Versioning & CI/CD', level: 90, icon: GitBranch, description: 'Git-driven collaboration, repeatable workflows, and stable delivery pipelines.' },
+  { name: 'AI Product Integration', level: 78, icon: Workflow, description: 'Wrapping models with frontend flows, backend orchestration, and product-ready UX.' },
+];
+
+const timeline: Array<Achievement & { kind: 'Education' | 'Certification' }> = [
+  {
+    period: '2022 - 2026',
+    title: 'B.Tech in Computer Science & Engineering',
+    institution: 'Dr. A.P.J. Abdul Kalam Technical University',
+    kind: 'Education',
+  },
+  {
+    period: '2025',
+    title: 'Artificial Intelligence A-Z',
+    institution: 'Udemy',
+    description: 'Hands-on with agentic AI, GenAI, NLP, and reinforcement learning.',
+    kind: 'Certification',
+  },
+  {
+    period: '2024',
+    title: 'Deep Learning Specialization',
+    institution: 'Coursera / Andrew Ng',
+    description: 'Neural networks, CNNs, sequence models, and core deep learning practice.',
+    kind: 'Certification',
+  },
+];
+
+const RingSkill: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  const circumference = 2 * Math.PI * 46;
+  const offset = circumference - (circumference * skill.level) / 100;
+
+  useEffect(() => {
+    const node = ref.current;
+
+    if (!node) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <motion.div
-      layout
-      className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-4 cursor-pointer hover:shadow-md transition"
-      onClick={() => setExpanded(!expanded)}
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ delay: index * 0.08 }}
+      className="glass-panel h-full rounded-[1.75rem] p-5"
     >
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-4">
-          <skill.icon className="w-7 h-7 text-indigo-600 dark:text-indigo-400" />
-          <div>
-            <p className="text-sm font-semibold text-gray-800 dark:text-white">
-              {skill.name}
-            </p>
-            <div className="flex items-center mt-1.5 space-x-1">
-              {[...Array(10)].map((_, i) => (
-                <span
-                  key={i}
-                  className={`block w-3 h-1 rounded-full ${
-                    i * 10 < skill.level
-                      ? "bg-indigo-600 dark:bg-indigo-400"
-                      : "bg-gray-300 dark:bg-gray-600"
-                  }`}
-                ></span>
-              ))}
-            </div>
+      <div className="flex h-full flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+        <div className="min-w-0 flex-1">
+          <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">
+            [{skill.name.toLowerCase().replace(/\s+/g, '_')}]
+          </p>
+          <p className="mt-3 text-sm leading-6 text-slate-600">{skill.description}</p>
+        </div>
+        <div className="relative mx-auto h-28 w-28 shrink-0 sm:mx-0 sm:self-start">
+          <svg viewBox="0 0 120 120" className="h-full w-full -rotate-90">
+            <circle cx="60" cy="60" r="46" fill="none" stroke="rgba(15,23,42,0.08)" strokeWidth="10" />
+            <motion.circle
+              cx="60"
+              cy="60"
+              r="46"
+              fill="none"
+              stroke="url(#ringGradient)"
+              strokeWidth="10"
+              strokeLinecap="round"
+              strokeDasharray={circumference}
+              initial={{ strokeDashoffset: circumference }}
+              animate={{ strokeDashoffset: visible ? offset : circumference }}
+              transition={{ duration: 1.2, ease: 'easeOut' }}
+            />
+            <defs>
+              <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#06b6d4" />
+                <stop offset="100%" stopColor="#8b5cf6" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <skill.icon className="h-5 w-5 text-cyan-300" />
+            <span className="mt-1 font-display text-lg font-bold text-slate-900">{skill.level}%</span>
           </div>
         </div>
-        <div className="flex items-center space-x-2">
-          <span className="text-sm font-bold text-gray-500 dark:text-gray-400">
-            {skill.level}%
-          </span>
-          <motion.div
-            animate={{ rotate: expanded ? 180 : 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <ChevronDown className="w-5 h-5 text-gray-500" />
-          </motion.div>
-        </div>
       </div>
-
-      <AnimatePresence>
-        {expanded && skill.description && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="mt-3 text-sm text-gray-600 dark:text-gray-300"
-          >
-            {skill.description}
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.div>
   );
 };
 
-// Achievement Component
-const AchievementEntry: React.FC<{
-  achievement: Achievement;
-  type: "Education" | "Certification";
-}> = ({ achievement, type }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 15 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.4 }}
-    viewport={{ once: true }}
-  >
-    <p className="text-xs text-gray-500 dark:text-gray-400">
-      {achievement.period}
-    </p>
-    <h4 className="font-bold text-md text-gray-800 dark:text-white mt-1">
-      {achievement.title}
-    </h4>
-    <p className="text-xs font-semibold tracking-wider text-gray-400 dark:text-gray-500 mt-1">
-      {achievement.institution}
-    </p>
-    {type === "Certification" && achievement.description && (
-      <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
-        {achievement.description}
-      </p>
-    )}
-  </motion.div>
-);
-
-// 🔹 AI/ML Developer Skillset
-const skills: Skill[] = [
-  {
-    name: "Python",
-    level: 95,
-    icon: Code2,
-    description: "ML/DL pipelines, automation, data processing, AI agents.",
-  },
-  {
-    name: "PyTorch & TensorFlow",
-    level: 90,
-    icon: Brain,
-    description: "Training and deploying neural networks for CV/NLP tasks.",
-  },
-  {
-    name: "NLP",
-    level: 85,
-    icon: MessageSquare,
-    description:
-      "Intent classification, RAG, transformers, embeddings, conversational AI.",
-  },
-  {
-    name: "Computer Vision",
-    level: 80,
-    icon: Eye,
-    description:
-      "Face detection, object detection, image classification, deepfake research.",
-  },
-  {
-    name: "RAG & AI Agents",
-    level: 85,
-    icon: Network,
-    description:
-      "LLM-powered apps using LangChain, Hugging Face, vector DBs, agents.",
-  },
-  {
-    name: "MLOps & Deployment",
-    level: 75,
-    icon: Cloud,
-    description:
-      "Git, Docker, FastAPI, Flask, Hugging Face Spaces, CI/CD workflows.",
-  },
-  {
-    name: "Version Control & CI/CD",
-    level: 90,
-    icon: GitBranch,
-    description:
-      "Proficient in Git/GitHub workflows, automated testing, and continuous delivery.",
-  },
-  {
-    name: "Full-Stack AI Apps",
-    level: 70,
-    icon: Cpu,
-    description:
-      "Building React/Next.js frontends integrated with ML backends.",
-  },
-];
-
-const education: Achievement[] = [
-  {
-    period: "2022-2026",
-    title: "B.Tech in Computer Science & Engineering",
-    institution: "Dr. A.P.J. Abdul Kalam Technical University",
-  },
-];
-
-const certifications: Achievement[] = [
-  {
-    period: "2025",
-    title: "Artificial Intelligence A-Z",
-    institution: "Udemy",
-    description:
-      "Hands-on with Agentic AI, GenAI, NLP, Reinforcement Learning.",
-  },
-  {
-    period: "2024",
-    title: "Deep Learning Specialization",
-    institution: "Coursera (Andrew Ng)",
-    description: "Neural networks, CNNs, RNNs, sequence models.",
-  },
-];
-
 const Achievements: React.FC = () => {
   return (
-    <section
-      id="toolkit"
-      className="py-20 sm:py-28 bg-gray-50 dark:bg-gray-900/50 relative overflow-hidden"
-    >
-      {/* AI background blobs */}
-      <div className="absolute -top-20 -left-20 w-72 h-72 bg-purple-200 rounded-full opacity-30 dark:opacity-20 filter blur-3xl"></div>
-      <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-blue-200 rounded-full opacity-30 dark:opacity-20 filter blur-3xl"></div>
-
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16 max-w-2xl mx-auto">
-          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-gray-800 dark:text-white">
-            AI/ML Toolkit
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
-            Specialized in <span className="font-semibold">AI, ML, and NLP</span>{" "}
-            with strong foundations in deep learning, RAG, and AI agents.
-            Skilled at deploying ML into real-world applications with scalable
-            systems.
+    <section id="toolkit" className="py-20 sm:py-28">
+      <div className="section-shell">
+        <div className="mb-12">
+          <p className="section-kicker">AI / ML toolkit</p>
+          <h2 className="section-title mt-4">A practical AI/ML stack for building, deploying, and shipping intelligent systems.</h2>
+          <p className="section-copy mt-4">
+            This is the stack I reach for when turning AI ideas into working products, from model experimentation and retrieval pipelines to inference APIs, deployment, and user-facing integration.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* Left Column: Skills */}
-          <div className="space-y-6">
-            {skills.map((skill) => (
-              <SkillRating key={skill.name} skill={skill} />
+        <div className="items-start gap-8 lg:grid lg:grid-cols-[minmax(0,1.2fr)_minmax(22rem,0.8fr)]">
+          <div className="grid auto-rows-fr gap-5 md:grid-cols-2">
+            {skills.map((skill, index) => (
+              <RingSkill key={skill.name} skill={skill} index={index} />
             ))}
           </div>
 
-          {/* Right Column: Education & Certifications */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
-            <div>
-              <h3 className="font-serif text-2xl font-bold text-gray-800 dark:text-white mb-6">
-                Education
-              </h3>
-              <div className="space-y-6">
-                {education.map((edu, i) => (
-                  <AchievementEntry
-                    key={i}
-                    achievement={edu}
-                    type="Education"
-                  />
-                ))}
-              </div>
+          <div className="glass-panel mt-8 rounded-[2rem] p-6 sm:p-8 lg:mt-0">
+            <div className="mb-8">
+              <p className="font-mono text-xs uppercase tracking-[0.28em] text-slate-500">[education_and_certifications]</p>
             </div>
-            <div>
-              <h3 className="font-serif text-2xl font-bold text-gray-800 dark:text-white mb-6">
-                Certifications
-              </h3>
-              <div className="space-y-6">
-                {certifications.map((cert, i) => (
-                  <AchievementEntry
-                    key={i}
-                    achievement={cert}
-                    type="Certification"
-                  />
+            <div className="relative pl-8 sm:pl-10">
+              <div className="absolute bottom-0 left-3 top-2 w-px bg-gradient-to-b from-cyan-400/70 via-violet-500/45 to-transparent sm:left-4" />
+              <div className="space-y-8">
+                {timeline.map((item) => (
+                  <motion.div
+                    key={`${item.kind}-${item.title}`}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    className="relative"
+                  >
+                    <span className="absolute -left-[1.9rem] top-2 h-3 w-3 rounded-full border border-cyan-300/40 bg-white sm:-left-[2.15rem]" />
+                    <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-slate-500">{item.period}</p>
+                    <div className="mt-2 rounded-[1.5rem] border border-slate-200 bg-white p-5">
+                      <p className="text-xs uppercase tracking-[0.28em] text-cyan-700">[{item.kind}]</p>
+                      <h3 className="mt-3 font-display text-xl font-semibold text-slate-900">{item.title}</h3>
+                      <p className="mt-2 text-sm text-slate-700">{item.institution}</p>
+                      {item.description && <p className="mt-3 text-sm leading-6 text-slate-600">{item.description}</p>}
+                    </div>
+                  </motion.div>
                 ))}
               </div>
             </div>

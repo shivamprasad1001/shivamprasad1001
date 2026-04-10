@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import WelcomeIntro from './WelcomeIntro';
 
 interface AppWrapperProps {
@@ -6,16 +6,11 @@ interface AppWrapperProps {
 }
 
 const AppWrapper: React.FC<AppWrapperProps> = ({ children }) => {
-  const scrollToMain = () => {
-    const mainSection = document.getElementById('main-header');
-    if (mainSection) {
-      mainSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const [introComplete, setIntroComplete] = useState(false);
 
   return (
     <>
-      <WelcomeIntro onComplete={scrollToMain} />
+      {!introComplete && <WelcomeIntro onComplete={() => setIntroComplete(true)} />}
       {children}
     </>
   );

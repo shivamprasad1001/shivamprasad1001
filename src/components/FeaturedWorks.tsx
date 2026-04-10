@@ -1,117 +1,177 @@
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { motion } from 'framer-motion';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-
+import { ArrowUpRight, Github, Star } from 'lucide-react';
 import type { WorkProject } from '../../types';
-import { ExternalLinkIcon, GitHubIcon } from './Icons';
-import projectsData from '../data/projectsData.json'; // Import JSON
+import projectsData from '../data/projectsData.json';
 
-const ProjectCard: React.FC<{ project: WorkProject }> = ({ project }) => (
-  <div className="group bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col h-full">
-    <div className="relative aspect-square overflow-hidden rounded-t-xl">
-      <img
-        src={project.imageUrl}
-        alt={project.title}
-        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-      />
-    </div>
+const projects = projectsData as WorkProject[];
+const spotlight = projects[0];
+const projectCount = projects.length;
 
-    <div className="p-3 flex flex-col flex-grow justify-between">
-      <div>
-        <h3 className="font-bold text-gray-800 dark:text-white">{project.title}</h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">{project.year}</p>
-        <p className="text-gray-600 dark:text-gray-300 text-sm">{project.description}</p>
-      </div>
+const getProjectTags = (title: string) => {
+  const key = title.toLowerCase();
 
-      <div className="mt-3 flex gap-2">
-        {project.liveUrl && (
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center px-3 py-1 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition"
-          >
-            <ExternalLinkIcon className="w-4 h-4 mr-1" /> Live
-          </a>
-        )}
-        {project.repoUrl && (
-          <a
-            href={project.repoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center px-3 py-1 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white text-sm font-semibold hover:bg-gray-300 dark:hover:bg-gray-600 transition"
-          >
-            <GitHubIcon className="w-4 h-4 mr-1" /> GitHub
-          </a>
-        )}
-      </div>
-    </div>
-  </div>
-);
+  if (key.includes('moodify')) {
+    return ['Computer Vision', 'Emotion AI', 'Inference'];
+  }
+
+  if (key.includes('papermind')) {
+    return ['RAG', 'Document AI', 'LLM App'];
+  }
+
+  if (key.includes('assistant')) {
+    return ['LLM', 'Automation', 'Local AI'];
+  }
+
+  if (key.includes('password')) {
+    return ['Security', 'Backend', 'Utility'];
+  }
+
+  return ['AI', 'Web App', 'Deployment'];
+};
 
 const FeaturedWorks: React.FC = () => {
   return (
-    <section
-      id="portfolio"
-      className="py-16 sm:py-24 bg-[#FDFDFD] dark:bg-gray-900 relative overflow-hidden"
-    >
-      <div className="absolute top-0 left-0 w-40 h-40 border-3 border-gray-200 dark:border-gray-700 rounded-full opacity-50 -translate-x-1/4 -translate-y-1/4"></div>
-      <div className="absolute bottom-1/2 right-0 w-26 h-26 border-2 border-gray-200 dark:border-gray-700 rounded-full opacity-50 translate-x-1/4"></div>
-
-      <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10">
-          <div className="text-left">
-            <p className="text-xs text-gray-400 dark:text-gray-500 font-semibold tracking-widest">// FIND ALL MY PROJECTS ON</p>
-            <a
-              href="https://github.com/shivamprasad1001/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-bold tracking-wider text-gray-800 dark:text-white underline underline-offset-4 decoration-2 decoration-gray-300 dark:decoration-gray-600 hover:decoration-gray-800 dark:hover:decoration-white transition"
-            >
-              github.com/shivamprasad1001
-            </a>
+    <section id="portfolio" className="py-20 sm:py-28">
+      <div className="section-shell">
+        <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="section-kicker">Featured work</p>
+            <h2 className="section-title mt-4">Selected builds from my AI and product engineering work.</h2>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-gray-800 dark:text-white mt-4 md:mt-0">
-            Projects
-          </h2>
+          <div className="quiet-panel rounded-[1.5rem] px-5 py-4">
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">github summary</p>
+            <div className="mt-3 flex gap-6 text-sm text-slate-600">
+              <span>{projectCount}+ featured builds</span>
+              <span className="inline-flex items-center gap-2">
+                <Star className="h-4 w-4 text-amber-300" />
+                AI-focused open-source work
+              </span>
+            </div>
+          </div>
         </div>
 
-        {/* Swiper Slider */}
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={24}
-          slidesPerView={1}
-          navigation
-          pagination={{ clickable: true }}
-          autoplay={{
-            delay: 3500,
-            disableOnInteraction: false,
-          }}
-          breakpoints={{
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-            1280: { slidesPerView: 4 },
-          }}
-          className="pb-8"
-        >
-          {(projectsData as WorkProject[]).map((p) => (
-            <SwiperSlide key={p.title}>
-              <motion.div
-                whileHover={{ scale: 1.05, rotateX: -2, rotateY: 2 }}
-                transition={{ type: 'spring', stiffness: 200, damping: 10 }}
-                className="h-full"
+        {spotlight && (
+          <motion.article
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="quiet-panel group overflow-hidden rounded-[2rem] p-4 sm:p-6"
+          >
+            <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+              <div className="relative overflow-hidden rounded-[1.5rem]">
+                <img
+                  src={spotlight.imageUrl}
+                  alt={spotlight.title}
+                  className="h-full min-h-[18rem] w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#09090d] via-[#09090d]/20 to-transparent" />
+              </div>
+              <div className="flex flex-col justify-between gap-6 p-2">
+                <div>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">Featured project</p>
+                  <h3 className="mt-4 font-display text-3xl font-semibold text-slate-900 sm:text-4xl">{spotlight.title}</h3>
+                  <p className="mt-4 text-sm leading-7 text-slate-600">{spotlight.description}</p>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    {[...getProjectTags(spotlight.title), `${spotlight.year}`].map((tag) => (
+                      <span key={tag} className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  {spotlight.liveUrl && (
+                    <a
+                      href={spotlight.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-5 py-3 text-sm font-medium text-slate-950"
+                    >
+                      View live
+                      <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                  )}
+                  {spotlight.repoUrl && (
+                    <a
+                      href={spotlight.repoUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm text-slate-700"
+                    >
+                      Source
+                      <Github className="h-4 w-4" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </motion.article>
+        )}
+
+        <div className="mt-8 overflow-x-auto pb-3">
+          <div className="flex min-w-full snap-x gap-5">
+            {projects.map((project, index) => (
+              <motion.article
+                key={project.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ delay: index * 0.06 }}
+                className="group quiet-panel snap-start overflow-hidden rounded-[1.8rem] border-white/10 min-w-[19rem] max-w-[22rem] flex-1"
               >
-                <ProjectCard project={p} />
-              </motion.div>
-            </SwiperSlide>
-          ))}
-          
-        </Swiper>
+                <div className="relative h-56 overflow-hidden">
+                  <img
+                    src={project.imageUrl}
+                    alt={project.title}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/10 to-transparent opacity-80" />
+                  <div className="absolute inset-x-4 bottom-4 flex translate-y-4 gap-2 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-medium text-slate-950"
+                      >
+                        Live
+                        <ArrowUpRight className="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                    {project.repoUrl && (
+                      <a
+                        href={project.repoUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900"
+                      >
+                        GitHub
+                        <Github className="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+
+                <div className="p-5">
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="font-display text-xl font-semibold text-slate-900">{project.title}</h3>
+                    <span className="text-sm text-slate-500">{project.year}</span>
+                  </div>
+                  <p className="mt-3 text-sm leading-7 text-slate-600">{project.description}</p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {getProjectTags(project.title).map((tag) => (
+                      <span key={`${project.title}-${tag}`} className="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-600">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

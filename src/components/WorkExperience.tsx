@@ -1,110 +1,118 @@
-import React, { useState } from "react";
-
-type Experience = {
-  company: string;
-  period: string;
-  location: string;
-  title: string;
-  description: string;
-  fullDescription?: string;
-};
+import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import type { Experience } from '../../types';
+import { ArrowRight, Building2, Sparkles } from 'lucide-react';
 
 const experiences: Experience[] = [
   {
-    company: "Truwix Tech Solutions pvt. ltd ",
-    period: "Sep 2025 - Present",
-    location: "Onsite",
-    title: "AI/ML Engineer (Trainee)",
+    company: 'Truwix Tech Solutions Pvt. Ltd.',
+    period: 'Sep 2025 - Present',
+    location: 'Onsite',
+    title: 'AI/ML Engineer (Trainee)',
     description:
-      "As an AI/ML Engineer at Truwix, I design and deploy intelligent systems that power chatbots, automation tools, and predictive models using machine learning, deep learning, and NLP. My work focuses on building scalable, data-driven solutions that enhance efficiency, user engagement, and real-world decision-making",
+      'Designing and deploying intelligent systems for chatbots, automation tools, and predictive workflows using machine learning, deep learning, and NLP.',
     fullDescription:
-      "As an AI/ML Engineer at Truwix, I develop and implement end-to-end AI solutions, including chatbots, automation pipelines, and intelligent analytics systems. My role involves leveraging machine learning, deep learning, and natural language processing to create adaptive and human-like AI experiences. I collaborate with cross-functional teams to design scalable architectures, integrate AI models into production systems, and automate complex workflows. I also focus on optimizing model performance, improving user interactions, and deploying AI-driven assistants that enhance productivity and operational efficiency. Through continuous research and experimentation, I aim to bridge innovation with practicality—transforming how businesses interact with technology through intelligent automation.",
+      'At Truwix, I work on end-to-end AI delivery: building assistants, integrating models into usable products, shaping deployment paths, and collaborating across teams so the systems are not only intelligent but operationally practical. The focus is on scalable architectures, strong user interaction quality, and measurable productivity gains through automation.',
   },
 ];
 
 const WorkExperience: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [expanded, setExpanded] = useState(false);
-
   const activeExperience = experiences[activeIndex];
 
   return (
-    <section
-      id="experience"
-      className="py-20 sm:py-28 bg-gray-50 dark:bg-gray-900/50 relative overflow-hidden"
-    >
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-        <h2 className="font-serif text-4xl sm:text-5xl font-bold text-center text-gray-800 dark:text-white mb-16">
-          Work Experience
-        </h2>
+    <section id="experience" className="py-20 sm:py-28">
+      <div className="section-shell">
+        <div className="mb-12">
+          <p className="section-kicker">Experience</p>
+          <h2 className="section-title mt-4">Current role and the kind of systems I&apos;m building day to day.</h2>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
-          {/* Timeline (left) */}
-          <div className="md:col-span-4 relative">
-            <div className="absolute top-4 bottom-4 right-10 md:right-12 w-px bg-gray-200 dark:bg-gray-700"></div>
-            <div className="space-y-4">
-              {experiences.map((exp, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => {
-                    setActiveIndex(idx);
-                    setExpanded(false); // reset expand on switch
-                  }}
-                  className="group relative w-full text-right pr-20 md:pr-24 py-6 flex items-center"
-                >
-                  <div
-                    className={`w-full transition-colors duration-200 ${
-                      idx === activeIndex
-                        ? "text-gray-900 dark:text-white font-semibold"
-                        : "text-gray-500 dark:text-gray-400"
-                    }`}
+        <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
+          <div className="relative pl-8">
+            <div className="absolute bottom-0 left-3 top-3 w-px bg-slate-200" />
+            <div className="space-y-5">
+              {experiences.map((experience, index) => {
+                const active = index === activeIndex;
+
+                return (
+                  <button
+                    key={experience.company}
+                    type="button"
+                    onClick={() => setActiveIndex(index)}
+                    className="relative block w-full text-left"
                   >
-                    <div className="text-sm">{exp.company}</div>
-                    <div className="text-xs mt-1">{exp.period}</div>
-                    <div className="text-xs">{exp.location}</div>
-                  </div>
-                  <span
-                    className={`absolute right-6 md:right-10 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full transition-all duration-300 ${
-                      idx === activeIndex
-                        ? "bg-pink-500 ring-4 ring-pink-200 dark:ring-pink-500/30"
-                        : "bg-white dark:bg-gray-900 border-2 border-gray-300 dark:border-gray-500"
-                    }`}
-                  />
-                </button>
-              ))}
+                    <span
+                      className={`absolute -left-[1.95rem] top-5 h-3.5 w-3.5 rounded-full ${
+                        active ? 'bg-cyan-500 shadow-[0_0_0_8px_rgba(6,182,212,0.12)] animate-pulse' : 'bg-slate-300'
+                      }`}
+                    />
+                    <div className={`glass-panel rounded-[1.6rem] p-5 transition ${active ? 'border-cyan-400/25' : ''}`}>
+                      <div className="flex items-center justify-between gap-3">
+                        <p className="font-display text-lg text-slate-900">{experience.company}</p>
+                        {active && (
+                          <span className="rounded-full bg-emerald-400/12 px-3 py-1 text-[11px] uppercase tracking-[0.28em] text-emerald-300">
+                            Now
+                          </span>
+                        )}
+                      </div>
+                      <p className="mt-2 text-sm text-slate-600">{experience.period}</p>
+                      <p className="mt-1 text-sm text-slate-500">{experience.location}</p>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
-          {/* Active description (right) */}
-          <div className="md:col-span-8 pt-1">
-            {activeExperience && (
-              <div className="transition-all duration-400 ease-in-out">
-                <h3 className="font-serif text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
-                  {activeExperience.title}
-                </h3>
+          <div className="glass-panel rounded-[2rem] p-6 sm:p-8">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeExperience.company}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.25 }}
+              >
+                <div className="flex flex-wrap items-start justify-between gap-5">
+                  <div>
+                    <div className="mb-4 flex items-center gap-3">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-200 bg-white">
+                        <Building2 className="h-6 w-6 text-cyan-300" />
+                      </div>
+                      <div>
+                        <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">{activeExperience.period}</p>
+                        <h3 className="mt-2 font-display text-3xl font-semibold text-slate-900">{activeExperience.title}</h3>
+                      </div>
+                    </div>
+                    <p className="max-w-2xl text-sm leading-7 text-slate-600">{activeExperience.description}</p>
+                  </div>
 
-                {/* Animated expandable text */}
-                <div
-                  className={`overflow-hidden transition-[max-height] duration-500 ease-in-out`}
-                  style={{ maxHeight: expanded ? "500px" : "80px" }} // adjust 500px if text is longer
-                >
-                  <p className="text-gray-600 dark:text-gray-300 mt-6 leading-relaxed max-w-prose">
-                    {expanded && activeExperience.fullDescription
-                      ? activeExperience.fullDescription
-                      : activeExperience.description}
-                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['LLMs', 'Automation', 'NLP', 'Deployment'].map((tag) => (
+                      <span key={tag} className="rounded-full border border-slate-200 bg-white px-3 py-2 text-xs text-slate-700">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
                 {activeExperience.fullDescription && (
-                  <button
-                    onClick={() => setExpanded((prev) => !prev)}
-                    className="inline-block mt-6 text-xs font-bold tracking-widest text-gray-400 dark:text-gray-500 hover:text-gray-800 dark:hover:text-white transition-colors duration-300"
-                  >
-                    {expanded ? "SHOW LESS" : "LEARN MORE"}
-                  </button>
+                  <div className="mt-8 rounded-[1.6rem] border border-slate-200 bg-white p-5">
+                    <div className="mb-3 flex items-center gap-2 text-cyan-300">
+                      <Sparkles className="h-4 w-4" />
+                      <span className="font-mono text-[11px] uppercase tracking-[0.28em]">role_summary</span>
+                    </div>
+                    <p className="text-sm leading-7 text-slate-600">{activeExperience.fullDescription}</p>
+                  </div>
                 )}
-              </div>
-            )}
+
+                <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700">
+                  Live role indicator
+                  <ArrowRight className="h-4 w-4 text-cyan-300" />
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </div>
