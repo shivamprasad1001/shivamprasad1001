@@ -230,7 +230,7 @@ body::after {
 
 .panel-left {
   flex: 1;
-  padding-bottom: 5rem;
+  width: 100%;
 }
 
 @media (min-width: 1280px) {
@@ -241,16 +241,19 @@ body::after {
 }
 
 .panel-right {
-  display: none;
+  width: 100%;
+  min-height: 80vh; /* Visible on all screens, stacks on mobile */
   background: white;
-  border-left: 1px solid var(--border);
-  box-shadow: -8px 0 24px rgba(15, 23, 42, 0.02);
+  border-top: 1px solid var(--border);
 }
 
 @media (min-width: 1280px) {
   .panel-right {
-    display: flex;
-    flex-direction: column;
-    width: 50%; /* Adjusted for better reader space */
+    min-height: 0;
+    height: 100%;
+    width: 50%;
+    border-top: none;
+    border-left: 1px solid var(--border);
+    box-shadow: -8px 0 24px rgba(15, 23, 42, 0.02);
   }
 }

@@ -123,28 +123,28 @@ const PapersPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Right Panel: Fixed Preview Reader */}
-      <div className="panel-right overflow-hidden p-6 lg:p-10">
+      {/* Right Panel: Preview Reader (Stacks on Mobile) */}
+      <div id="reader-panel" className="panel-right flex flex-col overflow-hidden p-6 lg:p-10">
         {selectedPaper?.pdfPath ? (
           <motion.div
             key={selectedPaper.pdfPath}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex h-full flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-xl"
+            className="flex min-h-[70vh] flex-1 flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-xl xl:h-full"
           >
-            <header className="flex items-center justify-between border-b border-slate-100 bg-white/80 p-6 backdrop-blur-md">
+            <header className="flex flex-wrap items-center justify-between border-b border-slate-100 bg-white/80 p-5 backdrop-blur-md sm:p-6">
               <div className="flex-1 overflow-hidden">
                 <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">embedded_reader</p>
-                <h2 className="mt-2 truncate font-display text-2xl font-semibold text-slate-900">
+                <h2 className="mt-2 truncate font-display text-xl font-semibold text-slate-900 sm:text-2xl">
                   {selectedPaper.title}
                 </h2>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                 <button
                   type="button"
                   onClick={() => setIsFullscreen(true)}
-                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 sm:px-4 sm:py-3 sm:text-sm"
                 >
                   <Expand className="h-4 w-4" />
                   Full screen
@@ -154,7 +154,7 @@ const PapersPage: React.FC = () => {
                   href={selectedPaper.pdfPath}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-medium text-white transition hover:bg-slate-800"
+                  className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-2 text-xs font-medium text-white transition hover:bg-slate-800 sm:px-5 sm:py-3 sm:text-sm"
                 >
                   <ExternalLink className="h-4 w-4" />
                   Open raw
@@ -166,18 +166,18 @@ const PapersPage: React.FC = () => {
               <iframe
                 title={selectedPaper.title}
                 src={`${selectedPaper.pdfPath}#toolbar=1&navpanes=0&view=FitH`}
-                className="h-full w-full border-none"
+                className="h-full min-h-[500px] w-full border-none"
               />
             </div>
           </motion.div>
         ) : (
-          <div className="flex h-full flex-col items-center justify-center p-12 text-center">
+          <div className="flex h-full min-h-[40vh] flex-col items-center justify-center p-12 text-center">
             <div className="quiet-panel mb-8 flex h-20 w-20 items-center justify-center rounded-[2rem]">
               <BookOpen className="h-10 w-10 text-slate-400" />
             </div>
             <h2 className="font-display text-2xl font-semibold text-slate-900 sm:text-3xl">Select a paper to preview it here.</h2>
             <p className="mt-4 max-w-sm text-sm leading-7 text-slate-600">
-              When a visitor clicks <span className="font-medium text-slate-900">Read inside website</span>, the paper will open in this right-side embedded reader.
+              When you click <span className="font-medium text-slate-900">Read inside website</span>, the paper will open in this embedded reader (found below the list on mobile).
             </p>
           </div>
         )}
