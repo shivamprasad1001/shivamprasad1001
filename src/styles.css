@@ -192,3 +192,65 @@ body::after {
     padding-right: 2rem;
   }
 }
+
+/* Custom Scrollbar for Dashboard Panels */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.1);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.2);
+}
+
+/* Dashboard Layout Specifics */
+.dashboard-fixed {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-secondary);
+  min-height: 100vh;
+}
+
+@media (min-width: 1280px) {
+  .dashboard-fixed {
+    position: fixed;
+    inset: 0;
+    flex-direction: row;
+    overflow: hidden;
+  }
+}
+
+.panel-left {
+  flex: 1;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 1280px) {
+  .panel-left {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+}
+
+.panel-right {
+  display: none;
+  background: white;
+  border-left: 1px solid var(--border);
+  box-shadow: -8px 0 24px rgba(15, 23, 42, 0.02);
+}
+
+@media (min-width: 1280px) {
+  .panel-right {
+    display: flex;
+    flex-direction: column;
+    width: 50%; /* Adjusted for better reader space */
+  }
+}

@@ -78,11 +78,10 @@ const Navbar: React.FC = () => {
       <nav className="fixed inset-x-0 top-0 z-[100]">
         <div className="section-shell pt-5">
           <div
-            className={`flex items-center justify-between rounded-full border px-4 py-3 transition-all duration-300 sm:px-6 ${
-              isScrolled
+            className={`flex items-center justify-between rounded-full border px-4 py-3 transition-all duration-300 sm:px-6 ${isScrolled
                 ? 'glass-panel border-slate-200 shadow-[0_20px_60px_rgba(15,23,42,0.08)]'
                 : 'border-slate-200/80 bg-white/70'
-            }`}
+              }`}
           >
             <a href="#main-header" className="group flex items-center gap-2">
               <span className="font-display text-xl font-bold tracking-tight text-slate-900">
@@ -99,15 +98,13 @@ const Navbar: React.FC = () => {
                   <a
                     key={item.href}
                     href={item.href}
-                    className={`relative py-2 text-sm transition-colors ${
-                      active ? 'text-slate-900' : 'text-slate-500 hover:text-slate-900'
-                    }`}
+                    className={`relative py-2 text-sm transition-colors ${active ? 'text-slate-900' : 'text-slate-500 hover:text-slate-900'
+                      }`}
                   >
                     {item.label}
                     <span
-                      className={`absolute bottom-0 left-0 h-px bg-gradient-to-r from-cyan-400 to-violet-500 transition-all duration-300 ${
-                        active ? 'w-full opacity-100' : 'w-0 opacity-0'
-                      }`}
+                      className={`absolute bottom-0 left-0 h-px bg-gradient-to-r from-cyan-400 to-violet-500 transition-all duration-300 ${active ? 'w-full opacity-100' : 'w-0 opacity-0'
+                        }`}
                     />
                   </a>
                 );
@@ -180,11 +177,10 @@ const Navbar: React.FC = () => {
                     key={item.href}
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
-                    className={`flex items-center justify-between rounded-2xl border px-4 py-3 text-sm ${
-                      activeSection === item.href
+                    className={`flex items-center justify-between rounded-2xl border px-4 py-3 text-sm ${activeSection === item.href
                         ? 'border-cyan-300/50 bg-cyan-50 text-slate-900'
                         : 'border-slate-200 bg-white text-slate-600'
-                    }`}
+                      }`}
                   >
                     {item.label}
                     <ArrowUpRight className="h-4 w-4" />
