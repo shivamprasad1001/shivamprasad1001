@@ -68,9 +68,9 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <div className="fixed inset-x-0 top-0 z-[110] h-[2px] bg-slate-200">
+      <div className="fixed inset-x-0 top-0 z-[110] h-[2px] bg-[#E0D9CF]/30">
         <div
-          className="h-full bg-gradient-to-r from-cyan-400 via-violet-500 to-rose-400 transition-[width] duration-150"
+          className="h-full bg-gradient-to-r from-[#C17D4A] to-[#8B5E3C] transition-[width] duration-150"
           style={{ width: progressWidth }}
         />
       </div>
@@ -79,15 +79,15 @@ const Navbar: React.FC = () => {
         <div className="section-shell pt-5">
           <div
             className={`flex items-center justify-between rounded-full border px-4 py-3 transition-all duration-300 sm:px-6 ${isScrolled
-              ? 'glass-panel border-slate-200 shadow-[0_20px_60px_rgba(15,23,42,0.08)]'
-              : 'border-slate-200/80 bg-white/70'
+              ? 'glass-panel border-[#E0D9CF]/30 shadow-[0_20px_60px_rgba(44,40,37,0.06)]'
+              : 'border-[#E0D9CF]/20 bg-white/70'
               }`}
           >
             <a href="#main-header" className="group flex items-center gap-2">
-              <span className="font-display text-xl font-bold tracking-tight text-slate-900">
+              <span className="font-display text-xl font-bold tracking-tight text-[#2C2825]">
                 Shivam
               </span>
-              <span className="h-5 w-[2px] animate-pulse bg-cyan-400" />
+              <span className="h-5 w-[2px] animate-pulse bg-[#C17D4A]" />
             </a>
 
             <div className="hidden items-center gap-5 lg:flex">
@@ -98,12 +98,12 @@ const Navbar: React.FC = () => {
                   <a
                     key={item.href}
                     href={item.href}
-                    className={`relative py-2 text-sm transition-colors ${active ? 'text-slate-900' : 'text-slate-500 hover:text-slate-900'
+                    className={`relative py-2 text-sm transition-colors ${active ? 'text-[#2C2825]' : 'text-[#A89E94] hover:text-[#2C2825]'
                       }`}
                   >
                     {item.label}
                     <span
-                      className={`absolute bottom-0 left-0 h-px bg-gradient-to-r from-cyan-400 to-violet-500 transition-all duration-300 ${active ? 'w-full opacity-100' : 'w-0 opacity-0'
+                      className={`absolute bottom-0 left-0 h-px bg-[#C17D4A] transition-all duration-300 ${active ? 'w-full opacity-100' : 'w-0 opacity-0'
                         }`}
                     />
                   </a>
@@ -114,7 +114,7 @@ const Navbar: React.FC = () => {
             <div className="flex items-center gap-3">
               <a
                 href="/papers"
-                className="hidden rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 sm:inline-flex"
+                className="hidden rounded-full border border-[#E0D9CF] bg-white px-4 py-2 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:bg-[#FAF7F2] sm:inline-flex"
               >
                 Read Papers
               </a>
@@ -124,9 +124,9 @@ const Navbar: React.FC = () => {
                 download="shivam-resume.pdf"
                 className="group hidden rounded-full p-[1px] sm:inline-block"
               >
-                <span className="relative flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-cyan-400 via-violet-500 to-rose-400 p-[1px]">
+                <span className="relative flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#C17D4A] to-[#8B5E3C] p-[1px]">
                   <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
-                  <span className="relative flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-900">
+                  <span className="relative flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-[#2C2825]">
                     <Download className="h-4 w-4" />
                     Download CV
                   </span>
@@ -136,7 +136,7 @@ const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setMenuOpen((prev) => !prev)}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-900 lg:hidden"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#E0D9CF] bg-white text-[#2C2825] lg:hidden"
                 aria-label="Toggle navigation"
               >
                 {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -162,12 +162,12 @@ const Navbar: React.FC = () => {
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 40 }}
-              className="glass-panel fixed right-4 top-20 z-[100] w-[min(22rem,calc(100vw-2rem))] rounded-[2rem] border-slate-200 p-6 lg:hidden"
+              className="glass-panel fixed right-4 top-20 z-[100] w-[min(22rem,calc(100vw-2rem))] rounded-[2rem] border-[#E0D9CF]/40 p-6 lg:hidden"
             >
               <div className="mb-6 flex items-center justify-between">
                 <div>
                   <p className="section-kicker">Navigation</p>
-                  <p className="mt-2 text-sm text-slate-400">Jump anywhere in the portfolio.</p>
+                  <p className="mt-2 text-sm text-[#7A6E65]">Jump anywhere in the portfolio.</p>
                 </div>
               </div>
 
@@ -178,8 +178,8 @@ const Navbar: React.FC = () => {
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
                     className={`flex items-center justify-between rounded-2xl border px-4 py-3 text-sm ${activeSection === item.href
-                      ? 'border-cyan-300/50 bg-cyan-50 text-slate-900'
-                      : 'border-slate-200 bg-white text-slate-600'
+                      ? 'border-[#C17D4A]/50 bg-[#FAF7F2] text-[#2C2825]'
+                      : 'border-[#E0D9CF] bg-white text-[#7A6E65]'
                       }`}
                   >
                     {item.label}
@@ -191,18 +191,17 @@ const Navbar: React.FC = () => {
               <a
                 href="/papers"
                 onClick={() => setMenuOpen(false)}
-                className="mt-6 flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900"
+                className="mt-6 flex items-center justify-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-4 py-3 text-sm text-[#2C2825] transition hover:bg-[#FAF7F2]"
               >
-                Read Papers
+                Let&apos;s build together
+                <ArrowUpRight className="h-4 w-4" />
               </a>
-
               <a
                 href="./resume.pdf"
-                download="shivam-resume.pdf"
-                className="mt-3 flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900"
+                className="mt-3 flex items-center justify-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-4 py-3 text-sm text-[#2C2825] transition hover:bg-[#FAF7F2]"
               >
-                <Download className="h-4 w-4" />
-                Download CV
+                View CV
+                <ArrowUpRight className="h-4 w-4" />
               </a>
             </motion.div>
           </>

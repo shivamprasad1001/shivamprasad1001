@@ -19,9 +19,9 @@ const skillsData: SkillData[] = [
 ];
 
 const metrics = [
-  { key: 'skillLevel' as const, label: 'Skill Level', color: '#06b6d4' },
-  { key: 'deliveryConfidence' as const, label: 'Delivery Confidence', color: '#8b5cf6' },
-  { key: 'learningAgility' as const, label: 'Learning Agility', color: '#f43f5e' },
+  { key: 'skillLevel' as const, label: 'Skill Level', color: '#C17D4A' },
+  { key: 'deliveryConfidence' as const, label: 'Delivery Confidence', color: '#8B5E3C' },
+  { key: 'learningAgility' as const, label: 'Learning Agility', color: '#E0D9CF' },
 ];
 
 const SkillsRadar: React.FC = () => {
@@ -75,8 +75,8 @@ const SkillsRadar: React.FC = () => {
                   onClick={() => setSelectedMetric(active ? null : metric.key)}
                   className={`rounded-full border px-4 py-2 text-sm transition ${
                     active
-                      ? 'border-slate-300 bg-white text-slate-950'
-                      : 'border-slate-200 bg-white text-slate-700 hover:border-cyan-400/40'
+                      ? 'border-[#C17D4A]/50 bg-white text-[#2C2825]'
+                      : 'border-[#E0D9CF] bg-white text-[#7A6E65] hover:border-[#C17D4A]/40'
                   }`}
                 >
                   <span className="mr-2 inline-block h-2.5 w-2.5 rounded-full align-middle" style={{ backgroundColor: metric.color }} />
@@ -88,7 +88,7 @@ const SkillsRadar: React.FC = () => {
         </div>
 
         <div className="glass-panel relative overflow-hidden rounded-[2rem] p-5 sm:p-8">
-          <div className="absolute inset-0 bg-[radial-gradient(rgba(15,23,42,0.06)_1px,transparent_1px)] bg-[size:20px_20px] opacity-20" />
+          <div className="absolute inset-0 bg-[radial-gradient(rgba(44,40,37,0.06)_1px,transparent_1px)] bg-[size:20px_20px] opacity-20" />
           <div className="relative flex justify-center">
             <svg viewBox={`0 0 ${size} ${size}`} className="w-full max-w-[720px]">
               {Array.from({ length: levels }).map((_, index) => (
@@ -98,7 +98,7 @@ const SkillsRadar: React.FC = () => {
                   cy={center}
                   r={(radius / levels) * (index + 1)}
                   fill="none"
-                  stroke="rgba(15,23,42,0.08)"
+                  stroke="rgba(44,40,37,0.08)"
                 />
               ))}
 
@@ -111,7 +111,7 @@ const SkillsRadar: React.FC = () => {
                     y1={center}
                     x2={x}
                     y2={y}
-                    stroke="rgba(15,23,42,0.08)"
+                    stroke="rgba(44,40,37,0.08)"
                   />
                 );
               })}
@@ -161,7 +161,7 @@ const SkillsRadar: React.FC = () => {
                     y={y}
                     textAnchor="middle"
                     dominantBaseline="middle"
-                    className="fill-slate-700 text-[12px] font-medium"
+                    className="fill-[#2C2825] text-[12px] font-medium"
                   >
                     {skill.category}
                   </text>
@@ -173,11 +173,12 @@ const SkillsRadar: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, scale: 0.96 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="pointer-events-none absolute rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm shadow-2xl"
+                className="pointer-events-none absolute rounded-2xl border border-[#E0D9CF] bg-white px-4 py-3 text-sm shadow-2xl"
                 style={{ left: hovered.x - 20, top: hovered.y - 14 }}
               >
-                <p className="text-slate-900">{hovered.label}</p>
-                <p className="mt-1 text-slate-600">{hovered.value}%</p>
+                <div className="absolute -bottom-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-b border-r border-[#E0D9CF] bg-white" />
+                <p className="text-[#2C2825]">{hovered.label}</p>
+                <p className="mt-1 text-[#7A6E65]">{hovered.value}%</p>
               </motion.div>
             )}
           </div>

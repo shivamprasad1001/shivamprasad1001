@@ -85,14 +85,13 @@ const Header: React.FC = () => {
     <header id="main-header" className="relative overflow-hidden">
       <Navbar />
 
-      <section className="relative min-h-screen overflow-hidden pt-28">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(6,182,212,0.1),transparent_22%),radial-gradient(circle_at_78%_18%,rgba(139,92,246,0.12),transparent_16%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(193,125,74,0.1),transparent_22%),radial-gradient(circle_at_78%_18%,rgba(139,92,246,0.06),transparent_16%)]" />
           <div className="absolute inset-0 opacity-40">
             {particles.map((particle) => (
               <motion.span
                 key={particle.id}
-                className="absolute rounded-full bg-cyan-300/50"
+                className="absolute rounded-full bg-amber-500/40"
                 style={{
                   width: particle.size,
                   height: particle.size,
@@ -118,11 +117,11 @@ const Header: React.FC = () => {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="mb-8 inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600"
+                className="mb-8 inline-flex items-center gap-3 rounded-full border border-[#E0D9CF] bg-white px-4 py-2 text-sm text-[#7A6E65]"
               >
                 <span className="relative flex h-2.5 w-2.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-75" />
-                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-300" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#C17D4A] opacity-75" />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#C17D4A]" />
                 </span>
                 Focused on research collaborations
               </motion.div>
@@ -150,7 +149,7 @@ const Header: React.FC = () => {
                             visible: { y: 0, opacity: 1 },
                           }}
                           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                          className="font-display text-[3.15rem] font-bold leading-[0.9] tracking-[-0.05em] text-slate-900 sm:text-[4.8rem] lg:text-[6.8rem]"
+                          className="font-display text-[3.15rem] font-bold leading-[0.9] tracking-[-0.05em] text-[#2C2825] sm:text-[4.8rem] lg:text-[6.8rem]"
                         >
                           {letter}
                         </motion.span>
@@ -164,18 +163,18 @@ const Header: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.55, duration: 0.6 }}
-                className="mb-8 flex min-h-[2rem] items-center gap-3 text-base text-slate-600 sm:text-xl"
+                className="mb-8 flex min-h-[2rem] items-center gap-3 text-base text-[#7A6E65] sm:text-xl"
               >
-                <span className="font-mono text-xs uppercase tracking-[0.28em] text-slate-500">Research focus</span>
-                <span className="font-display text-slate-900">{typedRole}</span>
-                <span className="h-5 w-[2px] animate-pulse bg-cyan-400" />
+                <span className="font-mono text-xs uppercase tracking-[0.28em] text-[#A89E94]">Research focus</span>
+                <span className="font-display italic text-[#2C2825]">{typedRole}</span>
+                <span className="h-5 w-[2px] animate-pulse bg-[#C17D4A]" />
               </motion.div>
 
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7, duration: 0.6 }}
-                className="max-w-2xl text-base leading-8 text-slate-600 sm:text-lg"
+                className="max-w-2xl text-base leading-8 text-[#7A6E65] sm:text-lg"
               >
                 I am building my portfolio around one clear goal: becoming an AI/ML researcher who can connect strong
                 theory with practical systems. My work spans deep learning, NLP, computer vision, and LLM applications,
@@ -192,7 +191,7 @@ const Header: React.FC = () => {
                 {['AI Research', 'Deep Learning', 'NLP', 'Computer Vision', 'PyTorch', 'Paper Writing'].map((tag) => (
                   <span
                     key={tag}
-                    className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700"
+                    className="rounded-full border border-[#E0D9CF] bg-white px-3 py-1 text-xs font-medium text-[#7A6E65]"
                   >
                     {tag}
                   </span>
@@ -213,7 +212,7 @@ const Header: React.FC = () => {
                   animate={{ x: magneticStyle.x, y: magneticStyle.y }}
                   transition={{ type: 'spring', stiffness: 260, damping: 18 }}
                   data-cursor="interactive"
-                  className="group inline-flex w-fit items-center gap-3 rounded-full bg-slate-100 px-6 py-3 text-sm font-semibold text-slate-950 shadow-[0_12px_32px_rgba(0,0,0,0.18)]"
+                  className="group inline-flex w-fit items-center gap-3 rounded-full bg-[#2C2825] px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_32px_rgba(44,40,37,0.18)]"
                 >
                   Contact me
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -221,7 +220,7 @@ const Header: React.FC = () => {
 
                 <a
                   href="#portfolio"
-                  className="inline-flex w-fit items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-sm text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
+                  className="inline-flex w-fit items-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-6 py-3 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:bg-[#FAF7F2]"
                 >
                   View research projects
                   <BriefcaseBusiness className="h-4 w-4" />
@@ -243,9 +242,9 @@ const Header: React.FC = () => {
                       href={social.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-600 transition hover:border-slate-300 hover:text-slate-900"
+                      className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-[#E0D9CF] bg-white px-4 py-2.5 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:text-[#2C2825]"
                     >
-                      <span className="absolute inset-y-0 left-0 w-0 bg-slate-100 transition-all duration-300 group-hover:w-full" />
+                      <span className="absolute inset-y-0 left-0 w-0 bg-[#FAF7F2] transition-all duration-300 group-hover:w-full" />
                       <Icon className="relative z-10 h-4 w-4" />
                       <span className="relative z-10">{social.label}</span>
                     </a>
@@ -260,17 +259,17 @@ const Header: React.FC = () => {
               transition={{ delay: 0.25, duration: 0.7 }}
               className="relative mx-auto w-full max-w-[27rem]"
             >
-              <div className="relative rounded-[2rem] border border-slate-200 bg-white p-5 shadow-[0_24px_60px_rgba(15,23,42,0.12)]">
+              <div className="relative rounded-[2rem] border border-[#E0D9CF] bg-white p-5 shadow-[0_24px_60px_rgba(44,40,37,0.1)]">
                 <div className="mb-5 flex items-center gap-2">
                   <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-amber-300" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-300" />
-                  <span className="ml-3 font-mono text-xs uppercase tracking-[0.3em] text-slate-500">portrait</span>
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#8B5E3C]" />
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#C17D4A]" />
+                  <span className="ml-3 font-mono text-xs uppercase tracking-[0.3em] text-[#A89E94]">portrait</span>
                 </div>
-                <div className="noise-mask rounded-[1.5rem] border border-slate-200 bg-slate-50 p-4">
+                <div className="noise-mask rounded-[1.5rem] border border-[#E0D9CF] bg-[#FAF7F2] p-4">
                   <div className="relative mx-auto aspect-square overflow-hidden rounded-[1.35rem]">
                     <motion.div
-                      className="absolute inset-0 rounded-[1.35rem] bg-[conic-gradient(from_90deg,rgba(6,182,212,0.55),rgba(139,92,246,0.45),rgba(6,182,212,0.55))]"
+                      className="absolute inset-0 rounded-[1.35rem] bg-[conic-gradient(from_90deg,#C17D4A,#8B5E3C,#C17D4A)]"
                       animate={{ rotate: 360 }}
                       transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
                     />
@@ -287,9 +286,9 @@ const Header: React.FC = () => {
                       ['Deployment', 'Inference-ready apps'],
                       ['Stack', 'Python, FastAPI, React'],
                     ].map(([title, value]) => (
-                      <div key={title} className="rounded-2xl border border-slate-200 bg-white px-4 py-3">
-                        <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-slate-500">{title}</p>
-                        <p className="mt-2 text-sm text-slate-700">{value}</p>
+                      <div key={title} className="rounded-2xl border border-[#E0D9CF] bg-white px-4 py-3">
+                        <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[#A89E94]">{title}</p>
+                        <p className="mt-2 text-sm text-[#7A6E65]">{value}</p>
                       </div>
                     ))}
                   </div>
@@ -298,7 +297,6 @@ const Header: React.FC = () => {
             </motion.div>
           </div>
         </div>
-      </section>
     </header>
   );
 };

@@ -77,33 +77,33 @@ const ContactForm: React.FC = () => {
           <div className="glass-panel rounded-[2rem] p-6 sm:p-8">
             <div className="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
               <div className="mb-5 flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
-                <span className="h-2.5 w-2.5 rounded-full bg-amber-300" />
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-300" />
-                <span className="ml-3 font-mono text-xs uppercase tracking-[0.28em] text-slate-500">terminal.outreach</span>
+                <span className="h-2.5 w-2.5 rounded-full bg-[#C17D4A]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#8B5E3C]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#E0D9CF]" />
+                <span className="ml-3 font-mono text-xs uppercase tracking-[0.28em] text-[#A89E94]">terminal.outreach</span>
               </div>
-              <div className="space-y-4 text-sm text-slate-700">
+              <div className="space-y-4 text-sm text-[#7A6E65]">
                 <div className="flex items-center gap-3">
-                  <Mail className="h-4 w-4 text-cyan-300" />
+                  <Mail className="h-4 w-4 text-[#C17D4A]" />
                   shivamprasad1001@gmail.com
                 </div>
                 <div className="flex items-center gap-3">
-                  <MapPin className="h-4 w-4 text-violet-300" />
+                  <MapPin className="h-4 w-4 text-[#8B5E3C]" />
                   New Delhi, India
                 </div>
                 <div className="flex items-center gap-3">
-                  <Clock3 className="h-4 w-4 text-emerald-300" />
+                  <Clock3 className="h-4 w-4 text-[#C17D4A]" />
                   Usually replies within 24 hours
                 </div>
               </div>
             </div>
 
             <div className="mt-6">
-              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">why_work_with_me</p>
+              <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#A89E94]">why_work_with_me</p>
               <div className="mt-5 flex flex-wrap gap-3">
                 {perks.map((perk, index) => (
-                  <div key={perk} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700">
-                    <span className={`h-2 w-2 rounded-full ${index % 2 === 0 ? 'bg-cyan-300' : 'bg-violet-300'}`} />
+                  <div key={perk} className="inline-flex items-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-4 py-2 text-sm text-[#7A6E65]">
+                    <span className={`h-2 w-2 rounded-full ${index % 2 === 0 ? 'bg-[#C17D4A]' : 'bg-[#8B5E3C]'}`} />
                     {perk}
                   </div>
                 ))}
@@ -125,10 +125,10 @@ const ContactForm: React.FC = () => {
 
           <div className="glass-panel rounded-[2rem] p-6 sm:p-8">
             <div className="mb-8 flex items-center gap-3">
-              <Sparkles className="h-5 w-5 text-cyan-300" />
+              <Sparkles className="h-5 w-5 text-[#C17D4A]" />
               <div>
-                <h3 className="font-display text-2xl font-semibold text-slate-900">Send a project note</h3>
-                <p className="mt-1 text-sm text-slate-600">Tell me what you&apos;re building, what stage you&apos;re in, and where AI or product engineering can help.</p>
+                <h3 className="font-display text-2xl font-bold text-[#2C2825]">Send a project note</h3>
+                <p className="mt-1 text-sm text-[#7A6E65]">Tell me what you&apos;re building, what stage you&apos;re in, and where AI or product engineering can help.</p>
               </div>
             </div>
 
@@ -140,7 +140,7 @@ const ContactForm: React.FC = () => {
                     type="text"
                     name="user_name"
                     required
-                    className="w-full border-0 border-b border-slate-200 bg-transparent px-0 py-3 text-slate-900 outline-none transition focus:border-cyan-400"
+                    className="w-full border-0 border-b border-[#E0D9CF] bg-transparent px-0 py-3 text-[#2C2825] outline-none transition focus:border-[#C17D4A]"
                     placeholder="Your name"
                   />
                 </label>
@@ -150,7 +150,7 @@ const ContactForm: React.FC = () => {
                     type="email"
                     name="user_email"
                     required
-                    className="w-full border-0 border-b border-slate-200 bg-transparent px-0 py-3 text-slate-900 outline-none transition focus:border-cyan-400"
+                    className="w-full border-0 border-b border-[#E0D9CF] bg-transparent px-0 py-3 text-[#2C2825] outline-none transition focus:border-[#C17D4A]"
                     placeholder="you@example.com"
                   />
                 </label>
@@ -162,7 +162,7 @@ const ContactForm: React.FC = () => {
                   type="text"
                   name="subject"
                   required
-                  className="w-full border-0 border-b border-slate-200 bg-transparent px-0 py-3 text-slate-900 outline-none transition focus:border-cyan-400"
+                  className="w-full border-0 border-b border-[#E0D9CF] bg-transparent px-0 py-3 text-[#2C2825] outline-none transition focus:border-[#C17D4A]"
                   placeholder="What are we building?"
                 />
               </label>
@@ -178,7 +178,7 @@ const ContactForm: React.FC = () => {
                   maxLength={500}
                   required
                   onChange={(event) => setMessageLength(event.target.value.length)}
-                  className="w-full resize-none border-0 border-b border-slate-200 bg-transparent px-0 py-3 text-slate-900 outline-none transition focus:border-cyan-400"
+                  className="w-full resize-none border-0 border-b border-[#E0D9CF] bg-transparent px-0 py-3 text-[#2C2825] outline-none transition focus:border-[#C17D4A]"
                   placeholder="Project context, timeline, goals, and any constraints..."
                 />
               </label>
@@ -193,8 +193,8 @@ const ContactForm: React.FC = () => {
                 transition={{ type: 'spring', stiffness: 240, damping: 18 }}
                 className={`inline-flex w-full items-center justify-center gap-3 rounded-full px-5 py-3 text-sm font-medium ${
                   isSubmitting
-                    ? 'bg-slate-200 text-slate-500'
-                    : 'bg-gradient-to-r from-cyan-400 to-violet-500 text-slate-950 shadow-[0_16px_45px_rgba(6,182,212,0.22)]'
+                    ? 'bg-[#E0D9CF] text-[#A89E94]'
+                    : 'bg-[#C17D4A] text-white shadow-[0_16px_45px_rgba(193,125,74,0.22)] transition hover:bg-[#8B5E3C]'
                 }`}
               >
                 {isSubmitting ? 'Sending...' : 'Send message'}

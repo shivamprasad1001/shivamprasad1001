@@ -16,6 +16,7 @@ import BackToTop from './src/components/BackToTop';
 import PapersPage from './src/components/PapersPage';
 import NotFound from './src/components/NotFound';
 import { Analytics } from "@vercel/analytics/react"
+import GwenWidget from './src/components/GwenWidget';
 
 const usePathname = () => {
   const [pathname, setPathname] = React.useState(window.location.pathname);
@@ -41,7 +42,7 @@ const App: React.FC = () => {
           keywords="Shivam Prasad papers, AI ML papers, research portfolio, machine learning paper"
           url="https://shivamprasad1001.vercel.app/papers"
         />
-        <div className="overflow-x-hidden bg-white text-slate-900">
+        <div className="overflow-x-hidden bg-[#FAF7F2] text-[#2C2825]">
           <CustomCursor />
           <PapersPage />
           <Analytics />
@@ -61,7 +62,7 @@ const App: React.FC = () => {
   return (
     <AppWrapper>
       <SEO />
-      <div className="overflow-x-hidden bg-white text-slate-900">
+      <div className="overflow-x-hidden bg-[#FAF7F2] text-[#2C2825]">
         <CustomCursor />
         <Header />
         <main>
@@ -79,6 +80,7 @@ const App: React.FC = () => {
         <BackToTop />
         <Analytics />
         {/* <Chatbot /> */}
+        <GwenWidget />
       </div>
     </AppWrapper>
   );

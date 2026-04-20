@@ -39,12 +39,12 @@ const FeaturedWorks: React.FC = () => {
             <p className="section-kicker">Research-aligned projects</p>
             <h2 className="section-title mt-4">Selected projects that reflect the problems I want to study more deeply.</h2>
           </div>
-          <div className="quiet-panel rounded-[1.5rem] px-5 py-4">
-            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">portfolio summary</p>
-            <div className="mt-3 flex gap-6 text-sm text-slate-600">
+          <div className="quiet-panel rounded-[1.5rem] px-5 py-4 border-[#E0D9CF]/50 bg-white/60">
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#A89E94]">portfolio summary</p>
+            <div className="mt-3 flex gap-6 text-sm text-[#7A6E65]">
               <span>{projectCount}+ featured projects</span>
               <span className="inline-flex items-center gap-2">
-                <Star className="h-4 w-4 text-amber-300" />
+                <Star className="h-4 w-4 text-[#C17D4A]" />
                 AI work with research potential
               </span>
             </div>
@@ -69,12 +69,12 @@ const FeaturedWorks: React.FC = () => {
               </div>
               <div className="flex flex-col justify-between gap-6 p-2">
                 <div>
-                  <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">Featured project</p>
-                  <h3 className="mt-4 font-display text-3xl font-semibold text-slate-900 sm:text-4xl">{spotlight.title}</h3>
-                  <p className="mt-4 text-sm leading-7 text-slate-600">{spotlight.description}</p>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#A89E94]">Featured project</p>
+                  <h3 className="mt-4 font-display text-3xl font-bold text-[#2C2825] sm:text-4xl">{spotlight.title}</h3>
+                  <p className="mt-4 text-sm leading-7 text-[#7A6E65]">{spotlight.description}</p>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {[...getProjectTags(spotlight.title), `${spotlight.year}`].map((tag) => (
-                      <span key={tag} className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-600">
+                      <span key={tag} className="rounded-full border border-[#E0D9CF] bg-white px-3 py-1 text-xs text-[#7A6E65]">
                         {tag}
                       </span>
                     ))}
@@ -87,7 +87,7 @@ const FeaturedWorks: React.FC = () => {
                       href={spotlight.liveUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full bg-slate-100 px-5 py-3 text-sm font-medium text-slate-950"
+                      className="inline-flex items-center gap-2 rounded-full bg-[#C17D4A] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#8B5E3C]"
                     >
                       View live
                       <ArrowUpRight className="h-4 w-4" />
@@ -98,7 +98,7 @@ const FeaturedWorks: React.FC = () => {
                       href={spotlight.repoUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm text-slate-700"
+                      className="inline-flex items-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-5 py-3 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/30"
                     >
                       Source
                       <Github className="h-4 w-4" />
@@ -134,7 +134,7 @@ const FeaturedWorks: React.FC = () => {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-medium text-slate-950"
+                        className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-medium text-[#2C2825]"
                       >
                         Live
                         <ArrowUpRight className="h-3.5 w-3.5" />
@@ -145,7 +145,7 @@ const FeaturedWorks: React.FC = () => {
                         href={project.repoUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/90 px-3 py-2 text-xs text-slate-900"
+                        className="inline-flex items-center gap-2 rounded-full border border-[#E0D9CF] bg-white/90 px-3 py-2 text-xs text-[#2C2825]"
                       >
                         GitHub
                         <Github className="h-3.5 w-3.5" />
@@ -156,14 +156,14 @@ const FeaturedWorks: React.FC = () => {
 
                 <div className="p-5">
                   <div className="flex items-center justify-between gap-4">
-                    <h3 className="font-display text-xl font-semibold text-slate-900">{project.title}</h3>
-                    <span className="text-sm text-slate-500">{project.year}</span>
+                    <h3 className="font-display text-xl font-bold text-[#2C2825]">{project.title}</h3>
+                    <span className="text-sm text-[#A89E94]">{project.year}</span>
                   </div>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">{project.description}</p>
-                  <p className="mt-3 text-xs uppercase tracking-[0.24em] text-slate-500">Research direction signal</p>
+                  <p className="mt-3 text-sm leading-7 text-[#7A6E65]">{project.description}</p>
+                  <p className="mt-3 text-xs uppercase tracking-[0.24em] text-[#C17D4A]">Research direction signal</p>
                   <div className="mt-5 flex flex-wrap gap-2">
                     {getProjectTags(project.title).map((tag) => (
-                      <span key={`${project.title}-${tag}`} className="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-600">
+                      <span key={`${project.title}-${tag}`} className="rounded-full border border-[#E0D9CF] bg-white px-3 py-1 text-xs text-[#7A6E65]">
                         {tag}
                       </span>
                     ))}

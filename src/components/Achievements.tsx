@@ -105,13 +105,13 @@ const RingSkill: React.FC<{ skill: Skill; index: number }> = ({ skill, index }) 
             />
             <defs>
               <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#06b6d4" />
-                <stop offset="100%" stopColor="#8b5cf6" />
+                <stop offset="0%" stopColor="#C17D4A" />
+                <stop offset="100%" stopColor="#8B5E3C" />
               </linearGradient>
             </defs>
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <skill.icon className="h-5 w-5 text-cyan-300" />
+            <skill.icon className="h-5 w-5 text-[#C17D4A]" />
             <span className="mt-1 font-display text-lg font-bold text-slate-900">{skill.level}%</span>
           </div>
         </div>
@@ -146,7 +146,7 @@ const Achievements: React.FC = () => {
               <p className="font-mono text-xs uppercase tracking-[0.28em] text-slate-500">[education_research_and_certifications]</p>
             </div>
             <div className="relative pl-8 sm:pl-10">
-              <div className="absolute bottom-0 left-3 top-2 w-px bg-gradient-to-b from-cyan-400/70 via-violet-500/45 to-transparent sm:left-4" />
+              <div className="absolute bottom-0 left-3 top-2 w-px bg-gradient-to-b from-[#C17D4A]/70 via-[#8B5E3C]/45 to-transparent sm:left-4" />
               <div className="space-y-8">
                 {timeline.map((item) => (
                   <motion.div
@@ -156,13 +156,13 @@ const Achievements: React.FC = () => {
                     viewport={{ once: true, amount: 0.2 }}
                     className="relative"
                   >
-                    <span className="absolute -left-[1.9rem] top-2 h-3 w-3 rounded-full border border-cyan-300/40 bg-white sm:-left-[2.15rem]" />
+                    <span className="absolute -left-[1.9rem] top-2 h-3 w-3 rounded-full border border-[#C17D4A]/40 bg-white sm:-left-[2.15rem]" />
                     <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-slate-500">{item.period}</p>
-                    <div className="mt-2 rounded-[1.5rem] border border-slate-200 bg-white p-5">
-                      <p className="text-xs uppercase tracking-[0.28em] text-cyan-700">[{item.kind}]</p>
-                      <h3 className="mt-3 font-display text-xl font-semibold text-slate-900">{item.title}</h3>
-                      <p className="mt-2 text-sm text-slate-700">{item.institution}</p>
-                      {item.description && <p className="mt-3 text-sm leading-6 text-slate-600">{item.description}</p>}
+                    <div className="mt-2 rounded-[1.5rem] border border-[#E0D9CF] bg-white p-5">
+                      <p className="text-xs uppercase tracking-[0.28em] text-[#C17D4A]">[{item.kind}]</p>
+                      <h3 className="mt-3 font-display text-xl font-semibold text-[#2C2825]">{item.title}</h3>
+                      <p className="mt-2 text-sm text-[#A89E94]">{item.institution}</p>
+                      {item.description && <p className="mt-3 text-sm leading-6 text-[#2C2825]">{item.description}</p>}
                     </div>
                   </motion.div>
                 ))}

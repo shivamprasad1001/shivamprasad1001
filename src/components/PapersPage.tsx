@@ -28,7 +28,7 @@ const PapersPage: React.FC = () => {
           <div className="mb-10 flex flex-wrap items-center justify-between gap-4">
             <a
               href="/"
-              className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-3 text-sm text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
+              className="inline-flex items-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-5 py-3 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:bg-[#FAF7F2]"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to portfolio
@@ -59,32 +59,32 @@ const PapersPage: React.FC = () => {
               >
                 <div className="flex flex-wrap items-start justify-between gap-4">
                   <div>
-                    <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">{paper.venue}</p>
-                    <h2 className="mt-3 font-display text-2xl font-semibold text-slate-900 sm:text-3xl">{paper.title}</h2>
+                    <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#A89E94]">{paper.venue}</p>
+                    <h2 className="mt-3 font-display text-2xl font-bold text-[#2C2825] sm:text-3xl">{paper.title}</h2>
                   </div>
-                  <div className="rounded-full bg-cyan-50 px-4 py-2 text-sm text-cyan-700">
+                  <div className="rounded-full bg-[#C17D4A]/10 px-4 py-2 text-sm text-[#C17D4A]">
                     {paper.status}
                   </div>
                 </div>
 
-                <p className="mt-5 text-sm leading-7 text-slate-600">{paper.summary}</p>
+                <p className="mt-5 text-sm leading-7 text-[#7A6E65]">{paper.summary}</p>
 
-                <div className="mt-6 flex flex-wrap gap-3 text-sm text-slate-600">
-                  <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2">
-                    <BookOpen className="h-4 w-4 text-cyan-500" />
+                <div className="mt-6 flex flex-wrap gap-3 text-sm text-[#7A6E65]">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-3 py-2">
+                    <BookOpen className="h-4 w-4 text-[#C17D4A]" />
                     {paper.year}
                   </div>
-                  <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2">
-                    <Users className="h-4 w-4 text-violet-400" />
+                  <div className="inline-flex items-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-3 py-2">
+                    <Users className="h-4 w-4 text-[#8B5E3C]" />
                     {paper.collaborators.length} collaborators
                   </div>
                 </div>
 
                 <div className="mt-6">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">Authors</p>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#A89E94]">Authors</p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {paper.collaborators.map((name) => (
-                      <span key={name} className="rounded-full border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700">
+                      <span key={name} className="rounded-full border border-[#E0D9CF] bg-white px-3 py-2 text-sm text-[#7A6E65]">
                         {name}
                       </span>
                     ))}
@@ -96,13 +96,13 @@ const PapersPage: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => handleReadAction(paper)}
-                      className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-medium text-white transition hover:bg-slate-800"
+                      className="inline-flex items-center gap-2 rounded-full bg-[#C17D4A] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#8B5E3C]"
                     >
                       <FileText className="h-4 w-4" />
                       Read inside website
                     </button>
                   ) : (
-                    <div className="inline-flex items-center gap-2 rounded-full border border-dashed border-slate-300 px-5 py-3 text-sm text-slate-500">
+                    <div className="inline-flex items-center gap-2 rounded-full border border-dashed border-[#E0D9CF] px-5 py-3 text-sm text-[#A89E94]">
                       <FolderOpen className="h-4 w-4" />
                       Add PDF later in public/papers/
                     </div>
@@ -117,12 +117,12 @@ const PapersPage: React.FC = () => {
               transition={{ delay: 0.12 }}
               className="glass-panel h-fit rounded-[2rem] p-6 sm:p-8"
             >
-              <p className="font-mono text-xs uppercase tracking-[0.28em] text-slate-500">research_quote</p>
+              <p className="font-mono text-xs uppercase tracking-[0.28em] text-[#A89E94]">research_quote</p>
               <blockquote className="mt-4">
-                <p className="font-display text-2xl font-semibold leading-tight text-slate-900 sm:text-3xl">
+                <p className="font-display text-2xl font-bold leading-tight text-[#2C2825] sm:text-3xl">
                   “Great research begins with curiosity and grows through consistency.”
                 </p>
-                <p className="mt-4 text-sm leading-7 text-slate-600">
+                <p className="mt-4 text-sm leading-7 text-[#7A6E65]">
                   Each paper I write is part of a bigger goal: to learn deeply, build carefully, and contribute something meaningful to AI/ML.
                 </p>
               </blockquote>
@@ -138,12 +138,12 @@ const PapersPage: React.FC = () => {
             key={selectedPaper.pdfPath}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex h-full flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-xl"
+            className="flex h-full flex-col overflow-hidden rounded-[2rem] border border-[#E0D9CF] bg-white shadow-xl"
           >
-            <header className="flex items-center justify-between border-b border-slate-100 bg-white/80 p-6 backdrop-blur-md">
+            <header className="flex items-center justify-between border-b border-[#E0D9CF]/30 bg-white/80 p-6 backdrop-blur-md">
               <div className="flex-1 overflow-hidden">
-                <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">embedded_reader</p>
-                <h2 className="mt-2 truncate font-display text-2xl font-semibold text-slate-900">
+                <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#A89E94]">embedded_reader</p>
+                <h2 className="mt-2 truncate font-display text-2xl font-bold text-[#2C2825]">
                   {selectedPaper.title}
                 </h2>
               </div>
@@ -152,7 +152,7 @@ const PapersPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsFullscreen(true)}
-                  className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 transition hover:border-slate-300 hover:bg-slate-50"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-4 py-3 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:bg-[#FAF7F2]"
                 >
                   <Expand className="h-4 w-4" />
                   Full screen
@@ -162,7 +162,7 @@ const PapersPage: React.FC = () => {
                   href={selectedPaper.pdfPath}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-3 text-sm font-medium text-white transition hover:bg-slate-800"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#C17D4A] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#8B5E3C]"
                 >
                   <ExternalLink className="h-4 w-4" />
                   Open raw
@@ -170,7 +170,7 @@ const PapersPage: React.FC = () => {
               </div>
             </header>
 
-            <div className="flex-1 bg-slate-50/50 p-0">
+            <div className="flex-1 bg-[#FAF7F2]/50 p-0">
               <iframe
                 title={selectedPaper.title}
                 src={`${selectedPaper.pdfPath}#toolbar=1&navpanes=0&view=FitH`}
@@ -181,11 +181,11 @@ const PapersPage: React.FC = () => {
         ) : (
           <div className="flex h-full flex-col items-center justify-center p-12 text-center">
             <div className="quiet-panel mb-8 flex h-20 w-20 items-center justify-center rounded-[2rem]">
-              <BookOpen className="h-10 w-10 text-slate-400" />
+              <BookOpen className="h-10 w-10 text-[#A89E94]" />
             </div>
-            <h2 className="font-display text-2xl font-semibold text-slate-900 sm:text-3xl">Select a paper to preview it here.</h2>
-            <p className="mt-4 max-w-sm text-sm leading-7 text-slate-600">
-              When a visitor clicks <span className="font-medium text-slate-900">Read inside website</span>, the paper will open in this right-side embedded reader.
+            <h2 className="font-display text-2xl font-bold text-[#2C2825] sm:text-3xl">Select a paper to preview it here.</h2>
+            <p className="mt-4 max-w-sm text-sm leading-7 text-[#7A6E65]">
+              When a visitor clicks <span className="font-medium text-[#2C2825]">Read inside website</span>, the paper will open in this right-side embedded reader.
             </p>
           </div>
         )}
@@ -201,7 +201,7 @@ const PapersPage: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsFullscreen(false)}
-              className="fixed inset-0 z-[120] bg-slate-950/70 backdrop-blur-sm"
+              className="fixed inset-0 z-[120] bg-[#2C2825]/80 backdrop-blur-sm"
               aria-label="Close fullscreen paper reader"
             />
 
@@ -210,12 +210,12 @@ const PapersPage: React.FC = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.98, y: 12 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-4 z-[130] flex flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.35)]"
+              className="fixed inset-4 z-[130] flex flex-col overflow-hidden rounded-[2rem] border border-[#E0D9CF] bg-white shadow-[0_24px_80px_rgba(44,40,37,0.3)]"
             >
-              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 px-5 py-4 sm:px-6">
+              <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E0D9CF]/30 px-5 py-4 sm:px-6">
                 <div className="flex-1 overflow-hidden">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">fullscreen_reader</p>
-                  <h2 className="mt-1 truncate font-display text-xl font-semibold text-slate-900 sm:text-2xl">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#A89E94]">fullscreen_reader</p>
+                  <h2 className="mt-1 truncate font-display text-xl font-bold text-[#2C2825] sm:text-2xl">
                     {selectedPaper.title}
                   </h2>
                 </div>
@@ -225,7 +225,7 @@ const PapersPage: React.FC = () => {
                     href={selectedPaper.pdfPath}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 sm:px-4 sm:py-3 sm:text-sm"
+                    className="inline-flex items-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-3 py-2 text-xs text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:bg-[#FAF7F2] sm:px-4 sm:py-3 sm:text-sm"
                   >
                     Open raw PDF
                     <ExternalLink className="h-4 w-4" />
@@ -234,7 +234,7 @@ const PapersPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setIsFullscreen(false)}
-                    className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-2 text-xs font-medium text-white sm:px-4 sm:py-3 sm:text-sm"
+                    className="inline-flex items-center gap-2 rounded-full bg-[#C17D4A] px-3 py-2 text-xs font-medium text-white transition hover:bg-[#8B5E3C] sm:px-4 sm:py-3 sm:text-sm"
                   >
                     Close
                     <X className="h-4 w-4" />

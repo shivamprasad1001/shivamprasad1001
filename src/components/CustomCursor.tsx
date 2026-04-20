@@ -46,7 +46,7 @@ const CustomCursor: React.FC = () => {
   return (
     <motion.div
       aria-hidden="true"
-      className="pointer-events-none fixed left-0 top-0 z-[120] hidden rounded-full border border-cyan-300/50 bg-cyan-300/30 mix-blend-screen md:block"
+      className="pointer-events-none fixed left-0 top-0 z-[120] hidden rounded-full border border-[#C17D4A]/50 bg-[#C17D4A]/20 mix-blend-difference md:block"
       style={{ x, y }}
       animate={{
         width: active ? 42 : 20,
@@ -55,7 +55,7 @@ const CustomCursor: React.FC = () => {
         marginTop: active ? -11 : 0,
         opacity: active ? 0.75 : 1,
         filter: active ? 'blur(2px)' : 'blur(0px)',
-        backgroundColor: active ? 'rgba(139,92,246,0.16)' : 'rgba(6,182,212,0.35)',
+        backgroundColor: active ? 'rgba(193,125,74,0.12)' : 'rgba(139,94,70,0.25)',
       }}
       transition={{ type: 'spring', stiffness: 360, damping: 28 }}
     />

@@ -30,7 +30,7 @@ const WorkExperience: React.FC = () => {
 
         <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
           <div className="relative pl-8">
-            <div className="absolute bottom-0 left-3 top-3 w-px bg-slate-200" />
+            <div className="absolute bottom-0 left-3 top-3 w-px bg-[#E0D9CF]" />
             <div className="space-y-5">
               {experiences.map((experience, index) => {
                 const active = index === activeIndex;
@@ -44,20 +44,20 @@ const WorkExperience: React.FC = () => {
                   >
                     <span
                       className={`absolute -left-[1.95rem] top-5 h-3.5 w-3.5 rounded-full ${
-                        active ? 'bg-cyan-500 shadow-[0_0_0_8px_rgba(6,182,212,0.12)] animate-pulse' : 'bg-slate-300'
+                        active ? 'bg-[#C17D4A] shadow-[0_0_0_8px_rgba(193,125,74,0.12)] animate-pulse' : 'bg-[#E0D9CF]'
                       }`}
                     />
-                    <div className={`glass-panel rounded-[1.6rem] p-5 transition ${active ? 'border-cyan-400/25' : ''}`}>
+                    <div className={`glass-panel rounded-[1.6rem] p-5 transition ${active ? 'border-[#C17D4A]/25' : 'border-[#E0D9CF]/30'}`}>
                       <div className="flex items-center justify-between gap-3">
-                        <p className="font-display text-lg text-slate-900">{experience.company}</p>
+                        <p className="font-display text-lg font-bold text-[#2C2825]">{experience.company}</p>
                         {active && (
-                          <span className="rounded-full bg-emerald-400/12 px-3 py-1 text-[11px] uppercase tracking-[0.28em] text-emerald-300">
+                          <span className="rounded-full bg-[#C17D4A]/10 px-3 py-1 text-[11px] uppercase tracking-[0.28em] text-[#C17D4A]">
                             Now
                           </span>
                         )}
                       </div>
-                      <p className="mt-2 text-sm text-slate-600">{experience.period}</p>
-                      <p className="mt-1 text-sm text-slate-500">{experience.location}</p>
+                      <p className="mt-2 text-sm text-[#7A6E65]">{experience.period}</p>
+                      <p className="mt-1 text-sm text-[#A89E94]">{experience.location}</p>
                     </div>
                   </button>
                 );
@@ -77,20 +77,20 @@ const WorkExperience: React.FC = () => {
                 <div className="flex flex-wrap items-start justify-between gap-5">
                   <div>
                     <div className="mb-4 flex items-center gap-3">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-slate-200 bg-white">
-                        <Building2 className="h-6 w-6 text-cyan-300" />
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#E0D9CF] bg-white">
+                        <Building2 className="h-6 w-6 text-[#C17D4A]" />
                       </div>
                       <div>
-                        <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">{activeExperience.period}</p>
-                        <h3 className="mt-2 font-display text-3xl font-semibold text-slate-900">{activeExperience.title}</h3>
+                        <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#A89E94]">{activeExperience.period}</p>
+                        <h3 className="mt-2 font-display text-3xl font-bold text-[#2C2825]">{activeExperience.title}</h3>
                       </div>
                     </div>
-                    <p className="max-w-2xl text-sm leading-7 text-slate-600">{activeExperience.description}</p>
+                    <p className="max-w-2xl text-sm leading-7 text-[#7A6E65]">{activeExperience.description}</p>
                   </div>
 
                   <div className="flex flex-wrap gap-2">
                     {['LLMs', 'Automation', 'NLP', 'Deployment'].map((tag) => (
-                      <span key={tag} className="rounded-full border border-slate-200 bg-white px-3 py-2 text-xs text-slate-700">
+                      <span key={tag} className="rounded-full border border-[#E0D9CF] bg-white px-3 py-2 text-xs text-[#7A6E65]">
                         {tag}
                       </span>
                     ))}
@@ -98,18 +98,18 @@ const WorkExperience: React.FC = () => {
                 </div>
 
                 {activeExperience.fullDescription && (
-                  <div className="mt-8 rounded-[1.6rem] border border-slate-200 bg-white p-5">
-                    <div className="mb-3 flex items-center gap-2 text-cyan-300">
+                  <div className="mt-8 rounded-[1.6rem] border border-[#E0D9CF] bg-white p-5">
+                    <div className="mb-3 flex items-center gap-2 text-[#C17D4A]">
                       <Sparkles className="h-4 w-4" />
                       <span className="font-mono text-[11px] uppercase tracking-[0.28em]">role_summary</span>
                     </div>
-                    <p className="text-sm leading-7 text-slate-600">{activeExperience.fullDescription}</p>
+                    <p className="text-sm leading-7 text-[#7A6E65]">{activeExperience.fullDescription}</p>
                   </div>
                 )}
 
-                <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700">
+                <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-4 py-3 text-sm text-[#7A6E65]">
                   Live role indicator
-                  <ArrowRight className="h-4 w-4 text-cyan-300" />
+                  <ArrowRight className="h-4 w-4 text-[#C17D4A]" />
                 </div>
               </motion.div>
             </AnimatePresence>

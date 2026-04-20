@@ -36,7 +36,7 @@ const BackToTop: React.FC = () => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.9 }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="fixed bottom-6 right-6 z-[90] flex h-14 w-14 items-center justify-center rounded-full border border-slate-200 bg-white/95 text-slate-900 shadow-[0_20px_60px_rgba(15,23,42,0.15)] backdrop-blur"
+          className="fixed bottom-6 left-6 z-[90] flex h-14 w-14 items-center justify-center rounded-full border border-[#E0D9CF] bg-white/95 text-[#2C2825] shadow-[0_20px_60px_rgba(44,40,37,0.1)] backdrop-blur transition-transform active:scale-95"
           aria-label="Back to top"
         >
           <svg className="absolute inset-0 -rotate-90" viewBox="0 0 48 48">
@@ -61,8 +61,8 @@ const BackToTop: React.FC = () => {
             />
             <defs>
               <linearGradient id="backToTopGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#06b6d4" />
-                <stop offset="100%" stopColor="#8b5cf6" />
+                <stop offset="0%" stopColor="#C17D4A" />
+                <stop offset="100%" stopColor="#8B5E3C" />
               </linearGradient>
             </defs>
           </svg>

@@ -12,13 +12,18 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@google/genai": "1.14.0",
+    "@types/uuid": "^10.0.0",
     "@vercel/analytics": "^1.5.0",
+    "axios": "^1.15.1",
     "dotenv": "^17.2.3",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.542.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "swiper": "^12.0.2"
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "swiper": "^12.0.2",
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.2",

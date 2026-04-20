@@ -35,12 +35,12 @@ const Blog: React.FC = () => {
             href="https://medium.com/@shivamprasad1001"
             target="_blank"
             rel="noreferrer"
-            className="group inline-flex items-center gap-2 text-sm text-slate-700"
+            className="group inline-flex items-center gap-2 text-sm text-[#7A6E65]"
           >
             See all articles on Medium
             <span className="relative">
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-cyan-400 transition-transform duration-300 group-hover:scale-x-100" />
+              <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-[#C17D4A] transition-transform duration-300 group-hover:scale-x-100" />
             </span>
           </a>
         </div>
@@ -65,20 +65,20 @@ const Blog: React.FC = () => {
                     alt={post.title}
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-tr from-white/70 via-transparent to-violet-500/10" />
-                  <div className="absolute left-4 top-4 rounded-full border border-slate-200 bg-white/90 px-3 py-1 text-xs text-slate-900">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-[#FAF7F2]/70 via-transparent to-[#C17D4A]/5" />
+                  <div className="absolute left-4 top-4 rounded-full border border-[#E0D9CF] bg-white/90 px-3 py-1 text-xs text-[#2C2825]">
                     7-8 min read
                   </div>
                 </div>
                 <div className="flex flex-col justify-between p-6">
                   <div>
-                    <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-slate-500">{post.date}</p>
-                    <h3 className="mt-4 font-display text-2xl font-semibold text-slate-900">{post.title}</h3>
-                    <p className="mt-4 text-sm leading-7 text-slate-600">{post.excerpt}</p>
+                    <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#A89E94]">{post.date}</p>
+                    <h3 className="mt-4 font-display text-2xl font-bold text-[#2C2825]">{post.title}</h3>
+                    <p className="mt-4 text-sm leading-7 text-[#7A6E65]">{post.excerpt}</p>
                   </div>
-                  <div className="mt-6 inline-flex items-center gap-2 text-sm text-slate-700">
+                  <div className="mt-6 inline-flex items-center gap-2 text-sm text-[#2C2825]">
                     <span className="translate-x-[-8px] opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:opacity-100">
-                      <ArrowRight className="h-4 w-4 text-cyan-300" />
+                      <ArrowRight className="h-4 w-4 text-[#C17D4A]" />
                     </span>
                     Read more
                   </div>
