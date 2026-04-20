@@ -79,8 +79,8 @@ const Navbar: React.FC = () => {
         <div className="section-shell pt-5">
           <div
             className={`flex items-center justify-between rounded-full border px-4 py-3 transition-all duration-300 sm:px-6 ${isScrolled
-                ? 'glass-panel border-slate-200 shadow-[0_20px_60px_rgba(15,23,42,0.08)]'
-                : 'border-slate-200/80 bg-white/70'
+              ? 'glass-panel border-slate-200 shadow-[0_20px_60px_rgba(15,23,42,0.08)]'
+              : 'border-slate-200/80 bg-white/70'
               }`}
           >
             <a href="#main-header" className="group flex items-center gap-2">
@@ -178,8 +178,8 @@ const Navbar: React.FC = () => {
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
                     className={`flex items-center justify-between rounded-2xl border px-4 py-3 text-sm ${activeSection === item.href
-                        ? 'border-cyan-300/50 bg-cyan-50 text-slate-900'
-                        : 'border-slate-200 bg-white text-slate-600'
+                      ? 'border-cyan-300/50 bg-cyan-50 text-slate-900'
+                      : 'border-slate-200 bg-white text-slate-600'
                       }`}
                   >
                     {item.label}
