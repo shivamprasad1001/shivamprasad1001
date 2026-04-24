@@ -149,7 +149,7 @@ const Header: React.FC = () => {
                           visible: { y: 0, opacity: 1 },
                         }}
                         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                        className="font-display text-[2.75rem] font-bold leading-[0.9] tracking-[-0.05em] text-[#2C2825] sm:text-[4.2rem] lg:text-[6rem]"
+                        className="font-display text-[2.5rem] font-bold leading-[0.9] tracking-[-0.05em] text-[#2C2825] sm:text-[3.8rem] lg:text-[5.5rem]"
                       >
                         {letter}
                       </motion.span>
@@ -165,7 +165,12 @@ const Header: React.FC = () => {
               transition={{ delay: 0.55, duration: 0.6 }}
               className="mb-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-base text-[#7A6E65] sm:text-xl"
             >
-              <span className="font-mono text-xs uppercase tracking-[0.28em] text-[#A89E94]">Research focu<a href="https://www.shivamprasad1001.in/roadmap.html">s</a></span>
+              <a 
+                href="https://www.shivamprasad1001.in/roadmap.html"
+                className="font-mono text-xs uppercase tracking-[0.28em] text-[#A89E94] hover:text-[#C17D4A] transition-colors"
+              >
+                Research focus
+              </a>
               <span className="font-display italic text-[#2C2825]">{typedRole}</span>
               <span className="h-5 w-[2px] animate-pulse bg-[#C17D4A]" />
             </motion.div>
