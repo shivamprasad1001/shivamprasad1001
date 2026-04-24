@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivam's Master Plan — Write History</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #16161f;
+    --border: #1e1e2e;
+    --accent: #7c3aed;
+    --accent2: #06b6d4;
+    --accent3: #f59e0b;
+    --accent4: #10b981;
+    --accent5: #ef4444;
+    --text: #e2e8f0;
+    --text-dim: #64748b;
+    --text-mid: #94a3b8;
+    --glow: rgba(124,58,237,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* HEADER */
+  .header {
+    padding: 40px 60px 30px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    background: linear-gradient(135deg, rgba(124,58,237,0.05) 0%, transparent 60%);
+  }
+
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .name-block .greeting {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .name-block h1 {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, #fff 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .mission-tag {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 6px 16px;
+    border-radius: 2px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-top: 8px;
+  }
+
+  .real-goal {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--accent3);
+    padding: 10px 16px;
+    border-left: 3px solid var(--accent3);
+    background: rgba(245,158,11,0.05);
+    border-radius: 0 4px 4px 0;
+    max-width: 700px;
+  }
+
+  /* TABS */
+  .tabs-container {
+    padding: 0 60px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs-container::-webkit-scrollbar { display: none; }
+
+  .tab {
+    padding: 16px 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tab:hover { color: var(--text-mid); }
+
+  .tab.active {
+    color: var(--text);
+    border-bottom-color: var(--accent);
+  }
+
+  .tab .tab-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text-dim);
+  }
+  .tab.active .tab-dot { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
+
+  /* CONTENT */
+  .content {
+    padding: 40px 60px;
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+  .content.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTION TITLE */
+  .section-title {
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* GRID LAYOUTS */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+  /* CARD */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .card:hover::before { opacity: 1; }
+
+  .card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+  }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .card-body {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  /* PRIORITY CARDS */
+  .priority-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: all 0.2s;
+  }
+  .priority-card:hover { border-color: var(--accent); transform: translateX(4px); }
+
+  .priority-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+    opacity: 0.15;
+    min-width: 50px;
+  }
+
+  .priority-content { flex: 1; }
+
+  .priority-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .priority-why {
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+
+  .progress-bar {
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+
+  .progress-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 1s ease;
+  }
+
+  .progress-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+  }
+
+  /* SCHEDULE TABLE */
+  .schedule-row {
+    display: grid;
+    grid-template-columns: 120px 160px 1fr 120px;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  .schedule-row:hover { background: rgba(124,58,237,0.04); }
+
+  .schedule-row.header-row {
+    background: var(--surface2);
+    border-bottom: 2px solid var(--border);
+  }
+
+  .schedule-cell {
+    padding: 14px 16px;
+    font-size: 13px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+  }
+  .schedule-cell:last-child { border-right: none; }
+
+  .schedule-cell.time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent2);
+  }
+
+  .schedule-cell.block-name {
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* DIAGRAM / FLOW */
+  .flow-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 20px 0;
+  }
+
+  .flow-node {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 32px;
+    text-align: center;
+    position: relative;
+    min-width: 280px;
+    transition: all 0.2s;
+  }
+  .flow-node:hover { border-color: var(--accent); }
+
+  .flow-node .fn-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .flow-node .fn-title {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .flow-node .fn-sub {
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-top: 4px;
+  }
+
+  .flow-arrow {
+    width: 2px;
+    height: 30px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    position: relative;
+  }
+  .flow-arrow::after {
+    content: '▼';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--accent);
+    font-size: 10px;
+  }
+
+  .flow-split {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  /* RULE CARD */
+  .rule-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 8px;
+    transition: all 0.2s;
+    background: var(--surface);
+  }
+  .rule-item:hover { border-color: var(--accent); background: var(--surface2); }
+
+  .rule-icon {
+    font-size: 20px;
+    min-width: 32px;
+    text-align: center;
+  }
+
+  .rule-text { font-size: 13px; color: var(--text-mid); line-height: 1.7; }
+  .rule-text strong { color: var(--text); }
+
+  /* MILESTONE TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), var(--border));
+  }
+
+  .timeline-item {
+    position: relative;
+    padding: 0 0 28px 24px;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -27px;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: var(--bg);
+  }
+  .timeline-dot.done { background: var(--accent4); border-color: var(--accent4); }
+  .timeline-dot.active { background: var(--accent3); border-color: var(--accent3); box-shadow: 0 0 10px var(--accent3); }
+
+  .timeline-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .timeline-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .timeline-desc {
+    font-size: 12px;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  /* SKILL MAP */
+  .skill-tree {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .skill-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .skill-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--text-mid);
+    min-width: 200px;
+  }
+
+  .skill-bar {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    border-radius: 3px;
+  }
+
+  .skill-pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    min-width: 40px;
+    text-align: right;
+  }
+
+  /* IDEA NODE DIAGRAM */
+  .idea-map {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+  }
+
+  .node-center {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .center-node {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 12px;
+    padding: 20px 32px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 40px rgba(124,58,237,0.3);
+  }
+
+  .orbit-nodes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .orbit-node {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: default;
+  }
+  .orbit-node:hover { border-color: var(--accent2); transform: translateY(-3px); }
+
+  .orbit-node .on-icon { font-size: 22px; margin-bottom: 6px; }
+  .orbit-node .on-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .orbit-node .on-sub { font-size: 11px; color: var(--text-dim); }
+
+  /* CHECKBOX LIST */
+  .check-list { list-style: none; }
+  .check-list li {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+  .check-list li:last-child { border-bottom: none; }
+  .check-list li::before {
+    content: '→';
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    min-width: 20px;
+  }
+
+  /* STAT BLOCKS */
+  .stat-block {
+    text-align: center;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .stat-number {
+    font-family: 'Space Mono', monospace;
+    font-size: 36px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  /* QUOTE */
+  .big-quote {
+    padding: 32px;
+    border-left: 3px solid var(--accent3);
+    background: rgba(245,158,11,0.04);
+    border-radius: 0 8px 8px 0;
+    margin: 24px 0;
+  }
+
+  .big-quote p {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  .big-quote cite {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    font-style: normal;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .header { padding: 24px; }
+    .tabs-container { padding: 0 16px; }
+    .content { padding: 24px 16px; }
+    .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .schedule-row { grid-template-columns: 90px 1fr; }
+    .schedule-cell:nth-child(3), .schedule-cell:nth-child(4) { display: none; }
+    .name-block h1 { font-size: 32px; }
+  }
+
+  /* COLORS FOR SPECIFIC USES */
+  .c-purple { color: var(--accent); }
+  .c-cyan { color: var(--accent2); }
+  .c-amber { color: var(--accent3); }
+  .c-green { color: var(--accent4); }
+  .c-red { color: var(--accent5); }
+
+  .bg-purple { background: rgba(124,58,237,0.1); border-color: rgba(124,58,237,0.3) !important; }
+  .bg-cyan { background: rgba(6,182,212,0.1); border-color: rgba(6,182,212,0.3) !important; }
+  .bg-amber { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.3) !important; }
+  .bg-green { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.3) !important; }
+  .bg-red { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3) !important; }
+
+  .pill {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-left: 8px;
+  }
+  .pill-purple { background: rgba(124,58,237,0.2); color: var(--accent); }
+  .pill-cyan { background: rgba(6,182,212,0.2); color: var(--accent2); }
+  .pill-amber { background: rgba(245,158,11,0.2); color: var(--accent3); }
+  .pill-green { background: rgba(16,185,129,0.2); color: var(--accent4); }
+
+  h3.sub-head {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 24px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  h3.sub-head::before { content: '//'; color: var(--accent); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+
+  .mb16 { margin-bottom: 16px; }
+  .mb24 { margin-bottom: 24px; }
+  .mb32 { margin-bottom: 32px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div class="name-block">
+      <div class="greeting">// MASTER PLAN</div>
+      <h1>Shivam Prasad</h1>
+    </div>
+    <div class="mission-tag">Write History. Build AGI.</div>
+  </div>
+  <div class="real-goal">
+    ❝ I want to give something to the world before I go. I want to be remembered. ❞ — Your real goal. Never forget this.
+  </div>
+</div>
+
+<div class="tabs-container">
+  <div class="tab active" onclick="switchTab('priorities')"><span class="tab-dot"></span>Priorities</div>
+  <div class="tab" onclick="switchTab('schedule')"><span class="tab-dot"></span>Daily Schedule</div>
+  <div class="tab" onclick="switchTab('roadmap')"><span class="tab-dot"></span>Roadmap</div>
+  <div class="tab" onclick="switchTab('rl')"><span class="tab-dot"></span>RL + Research</div>
+  <div class="tab" onclick="switchTab('trivlabs')"><span class="tab-dot"></span>TriviLabs</div>
+  <div class="tab" onclick="switchTab('gre')"><span class="tab-dot"></span>GRE</div>
+  <div class="tab" onclick="switchTab('dream')"><span class="tab-dot"></span>The Big Dream</div>
+  <div class="tab" onclick="switchTab('rules')"><span class="tab-dot"></span>Rules</div>
+</div>
+
+<!-- ===== TAB: PRIORITIES ===== -->
+<div class="content active" id="tab-priorities">
+
+  <div class="big-quote">
+    <p>You're not confused about what to do. You're overwhelmed by too many options. When you open your laptop — ask 3 questions only.</p>
+    <cite>The rule that fixes everything</cite>
+  </div>
+
+  <div class="section-title">3 questions before every session</div>
+  <div class="grid-3 mb32">
+    <div class="card bg-purple">
+      <div class="card-label">Question 1</div>
+      <div class="card-title c-purple">Is this the RL project?</div>
+      <div class="card-body">If yes → open your PPO code and work. If no → close the tab.</div>
+    </div>
+    <div class="card bg-cyan">
+      <div class="card-label">Question 2</div>
+      <div class="card-title c-cyan">Is this TriviLabs client work?</div>
+      <div class="card-body">Client outreach, proposals, delivery. If no → close the tab.</div>
+    </div>
+    <div class="card bg-amber">
+      <div class="card-label">Question 3</div>
+      <div class="card-title c-amber">Is this GRE prep?</div>
+      <div class="card-body">Vocab or quant. Nothing else counts. If no → close the tab.</div>
+    </div>
+  </div>
+
+  <div class="section-title">Your 3 Core Priorities</div>
+
+  <div class="priority-card bg-purple mb16">
+    <div class="priority-num c-purple">01</div>
+    <div class="priority-content">
+      <div class="priority-title c-purple">RL Project — Cooperative Multi-Agent Debate System with PPO</div>
+      <div class="priority-why">This is your PhD proof. Alberta RLAI needs to see you can build RL systems. This is the direct path to AGI research. Every day without working on this is a day behind.</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:15%;background:var(--accent)"></div></div>
+      <div class="progress-label">Status: Started David Silver. PPO implementation pending.</div>
+    </div>
+  </div>
+
+  <div class="priority-card bg-cyan mb16">
+    <div class="priority-num c-cyan">02</div>
+    <div class="priority-content">
+      <div class="priority-title c-cyan">TriviLabs — ₹30–40k/month paying clients</div>
+      <div class="priority-why">This IS financial independence. This is how you help your family WITHOUT taking a job that kills your PhD path. TriviLabs is the bridge. Target: first paying client ASAP.</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:10%;background:var(--accent2)"></div></div>
+      <div class="progress-label">Status: Early stage. First client quoted ₹9,500. Revenue = ₹0 confirmed.</div>
+    </div>
+  </div>
+
+  <div class="priority-card bg-amber mb16">
+    <div class="priority-num c-amber">03</div>
+    <div class="priority-content">
+      <div class="priority-title c-amber">GRE 320+ by June–July 2026</div>
+      <div class="priority-why">Non-negotiable for PhD applications. 320+ opens top programs. 1 hour daily is enough. Skip even one week and you're behind. No excuses.</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:5%;background:var(--accent3)"></div></div>
+      <div class="progress-label">Status: Not started seriously. ~10 weeks remaining to target date.</div>
+    </div>
+  </div>
+
+  <div class="section-title">What is FROZEN (do not touch)</div>
+  <div class="grid-4">
+    <div class="card">
+      <div class="card-label c-red">❌ Frozen</div>
+      <div class="card-title" style="font-size:14px">Random DSA grinding</div>
+      <div class="card-body" style="font-size:12px">Solve only if RL project needs it specifically</div>
+    </div>
+    <div class="card">
+      <div class="card-label c-red">❌ Frozen</div>
+      <div class="card-title" style="font-size:14px">AWS / Cloud learning</div>
+      <div class="card-body" style="font-size:12px">Not needed until you're building at scale</div>
+    </div>
+    <div class="card">
+      <div class="card-label c-red">❌ Frozen</div>
+      <div class="card-title" style="font-size:14px">New side projects</div>
+      <div class="card-body" style="font-size:12px">CollegeChat, random ideas — all frozen</div>
+    </div>
+    <div class="card">
+      <div class="card-label c-red">❌ Frozen</div>
+      <div class="card-title" style="font-size:14px">Job hunting</div>
+      <div class="card-body" style="font-size:12px">TriviLabs IS the job. PhD is the goal.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB: SCHEDULE ===== -->
+<div class="content" id="tab-schedule">
+  <div class="section-title">Daily Schedule — 10-12 Hours</div>
+
+  <div class="grid-4 mb32">
+    <div class="stat-block">
+      <div class="stat-number">10h</div>
+      <div class="stat-label">Available Daily</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number">6</div>
+      <div class="stat-label">Focused Blocks</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number">30m</div>
+      <div class="stat-label">Social Media Max</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Priority Areas</div>
+    </div>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;" class="mb32">
+    <div class="schedule-row header-row">
+      <div class="schedule-cell" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--text-dim);">TIME</div>
+      <div class="schedule-cell" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--text-dim);">BLOCK</div>
+      <div class="schedule-cell" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--text-dim);">WHAT EXACTLY</div>
+      <div class="schedule-cell" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--text-dim);">PRIORITY</div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-cell time">9:00 – 11:00</div>
+      <div class="schedule-cell block-name">🧠 RL Study</div>
+      <div class="schedule-cell" style="font-size:13px;color:var(--text-mid)">David Silver lectures + Sutton & Barto. ONE concept fully understood. Write notes by hand.</div>
+      <div class="schedule-cell"><span class="badge pill-purple">#1 RL</span></div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-cell time">11:00 – 1:00</div>
+      <div class="schedule-cell block-name">💻 RL Code</div>
+      <div class="schedule-cell" style="font-size:13px;color:var(--text-mid)">Implement what you just studied. PPO agent, environment setup, agent-agent interaction. Git commit daily.</div>
+      <div class="schedule-cell"><span class="badge pill-purple">#1 RL</span></div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-cell time">1:00 – 2:00</div>
+      <div class="schedule-cell block-name">🍽️ Break</div>
+      <div class="schedule-cell" style="font-size:13px;color:var(--text-mid)">Eat. Family time (1 hr). Walk. No laptop. No phone scrolling. Rest your brain.</div>
+      <div class="schedule-cell"><span class="badge" style="background:rgba(100,116,139,0.2);color:var(--text-dim)">REST</span></div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-cell time">2:00 – 5:00</div>
+      <div class="schedule-cell block-name">📱 TriviLabs Outreach</div>
+      <div class="schedule-cell" style="font-size:13px;color:var(--text-mid)">10 businesses contacted per day. Google Maps → WhatsApp/Instagram DM. Track in CRM. Proposals for hot leads.</div>
+      <div class="schedule-cell"><span class="badge pill-cyan">#2 Revenue</span></div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-cell time">5:00 – 7:00</div>
+      <div class="schedule-cell block-name">🔬 Deep Think</div>
+      <div class="schedule-cell" style="font-size:13px;color:var(--text-mid)">Design your multi-agent ideas. Read 1 MARL paper/week (MADDPG, QMIX, MAPPO). Write research notes. Think about swarm robots.</div>
+      <div class="schedule-cell"><span class="badge pill-purple">#1 RL</span></div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-cell time">8:00 – 9:00</div>
+      <div class="schedule-cell block-name">📖 GRE</div>
+      <div class="schedule-cell" style="font-size:13px;color:var(--text-mid)">30 min Vocab (Magoosh/Manhattan 5lb). 30 min Quant (one topic). Non-negotiable. Every single day.</div>
+      <div class="schedule-cell"><span class="badge pill-amber">#3 GRE</span></div>
+    </div>
+
+    <div class="schedule-row">
+      <div class="schedule-cell time">9:00 – 10:00</div>
+      <div class="schedule-cell block-name">✅ Review + Plan</div>
+      <div class="schedule-cell" style="font-size:13px;color:var(--text-mid)">Write 3 things you did today. Write tomorrow's ONE main task for each priority. Close all browser tabs. Sleep by 11pm.</div>
+      <div class="schedule-cell"><span class="badge" style="background:rgba(16,185,129,0.2);color:var(--accent4)">RITUAL</span></div>
+    </div>
+
+    <div class="schedule-row" style="background:rgba(239,68,68,0.03)">
+      <div class="schedule-cell time" style="color:var(--accent5)">ALL DAY</div>
+      <div class="schedule-cell block-name" style="color:var(--accent5)">🚫 Social Media</div>
+      <div class="schedule-cell" style="font-size:13px;color:var(--text-mid)">Maximum 30 minutes. ONLY after 10pm. No YouTube rabbit holes. No Instagram reels during work hours.</div>
+      <div class="schedule-cell"><span class="badge bg-red" style="color:var(--accent5)">HARD LIMIT</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">Weekly Rhythm</div>
+  <div class="grid-4">
+    <div class="card">
+      <div class="card-label">Mon – Fri</div>
+      <div class="card-title" style="font-size:15px">Full Stack</div>
+      <div class="card-body" style="font-size:12px">All 6 blocks. No deviation. This is your job now.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Saturday</div>
+      <div class="card-title" style="font-size:15px">RL Deep Dive</div>
+      <div class="card-body" style="font-size:12px">Full day on RL project. Big coding session. Push something to GitHub.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Sunday</div>
+      <div class="card-title" style="font-size:15px">Review + Rest</div>
+      <div class="card-body" style="font-size:12px">Weekly review. Plan next week. Half day only. Rest is productive.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Every Evening</div>
+      <div class="card-title" style="font-size:15px">3-Line Journal</div>
+      <div class="card-body" style="font-size:12px">What I did. What I'll do tomorrow. One thing I'm proud of.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB: ROADMAP ===== -->
+<div class="content" id="tab-roadmap">
+  <div class="section-title">Timeline to History</div>
+
+  <div class="grid-2 mb32">
+    <div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot done"></div>
+          <div class="timeline-date">✅ Done — 2025</div>
+          <div class="timeline-title">Built Gwen AI + Portfolio Integration</div>
+          <div class="timeline-desc">FastAPI + React/Vite, Gemini + Groq, Pinecone, MongoDB. Real end-to-end AI system. This is proof you can build.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot done"></div>
+          <div class="timeline-date">✅ Done — Early 2026</div>
+          <div class="timeline-title">Published NGAISL2026 Research Paper</div>
+          <div class="timeline-desc">Adaptive Multi-Agent Orchestration with HITL for Automated Code Generation. First paper. You're already a researcher.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot done"></div>
+          <div class="timeline-date">✅ Done — 2026</div>
+          <div class="timeline-title">Founded TriviLabs (60% equity)</div>
+          <div class="timeline-desc">AI & Web agency. Co-founder Deepansh (40%). Real business, real potential.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot active"></div>
+          <div class="timeline-date">🔥 NOW — Apr–Jul 2026</div>
+          <div class="timeline-title">RL Project + GRE + TriviLabs Revenue</div>
+          <div class="timeline-desc">Build PPO multi-agent system. Score 320+ GRE. Get TriviLabs to ₹20k/month. Graduate B.Tech.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Aug–Dec 2026</div>
+          <div class="timeline-title">Post-Graduation: AI Job + Paper + Professor Outreach</div>
+          <div class="timeline-desc">Get job at Sarvam AI or Krutrim. Write 1 RL paper. Cold-email 50 professors for RA positions. Save ₹4–6L.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2027</div>
+          <div class="timeline-title">Apply to 18–22 PhD Programs</div>
+          <div class="timeline-desc">Top target: University of Alberta (RLAI Lab — Sutton's lab). Also: UMass, Brown, McGill, CMU, UT Austin.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2027–2031</div>
+          <div class="timeline-title">PhD in RL / Multi-Agent Systems</div>
+          <div class="timeline-desc">Publish 3–5 papers. Build real reputation. Contribute to the field that will build AGI.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2031+</div>
+          <div class="timeline-title">Research Scientist — Anthropic / OpenAI / DeepMind</div>
+          <div class="timeline-desc">Work on the systems that matter. Build what gets remembered. Write history.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="sub-head mb16">Path to PhD — Flow</h3>
+      <div class="flow-container">
+        <div class="flow-node" style="border-color:var(--accent4)">
+          <div class="fn-label c-green">Current</div>
+          <div class="fn-title">B.Tech Final Year</div>
+          <div class="fn-sub">NITRA, AKTU — Graduating Jul 2026</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node" style="border-color:var(--accent3)">
+          <div class="fn-label c-amber">Next 3 Months</div>
+          <div class="fn-title">RL Project + GRE 320+</div>
+          <div class="fn-sub">The two tickets you need</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node" style="border-color:var(--accent2)">
+          <div class="fn-label c-cyan">After Graduation</div>
+          <div class="fn-title">AI Job + 1 RL Paper</div>
+          <div class="fn-sub">Sarvam / Krutrim + publish</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node" style="border-color:var(--accent)">
+          <div class="fn-label c-purple">2027</div>
+          <div class="fn-title">PhD Applications</div>
+          <div class="fn-sub">Alberta RLAI is the dream</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node" style="background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(6,182,212,0.15));border-color:var(--accent)">
+          <div class="fn-label" style="color:var(--accent)">End Goal</div>
+          <div class="fn-title" style="font-size:18px">Research Scientist</div>
+          <div class="fn-sub">Anthropic · OpenAI · DeepMind</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB: RL + RESEARCH ===== -->
+<div class="content" id="tab-rl">
+  <div class="section-title">RL Learning Path</div>
+
+  <div class="grid-2 mb32">
+    <div>
+      <h3 class="sub-head">Study Order — Do Not Skip Steps</h3>
+      <div class="flow-container">
+        <div class="flow-node bg-purple">
+          <div class="fn-label c-purple">Phase 1 — NOW</div>
+          <div class="fn-title">David Silver Lectures 1–6</div>
+          <div class="fn-sub">MDP, Bellman, Q-Learning, Policy Gradient</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node">
+          <div class="fn-label" style="color:var(--text-dim)">Phase 2</div>
+          <div class="fn-title">Sutton & Barto Chapters 1–7</div>
+          <div class="fn-sub">Read alongside Silver. Implement every algorithm.</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node">
+          <div class="fn-label" style="color:var(--text-dim)">Phase 3</div>
+          <div class="fn-title">PPO Implementation</div>
+          <div class="fn-sub">From scratch in PyTorch. OpenAI Gym environments.</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node">
+          <div class="fn-label" style="color:var(--text-dim)">Phase 4</div>
+          <div class="fn-title">Multi-Agent: MADDPG → QMIX → MAPPO</div>
+          <div class="fn-sub">Read papers. Implement. Understand cooperative behavior.</div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node" style="border-color:var(--accent4)">
+          <div class="fn-label c-green">Phase 5 — Target</div>
+          <div class="fn-title">Your Debate System (PPO)</div>
+          <div class="fn-sub">Cooperative Multi-Agent + HITL. PhD-worthy project.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="sub-head mb16">Your Current Skill Level</h3>
+      <div class="skill-tree mb32">
+        <div class="skill-row">
+          <div class="skill-name">Python / General ML</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:70%;background:var(--accent4)"></div></div>
+          <div class="skill-pct c-green">70%</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">Deep Learning Basics</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:50%;background:var(--accent2)"></div></div>
+          <div class="skill-pct c-cyan">50%</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">Reinforcement Learning</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:15%;background:var(--accent)"></div></div>
+          <div class="skill-pct c-purple">15%</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">Multi-Agent Systems</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:10%;background:var(--accent)"></div></div>
+          <div class="skill-pct c-purple">10%</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">Full Stack Web / APIs</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:75%;background:var(--accent4)"></div></div>
+          <div class="skill-pct c-green">75%</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">AI Systems (RAG, Agents)</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:60%;background:var(--accent2)"></div></div>
+          <div class="skill-pct c-cyan">60%</div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-name">Research / Paper Writing</div>
+          <div class="skill-bar"><div class="skill-fill" style="width:35%;background:var(--accent3)"></div></div>
+          <div class="skill-pct c-amber">35%</div>
+        </div>
+      </div>
+
+      <h3 class="sub-head mb16">MARL Papers to Read (in order)</h3>
+      <ul class="check-list">
+        <li>MADDPG — Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments</li>
+        <li>QMIX — Monotonic Value Function Factorisation for Deep MARL</li>
+        <li>MAPPO — Is Independent Learning All You Need in MARL?</li>
+        <li>OpenAI Hide & Seek — Emergent Tool Use</li>
+        <li>AlphaZero — for understanding self-play systems</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-title">Your RL Project — OrchestratorFlow / Debate System</div>
+  <div class="grid-3">
+    <div class="card bg-purple">
+      <div class="card-label c-purple">Project Goal</div>
+      <div class="card-title" style="font-size:15px">Cooperative Multi-Agent Debate System</div>
+      <div class="card-body" style="font-size:12px">Multiple agents debate to reach consensus using PPO. Human-in-the-Loop integration. PhD-level contribution.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Tech Stack</div>
+      <div class="card-title" style="font-size:15px">PyTorch + Gym + FastAPI</div>
+      <div class="card-body" style="font-size:12px">PPO from scratch. Custom multi-agent environment. React frontend for HITL interface.</div>
+    </div>
+    <div class="card bg-green">
+      <div class="card-label c-green">Why This Matters</div>
+      <div class="card-title" style="font-size:15px">Direct Path to AGI Research</div>
+      <div class="card-body" style="font-size:12px">Cooperative MARL + HITL is a frontier research problem. Alberta RLAI works on exactly this.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB: TRIVILABS ===== -->
+<div class="content" id="tab-trivlabs">
+  <div class="section-title">TriviLabs — The Money Engine</div>
+
+  <div class="grid-4 mb32">
+    <div class="stat-block">
+      <div class="stat-number" style="font-size:28px">₹0</div>
+      <div class="stat-label">Current Revenue</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number" style="font-size:28px">₹9.5k</div>
+      <div class="stat-label">First Quote Sent</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number" style="font-size:28px">₹30k</div>
+      <div class="stat-label">Monthly Target</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number" style="font-size:28px">60%</div>
+      <div class="stat-label">Your Equity</div>
+    </div>
+  </div>
+
+  <div class="grid-2 mb32">
+    <div>
+      <h3 class="sub-head mb16">Service Priority Order</h3>
+      <div class="priority-card mb16" style="border-color:var(--accent2)">
+        <div class="priority-num c-cyan" style="font-size:24px">1</div>
+        <div class="priority-content">
+          <div class="priority-title" style="font-size:15px;color:var(--accent2)">Full Stack Web Apps</div>
+          <div class="priority-why">Business websites, web apps, landing pages. Easiest to sell to SMBs. Deliverable is tangible.</div>
+        </div>
+      </div>
+      <div class="priority-card mb16">
+        <div class="priority-num" style="font-size:24px">2</div>
+        <div class="priority-content">
+          <div class="priority-title" style="font-size:15px">Automation Tools</div>
+          <div class="priority-why">n8n workflows, WhatsApp bots, lead gen automation. High perceived value. Use your n8n instance.</div>
+        </div>
+      </div>
+      <div class="priority-card mb16">
+        <div class="priority-num" style="font-size:24px">3</div>
+        <div class="priority-content">
+          <div class="priority-title" style="font-size:15px">AI / ML Services</div>
+          <div class="priority-why">Chatbots, RAG systems, custom AI tools. Higher price point but harder to sell to local SMBs.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="sub-head mb16">Daily Outreach System</h3>
+      <ul class="check-list mb24">
+        <li><strong>Step 1:</strong> Open Google Maps. Search "restaurants Delhi NCR" or "clinics Ghaziabad" etc.</li>
+        <li><strong>Step 2:</strong> Find 10 businesses with bad/no websites.</li>
+        <li><strong>Step 3:</strong> Get WhatsApp number from Google Maps listing.</li>
+        <li><strong>Step 4:</strong> Send personalized message — mention their specific problem.</li>
+        <li><strong>Step 5:</strong> Log in TriviLabs CRM. Follow up after 2 days.</li>
+        <li><strong>Step 6:</strong> Warm lead? Send proposal within 24 hours.</li>
+      </ul>
+
+      <h3 class="sub-head mb16">Target Verticals</h3>
+      <div class="grid-2">
+        <div class="card" style="padding:14px">
+          <div class="card-label">High Priority</div>
+          <div class="card-body" style="font-size:12px">Restaurants · Clinics · Coaching Institutes · CA/Legal Offices</div>
+        </div>
+        <div class="card" style="padding:14px">
+          <div class="card-label">Secondary</div>
+          <div class="card-body" style="font-size:12px">Gyms · Beauty Salons · Real Estate Agents · Local Shops</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Revenue Milestones</div>
+  <div class="grid-4">
+    <div class="card bg-green">
+      <div class="card-label c-green">Milestone 1</div>
+      <div class="card-title" style="font-size:20px c-green">₹10k</div>
+      <div class="card-body" style="font-size:12px">First paid project closed. Proof it works.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Milestone 2</div>
+      <div class="card-title" style="font-size:20px">₹20k/mo</div>
+      <div class="card-body" style="font-size:12px">2–3 recurring clients. Business is real.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Milestone 3</div>
+      <div class="card-title" style="font-size:20px">₹30-40k/mo</div>
+      <div class="card-body" style="font-size:12px">Target. Financial independence. No job needed.</div>
+    </div>
+    <div class="card bg-purple">
+      <div class="card-label c-purple">Bonus</div>
+      <div class="card-title" style="font-size:20px">₹4-6L saved</div>
+      <div class="card-body" style="font-size:12px">Before PhD starts. Covers first year expenses.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB: GRE ===== -->
+<div class="content" id="tab-gre">
+  <div class="section-title">GRE 320+ — The PhD Entry Ticket</div>
+
+  <div class="big-quote">
+    <p>You need 320+ to get into top programs. That's 160+ Verbal and 160+ Quant. 1 hour every day is enough. The only way to fail is to skip days.</p>
+    <cite>Target: June–July 2026 — ~10 weeks from now</cite>
+  </div>
+
+  <div class="grid-2 mb32">
+    <div>
+      <h3 class="sub-head mb16">Score Targets</h3>
+      <div class="grid-2 mb24">
+        <div class="stat-block">
+          <div class="stat-number">160+</div>
+          <div class="stat-label">Verbal Target</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-number">160+</div>
+          <div class="stat-label">Quant Target</div>
+        </div>
+      </div>
+
+      <h3 class="sub-head mb16">Daily 1-Hour Split</h3>
+      <div class="card mb16" style="padding:16px">
+        <div class="card-label">30 Minutes — Verbal</div>
+        <ul class="check-list" style="margin-top:8px">
+          <li>Magoosh flashcards — 20 new words per day</li>
+          <li>Review 20 previous words</li>
+          <li>1 Reading Comprehension passage on weekends</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:16px">
+        <div class="card-label">30 Minutes — Quant</div>
+        <ul class="check-list" style="margin-top:8px">
+          <li>Manhattan 5lb book — one topic per day</li>
+          <li>Arithmetic → Algebra → Geometry → Data</li>
+          <li>Practice questions immediately after</li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="sub-head mb16">10-Week Plan</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot active"></div>
+          <div class="timeline-date">Week 1–2</div>
+          <div class="timeline-title">Foundations</div>
+          <div class="timeline-desc">Vocab: start Magoosh deck. Quant: Arithmetic and Number Properties. Take 1 diagnostic test.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Week 3–4</div>
+          <div class="timeline-title">Core Topics</div>
+          <div class="timeline-desc">Vocab: 200 words learned. Quant: Algebra + Word Problems. Start Verbal reasoning practice.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Week 5–6</div>
+          <div class="timeline-title">Depth</div>
+          <div class="timeline-desc">Quant: Geometry + Data Interpretation. Verbal: Text Completion + Sentence Equivalence.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Week 7–8</div>
+          <div class="timeline-title">Practice Tests</div>
+          <div class="timeline-desc">2 full ETS PowerPrep tests. Analyse weak areas. Focused drilling only on weak spots.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Week 9–10</div>
+          <div class="timeline-title">Final Push</div>
+          <div class="timeline-desc">Mock tests every 3 days. Vocab review. Confidence building. Book exam slot.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">Resources</div>
+  <div class="grid-4">
+    <div class="card"><div class="card-label">Primary</div><div class="card-title" style="font-size:14px">Manhattan 5lb</div><div class="card-body" style="font-size:12px">Best quant practice book. Do every problem.</div></div>
+    <div class="card"><div class="card-label">Vocab</div><div class="card-title" style="font-size:14px">Magoosh Flashcards</div><div class="card-body" style="font-size:12px">Free app. 1000 words. 20/day = done in 7 weeks.</div></div>
+    <div class="card"><div class="card-label">Practice Tests</div><div class="card-title" style="font-size:14px">ETS PowerPrep</div><div class="card-body" style="font-size:12px">Official tests. Most accurate score prediction.</div></div>
+    <div class="card"><div class="card-label">AWA</div><div class="card-title" style="font-size:14px">ETS Issue + Argument</div><div class="card-body" style="font-size:12px">Practice 2 essays/week. 4.0+ is fine for STEM.</div></div>
+  </div>
+</div>
+
+<!-- ===== TAB: THE BIG DREAM ===== -->
+<div class="content" id="tab-dream">
+  <div class="section-title">The Vision — What You're Actually Building Toward</div>
+
+  <div class="big-quote">
+    <p>I want to give something to the world before I go. I want to be the first person who builds this. I want to write history people remember after I'm gone.</p>
+    <cite>Shivam Prasad — Your real goal. This is what matters.</cite>
+  </div>
+
+  <h3 class="sub-head mb16">Your Dream: Swarm Intelligence + AGI</h3>
+
+  <div class="orbit-nodes mb32">
+    <div class="orbit-node">
+      <div class="on-icon">🤖</div>
+      <div class="on-title">Nano/Micro Bots</div>
+      <div class="on-sub">Big Hero 6 microbots — swarm of bots that coordinate to form any shape</div>
+    </div>
+    <div class="orbit-node">
+      <div class="on-icon">🧠</div>
+      <div class="on-title">Emergent Intelligence</div>
+      <div class="on-sub">Agents that develop behavior no one programmed — the core of AGI</div>
+    </div>
+    <div class="orbit-node">
+      <div class="on-icon">🔗</div>
+      <div class="on-title">Multi-Agent Coordination</div>
+      <div class="on-sub">Bots that communicate, cooperate, self-organize — your current research area</div>
+    </div>
+    <div class="orbit-node">
+      <div class="on-icon">⚡</div>
+      <div class="on-title">Reinforcement Learning</div>
+      <div class="on-sub">How agents learn to coordinate from scratch — exactly what you're studying now</div>
+    </div>
+    <div class="orbit-node">
+      <div class="on-icon">🌊</div>
+      <div class="on-title">Swarm Robotics</div>
+      <div class="on-sub">Real research field at DeepMind, MIT, CMU. People are working on this now.</div>
+    </div>
+    <div class="orbit-node">
+      <div class="on-icon">🏛️</div>
+      <div class="on-title">Legacy</div>
+      <div class="on-sub">The paper or system that puts your name in the books</div>
+    </div>
+  </div>
+
+  <div class="section-title">Why Your Current Path Connects to This Dream</div>
+  <div class="grid-3 mb32">
+    <div class="card bg-purple">
+      <div class="card-label c-purple">RL + MARL = Foundation</div>
+      <div class="card-body">Swarm bots use RL to learn coordination. MAPPO, QMIX — these ARE the algorithms that would power your microbots. You're studying the right thing.</div>
+    </div>
+    <div class="card bg-cyan">
+      <div class="card-label c-cyan">Alberta RLAI = The Lab</div>
+      <div class="card-body">Rich Sutton's lab — the godfather of RL — is at Alberta. This is where the foundations of AGI are being built. That's your target.</div>
+    </div>
+    <div class="card bg-amber">
+      <div class="card-label c-amber">Your Paper = First Step</div>
+      <div class="card-body">Your NGAISL2026 paper on multi-agent orchestration is step 1. Every paper you write gets you closer to the name that gets remembered.</div>
+    </div>
+  </div>
+
+  <div class="section-title">People Who Wrote History (and how long it took)</div>
+  <div class="grid-4">
+    <div class="card">
+      <div class="card-label">Rich Sutton</div>
+      <div class="card-title" style="font-size:14px">40 years of RL</div>
+      <div class="card-body" style="font-size:12px">Started in the 80s. Sutton & Barto is the bible of your field. Obsessive depth on one thing.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Demis Hassabis</div>
+      <div class="card-title" style="font-size:14px">Founded DeepMind at 35</div>
+      <div class="card-body" style="font-size:12px">Cognitive neuroscience PhD → AlphaGo → AlphaFold. One step at a time.</div>
+    </div>
+    <div class="card">
+      <div class="card-label">Ilya Sutskever</div>
+      <div class="card-title" style="font-size:14px">PhD student → GPT</div>
+      <div class="card-body" style="font-size:12px">Studied under Hinton. Years of research. Then transformer + scale = history.</div>
+    </div>
+    <div class="card bg-purple">
+      <div class="card-label c-purple">You — 2026</div>
+      <div class="card-title" style="font-size:14px">Started RL. Right path.</div>
+      <div class="card-body" style="font-size:12px">You found the right thread. Now pull it hard for 10 years. That's how history is written.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB: RULES ===== -->
+<div class="content" id="tab-rules">
+  <div class="section-title">The Rules — When You Feel Confused, Read These</div>
+
+  <div class="mb32">
+    <h3 class="sub-head mb16">Core Rules (Non-Negotiable)</h3>
+
+    <div class="rule-item">
+      <div class="rule-icon">🔒</div>
+      <div class="rule-text"><strong>The 3-Question Rule:</strong> Before any laptop session — Is this RL? Is this TriviLabs client work? Is this GRE? If all three are No, close the laptop and do something offline.</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">⚡</div>
+      <div class="rule-text"><strong>Start with the smallest action:</strong> Don't plan. Don't think. Open the RL file or open the CRM. The first 2 minutes are the hardest. After that the brain locks in.</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">🚫</div>
+      <div class="rule-text"><strong>Social media is 30 minutes max, after 10pm only.</strong> No YouTube during work hours. No Instagram reels. No news. Your attention is your most valuable asset right now.</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">📝</div>
+      <div class="rule-text"><strong>End every day with 3 lines:</strong> What I did today. What I'll do tomorrow. One thing I'm proud of. This closes the mental loop and stops the overnight overthinking.</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">🧊</div>
+      <div class="rule-text"><strong>All new project ideas get frozen for 30 days.</strong> Write the idea down in a notebook. If it still excites you in 30 days AND it connects to your 3 priorities, then consider it.</div>
+    </div>
+    <div class="rule-item">
+      <div class="rule-icon">💰</div>
+      <div class="rule-text"><strong>TriviLabs must be excluded from all job-seeking resumes.</strong> Keep the business and the PhD path separate in how you present yourself.</div>
+    </div>
+  </div>
+
+  <div class="mb32">
+    <h3 class="sub-head mb16">When You Feel Lost — Do This</h3>
+
+    <div class="flow-container" style="align-items:flex-start;max-width:500px">
+      <div class="flow-node" style="min-width:0;width:100%">
+        <div class="fn-label" style="color:var(--accent5)">Feeling Confused / Overwhelmed</div>
+        <div class="fn-title">Stop. Close everything.</div>
+        <div class="fn-sub">Don't open new tabs. Don't search for answers.</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node" style="min-width:0;width:100%">
+        <div class="fn-label c-amber">Step 1</div>
+        <div class="fn-title">Read your real goal</div>
+        <div class="fn-sub">"I want to write history people remember after I'm gone."</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node" style="min-width:0;width:100%">
+        <div class="fn-label c-cyan">Step 2</div>
+        <div class="fn-title">Ask the 3 questions</div>
+        <div class="fn-sub">RL? TriviLabs? GRE? Pick one. Do the smallest possible action.</div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node" style="min-width:0;width:100%;border-color:var(--accent4)">
+        <div class="fn-label c-green">Step 3</div>
+        <div class="fn-title">Work for 25 minutes.</div>
+        <div class="fn-sub">No more planning. Just work. Confusion disappears when you act.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title">What "Something Missing" Actually Means</div>
+  <div class="grid-3">
+    <div class="card bg-purple">
+      <div class="card-label c-purple">If you feel empty</div>
+      <div class="card-title" style="font-size:14px">You're not seeing visible progress</div>
+      <div class="card-body" style="font-size:12px">Fix: Git commit every day. Track outreach numbers. Mark GRE days on a calendar. Make progress visible.</div>
+    </div>
+    <div class="card bg-cyan">
+      <div class="card-label c-cyan">If you feel scattered</div>
+      <div class="card-title" style="font-size:14px">Too many tabs, too many options</div>
+      <div class="card-body" style="font-size:12px">Fix: Close everything. Literally. Open ONE thing. Work on that. The feeling disappears in 10 minutes.</div>
+    </div>
+    <div class="card bg-amber">
+      <div class="card-label c-amber">If you feel disconnected</div>
+      <div class="card-title" style="font-size:14px">Work doesn't connect to the dream</div>
+      <div class="card-body" style="font-size:12px">Fix: Re-read the Dream tab. Your RL project IS the path to the microbots. Every line of code matters.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function switchTab(id) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+
+    const tabs = ['priorities','schedule','roadmap','rl','trivlabs','gre','dream','rules'];
+    const idx = tabs.indexOf(id);
+    document.querySelectorAll('.tab')[idx].classList.add('active');
+    document.getElementById('tab-' + id).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
