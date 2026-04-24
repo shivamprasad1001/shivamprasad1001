@@ -85,218 +85,218 @@ const Header: React.FC = () => {
     <header id="main-header" className="relative overflow-hidden">
       <Navbar />
 
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(193,125,74,0.1),transparent_22%),radial-gradient(circle_at_78%_18%,rgba(139,92,246,0.06),transparent_16%)]" />
-          <div className="absolute inset-0 opacity-40">
-            {particles.map((particle) => (
-              <motion.span
-                key={particle.id}
-                className="absolute rounded-full bg-amber-500/40"
-                style={{
-                  width: particle.size,
-                  height: particle.size,
-                  left: particle.left,
-                  top: particle.top,
-                }}
-                animate={{ y: [0, -18, 0], opacity: [0.25, 0.8, 0.25] }}
-                transition={{
-                  repeat: Infinity,
-                  duration: particle.duration,
-                  delay: particle.delay,
-                  ease: 'easeInOut',
-                }}
-              />
-            ))}
-          </div>
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(193,125,74,0.1),transparent_22%),radial-gradient(circle_at_78%_18%,rgba(139,92,246,0.06),transparent_16%)]" />
+        <div className="absolute inset-0 opacity-40">
+          {particles.map((particle) => (
+            <motion.span
+              key={particle.id}
+              className="absolute rounded-full bg-amber-500/40"
+              style={{
+                width: particle.size,
+                height: particle.size,
+                left: particle.left,
+                top: particle.top,
+              }}
+              animate={{ y: [0, -18, 0], opacity: [0.25, 0.8, 0.25] }}
+              transition={{
+                repeat: Infinity,
+                duration: particle.duration,
+                delay: particle.delay,
+                ease: 'easeInOut',
+              }}
+            />
+          ))}
         </div>
+      </div>
 
-        <div className="section-shell relative z-10 flex min-h-[calc(100vh-7rem)] items-center">
-          <div className="grid w-full gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-            <div>
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="mb-8 inline-flex items-center gap-3 rounded-full border border-[#E0D9CF] bg-white px-4 py-2 text-sm text-[#7A6E65]"
-              >
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#C17D4A] opacity-75" />
-                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#C17D4A]" />
-                </span>
-                Focused on research collaborations
-              </motion.div>
+      <div className="section-shell relative z-10 flex min-h-[calc(100vh-6rem)] items-center pt-24 pb-12 lg:pt-32">
+        <div className="grid w-full gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+          <div>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mb-10 inline-flex items-center gap-3 rounded-full border border-[#E0D9CF] bg-white px-4 py-2 text-sm text-[#7A6E65]"
+            >
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#C17D4A] opacity-75" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#C17D4A]" />
+              </span>
+              Focused on research collaborations
+            </motion.div>
 
-              <div className="mb-6 space-y-2">
-                {words.map((word, index) => (
-                  <motion.div
-                    key={word}
-                    className="overflow-hidden"
-                    initial="hidden"
-                    animate="visible"
-                    variants={{
-                      hidden: {},
-                      visible: {
-                        transition: { delayChildren: 0.2 + index * 0.15, staggerChildren: 0.04 },
-                      },
-                    }}
-                  >
-                    <div className="flex flex-wrap">
-                      {word.split('').map((letter, letterIndex) => (
-                        <motion.span
-                          key={`${word}-${letterIndex}`}
-                          variants={{
-                            hidden: { y: '110%', opacity: 0 },
-                            visible: { y: 0, opacity: 1 },
-                          }}
-                          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                          className="font-display text-[3.15rem] font-bold leading-[0.9] tracking-[-0.05em] text-[#2C2825] sm:text-[4.8rem] lg:text-[6.8rem]"
-                        >
-                          {letter}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.55, duration: 0.6 }}
-                className="mb-8 flex min-h-[2rem] items-center gap-3 text-base text-[#7A6E65] sm:text-xl"
-              >
-                <span className="font-mono text-xs uppercase tracking-[0.28em] text-[#A89E94]">Research focu<a href="https://www.shivamprasad1001.in/roadmap.html">s</a></span>
-                <span className="font-display italic text-[#2C2825]">{typedRole}</span>
-                <span className="h-5 w-[2px] animate-pulse bg-[#C17D4A]" />
-              </motion.div>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.6 }}
-                className="max-w-2xl text-base leading-8 text-[#7A6E65] sm:text-lg"
-              >
-                I am building my portfolio around one clear goal: becoming an AI/ML researcher who can connect strong
-                theory with practical systems. My work spans deep learning, NLP, computer vision, and LLM applications,
-                and I am especially interested in projects that can grow into research papers, experiments, and
-                meaningful real-world impact.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.78, duration: 0.6 }}
-                className="mt-6 flex flex-wrap gap-2"
-              >
-                {['AI Research', 'Deep Learning', 'NLP', 'Computer Vision', 'PyTorch', 'Paper Writing'].map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-[#E0D9CF] bg-white px-3 py-1 text-xs font-medium text-[#7A6E65]"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.85, duration: 0.6 }}
-                className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center"
-              >
-                <motion.a
-                  ref={magneticRef}
-                  href="#contact"
-                  onMouseMove={handleMagnetMove}
-                  onMouseLeave={() => setMagneticStyle({ x: 0, y: 0 })}
-                  animate={{ x: magneticStyle.x, y: magneticStyle.y }}
-                  transition={{ type: 'spring', stiffness: 260, damping: 18 }}
-                  data-cursor="interactive"
-                  className="group inline-flex w-fit items-center gap-3 rounded-full bg-[#2C2825] px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_32px_rgba(44,40,37,0.18)]"
+            <div className="mb-6 space-y-2">
+              {words.map((word, index) => (
+                <motion.div
+                  key={word}
+                  className="overflow-hidden"
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    hidden: {},
+                    visible: {
+                      transition: { delayChildren: 0.2 + index * 0.15, staggerChildren: 0.04 },
+                    },
+                  }}
                 >
-                  Contact me
-                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </motion.a>
-
-                <a
-                  href="#portfolio"
-                  className="inline-flex w-fit items-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-6 py-3 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:bg-[#FAF7F2]"
-                >
-                  View research projects
-                  <BriefcaseBusiness className="h-4 w-4" />
-                </a>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.6 }}
-                className="mt-12 flex flex-wrap gap-3"
-              >
-                {socials.map((social) => {
-                  const Icon = social.icon;
-
-                  return (
-                    <a
-                      key={social.label}
-                      href={social.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-[#E0D9CF] bg-white px-4 py-2.5 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:text-[#2C2825]"
-                    >
-                      <span className="absolute inset-y-0 left-0 w-0 bg-[#FAF7F2] transition-all duration-300 group-hover:w-full" />
-                      <Icon className="relative z-10 h-4 w-4" />
-                      <span className="relative z-10">{social.label}</span>
-                    </a>
-                  );
-                })}
-              </motion.div>
+                  <div className="flex flex-wrap">
+                    {word.split('').map((letter, letterIndex) => (
+                      <motion.span
+                        key={`${word}-${letterIndex}`}
+                        variants={{
+                          hidden: { y: '110%', opacity: 0 },
+                          visible: { y: 0, opacity: 1 },
+                        }}
+                        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                        className="font-display text-[2.75rem] font-bold leading-[0.9] tracking-[-0.05em] text-[#2C2825] sm:text-[4.2rem] lg:text-[6rem]"
+                      >
+                        {letter}
+                      </motion.span>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
             </div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.94, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ delay: 0.25, duration: 0.7 }}
-              className="relative mx-auto w-full max-w-[27rem]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55, duration: 0.6 }}
+              className="mb-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-base text-[#7A6E65] sm:text-xl"
             >
-              <div className="relative rounded-[2rem] border border-[#E0D9CF] bg-white p-5 shadow-[0_24px_60px_rgba(44,40,37,0.1)]">
-                <div className="mb-5 flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#8B5E3C]" />
-                  <span className="h-2.5 w-2.5 rounded-full bg-[#C17D4A]" />
-                  <span className="ml-3 font-mono text-xs uppercase tracking-[0.3em] text-[#A89E94]">portrait</span>
-                </div>
-                <div className="noise-mask rounded-[1.5rem] border border-[#E0D9CF] bg-[#FAF7F2] p-4">
-                  <div className="relative mx-auto aspect-square overflow-hidden rounded-[1.35rem]">
-                    <motion.div
-                      className="absolute inset-0 rounded-[1.35rem] bg-[conic-gradient(from_90deg,#C17D4A,#8B5E3C,#C17D4A)]"
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
-                    />
-                    <div className="absolute inset-[6px] rounded-[1.2rem] bg-white" />
-                    <img
-                      src="https://avatars.githubusercontent.com/u/161421872?q=80&w=400&h=400&fit=crop"
-                      alt="Shivam Prasad"
-                      className="absolute inset-[16px] h-[calc(100%-32px)] w-[calc(100%-32px)] rounded-[1rem] object-cover"
-                    />
-                  </div>
-                  <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                    {[
-                      ['Model focus', 'LLMs, NLP, CV'],
-                      ['Deployment', 'Inference-ready apps'],
-                      ['Stack', 'Python, FastAPI, React'],
-                    ].map(([title, value]) => (
-                      <div key={title} className="rounded-2xl border border-[#E0D9CF] bg-white px-4 py-3">
-                        <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[#A89E94]">{title}</p>
-                        <p className="mt-2 text-sm text-[#7A6E65]">{value}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <span className="font-mono text-xs uppercase tracking-[0.28em] text-[#A89E94]">Research focu<a href="https://www.shivamprasad1001.in/roadmap.html">s</a></span>
+              <span className="font-display italic text-[#2C2825]">{typedRole}</span>
+              <span className="h-5 w-[2px] animate-pulse bg-[#C17D4A]" />
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+              className="max-w-2xl text-base leading-8 text-[#7A6E65] sm:text-lg"
+            >
+              I am building my portfolio around one clear goal: becoming an AI/ML researcher who can connect strong
+              theory with practical systems. My work spans deep learning, NLP, computer vision, and LLM applications,
+              and I am especially interested in projects that can grow into research papers, experiments, and
+              meaningful real-world impact.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.78, duration: 0.6 }}
+              className="mt-6 flex flex-wrap gap-2"
+            >
+              {['AI Research', 'Deep Learning', 'NLP', 'Computer Vision', 'PyTorch', 'Paper Writing'].map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-[#E0D9CF] bg-white px-3 py-1 text-xs font-medium text-[#7A6E65]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.85, duration: 0.6 }}
+              className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center"
+            >
+              <motion.a
+                ref={magneticRef}
+                href="#contact"
+                onMouseMove={handleMagnetMove}
+                onMouseLeave={() => setMagneticStyle({ x: 0, y: 0 })}
+                animate={{ x: magneticStyle.x, y: magneticStyle.y }}
+                transition={{ type: 'spring', stiffness: 260, damping: 18 }}
+                data-cursor="interactive"
+                className="group inline-flex w-fit items-center gap-3 rounded-full bg-[#2C2825] px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_32px_rgba(44,40,37,0.18)]"
+              >
+                Contact me
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </motion.a>
+
+              <a
+                href="#portfolio"
+                className="inline-flex w-fit items-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-6 py-3 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:bg-[#FAF7F2]"
+              >
+                View research projects
+                <BriefcaseBusiness className="h-4 w-4" />
+              </a>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.6 }}
+              className="mt-12 flex flex-wrap gap-3"
+            >
+              {socials.map((social) => {
+                const Icon = social.icon;
+
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-[#E0D9CF] bg-white px-4 py-2.5 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:text-[#2C2825]"
+                  >
+                    <span className="absolute inset-y-0 left-0 w-0 bg-[#FAF7F2] transition-all duration-300 group-hover:w-full" />
+                    <Icon className="relative z-10 h-4 w-4" />
+                    <span className="relative z-10">{social.label}</span>
+                  </a>
+                );
+              })}
             </motion.div>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.7 }}
+            className="relative mx-auto w-full max-w-[27rem]"
+          >
+            <div className="relative rounded-[2rem] border border-[#E0D9CF] bg-white p-5 shadow-[0_24px_60px_rgba(44,40,37,0.1)]">
+              <div className="mb-5 flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#8B5E3C]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#C17D4A]" />
+                <span className="ml-3 font-mono text-xs uppercase tracking-[0.3em] text-[#A89E94]">portrait</span>
+              </div>
+              <div className="noise-mask rounded-[1.5rem] border border-[#E0D9CF] bg-[#FAF7F2] p-4">
+                <div className="relative mx-auto aspect-square overflow-hidden rounded-[1.35rem]">
+                  <motion.div
+                    className="absolute inset-0 rounded-[1.35rem] bg-[conic-gradient(from_90deg,#C17D4A,#8B5E3C,#C17D4A)]"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
+                  />
+                  <div className="absolute inset-[6px] rounded-[1.2rem] bg-white" />
+                  <img
+                    src="https://avatars.githubusercontent.com/u/161421872?q=80&w=400&h=400&fit=crop"
+                    alt="Shivam Prasad"
+                    className="absolute inset-[16px] h-[calc(100%-32px)] w-[calc(100%-32px)] rounded-[1rem] object-cover"
+                  />
+                </div>
+                <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                  {[
+                    ['Model focus', 'LLMs, NLP, CV'],
+                    ['Deployment', 'Inference-ready apps'],
+                    ['Stack', 'Python, FastAPI, React'],
+                  ].map(([title, value]) => (
+                    <div key={title} className="rounded-2xl border border-[#E0D9CF] bg-white px-4 py-3">
+                      <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[#A89E94]">{title}</p>
+                      <p className="mt-2 text-sm text-[#7A6E65]">{value}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
+      </div>
     </header>
   );
 };

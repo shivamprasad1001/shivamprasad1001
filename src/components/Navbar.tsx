@@ -90,7 +90,7 @@ const Navbar: React.FC = () => {
               <span className="h-5 w-[2px] animate-pulse bg-[#C17D4A]" />
             </a>
 
-            <div className="hidden items-center gap-5 lg:flex">
+            <div className="hidden items-center gap-4 xl:gap-6 lg:flex">
               {navItems.map((item) => {
                 const active = activeSection === item.href;
 
@@ -98,7 +98,7 @@ const Navbar: React.FC = () => {
                   <a
                     key={item.href}
                     href={item.href}
-                    className={`relative py-2 text-sm transition-colors ${active ? 'text-[#2C2825]' : 'text-[#A89E94] hover:text-[#2C2825]'
+                    className={`relative py-1.5 text-[13px] font-medium transition-colors ${active ? 'text-[#2C2825]' : 'text-[#A89E94] hover:text-[#2C2825]'
                       }`}
                   >
                     {item.label}
