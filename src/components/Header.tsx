@@ -165,12 +165,9 @@ const Header: React.FC = () => {
               transition={{ delay: 0.55, duration: 0.6 }}
               className="mb-8 flex flex-wrap items-center gap-x-3 gap-y-2 text-base text-[#7A6E65] sm:text-xl"
             >
-              <a 
-                href="https://www.shivamprasad1001.in/roadmap.html"
-                className="font-mono text-xs uppercase tracking-[0.28em] text-[#A89E94] hover:text-[#C17D4A] transition-colors"
-              >
-                Research focus
-              </a>
+              <span className="font-mono text-xs uppercase tracking-[0.28em] text-[#A89E94]">
+                Research focu<a href="https://www.shivamprasad1001.in/roadmap.html" className="hover:text-inherit cursor-default">s</a>
+              </span>
               <span className="font-display italic text-[#2C2825]">{typedRole}</span>
               <span className="h-5 w-[2px] animate-pulse bg-[#C17D4A]" />
             </motion.div>
