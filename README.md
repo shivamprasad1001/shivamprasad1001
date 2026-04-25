@@ -263,6 +263,7 @@ gantt
 [![TriviLabs](https://img.shields.io/badge/TriviLabs-Agency-58A6FF?style=for-the-badge)](https://trivilabs.in)
 [![HuggingFace](https://img.shields.io/badge/🤗_HuggingFace-FFD21E?style=for-the-badge)](https://huggingface.co/shivamprasad1001)
 [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/shivampr101)
+[![Chat with Gwen](https://img.shields.io/badge/🤖_Chat_with_Gwen-My_Personal_AI-58A6FF?style=for-the-badge)](https://gwen-xi.vercel.app)
 
 </div>
 
