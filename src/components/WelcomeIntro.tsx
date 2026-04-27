@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import shivamp1 from '../assets/nasaImages/shivamp1.png';
-import shivamp2 from '../assets/nasaImages/shivamp2.png';
-import shivamp3 from '../assets/nasaImages/shivamp3.png';
-import shivamp4 from '../assets/nasaImages/shivamp4.png';
-import shivamp5 from '../assets/nasaImages/shivamp5.png';
-import shivamp6 from '../assets/nasaImages/shivamp6.png';
+import shivamp1 from '../assets/nasaImages/shivamp1.webp';
+import shivamp2 from '../assets/nasaImages/shivamp2.webp';
+import shivamp3 from '../assets/nasaImages/shivamp3.webp';
+import shivamp4 from '../assets/nasaImages/shivamp4.webp';
+import shivamp5 from '../assets/nasaImages/shivamp5.webp';
+import shivamp6 from '../assets/nasaImages/shivamp6.webp';
 
 const NASA_IMAGES = [shivamp1, shivamp2, shivamp3, shivamp4, shivamp5, shivamp6];
 
@@ -113,6 +113,9 @@ const WelcomeIntro: React.FC<WelcomeIntroProps> = ({ onComplete }) => {
               <img
                 src={img}
                 alt=""
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
               />
 
