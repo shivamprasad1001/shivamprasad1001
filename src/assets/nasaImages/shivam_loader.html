@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shivam Prasad — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100%; height: 100%;
+      background: #f7faf8;
+      overflow: hidden;
+    }
+
+    #loader {
+      width: 100vw;
+      height: 100vh;
+      background:
+        linear-gradient(180deg, #ffffff 0%, #f6faf7 58%, #eef6f1 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Space Mono', monospace;
+    }
+
+    /* ── Soft map points ── */
+    .stars {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        radial-gradient(1px 1px at 5%  10%, rgba(17,88,58,0.22) 0%, transparent 100%),
+        radial-gradient(1px 1px at 14% 55%, rgba(17,88,58,0.16) 0%, transparent 100%),
+        radial-gradient(1px 1px at 22% 22%, rgba(17,88,58,0.20) 0%, transparent 100%),
+        radial-gradient(1px 1px at 33% 78%, rgba(17,88,58,0.14) 0%, transparent 100%),
+        radial-gradient(1px 1px at 44%  6%, rgba(17,88,58,0.18) 0%, transparent 100%),
+        radial-gradient(1px 1px at 52% 42%, rgba(17,88,58,0.12) 0%, transparent 100%),
+        radial-gradient(1px 1px at 61% 88%, rgba(17,88,58,0.18) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 30%, rgba(17,88,58,0.24) 0%, transparent 100%),
+        radial-gradient(1px 1px at 78% 65%, rgba(17,88,58,0.16) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 15%, rgba(17,88,58,0.18) 0%, transparent 100%),
+        radial-gradient(1px 1px at 91% 50%, rgba(17,88,58,0.14) 0%, transparent 100%),
+        radial-gradient(1px 1px at 96% 80%, rgba(17,88,58,0.18) 0%, transparent 100%);
+    }
+
+    /* ── Scanlines ── */
+    .scanline-overlay {
+      position: absolute; inset: 0; pointer-events: none; z-index: 20;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 3px,
+        rgba(20,70,46,0.035) 3px, rgba(20,70,46,0.035) 4px
+      );
+    }
+
+    /* ── Corner decorations ── */
+    .corner { position: absolute; width: 18px; height: 18px; opacity: 0.42; }
+    .corner.tl { top: 18px; left: 18px; border-top: 1px solid #1d8f62; border-left: 1px solid #1d8f62; }
+    .corner.tr { top: 18px; right: 18px; border-top: 1px solid #1d8f62; border-right: 1px solid #1d8f62; }
+    .corner.bl { bottom: 18px; left: 18px; border-bottom: 1px solid #1d8f62; border-left: 1px solid #1d8f62; }
+    .corner.br { bottom: 18px; right: 18px; border-bottom: 1px solid #1d8f62; border-right: 1px solid #1d8f62; }
+
+    /* ── Top label ── */
+    .label-top {
+      font-size: 10px;
+      color: rgba(18, 117, 76, 0.72);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.2s forwards;
+    }
+
+    /* ── Panels ── */
+    .panels-row {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(42px, 88px));
+      gap: 6px;
+      width: min(558px, calc(100vw - 32px));
+      position: relative;
+      z-index: 5;
+    }
+
+    .panel {
+      width: 100%;
+      height: clamp(260px, 58vh, 420px);
+      overflow: hidden;
+      position: relative;
+      opacity: 0;
+      transform: translateY(-130px) rotate(-2deg);
+      animation: dropIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      border: 1px solid rgba(23, 108, 73, 0.18);
+      background: #ffffff;
+      box-shadow: 0 18px 42px rgba(24, 64, 44, 0.12);
+    }
+
+    .panel img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.96;
+      filter: saturate(1.06) contrast(1.04) brightness(1.05);
+    }
+
+    .panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.28)),
+        radial-gradient(circle at 50% 35%, rgba(47,145,97,0.12), transparent 58%);
+      z-index: 2;
+    }
+
+    .letter {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      display: grid;
+      place-items: center;
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(34px, 6vw, 74px);
+      font-weight: 800;
+      color: rgba(255,255,255,0.92);
+      text-shadow:
+        0 0 16px rgba(17, 97, 62, 0.38),
+        0 2px 0 rgba(20, 52, 34, 0.42);
+    }
+
+    .panel-scan {
+      position: absolute; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(18,137,87,0.9), transparent);
+      top: 0; opacity: 0;
+      animation: scanDown 1.2s ease-out forwards;
+      z-index: 8;
+    }
+
+    .panel:nth-child(1) { animation-delay: 0.10s; }
+    .panel:nth-child(1) .panel-scan { animation-delay: 0.85s; }
+    .panel:nth-child(2) { animation-delay: 0.22s; }
+    .panel:nth-child(2) .panel-scan { animation-delay: 0.97s; }
+    .panel:nth-child(3) { animation-delay: 0.34s; }
+    .panel:nth-child(3) .panel-scan { animation-delay: 1.09s; }
+    .panel:nth-child(4) { animation-delay: 0.46s; }
+    .panel:nth-child(4) .panel-scan { animation-delay: 1.21s; }
+    .panel:nth-child(5) { animation-delay: 0.58s; }
+    .panel:nth-child(5) .panel-scan { animation-delay: 1.33s; }
+    .panel:nth-child(6) { animation-delay: 0.70s; }
+    .panel:nth-child(6) .panel-scan { animation-delay: 1.45s; }
+
+    @keyframes dropIn {
+      0%   { opacity: 0; transform: translateY(-130px) rotate(-2deg); }
+      55%  { opacity: 1; transform: translateY(6px) rotate(0.5deg); }
+      100% { opacity: 1; transform: translateY(0) rotate(0deg); }
+    }
+
+    @keyframes scanDown {
+      0%   { top: 0;    opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    /* ── Bottom reveal ── */
+    .reveal-section {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 1.4s forwards;
+      position: relative;
+      z-index: 5;
+    }
+
+    .name-spelled {
+      font-size: 11px;
+      letter-spacing: 0.55em;
+      color: rgba(18, 117, 76, 0.72);
+      text-transform: uppercase;
+    }
+
+    .tagline {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(28, 46, 38, 0.62);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .progress-bar {
+      width: 540px;
+      max-width: 88vw;
+      height: 1px;
+      background: rgba(21, 85, 57, 0.16);
+      position: relative;
+      overflow: visible;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #146b46, #36b978);
+      width: 0%;
+      animation: fill 2.4s cubic-bezier(0.4,0,0.2,1) 1.4s forwards;
+    }
+
+    .progress-dot {
+      position: absolute;
+      top: -3px; left: 0%;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #1d8f62;
+      box-shadow: 0 0 12px rgba(29,143,98,0.42);
+      animation: dotMove 2.4s cubic-bezier(0.4,0,0.2,1) 1.4s forwards;
+    }
+
+    @keyframes fill {
+      0%   { width: 0%; }
+      35%  { width: 50%; }
+      65%  { width: 75%; }
+      85%  { width: 90%; }
+      100% { width: 100%; }
+    }
+
+    @keyframes dotMove {
+      0%   { left: 0%; }
+      35%  { left: 50%; }
+      65%  { left: 75%; }
+      85%  { left: 90%; }
+      100% { left: calc(100% - 7px); }
+    }
+
+    .status-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .dot-blink {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: #1d8f62;
+      animation: blink 1.2s ease 1.6s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.12; }
+    }
+
+    .status-txt {
+      font-size: 9px;
+      color: rgba(28, 46, 38, 0.48);
+      letter-spacing: 0.14em;
+      min-width: 220px;
+    }
+
+    .pct {
+      font-size: 9px;
+      color: rgba(18,117,76,0.76);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── Shared keyframe ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    #loader.done .status-txt,
+    #loader.done .pct {
+      color: rgba(18,117,76,0.86);
+    }
+
+    @media (max-width: 520px) {
+      .label-top {
+        font-size: 8px;
+        letter-spacing: 0.24em;
+        margin-bottom: 16px;
+      }
+
+      .panels-row {
+        gap: 4px;
+        width: min(904vw, 820px);
+      }
+
+      .panel {
+        height: clamp(240px, 56vh, 360px);
+      }
+
+      .reveal-section {
+        margin-top: 24px;
+        gap: 12px;
+      }
+
+      .name-spelled,
+      .tagline {
+        max-width: 92vw;
+        text-align: center;
+        line-height: 1.55;
+      }
+
+      .name-spelled {
+        letter-spacing: 0.32em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="stars"></div>
+  <div class="scanline-overlay"></div>
+  <div class="corner tl"></div>
+  <div class="corner tr"></div>
+  <div class="corner bl"></div>
+  <div class="corner br"></div>
+
+  <div class="label-top">◈ &nbsp; satellite imagery &nbsp; ◈</div>
+
+  <div class="panels-row">
+
+    <!-- Each panel uses its own satellite image and overlays one letter. -->
+
+    <!-- Panel 1 — S -->
+    <div class="panel">
+      <div class="panel-scan"></div>
+      <img src="shivamp1-1.png" alt="" />
+      <!-- <span class="letter" aria-hidden="true">S</span> -->
+    </div>
+
+    <!-- Panel 2 — H -->
+    <div class="panel">
+      <div class="panel-scan"></div>
+      <img src="shivamp1.png" alt="" />
+      <!-- <span class="letter" aria-hidden="true">H</span> -->
+    </div>
+
+    <!-- Panel 3 — I -->
+    <div class="panel">
+      <div class="panel-scan"></div>
+      <img src="shivamp3.png" alt="" />
+      <!-- <span class="letter" aria-hidden="true">I</span> -->
+    </div>
+
+    <!-- Panel 4 — V -->
+    <div class="panel">
+      <div class="panel-scan"></div>
+      <img src="shivamp4.png" alt="" />
+      <!-- <span class="letter" aria-hidden="true">V</span> -->
+    </div>
+
+    <!-- Panel 5 — A -->
+    <div class="panel">
+      <div class="panel-scan"></div>
+      <img src="shivamp5.png" alt="" />
+      <!-- <span class="letter" aria-hidden="true">A</span> -->
+    </div>
+
+    <!-- Panel 6 — M -->
+    <div class="panel">
+      <div class="panel-scan"></div>
+      <img src="shivamp6.png" alt="" />
+      <!-- <span class="letter" aria-hidden="true">M</span> -->
+    </div>
+
+  </div>
+
+  <div class="reveal-section">
+    <div class="name-spelled">S &nbsp; H &nbsp; I &nbsp; V &nbsp; A &nbsp; M</div>
+    <div class="tagline">AI · ML Engineer · TriviLabs</div>
+
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+      <div class="progress-dot"></div>
+    </div>
+
+    <div class="status-row">
+      <div class="dot-blink"></div>
+      <div class="status-txt" id="stxt">ACQUIRING SIGNAL...</div>
+      <div class="pct" id="pct">0%</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ── Status messages ── */
+  const msgs = [
+    [0,    "ACQUIRING SIGNAL..."],
+    [500,  "DECODING TERRAIN STRIPS..."],
+    [1000, "LETTER LOCK: S-H-I-V-A-M"],
+    [1600, "COMPOSITING PANELS..."],
+    [2200, "PORTFOLIO READY"],
+  ];
+
+  const stxt  = document.getElementById('stxt');
+  const pctEl = document.getElementById('pct');
+
+  msgs.forEach(([d, m]) => setTimeout(() => { stxt.textContent = m; }, d + 1400));
+
+  /* ── Percentage counter ── */
+  let startTs = null;
+  const DURATION = 2400;
+
+  function animPct(ts) {
+    if (!startTs) startTs = ts;
+    const t = Math.min((ts - startTs) / DURATION, 1);
+    const eased = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    pctEl.textContent = Math.round(eased * 100) + '%';
+    if (t < 1) {
+      requestAnimationFrame(animPct);
+    } else {
+      /* ── Optionally navigate to your portfolio after loading ──
+         Uncomment the line below and set your main page URL:
+         setTimeout(() => { window.location.href = 'index.html'; }, 400);
+      */
+      document.getElementById('loader').classList.add('done');
+    }
+  }
+
+  setTimeout(() => requestAnimationFrame(animPct), 1400);
+</script>
+
+</body>
+</html>
