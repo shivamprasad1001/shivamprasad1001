@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 280" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080B10" />
+      <stop offset="50%" stop-color="#0F141C" />
+      <stop offset="100%" stop-color="#090C11" />
+    </linearGradient>
+
+    <!-- Metallic Gold/Bronze Gradient -->
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F2C94C" />
+      <stop offset="50%" stop-color="#F2994A" />
+      <stop offset="100%" stop-color="#D17C2F" />
+    </linearGradient>
+
+    <!-- Cyan/Electric Blue Gradient -->
+    <linearGradient id="blue-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#56CCF2" />
+      <stop offset="100%" stop-color="#2F80ED" />
+    </linearGradient>
+
+    <!-- Soft Glow Filter -->
+    <filter id="glow-gold" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="glow-blue" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#ffffff" stroke-width="1" stroke-opacity="0.02" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="850" height="280" fill="url(#bg-grad)" />
+  <rect width="850" height="280" fill="url(#grid)" />
+
+  <!-- Ambient Light / Nebulae -->
+  <circle cx="100" cy="80" r="150" fill="#F2994A" opacity="0.03" filter="url(#glow-gold)" />
+  <circle cx="700" cy="180" r="180" fill="#2F80ED" opacity="0.05" filter="url(#glow-blue)" />
+
+  <!-- Decorative Neural Network / Multi-Agent Nodes (Right Side) -->
+  <g transform="translate(560, 40)" opacity="0.85">
+    <!-- Connections -->
+    <line x1="50" y1="50" x2="150" y2="30" stroke="#2F80ED" stroke-width="1" stroke-opacity="0.25" />
+    <line x1="50" y1="50" x2="110" y2="100" stroke="#2F80ED" stroke-width="1" stroke-opacity="0.25" />
+    <line x1="150" y1="30" x2="220" y2="70" stroke="#2F80ED" stroke-width="1" stroke-opacity="0.25" />
+    <line x1="110" y1="100" x2="220" y2="70" stroke="#2F80ED" stroke-width="1" stroke-opacity="0.25" />
+    <line x1="110" y1="100" x2="140" y2="170" stroke="#F2994A" stroke-width="1" stroke-dasharray="3,3" stroke-opacity="0.3" />
+    <line x1="220" y1="70" x2="140" y2="170" stroke="#F2994A" stroke-width="1" stroke-opacity="0.2" />
+    <line x1="50" y1="50" x2="60" y2="150" stroke="#2F80ED" stroke-width="1" stroke-opacity="0.2" />
+    <line x1="60" y1="150" x2="140" y2="170" stroke="#2F80ED" stroke-width="1" stroke-opacity="0.2" />
+
+    <!-- Policy Optimization Loop Arrows -->
+    <path d="M 120,40 A 50,50 0 0,1 210,60" fill="none" stroke="url(#gold-grad)" stroke-width="1.5" marker-end="url(#arrow)" stroke-dasharray="4,2" />
+    
+    <!-- Central Agent/Brain Nodes -->
+    <circle cx="50" cy="50" r="8" fill="#2F80ED" />
+    <circle cx="50" cy="50" r="14" fill="none" stroke="#2F80ED" stroke-width="1" opacity="0.4" />
+    
+    <circle cx="150" cy="30" r="5" fill="#56CCF2" />
+    <circle cx="110" cy="100" r="6" fill="#2F80ED" />
+    
+    <!-- Opposing Agent (Debate partner) -->
+    <circle cx="220" cy="70" r="8" fill="#F2994A" />
+    <circle cx="220" cy="70" r="14" fill="none" stroke="#F2994A" stroke-width="1" opacity="0.4" />
+    
+    <circle cx="140" cy="170" r="9" fill="#D17C2F" />
+    <circle cx="60" cy="150" r="4" fill="#2F80ED" />
+
+    <!-- Soft glow on key nodes -->
+    <circle cx="50" cy="50" r="4" fill="#ffffff" filter="url(#glow-blue)" />
+    <circle cx="220" cy="70" r="4" fill="#ffffff" filter="url(#glow-gold)" />
+    <circle cx="140" cy="170" r="3" fill="#ffffff" filter="url(#glow-gold)" />
+
+    <!-- Mini Label Text inside graph -->
+    <text x="50" y="28" font-family="'JetBrains Mono', monospace" font-size="8" fill="#56CCF2" opacity="0.6" text-anchor="middle">Agent_A (PPO)</text>
+    <text x="220" y="48" font-family="'JetBrains Mono', monospace" font-size="8" fill="#F2994A" opacity="0.6" text-anchor="middle">Agent_B (PPO)</text>
+    <text x="140" y="195" font-family="'JetBrains Mono', monospace" font-size="8" fill="#a89880" opacity="0.5" text-anchor="middle">Reward_Shaping</text>
+  </g>
+
+  <!-- Left Side: Branding and Identity -->
+  <g transform="translate(60, 75)">
+    <!-- Sub-tagline badge -->
+    <rect width="135" height="22" rx="11" fill="#2F80ED" fill-opacity="0.1" stroke="#2F80ED" stroke-opacity="0.3" stroke-width="1" />
+    <text x="12" y="15" font-family="'JetBrains Mono', 'Fira Code', monospace" font-size="10" font-weight="bold" fill="#56CCF2" letter-spacing="1">RESEARCH &amp; DEV</text>
+
+    <!-- Main Title -->
+    <text x="0" y="65" font-family="'Lora', 'Playfair Display', serif" font-size="44" font-weight="800" fill="url(#gold-grad)" letter-spacing="0.5">SHIVAM PRASAD</text>
+    
+    <!-- Title Underline Accent -->
+    <line x1="0" y1="80" x2="360" y2="80" stroke="url(#blue-grad)" stroke-width="2" stroke-linecap="round" />
+
+    <!-- Role/Tagline -->
+    <text x="0" y="115" font-family="'DM Sans', 'Inter', sans-serif" font-size="16" font-weight="600" fill="#E2E8F0" letter-spacing="0.5">AI/ML Engineer &amp; Reinforcement Learning Researcher</text>
+    
+    <!-- Core Themes -->
+    <g transform="translate(0, 140)">
+      <!-- Bullet 1 -->
+      <circle cx="4" cy="-5" r="3" fill="#56CCF2" />
+      <text x="15" y="-1" font-family="'JetBrains Mono', monospace" font-size="11" fill="#94A3B8">Multi-Agent Systems (MARL)</text>
+
+      <!-- Bullet 2 -->
+      <circle cx="215" cy="-5" r="3" fill="#F2994A" />
+      <text x="226" y="-1" font-family="'JetBrains Mono', monospace" font-size="11" fill="#94A3B8">Cooperative Debate</text>
+
+      <!-- Bullet 3 -->
+      <circle cx="380" cy="-5" r="3" fill="#56CCF2" />
+      <text x="391" y="-1" font-family="'JetBrains Mono', monospace" font-size="11" fill="#94A3B8">PPO / Optimization</text>
+    </g>
+  </g>
+
+  <!-- Border Accent -->
+  <rect x="0.5" y="0.5" width="849" height="279" rx="0" fill="none" stroke="#2F80ED" stroke-opacity="0.1" stroke-width="1" />
+</svg>
