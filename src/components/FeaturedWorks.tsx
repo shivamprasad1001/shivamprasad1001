@@ -11,6 +11,14 @@ const projectCount = projects.length;
 const getProjectTags = (title: string) => {
   const key = title.toLowerCase();
 
+  if (key.includes('orchestrator')) {
+    return ['Multi-Agent', 'HITL', 'Code Gen'];
+  }
+
+  if (key.includes('debate')) {
+    return ['MARL', 'PPO', 'LLM Debate'];
+  }
+
   if (key.includes('moodify')) {
     return ['Computer Vision', 'Emotion AI', 'Inference'];
   }

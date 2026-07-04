@@ -1,37 +1,50 @@
 [
-    {
-      "title": "MoodifyAI",
-      "year": 2025,
-      "description": "An emotion-aware AI application exploring how conversational interaction, music preference, and user signals can be combined into a more adaptive intelligent system.",
-      "imageUrl": "https://raw.githubusercontent.com/shivamprasad1001/MoodifyAI/main/static/Home.png",
-      "liveUrl": "https://huggingface.co/spaces/shivamprasad1001/moodify",
-      "repoUrl": "https://github.com/shivamprasad1001/MoodifyAI"
-    },
-    
-    {
-      "title": "PaperMind AI",
-      "year": 2025,
-      "description": "A document intelligence project for asking grounded questions over PDFs, reflecting my interest in retrieval, language understanding, and research-oriented reading workflows.",
-      "imageUrl": "https://github.com/shivamprasad1001/papermind-ai/raw/runLocal/assets/PapermindAI_logo.png",
-      "liveUrl": "https://papermind-chat.vercel.app/",
-      "repoUrl": "https://github.com/shivamprasad1001/PaperMindAI"
-    },
-    {
-      "title": "AIDesktopAssistant",
-      "year": 2025,
-      "description": "A local AI assistant using TinyLLaMA for voice-driven productivity, built to explore lightweight model behavior, agentic workflows, and practical human-computer interaction.",
-      "imageUrl": "https://montymobile.com/wp-content/uploads/2024/05/Chatbot-Design-Blog-Cover-1920x1080-1-960x540.webp",
-      "liveUrl": "",
-      "repoUrl": "https://github.com/shivamprasad1001/AIDesktopAssistant"
-    },
-    {
-      "title": "Password Manager System",
-      "year": 2025,
-      "description": "A security-focused software project that strengthened my systems thinking, backend discipline, and understanding of trustworthy application design.",
-      "imageUrl": "https://github.com/shivamprasad1001/password_manager_system/raw/main/assets/logo.png",
-      "liveUrl": "",
-      "repoUrl": "https://github.com/shivamprasad1001/password_manager_system"
-    }
-    
-  ]
-  
+  {
+    "title": "OrchestratorFlow",
+    "year": 2026,
+    "description": "An adaptive multi-agent automated code generation framework achieving an 88% task success rate, coordinating planning, coding, review, and test agents with Human-in-the-Loop validation.",
+    "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
+    "liveUrl": "/papers/final-paper.pdf",
+    "repoUrl": "https://github.com/shivamprasad1001/OrchestratorFlow"
+  },
+  {
+    "title": "Cooperative Multi-Agent Debate",
+    "year": 2026,
+    "description": "A Multi-Agent Reinforcement Learning (MARL) framework where LLM agents with opposing reward signals debate, critique, and refine outputs, utilizing PPO with custom reward shaping to achieve consensus on complex tasks.",
+    "imageUrl": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=800&auto=format&fit=crop",
+    "liveUrl": "",
+    "repoUrl": "https://github.com/shivamprasad1001/multi-agent-debate"
+  },
+  {
+    "title": "MoodifyAI",
+    "year": 2025,
+    "description": "An emotion-aware AI application exploring how conversational interaction, music preference, and user signals can be combined into a more adaptive intelligent system.",
+    "imageUrl": "https://raw.githubusercontent.com/shivamprasad1001/MoodifyAI/main/static/Home.png",
+    "liveUrl": "https://huggingface.co/spaces/shivamprasad1001/moodify",
+    "repoUrl": "https://github.com/shivamprasad1001/MoodifyAI"
+  },
+  {
+    "title": "PaperMind AI",
+    "year": 2025,
+    "description": "A document intelligence project for asking grounded questions over PDFs, reflecting my interest in retrieval, language understanding, and research-oriented reading workflows.",
+    "imageUrl": "https://github.com/shivamprasad1001/papermind-ai/raw/runLocal/assets/PapermindAI_logo.png",
+    "liveUrl": "https://papermind-chat.vercel.app/",
+    "repoUrl": "https://github.com/shivamprasad1001/PaperMindAI"
+  },
+  {
+    "title": "AIDesktopAssistant",
+    "year": 2025,
+    "description": "A local AI assistant using TinyLLaMA for voice-driven productivity, built to explore lightweight model behavior, agentic workflows, and practical human-computer interaction.",
+    "imageUrl": "https://montymobile.com/wp-content/uploads/2024/05/Chatbot-Design-Blog-Cover-1920x1080-1-960x540.webp",
+    "liveUrl": "",
+    "repoUrl": "https://github.com/shivamprasad1001/AIDesktopAssistant"
+  },
+  {
+    "title": "Password Manager System",
+    "year": 2025,
+    "description": "A security-focused software project that strengthened my systems thinking, backend discipline, and understanding of trustworthy application design.",
+    "imageUrl": "https://github.com/shivamprasad1001/password_manager_system/raw/main/assets/logo.png",
+    "liveUrl": "",
+    "repoUrl": "https://github.com/shivamprasad1001/password_manager_system"
+  }
+]
