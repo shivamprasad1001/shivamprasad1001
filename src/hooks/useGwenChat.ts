@@ -44,11 +44,11 @@ export const useGwenChat = () => {
 
       try {
         // 4. Build history: last 10 messages
-        // map 'assistant' -> 'model' for Gemini compatibility
+        // map 'assistant' -> 'assistant' for compatibility (e.g. Groq/OpenAI backend)
         const history = messages
           .slice(-10)
           .map((msg) => ({
-            role: (msg.role === 'assistant' ? 'model' : 'user') as 'model' | 'user',
+            role: (msg.role === 'assistant' ? 'assistant' : 'user') as 'assistant' | 'user',
             content: msg.content,
           }));
 
