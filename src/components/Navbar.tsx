@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, Download, Menu, X } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
 
 const navItems = [
   { href: '#about', label: 'About' },
@@ -113,7 +112,6 @@ const Navbar: React.FC = () => {
             </div>
 
             <div className="flex items-center gap-3">
-              <ThemeToggle />
               <a
                 href="/papers"
                 className="hidden rounded-full border border-[#E0D9CF] bg-white px-4 py-2 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:bg-[#FAF7F2] sm:inline-flex"
@@ -171,7 +169,6 @@ const Navbar: React.FC = () => {
                   <p className="section-kicker">Navigation</p>
                   <p className="mt-2 text-sm text-[#7A6E65]">Jump anywhere in the portfolio.</p>
                 </div>
-                <ThemeToggle />
               </div>
 
               <div className="space-y-2">
