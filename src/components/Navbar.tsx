@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, Download, Menu, X } from 'lucide-react';
+import Magnetic from './Magnetic';
 
 const navItems = [
   { href: '#about', label: 'About' },
@@ -95,43 +96,48 @@ const Navbar: React.FC = () => {
                 const active = activeSection === item.href;
 
                 return (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    className={`relative py-1.5 text-[13px] font-medium transition-colors ${active ? 'text-[#2C2825]' : 'text-[#A89E94] hover:text-[#2C2825]'
-                      }`}
-                  >
-                    {item.label}
-                    <span
-                      className={`absolute bottom-0 left-0 h-px bg-[#C17D4A] transition-all duration-300 ${active ? 'w-full opacity-100' : 'w-0 opacity-0'
+                  <Magnetic key={item.href} strength={0.25}>
+                    <a
+                      href={item.href}
+                      className={`relative py-1.5 text-[13px] font-medium transition-colors ${active ? 'text-[#2C2825]' : 'text-[#A89E94] hover:text-[#2C2825]'
                         }`}
-                    />
-                  </a>
+                    >
+                      {item.label}
+                      <span
+                        className={`absolute bottom-0 left-0 h-px bg-[#C17D4A] transition-all duration-300 ${active ? 'w-full opacity-100' : 'w-0 opacity-0'
+                          }`}
+                      />
+                    </a>
+                  </Magnetic>
                 );
               })}
             </div>
 
             <div className="flex items-center gap-3">
-              <a
-                href="/papers"
-                className="hidden rounded-full border border-[#E0D9CF] bg-white px-4 py-2 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:bg-[#FAF7F2] sm:inline-flex"
-              >
-                Read Papers
-              </a>
+              <Magnetic strength={0.2}>
+                <a
+                  href="/papers"
+                  className="hidden rounded-full border border-[#E0D9CF] bg-white px-4 py-2 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:bg-[#FAF7F2] sm:inline-flex"
+                >
+                  Read Papers
+                </a>
+              </Magnetic>
 
-              <a
-                href="./resume.pdf"
-                download="shivam-resume.pdf"
-                className="group hidden rounded-full p-[1px] sm:inline-block"
-              >
-                <span className="relative flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#C17D4A] to-[#8B5E3C] p-[1px]">
-                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
-                  <span className="relative flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-[#2C2825]">
-                    <Download className="h-4 w-4" />
-                    Download CV
+              <Magnetic strength={0.2}>
+                <a
+                  href="./resume.pdf"
+                  download="shivam-resume.pdf"
+                  className="group hidden rounded-full p-[1px] sm:inline-block"
+                >
+                  <span className="relative flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#C17D4A] to-[#8B5E3C] p-[1px]">
+                    <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
+                    <span className="relative flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-[#2C2825]">
+                      <Download className="h-4 w-4" />
+                      Download CV
+                    </span>
                   </span>
-                </span>
-              </a>
+                </a>
+              </Magnetic>
 
               <button
                 type="button"
