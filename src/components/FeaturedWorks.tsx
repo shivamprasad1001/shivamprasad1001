@@ -120,26 +120,6 @@ const FeaturedWorks: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap items-center gap-4 self-start lg:self-auto">
-            {/* Slider Navigation Buttons */}
-            <div className="flex gap-2">
-              <button
-                onClick={prevSlide}
-                disabled={adjustedIndex === 0}
-                className="p-3 rounded-full border border-[#E0D9CF] bg-white text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:text-[#2C2825] disabled:opacity-40 disabled:cursor-not-allowed neu-raised select-none"
-                aria-label="Previous projects"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </button>
-              <button
-                onClick={nextSlide}
-                disabled={adjustedIndex === maxIndex}
-                className="p-3 rounded-full border border-[#E0D9CF] bg-white text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:text-[#2C2825] disabled:opacity-40 disabled:cursor-not-allowed neu-raised select-none"
-                aria-label="Next projects"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </button>
-            </div>
-
             <div className="quiet-panel rounded-[1.5rem] px-5 py-4 border-[#E0D9CF]/50 bg-white/60">
               <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#A89E94]">portfolio summary</p>
               <div className="mt-3 flex gap-6 text-sm text-[#7A6E65]">
@@ -214,87 +194,124 @@ const FeaturedWorks: React.FC = () => {
           </motion.div>
         )}
 
-        {/* Premium Project Slider */}
-        <div className="relative mt-12 overflow-visible">
+        {/* Premium Project Slider Container */}
+        <div className="relative mt-12 overflow-visible px-1 md:px-0">
+          
+          {/* Left Arrow Button */}
+          {adjustedIndex > 0 && (
+            <button
+              onClick={prevSlide}
+              className="absolute left-2 md:left-[-24px] top-1/2 -translate-y-1/2 z-20 p-3.5 rounded-full border border-[#E0D9CF] bg-white/90 backdrop-blur-sm text-[#7A6E65] shadow-[0_8px_24px_rgba(44,40,37,0.12)] transition hover:border-[#C17D4A]/50 hover:text-[#2C2825] select-none flex items-center justify-center hover:scale-105 active:scale-95"
+              aria-label="Previous projects"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+          )}
+
+          {/* Right Arrow Button */}
+          {adjustedIndex < maxIndex && (
+            <button
+              onClick={nextSlide}
+              className="absolute right-2 md:right-[-24px] top-1/2 -translate-y-1/2 z-20 p-3.5 rounded-full border border-[#E0D9CF] bg-white/90 backdrop-blur-sm text-[#7A6E65] shadow-[0_8px_24px_rgba(44,40,37,0.12)] transition hover:border-[#C17D4A]/50 hover:text-[#2C2825] select-none flex items-center justify-center hover:scale-105 active:scale-95"
+              aria-label="Next projects"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          )}
+
+          {/* Slider viewport */}
           <div className="overflow-hidden">
             <motion.div
-              className="flex gap-0"
+              className="flex gap-0 cursor-grab active:cursor-grabbing touch-pan-y"
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
+              onDragEnd={(_, info) => {
+                const swipeThreshold = 40;
+                if (info.offset.x < -swipeThreshold) {
+                  nextSlide();
+                } else if (info.offset.x > swipeThreshold) {
+                  prevSlide();
+                }
+              }}
               animate={{ x: `-${adjustedIndex * (100 / visibleCount)}%` }}
               transition={{ type: 'spring', stiffness: 180, damping: 24 }}
             >
               {slideProjects.map((project) => (
                 <div
                   key={project.title}
-                  className="w-full flex-shrink-0 px-3"
+                  className="w-full flex-shrink-0 px-3 select-none"
                   style={{ width: `${100 / visibleCount}%` }}
                 >
-                  <TiltCard className="group quiet-panel overflow-hidden rounded-[1.8rem] border-white/10 h-full flex flex-col justify-between shadow-[0_16px_40px_rgba(44,40,37,0.03)] hover:shadow-[0_24px_48px_rgba(44,40,37,0.06)] transition-all duration-300">
-                    <article className="h-full flex flex-col justify-between">
-                      <div>
-                        {/* Project Image Frame */}
-                        <div className="relative h-48 overflow-hidden rounded-t-[1.8rem]">
-                          <ImageWithFallback
-                            src={project.imageUrl}
-                            alt={project.title}
-                            className="h-full w-full object-cover transition duration-500 group-hover:scale-104"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#FAF7F2]/10 to-transparent pointer-events-none" />
-                        </div>
-
-                        {/* Content Panel */}
-                        <div className="p-5">
-                          <div className="flex items-center justify-between gap-4">
-                            <h3 className="font-display text-lg font-bold text-[#2C2825] tracking-tight">{project.title}</h3>
-                            <span className="text-xs font-mono text-[#A89E94]">{project.year}</span>
+                  <div className="h-full">
+                    <TiltCard className="group quiet-panel overflow-hidden rounded-[1.8rem] border-white/10 h-full flex flex-col justify-between shadow-[0_16px_40px_rgba(44,40,37,0.03)] hover:shadow-[0_24px_48px_rgba(44,40,37,0.06)] transition-all duration-300">
+                      <article className="h-full flex flex-col justify-between">
+                        <div>
+                          {/* Project Image Frame */}
+                          <div className="relative h-48 overflow-hidden rounded-t-[1.8rem]">
+                            <ImageWithFallback
+                              src={project.imageUrl}
+                              alt={project.title}
+                              className="h-full w-full object-cover transition duration-500 group-hover:scale-104"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#FAF7F2]/10 to-transparent pointer-events-none" />
                           </div>
-                          <p className="mt-3 text-xs leading-6 text-[#7A6E65] line-clamp-3">{project.description}</p>
-                        </div>
-                      </div>
 
-                      <div>
-                        {/* Tags row */}
-                        <div className="px-5 pb-3">
-                          <div className="flex flex-wrap gap-1.5">
-                            {getProjectTags(project.title).map((tag) => (
-                              <span
-                                key={`${project.title}-${tag}`}
-                                className="rounded-full border border-[#E0D9CF]/60 bg-white px-2.5 py-0.5 text-[10px] font-medium text-[#7A6E65] select-none"
+                          {/* Content Panel */}
+                          <div className="p-5">
+                            <div className="flex items-center justify-between gap-4">
+                              <h3 className="font-display text-lg font-bold text-[#2C2825] tracking-tight">{project.title}</h3>
+                              <span className="text-xs font-mono text-[#A89E94]">{project.year}</span>
+                            </div>
+                            <p className="mt-3 text-xs leading-6 text-[#7A6E65] line-clamp-3">{project.description}</p>
+                          </div>
+                        </div>
+
+                        <div>
+                          {/* Tags row */}
+                          <div className="px-5 pb-3">
+                            <div className="flex flex-wrap gap-1.5">
+                              {getProjectTags(project.title).map((tag) => (
+                                  <span
+                                    key={`${project.title}-${tag}`}
+                                    className="rounded-full border border-[#E0D9CF]/60 bg-white px-2.5 py-0.5 text-[10px] font-medium text-[#7A6E65] select-none"
+                                  >
+                                    {tag}
+                                  </span>
+                                ))}
+                            </div>
+                          </div>
+
+                          {/* Always Visible Direct Action Buttons */}
+                          <div className="px-5 pb-5 pt-2 flex gap-3 border-t border-[#E0D9CF]/30 bg-white/20">
+                            {project.liveUrl ? (
+                              <a
+                                href={project.liveUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#C17D4A] px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-[#8B5E3C] shadow-sm flex-1"
                               >
-                                {tag}
-                              </span>
-                            ))}
+                                Demo
+                                <ArrowUpRight className="h-3.5 w-3.5" />
+                              </a>
+                            ) : null}
+                            
+                            {project.repoUrl ? (
+                              <a
+                                href={project.repoUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center justify-center gap-1.5 rounded-full border border-[#E0D9CF] bg-white px-3.5 py-2 text-xs font-semibold text-[#7A6E65] transition hover:border-[#C17D4A]/30 hover:text-[#2C2825] shadow-sm flex-1"
+                              >
+                                Source
+                                <Github className="h-3.5 w-3.5" />
+                              </a>
+                            ) : null}
                           </div>
                         </div>
-
-                        {/* Always Visible Direct Action Buttons */}
-                        <div className="px-5 pb-5 pt-2 flex gap-3 border-t border-[#E0D9CF]/30 bg-white/20">
-                          {project.liveUrl ? (
-                            <a
-                              href={project.liveUrl}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#C17D4A] px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-[#8B5E3C] shadow-sm flex-1"
-                            >
-                              Demo
-                              <ArrowUpRight className="h-3.5 w-3.5" />
-                            </a>
-                          ) : null}
-                          
-                          {project.repoUrl ? (
-                            <a
-                              href={project.repoUrl}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-[#E0D9CF] bg-white px-3.5 py-2 text-xs font-semibold text-[#7A6E65] transition hover:border-[#C17D4A]/30 hover:text-[#2C2825] shadow-sm flex-1"
-                            >
-                              Source
-                              <Github className="h-3.5 w-3.5" />
-                            </a>
-                          ) : null}
-                        </div>
-                      </div>
-                    </article>
-                  </TiltCard>
+                      </article>
+                    </TiltCard>
+                  </div>
                 </div>
               ))}
             </motion.div>
