@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import GwenChatWindow from './GwenChatWindow';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
+const GwenChatWindow = lazy(() => import('./GwenChatWindow'));
 import GwenTypingText from './GwenTypingText';
 import { useGwenChat } from '../../hooks/useGwenChat';
 import gwenAvatar from '../../assets/gwen-avatar.svg';
@@ -184,20 +184,22 @@ const GwenWidget: React.FC = () => {
       )}
 
       {/* CHAT WINDOW */}
-      <GwenChatWindow
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        messages={messages}
-        isLoading={isLoading}
-        error={error}
-        send={send}
-        clearChat={clearChat}
-        suggestions={suggestions}
-        suggestionsVisible={suggestionsVisible}
-        setSuggestionsVisible={setSuggestionsVisible}
-        appId={appId}
-        setAppId={setAppId}
-      />
+      <Suspense fallback={null}>
+        <GwenChatWindow
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          messages={messages}
+          isLoading={isLoading}
+          error={error}
+          send={send}
+          clearChat={clearChat}
+          suggestions={suggestions}
+          suggestionsVisible={suggestionsVisible}
+          setSuggestionsVisible={setSuggestionsVisible}
+          appId={appId}
+          setAppId={setAppId}
+        />
+      </Suspense>
     </div>
   );
 };
