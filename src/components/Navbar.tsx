@@ -80,8 +80,8 @@ const Navbar: React.FC = () => {
         <div className="section-shell pt-5">
           <div
             className={`flex items-center justify-between rounded-full border px-4 py-3 transition-all duration-300 sm:px-6 ${isScrolled
-              ? 'glass-panel border-[#E0D9CF]/30 shadow-[0_20px_60px_rgba(44,40,37,0.06)]'
-              : 'border-[#E0D9CF]/20 bg-white/70'
+              ? 'glass-panel border-[#E0D9CF]/30'
+              : 'glass-panel border-[#E0D9CF]/20'
               }`}
           >
             <a href="#main-header" className="group flex items-center gap-2">
@@ -91,7 +91,7 @@ const Navbar: React.FC = () => {
               <span className="h-5 w-[2px] animate-pulse bg-[#C17D4A]" />
             </a>
 
-            <div className="hidden items-center gap-4 xl:gap-6 lg:flex">
+            <div className="hidden items-center gap-2 xl:gap-3 lg:flex">
               {navItems.map((item) => {
                 const active = activeSection === item.href;
 
@@ -99,14 +99,10 @@ const Navbar: React.FC = () => {
                   <Magnetic key={item.href} strength={0.25}>
                     <a
                       href={item.href}
-                      className={`relative py-1.5 text-[13px] font-medium transition-colors ${active ? 'text-[#2C2825]' : 'text-[#A89E94] hover:text-[#2C2825]'
+                      className={`relative px-4 py-2 text-[13px] font-medium rounded-full transition-all duration-300 ${active ? 'text-[#2C2825] neu-pressed' : 'text-[#A89E94] hover:text-[#2C2825] hover:bg-[#FAF7F2]/50'
                         }`}
                     >
                       {item.label}
-                      <span
-                        className={`absolute bottom-0 left-0 h-px bg-[#C17D4A] transition-all duration-300 ${active ? 'w-full opacity-100' : 'w-0 opacity-0'
-                          }`}
-                      />
                     </a>
                   </Magnetic>
                 );
@@ -117,7 +113,7 @@ const Navbar: React.FC = () => {
               <Magnetic strength={0.2}>
                 <a
                   href="/papers"
-                  className="hidden rounded-full border border-[#E0D9CF] bg-white px-4 py-2 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:bg-[#FAF7F2] sm:inline-flex"
+                  className="hidden rounded-full px-4 py-2 text-sm text-[#7A6E65] transition neu-button sm:inline-flex"
                 >
                   Read Papers
                 </a>
@@ -129,7 +125,7 @@ const Navbar: React.FC = () => {
                   download="shivam-resume.pdf"
                   className="group hidden rounded-full p-[1px] sm:inline-block"
                 >
-                  <span className="relative flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#C17D4A] to-[#8B5E3C] p-[1px]">
+                  <span className="relative flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#C17D4A] to-[#8B5E3C] p-[1px] shadow-sm">
                     <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
                     <span className="relative flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-[#2C2825]">
                       <Download className="h-4 w-4" />
@@ -142,12 +138,13 @@ const Navbar: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setMenuOpen((prev) => !prev)}
-                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#E0D9CF] bg-white text-[#2C2825] lg:hidden"
+                className="flex h-11 w-11 items-center justify-center rounded-full text-[#2C2825] lg:hidden neu-circle"
                 aria-label="Toggle navigation"
               >
                 {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </button>
             </div>
+
           </div>
         </div>
       </nav>

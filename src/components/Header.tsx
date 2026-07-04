@@ -225,7 +225,7 @@ const Header: React.FC = () => {
               <Magnetic strength={0.25}>
                 <a
                   href="#portfolio"
-                  className="inline-flex w-fit items-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-6 py-3 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:bg-[#FAF7F2]"
+                  className="inline-flex w-fit items-center gap-2 rounded-full px-6 py-3 text-sm text-[#7A6E65] transition neu-button"
                 >
                   View research projects
                   <BriefcaseBusiness className="h-4 w-4" />
@@ -248,9 +248,8 @@ const Header: React.FC = () => {
                       href={social.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-[#E0D9CF] bg-white px-4 py-2.5 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:text-[#2C2825]"
+                      className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full px-4 py-2.5 text-sm text-[#7A6E65] transition neu-button hover:text-[#2C2825]"
                     >
-                      <span className="absolute inset-y-0 left-0 w-0 bg-[#FAF7F2] transition-all duration-300 group-hover:w-full" />
                       <Icon className="relative z-10 h-4 w-4" />
                       <span className="relative z-10">{social.label}</span>
                     </a>
@@ -266,14 +265,14 @@ const Header: React.FC = () => {
             transition={{ delay: 0.25, duration: 0.7 }}
             className="relative mx-auto w-full max-w-[27rem]"
           >
-            <div className="relative rounded-[2rem] border border-[#E0D9CF] bg-white p-5 shadow-[0_24px_60px_rgba(44,40,37,0.1)]">
+            <div className="relative rounded-[2rem] p-5 glass-panel">
               <div className="mb-5 flex items-center gap-2">
                 <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#8B5E3C]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#C17D4A]" />
                 <span className="ml-3 font-mono text-xs uppercase tracking-[0.3em] text-[#A89E94]">portrait</span>
               </div>
-              <div className="noise-mask rounded-[1.5rem] border border-[#E0D9CF] bg-[#FAF7F2] p-4">
+              <div className="noise-mask rounded-[1.5rem] p-4 neu-pressed">
                 <div className="relative mx-auto aspect-square overflow-hidden rounded-[1.35rem]">
                   <motion.div
                     className="absolute inset-0 rounded-[1.35rem] bg-[conic-gradient(from_90deg,#C17D4A,#8B5E3C,#C17D4A)]"
@@ -293,7 +292,7 @@ const Header: React.FC = () => {
                     ['Deployment', 'Inference-ready apps'],
                     ['Stack', 'Python, FastAPI, React'],
                   ].map(([title, value]) => (
-                    <div key={title} className="rounded-2xl border border-[#E0D9CF] bg-white px-4 py-3">
+                    <div key={title} className="rounded-2xl px-4 py-3 neu-raised text-center sm:text-left">
                       <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[#A89E94]">{title}</p>
                       <p className="mt-2 text-sm text-[#7A6E65]">{value}</p>
                     </div>
@@ -301,6 +300,7 @@ const Header: React.FC = () => {
                 </div>
               </div>
             </div>
+
           </motion.div>
         </div>
       </div>
