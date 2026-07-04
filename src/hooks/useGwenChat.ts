@@ -13,6 +13,7 @@ export const useGwenChat = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [appId, setAppId] = useState<'portfolio' | 'gwen-site'>('portfolio');
   const [sessionId, setSessionId] = useState<string>(() => {
     const saved = localStorage.getItem('gwen_session_id');
     if (saved) return saved;
@@ -51,8 +52,13 @@ export const useGwenChat = () => {
             content: msg.content,
           }));
 
-        // 5. Call API
-        const response = await sendMessage({ message: text, history, session_id: sessionId });
+        // 5. Call API with current appId context
+        const response = await sendMessage({ 
+          message: text, 
+          history, 
+          session_id: sessionId,
+          app_id: appId
+        });
 
         // 6. On success
         const botMsg: Message = {
@@ -91,7 +97,7 @@ export const useGwenChat = () => {
         setIsLoading(false);
       }
     },
-    [messages, sessionId]
+    [messages, sessionId, appId]
   );
 
   const clearChat = useCallback(() => {
@@ -112,5 +118,7 @@ export const useGwenChat = () => {
     suggestions,
     suggestionsVisible,
     setSuggestionsVisible,
+    appId,
+    setAppId
   };
 };

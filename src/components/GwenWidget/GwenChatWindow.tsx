@@ -17,6 +17,8 @@ interface GwenChatWindowProps {
   suggestions: string[];
   suggestionsVisible: boolean;
   setSuggestionsVisible: (visible: boolean) => void;
+  appId: 'portfolio' | 'gwen-site';
+  setAppId: (appId: 'portfolio' | 'gwen-site') => void;
 }
 
 const GwenChatWindow: React.FC<GwenChatWindowProps> = ({
@@ -30,6 +32,8 @@ const GwenChatWindow: React.FC<GwenChatWindowProps> = ({
   suggestions,
   suggestionsVisible,
   setSuggestionsVisible,
+  appId,
+  setAppId,
 }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -112,6 +116,63 @@ const GwenChatWindow: React.FC<GwenChatWindowProps> = ({
           </button>
         </div>
       </header>
+
+      {/* PERSONA MODE TOGGLE */}
+      <div
+        style={{
+          display: 'flex',
+          padding: '6px 12px',
+          background: 'rgba(255,255,255,0.2)',
+          borderBottom: '1px solid rgba(255,255,255,0.3)',
+          gap: '8px',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0,
+        }}
+      >
+        <span style={{ fontSize: '10px', fontWeight: 600, color: 'var(--gw-text-secondary)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>AI Mode:</span>
+        <div
+          style={{
+            display: 'flex',
+            background: 'rgba(0,0,0,0.05)',
+            padding: '2px',
+            borderRadius: '999px',
+          }}
+        >
+          <button
+            onClick={() => setAppId('portfolio')}
+            style={{
+              padding: '4px 10px',
+              borderRadius: '999px',
+              border: 'none',
+              fontSize: '11px',
+              fontWeight: appId === 'portfolio' ? 600 : 500,
+              cursor: 'pointer',
+              background: appId === 'portfolio' ? 'var(--gw-accent)' : 'transparent',
+              color: appId === 'portfolio' ? 'white' : 'var(--gw-text-secondary)',
+              transition: 'all 0.2s ease',
+            }}
+          >
+            💼 Pro Mode
+          </button>
+          <button
+            onClick={() => setAppId('gwen-site')}
+            style={{
+              padding: '4px 10px',
+              borderRadius: '999px',
+              border: 'none',
+              fontSize: '11px',
+              fontWeight: appId === 'gwen-site' ? 600 : 500,
+              cursor: 'pointer',
+              background: appId === 'gwen-site' ? 'var(--gw-accent)' : 'transparent',
+              color: appId === 'gwen-site' ? 'white' : 'var(--gw-text-secondary)',
+              transition: 'all 0.2s ease',
+            }}
+          >
+            🧠 Research Mode
+          </button>
+        </div>
+      </div>
 
       {/* MESSAGE AREA */}
       <div

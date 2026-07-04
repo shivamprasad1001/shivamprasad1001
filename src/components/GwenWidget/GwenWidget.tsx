@@ -27,6 +27,8 @@ const GwenWidget: React.FC = () => {
     suggestions,
     suggestionsVisible,
     setSuggestionsVisible,
+    appId,
+    setAppId
   } = useGwenChat();
 
   const hasMessages = messages.length > 0;
@@ -193,6 +195,8 @@ const GwenWidget: React.FC = () => {
         suggestions={suggestions}
         suggestionsVisible={suggestionsVisible}
         setSuggestionsVisible={setSuggestionsVisible}
+        appId={appId}
+        setAppId={setAppId}
       />
     </div>
   );
