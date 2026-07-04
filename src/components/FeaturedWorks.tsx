@@ -120,7 +120,7 @@ const FeaturedWorks: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap items-center gap-4 self-start lg:self-auto">
-            <div className="quiet-panel rounded-[1.5rem] px-5 py-4 border-[#E0D9CF]/50 bg-white/60">
+            <div className="quiet-panel rounded-[1.5rem] px-5 py-4">
               <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#A89E94]">portfolio summary</p>
               <div className="mt-3 flex gap-6 text-sm text-[#7A6E65]">
                 <span>{projectCount}+ featured projects</span>
@@ -140,7 +140,7 @@ const FeaturedWorks: React.FC = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
           >
-            <TiltCard className="quiet-panel group overflow-hidden rounded-[2rem] p-4 sm:p-6 shadow-[0_24px_60px_rgba(44,40,37,0.04)] hover:shadow-[0_30px_70px_rgba(44,40,37,0.07)] transition-shadow duration-300">
+            <TiltCard className="quiet-panel group overflow-hidden rounded-[2rem] p-4 sm:p-6 transition-all duration-300">
               <article className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] items-stretch">
                 <div className="relative overflow-hidden rounded-[1.5rem] min-h-[18rem] lg:h-full">
                   <ImageWithFallback
@@ -201,7 +201,7 @@ const FeaturedWorks: React.FC = () => {
           {adjustedIndex > 0 && (
             <button
               onClick={prevSlide}
-              className="absolute left-2 md:left-[-24px] top-1/2 -translate-y-1/2 z-20 p-3.5 rounded-full border border-[#E0D9CF] bg-white/90 backdrop-blur-sm text-[#7A6E65] shadow-[0_8px_24px_rgba(44,40,37,0.12)] transition hover:border-[#C17D4A]/50 hover:text-[#2C2825] select-none flex items-center justify-center hover:scale-105 active:scale-95"
+              className="absolute left-2 md:left-[-24px] top-1/2 -translate-y-1/2 z-20 p-3.5 rounded-full glass-panel text-[#7A6E65] hover:text-[#C17D4A] select-none flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200"
               aria-label="Previous projects"
             >
               <ChevronLeft className="h-5 w-5" />
@@ -212,7 +212,7 @@ const FeaturedWorks: React.FC = () => {
           {adjustedIndex < maxIndex && (
             <button
               onClick={nextSlide}
-              className="absolute right-2 md:right-[-24px] top-1/2 -translate-y-1/2 z-20 p-3.5 rounded-full border border-[#E0D9CF] bg-white/90 backdrop-blur-sm text-[#7A6E65] shadow-[0_8px_24px_rgba(44,40,37,0.12)] transition hover:border-[#C17D4A]/50 hover:text-[#2C2825] select-none flex items-center justify-center hover:scale-105 active:scale-95"
+              className="absolute right-2 md:right-[-24px] top-1/2 -translate-y-1/2 z-20 p-3.5 rounded-full glass-panel text-[#7A6E65] hover:text-[#C17D4A] select-none flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200"
               aria-label="Next projects"
             >
               <ChevronRight className="h-5 w-5" />
@@ -244,7 +244,7 @@ const FeaturedWorks: React.FC = () => {
                   style={{ width: `${100 / visibleCount}%` }}
                 >
                   <div className="h-full">
-                    <TiltCard className="group quiet-panel overflow-hidden rounded-[1.8rem] border-white/10 h-full flex flex-col justify-between shadow-[0_16px_40px_rgba(44,40,37,0.03)] hover:shadow-[0_24px_48px_rgba(44,40,37,0.06)] transition-all duration-300">
+                    <TiltCard className="group quiet-panel overflow-hidden rounded-[1.8rem] h-full flex flex-col justify-between transition-all duration-300">
                       <article className="h-full flex flex-col justify-between">
                         <div>
                           {/* Project Image Frame */}
