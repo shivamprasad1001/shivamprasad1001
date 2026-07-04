@@ -11,7 +11,7 @@ const gwen = axios.create({
 
 export interface ChatRequest {
   message: string;
-  history: { role: 'user' | 'model'; content: string }[];
+  history: { role: 'user' | 'model' | 'assistant'; content: string }[];
   session_id: string | null;
   app_id?: string;
 }
