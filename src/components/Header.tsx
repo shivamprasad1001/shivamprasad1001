@@ -71,20 +71,6 @@ const Header: React.FC = () => {
   const typedRole = useTypewriter(roles);
   const words = useMemo(() => ['Shivam', 'Prasad'], []);
 
-  // Simulating real-time face mesh coordinates fluctuating for the AI Scan effect
-  const [coords, setCoords] = useState({ x1: 142, y1: 158, x2: 246, y2: 154 });
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCoords({
-        x1: Math.floor(138 + Math.random() * 8),
-        y1: Math.floor(154 + Math.random() * 8),
-        x2: Math.floor(242 + Math.random() * 8),
-        y2: Math.floor(150 + Math.random() * 8),
-      });
-    }, 250);
-    return () => clearInterval(interval);
-  }, []);
-
   const handleMagnetMove = (event: React.MouseEvent<HTMLAnchorElement>) => {
     const rect = magneticRef.current?.getBoundingClientRect();
 
@@ -274,7 +260,7 @@ const Header: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Premium Computer Vision Scan Target Portrait */}
+          {/* Holographic Exploding 3D Stack Portrait */}
           <motion.div
             initial={{ opacity: 0, scale: 0.94, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -282,104 +268,119 @@ const Header: React.FC = () => {
             className="relative mx-auto w-full max-w-[27rem]"
           >
             <TiltCard className="h-full w-full">
-              <div className="relative rounded-[2rem] p-5 glass-panel select-none">
+              <div className="relative rounded-[2rem] p-5 glass-panel select-none overflow-hidden">
                 {/* Console header bar */}
                 <div className="mb-5 flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="h-2.5 w-2.5 rounded-full bg-rose-400 animate-pulse" />
                     <span className="h-2.5 w-2.5 rounded-full bg-[#8B5E3C]" />
                     <span className="h-2.5 w-2.5 rounded-full bg-[#C17D4A]" />
-                    <span className="ml-3 font-mono text-[10px] uppercase tracking-[0.25em] text-[#A89E94]">
-                      Inference HUD
+                    <span className="ml-3 font-mono text-[9px] uppercase tracking-[0.25em] text-[#A89E94]">
+                      Stack Visualizer
                     </span>
                   </div>
-                  <span className="font-mono text-[9px] text-[#C17D4A] font-semibold animate-pulse">
-                    SYS_ACTIVE
+                  <span className="font-mono text-[9px] text-[#C17D4A] font-semibold tracking-wider">
+                    HOVER TO EXPLODE
                   </span>
                 </div>
 
-                {/* Portrait container with live computer vision scanning animation */}
-                <div className="noise-mask rounded-[1.5rem] p-4 neu-pressed relative overflow-hidden">
-                  <div className="relative mx-auto aspect-square overflow-hidden rounded-[1.2rem] bg-white border border-[#E0D9CF]/40">
-                    
-                    {/* Bounding box visual target indicators */}
-                    <div className="absolute inset-2 border border-[#C17D4A]/15 rounded-[0.8rem] pointer-events-none z-10">
-                      <div className="absolute -top-1 -left-1 h-4 w-4 border-t-2 border-l-2 border-[#C17D4A] rounded-tl-[4px]" />
-                      <div className="absolute -top-1 -right-1 h-4 w-4 border-t-2 border-r-2 border-[#C17D4A] rounded-tr-[4px]" />
-                      <div className="absolute -bottom-1 -left-1 h-4 w-4 border-b-2 border-l-2 border-[#C17D4A] rounded-bl-[4px]" />
-                      <div className="absolute -bottom-1 -right-1 h-4 w-4 border-b-2 border-r-2 border-[#C17D4A] rounded-br-[4px]" />
-                    </div>
-
-                    {/* Sweeping scanline */}
+                {/* 3D Stack Area */}
+                <div className="noise-mask rounded-[1.5rem] p-6 bg-[#FAF7F2]/40 border border-[#E0D9CF]/30 relative flex items-center justify-center min-h-[360px] overflow-visible">
+                  <div className="relative w-full max-w-[260px] aspect-square h-[260px] perspective-[1000px] overflow-visible">
                     <motion.div
-                      className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#C17D4A]/60 to-transparent shadow-[0_0_8px_rgba(193,125,74,0.8)] pointer-events-none z-10"
-                      animate={{ top: ['4%', '96%', '4%'] }}
-                      transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-                    />
+                      className="relative w-full h-full cursor-pointer"
+                      style={{ transformStyle: 'preserve-3d' }}
+                      whileHover="hover"
+                    >
+                      {/* Layer 1: Bottom Layer - Neural Architecture Grid */}
+                      <motion.div
+                        variants={{
+                          default: { transform: 'translateZ(0px) rotateX(0deg) rotateY(0deg)', opacity: 0 },
+                          hover: { transform: 'translateZ(-40px) translateX(25px) translateY(25px) rotateX(15deg) rotateY(-10deg)', opacity: 0.85 }
+                        }}
+                        initial="default"
+                        animate="default"
+                        transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+                        className="absolute inset-0 rounded-[1.2rem] bg-[#2C2825] border-2 border-[#C17D4A]/50 overflow-hidden flex flex-col justify-between p-4 shadow-[5px_5px_15px_rgba(44,40,37,0.2)]"
+                      >
+                        <div className="absolute inset-0 bg-[radial-gradient(#C17D4A_1.5px,transparent_1.5px)] bg-[size:16px_16px] opacity-25" />
+                        <div className="relative flex justify-between font-mono text-[8px] text-[#A89E94]">
+                          <span>WEIGHTS_L1</span>
+                          <span>0x9F42</span>
+                        </div>
+                        <div className="relative font-mono text-[8px] text-[#C17D4A] tracking-wider font-semibold">
+                          MODEL_DEPTH_BACKBONE // INT8
+                        </div>
+                      </motion.div>
 
-                    {/* HUD labels inside the frame */}
-                    <div className="absolute top-4 left-4 z-10 bg-black/60 backdrop-blur-md rounded-md px-2 py-0.5 border border-white/10 pointer-events-none select-none font-mono text-[7px] tracking-wider text-white">
-                      <span className="text-[#C17D4A] font-semibold">● DETECT: AGENT</span> | CAM_01
-                    </div>
+                      {/* Layer 2: Middle Layer - Neon Attention heat map */}
+                      <motion.div
+                        variants={{
+                          default: { transform: 'translateZ(0px) rotateX(0deg) rotateY(0deg)', opacity: 0 },
+                          hover: { transform: 'translateZ(0px) scale(1.02) rotateX(15deg) rotateY(-10deg)', opacity: 0.95 }
+                        }}
+                        initial="default"
+                        animate="default"
+                        transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+                        className="absolute inset-0 rounded-[1.2rem] overflow-hidden border border-[#C17D4A]/60 bg-amber-950/20 mix-blend-color-burn"
+                      >
+                        <img
+                          src="https://avatars.githubusercontent.com/u/161421872?q=80&w=400&h=400&fit=crop"
+                          alt="Attention heat map"
+                          className="w-full h-full object-cover filter saturate-[2.2] contrast-[1.8] brightness-[0.9] sepia-[1] hue-rotate-[10deg]"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-[#C17D4A]/35 to-transparent pointer-events-none" />
+                        {/* Overlaying node connection lines */}
+                        <svg className="absolute inset-0 w-full h-full stroke-[#C17D4A]/60 stroke-[1.5] fill-none z-10">
+                          <line x1="38%" y1="40%" x2="62%" y2="40%" strokeDasharray="3,3" />
+                          <line x1="38%" y1="40%" x2="50%" y2="68%" />
+                          <line x1="62%" y1="40%" x2="50%" y2="68%" />
+                          <circle cx="38%" cy="40%" r="3.5" fill="#C17D4A" className="animate-pulse" />
+                          <circle cx="62%" cy="40%" r="3.5" fill="#C17D4A" className="animate-pulse" />
+                          <circle cx="50%" cy="68%" r="3.5" fill="#C17D4A" className="animate-pulse" />
+                        </svg>
+                      </motion.div>
 
-                    <div className="absolute bottom-4 left-4 z-10 bg-black/60 backdrop-blur-md rounded-md px-2 py-0.5 border border-white/10 pointer-events-none select-none font-mono text-[7px] tracking-wider text-white">
-                      ID: <span className="text-[#C17D4A]">SHIVAM_P.26n</span>
-                    </div>
-
-                    <div className="absolute bottom-4 right-4 z-10 bg-black/60 backdrop-blur-md rounded-md px-2 py-0.5 border border-white/10 pointer-events-none select-none font-mono text-[7px] tracking-wider text-white">
-                      CONF: <span className="text-[#C17D4A]">99.96%</span>
-                    </div>
-
-                    {/* Dynamic coordinate face tracking points */}
-                    <div className="absolute inset-0 pointer-events-none z-10">
-                      {/* Left eye tracker */}
-                      <div className="absolute left-[38%] top-[40%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-                        <span className="absolute h-2.5 w-2.5 animate-ping rounded-full bg-[#C17D4A] opacity-60" />
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#C17D4A]" />
-                        <span className="absolute left-3.5 font-mono text-[6px] text-white bg-black/50 px-1 py-0.5 rounded leading-none">
-                          x:{coords.x1} y:{coords.y1}
-                        </span>
-                      </div>
-
-                      {/* Right eye tracker */}
-                      <div className="absolute left-[62%] top-[40%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-                        <span className="absolute h-2.5 w-2.5 animate-ping rounded-full bg-[#C17D4A] opacity-60" />
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#C17D4A]" />
-                        <span className="absolute left-3.5 font-mono text-[6px] text-white bg-black/50 px-1 py-0.5 rounded leading-none">
-                          x:{coords.x2} y:{coords.y2}
-                        </span>
-                      </div>
-
-                      {/* Chin/Mouth tracker */}
-                      <div className="absolute left-[50%] top-[66%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-                        <span className="h-1.5 w-1.5 rounded-full bg-[#C17D4A]" />
-                        <span className="absolute left-3.5 font-mono text-[6px] text-white bg-black/50 px-1 py-0.5 rounded leading-none">
-                          MESH_3
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Portrait Image */}
-                    <img
-                      src="https://avatars.githubusercontent.com/u/161421872?q=80&w=400&h=400&fit=crop"
-                      alt="Shivam Prasad"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 hover:scale-[1.03]"
-                    />
+                      {/* Layer 3: Top Layer - High Resolution Portrait */}
+                      <motion.div
+                        variants={{
+                          default: { transform: 'translateZ(0px) translateX(0px) translateY(0px) rotateX(0deg) rotateY(0deg)' },
+                          hover: { transform: 'translateZ(40px) translateX(-25px) translateY(-25px) rotateX(15deg) rotateY(-10deg)' }
+                        }}
+                        initial="default"
+                        animate="default"
+                        transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+                        className="absolute inset-0 rounded-[1.2rem] overflow-hidden border border-[#E0D9CF]/60 shadow-[0_15px_30px_rgba(44,40,37,0.12)] bg-[#FAF7F2]"
+                      >
+                        <img
+                          src="https://avatars.githubusercontent.com/u/161421872?q=80&w=400&h=400&fit=crop"
+                          alt="Shivam Prasad"
+                          className="w-full h-full object-cover"
+                        />
+                        {/* Golden alignment ticks */}
+                        <div className="absolute inset-3 border border-[#C17D4A]/30 rounded-[0.8rem] pointer-events-none">
+                          <div className="absolute -top-0.5 -left-0.5 h-3.5 w-3.5 border-t-2 border-l-2 border-[#C17D4A]" />
+                          <div className="absolute -top-0.5 -right-0.5 h-3.5 w-3.5 border-t-2 border-r-2 border-[#C17D4A]" />
+                          <div className="absolute -bottom-0.5 -left-0.5 h-3.5 w-3.5 border-b-2 border-l-2 border-[#C17D4A]" />
+                          <div className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 border-b-2 border-r-2 border-[#C17D4A]" />
+                        </div>
+                      </motion.div>
+                    </motion.div>
                   </div>
+                </div>
 
-                  {/* Profile highlights row */}
-                  <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                    {[
-                      ['Model focus', 'LLMs, NLP, CV'],
-                      ['Deployment', 'Inference-ready apps'],
-                      ['Stack', 'Python, FastAPI, React'],
-                    ].map(([title, value]) => (
-                      <div key={title} className="rounded-2xl px-4 py-3 neu-raised text-center sm:text-left transition-all duration-300 hover:translate-y-[-2px]">
-                        <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-[#A89E94] font-semibold">{title}</p>
-                        <p className="mt-2 text-xs font-medium text-[#7A6E65]">{value}</p>
-                      </div>
-                    ))}
-                  </div>
+                {/* Profile highlights row */}
+                <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                  {[
+                    ['Model focus', 'LLMs, NLP, CV'],
+                    ['Deployment', 'Inference-ready apps'],
+                    ['Stack', 'Python, FastAPI, React'],
+                  ].map(([title, value]) => (
+                    <div key={title} className="rounded-2xl px-4 py-3 neu-raised text-center sm:text-left transition-all duration-300 hover:translate-y-[-2px]">
+                      <p className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#A89E94] font-semibold">{title}</p>
+                      <p className="mt-2 text-xs font-semibold text-[#7A6E65]">{value}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </TiltCard>
