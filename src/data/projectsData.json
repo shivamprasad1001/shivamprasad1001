@@ -16,6 +16,22 @@
     "repoUrl": "https://github.com/shivamprasad1001/multi-agent-debate"
   },
   {
+    "title": "YoloDetector",
+    "year": 2026,
+    "description": "A real-time object detection Android application powered by YOLOv8n / YOLO26n TFLite models, utilizing high-performance CameraX pipelines and a custom sci-fi themed UI overlay.",
+    "imageUrl": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop",
+    "liveUrl": "",
+    "repoUrl": "https://github.com/shivamprasad1001/YoloDetector"
+  },
+  {
+    "title": "YOLO Custom Trainer",
+    "year": 2026,
+    "description": "An end-to-end deep learning pipeline for annotating custom data (using Label Studio), training custom object detection models with Ultralytics YOLOv8, and deploying inference bots.",
+    "imageUrl": "https://images.unsplash.com/photo-1555255707-c0796609912b?q=80&w=800&auto=format&fit=crop",
+    "liveUrl": "",
+    "repoUrl": "https://github.com/shivamprasad1001/yolo-custom-trainer"
+  },
+  {
     "title": "MoodifyAI",
     "year": 2025,
     "description": "An emotion-aware AI application exploring how conversational interaction, music preference, and user signals can be combined into a more adaptive intelligent system.",

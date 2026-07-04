@@ -19,6 +19,14 @@ const getProjectTags = (title: string) => {
     return ['MARL', 'PPO', 'LLM Debate'];
   }
 
+  if (key.includes('yolodetector')) {
+    return ['Android', 'TFLite', 'Computer Vision'];
+  }
+
+  if (key.includes('trainer')) {
+    return ['Deep Learning', 'YOLOv8', 'Pipeline'];
+  }
+
   if (key.includes('moodify')) {
     return ['Computer Vision', 'Emotion AI', 'Inference'];
   }
