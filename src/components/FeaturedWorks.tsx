@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight, Github, Star } from 'lucide-react';
 import type { WorkProject } from '../../types';
 import projectsData from '../data/projectsData.json';
+import TiltCard from './TiltCard';
 
 const projects = projectsData as WorkProject[];
 const spotlight = projects[0];
@@ -68,124 +69,135 @@ const FeaturedWorks: React.FC = () => {
         </div>
 
         {spotlight && (
-          <motion.article
+          <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            className="quiet-panel group overflow-hidden rounded-[2rem] p-4 sm:p-6"
+            transition={{ duration: 0.6 }}
           >
-            <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-              <div className="relative overflow-hidden rounded-[1.5rem]">
-                <img
-                  src={spotlight.imageUrl}
-                  alt={spotlight.title}
-                  className="h-full min-h-[18rem] w-full object-cover transition duration-500 group-hover:scale-[1.04]"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#09090d] via-[#09090d]/20 to-transparent" />
-              </div>
-              <div className="flex flex-col justify-between gap-6 p-2">
-                <div>
-                  <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#A89E94]">Featured project</p>
-                  <h3 className="mt-4 font-display text-3xl font-bold text-[#2C2825] sm:text-4xl">{spotlight.title}</h3>
-                  <p className="mt-4 text-sm leading-7 text-[#7A6E65]">{spotlight.description}</p>
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {[...getProjectTags(spotlight.title), `${spotlight.year}`].map((tag) => (
-                      <span key={tag} className="rounded-full border border-[#E0D9CF] bg-white px-3 py-1 text-xs text-[#7A6E65]">
-                        {tag}
-                      </span>
-                    ))}
+            <TiltCard className="quiet-panel group overflow-hidden rounded-[2rem] p-4 sm:p-6 shadow-[0_24px_60px_rgba(44,40,37,0.06)]">
+              <article className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+                <div className="relative overflow-hidden rounded-[1.5rem]">
+                  <img
+                    src={spotlight.imageUrl}
+                    alt={spotlight.title}
+                    className="h-full min-h-[18rem] w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#09090d] via-[#09090d]/20 to-transparent" />
+                </div>
+                <div className="flex flex-col justify-between gap-6 p-2">
+                  <div>
+                    <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-[#A89E94]">Featured project</p>
+                    <h3 className="mt-4 font-display text-3xl font-bold text-[#2C2825] sm:text-4xl">{spotlight.title}</h3>
+                    <p className="mt-4 text-sm leading-7 text-[#7A6E65]">{spotlight.description}</p>
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {[...getProjectTags(spotlight.title), `${spotlight.year}`].map((tag) => (
+                        <span key={tag} className="rounded-full border border-[#E0D9CF] bg-white px-3 py-1 text-xs text-[#7A6E65]">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-3">
+                    {spotlight.liveUrl && (
+                      <a
+                        href={spotlight.liveUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full bg-[#C17D4A] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#8B5E3C]"
+                      >
+                        View live
+                        <ArrowUpRight className="h-4 w-4" />
+                      </a>
+                    )}
+                    {spotlight.repoUrl && (
+                      <a
+                        href={spotlight.repoUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-5 py-3 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/30"
+                      >
+                        Source
+                        <Github className="h-4 w-4" />
+                      </a>
+                    )}
                   </div>
                 </div>
-
-                <div className="flex flex-wrap gap-3">
-                  {spotlight.liveUrl && (
-                    <a
-                      href={spotlight.liveUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full bg-[#C17D4A] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#8B5E3C]"
-                    >
-                      View live
-                      <ArrowUpRight className="h-4 w-4" />
-                    </a>
-                  )}
-                  {spotlight.repoUrl && (
-                    <a
-                      href={spotlight.repoUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-5 py-3 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/30"
-                    >
-                      Source
-                      <Github className="h-4 w-4" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          </motion.article>
+              </article>
+            </TiltCard>
+          </motion.div>
         )}
 
         <div className="mt-8 overflow-x-auto pb-3">
           <div className="flex min-w-full snap-x gap-5">
             {projects.map((project, index) => (
-              <motion.article
+              <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ delay: index * 0.06 }}
-                className="group quiet-panel snap-start overflow-hidden rounded-[1.8rem] border-white/10 min-w-[19rem] max-w-[22rem] flex-1"
+                className="snap-start min-w-[19rem] max-w-[22rem] flex-1"
               >
-                <div className="relative h-56 overflow-hidden">
-                  <img
-                    src={project.imageUrl}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/10 to-transparent opacity-80" />
-                  <div className="absolute inset-x-4 bottom-4 flex translate-y-4 gap-2 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-medium text-[#2C2825]"
-                      >
-                        Live
-                        <ArrowUpRight className="h-3.5 w-3.5" />
-                      </a>
-                    )}
-                    {project.repoUrl && (
-                      <a
-                        href={project.repoUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full border border-[#E0D9CF] bg-white/90 px-3 py-2 text-xs text-[#2C2825]"
-                      >
-                        GitHub
-                        <Github className="h-3.5 w-3.5" />
-                      </a>
-                    )}
-                  </div>
-                </div>
+                <TiltCard className="group quiet-panel overflow-hidden rounded-[1.8rem] border-white/10 h-full shadow-[0_16px_40px_rgba(44,40,37,0.04)] hover:shadow-[0_24px_48px_rgba(44,40,37,0.08)] transition-shadow duration-300">
+                  <article className="h-full flex flex-col justify-between">
+                    <div>
+                      <div className="relative h-56 overflow-hidden">
+                        <img
+                          src={project.imageUrl}
+                          alt={project.title}
+                          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/10 to-transparent opacity-80" />
+                        <div className="absolute inset-x-4 bottom-4 flex translate-y-4 gap-2 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                          {project.liveUrl && (
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-medium text-[#2C2825]"
+                            >
+                              Live
+                              <ArrowUpRight className="h-3.5 w-3.5" />
+                            </a>
+                          )}
+                          {project.repoUrl && (
+                            <a
+                              href={project.repoUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-2 rounded-full border border-[#E0D9CF] bg-white/90 px-3 py-2 text-xs text-[#2C2825]"
+                            >
+                              GitHub
+                              <Github className="h-3.5 w-3.5" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
 
-                <div className="p-5">
-                  <div className="flex items-center justify-between gap-4">
-                    <h3 className="font-display text-xl font-bold text-[#2C2825]">{project.title}</h3>
-                    <span className="text-sm text-[#A89E94]">{project.year}</span>
-                  </div>
-                  <p className="mt-3 text-sm leading-7 text-[#7A6E65]">{project.description}</p>
-                  <p className="mt-3 text-xs uppercase tracking-[0.24em] text-[#C17D4A]">Research direction signal</p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {getProjectTags(project.title).map((tag) => (
-                      <span key={`${project.title}-${tag}`} className="rounded-full border border-[#E0D9CF] bg-white px-3 py-1 text-xs text-[#7A6E65]">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.article>
+                      <div className="p-5">
+                        <div className="flex items-center justify-between gap-4">
+                          <h3 className="font-display text-xl font-bold text-[#2C2825]">{project.title}</h3>
+                          <span className="text-sm text-[#A89E94]">{project.year}</span>
+                        </div>
+                        <p className="mt-3 text-sm leading-7 text-[#7A6E65]">{project.description}</p>
+                        <p className="mt-3 text-xs uppercase tracking-[0.24em] text-[#C17D4A]">Research direction signal</p>
+                      </div>
+                    </div>
+
+                    <div className="px-5 pb-5">
+                      <div className="flex flex-wrap gap-2">
+                        {getProjectTags(project.title).map((tag) => (
+                          <span key={`${project.title}-${tag}`} className="rounded-full border border-[#E0D9CF] bg-white px-3 py-1 text-xs text-[#7A6E65]">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </article>
+                </TiltCard>
+              </motion.div>
             ))}
           </div>
         </div>

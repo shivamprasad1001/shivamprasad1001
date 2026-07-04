@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, BriefcaseBusiness, Github, Linkedin, Mail, Twitter } from 'lucide-react';
 import Navbar from './Navbar';
+import Magnetic from './Magnetic';
 
 const roles = [
   'aspiring AI/ML researcher',
@@ -206,6 +207,7 @@ const Header: React.FC = () => {
               transition={{ delay: 0.85, duration: 0.6 }}
               className="mt-10 flex flex-col gap-5 sm:flex-row sm:items-center"
             >
+              {/* Wrapped in Magnetic wrapper for interactive motion trend */}
               <motion.a
                 ref={magneticRef}
                 href="#contact"
@@ -220,13 +222,15 @@ const Header: React.FC = () => {
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </motion.a>
 
-              <a
-                href="#portfolio"
-                className="inline-flex w-fit items-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-6 py-3 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:bg-[#FAF7F2]"
-              >
-                View research projects
-                <BriefcaseBusiness className="h-4 w-4" />
-              </a>
+              <Magnetic strength={0.25}>
+                <a
+                  href="#portfolio"
+                  className="inline-flex w-fit items-center gap-2 rounded-full border border-[#E0D9CF] bg-white px-6 py-3 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:bg-[#FAF7F2]"
+                >
+                  View research projects
+                  <BriefcaseBusiness className="h-4 w-4" />
+                </a>
+              </Magnetic>
             </motion.div>
 
             <motion.div
@@ -239,17 +243,18 @@ const Header: React.FC = () => {
                 const Icon = social.icon;
 
                 return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-[#E0D9CF] bg-white px-4 py-2.5 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:text-[#2C2825]"
-                  >
-                    <span className="absolute inset-y-0 left-0 w-0 bg-[#FAF7F2] transition-all duration-300 group-hover:w-full" />
-                    <Icon className="relative z-10 h-4 w-4" />
-                    <span className="relative z-10">{social.label}</span>
-                  </a>
+                  <Magnetic key={social.label} strength={0.3}>
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-[#E0D9CF] bg-white px-4 py-2.5 text-sm text-[#7A6E65] transition hover:border-[#C17D4A]/50 hover:text-[#2C2825]"
+                    >
+                      <span className="absolute inset-y-0 left-0 w-0 bg-[#FAF7F2] transition-all duration-300 group-hover:w-full" />
+                      <Icon className="relative z-10 h-4 w-4" />
+                      <span className="relative z-10">{social.label}</span>
+                    </a>
+                  </Magnetic>
                 );
               })}
             </motion.div>
