@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { ArrowRight, BriefcaseBusiness, Github, Linkedin, Mail, Twitter } from 'lucide-react';
 import Navbar from './Navbar';
 import Magnetic from './Magnetic';
-import TiltCard from './TiltCard';
 
 const roles = [
   'aspiring AI/ML researcher',
@@ -260,130 +259,48 @@ const Header: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Holographic Exploding 3D Stack Portrait */}
           <motion.div
             initial={{ opacity: 0, scale: 0.94, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ delay: 0.25, duration: 0.7 }}
             className="relative mx-auto w-full max-w-[27rem]"
           >
-            <TiltCard className="h-full w-full">
-              <div className="relative rounded-[2rem] p-5 glass-panel select-none overflow-hidden">
-                {/* Console header bar */}
-                <div className="mb-5 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="h-2.5 w-2.5 rounded-full bg-rose-400 animate-pulse" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-[#8B5E3C]" />
-                    <span className="h-2.5 w-2.5 rounded-full bg-[#C17D4A]" />
-                    <span className="ml-3 font-mono text-[9px] uppercase tracking-[0.25em] text-[#A89E94]">
-                      Stack Visualizer
-                    </span>
-                  </div>
-                  <span className="font-mono text-[9px] text-[#C17D4A] font-semibold tracking-wider">
-                    HOVER TO EXPLODE
-                  </span>
+            <div className="relative rounded-[2rem] p-5 glass-panel">
+              <div className="mb-5 flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-rose-400" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#8B5E3C]" />
+                <span className="h-2.5 w-2.5 rounded-full bg-[#C17D4A]" />
+                <span className="ml-3 font-mono text-xs uppercase tracking-[0.3em] text-[#A89E94]">portrait</span>
+              </div>
+              <div className="noise-mask rounded-[1.5rem] p-4 neu-pressed">
+                <div className="relative mx-auto aspect-square overflow-hidden rounded-[1.35rem]">
+                  <motion.div
+                    className="absolute inset-0 rounded-[1.35rem] bg-[conic-gradient(from_90deg,#C17D4A,#8B5E3C,#C17D4A)]"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 16, repeat: Infinity, ease: 'linear' }}
+                  />
+                  <div className="absolute inset-[6px] rounded-[1.2rem] bg-white" />
+                  <img
+                    src="https://avatars.githubusercontent.com/u/161421872?q=80&w=400&h=400&fit=crop"
+                    alt="Shivam Prasad"
+                    className="absolute inset-[16px] h-[calc(100%-32px)] w-[calc(100%-32px)] rounded-[1rem] object-cover"
+                  />
                 </div>
-
-                {/* 3D Stack Area */}
-                <div className="noise-mask rounded-[1.5rem] p-6 bg-[#FAF7F2]/40 border border-[#E0D9CF]/30 relative flex items-center justify-center min-h-[360px] overflow-visible">
-                  <div className="relative w-full max-w-[260px] aspect-square h-[260px] perspective-[1000px] overflow-visible">
-                    <motion.div
-                      className="relative w-full h-full cursor-pointer"
-                      style={{ transformStyle: 'preserve-3d' }}
-                      whileHover="hover"
-                    >
-                      {/* Layer 1: Bottom Layer - Neural Architecture Grid */}
-                      <motion.div
-                        variants={{
-                          default: { transform: 'translateZ(0px) rotateX(0deg) rotateY(0deg)', opacity: 0 },
-                          hover: { transform: 'translateZ(-40px) translateX(25px) translateY(25px) rotateX(15deg) rotateY(-10deg)', opacity: 0.85 }
-                        }}
-                        initial="default"
-                        animate="default"
-                        transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-                        className="absolute inset-0 rounded-[1.2rem] bg-[#2C2825] border-2 border-[#C17D4A]/50 overflow-hidden flex flex-col justify-between p-4 shadow-[5px_5px_15px_rgba(44,40,37,0.2)]"
-                      >
-                        <div className="absolute inset-0 bg-[radial-gradient(#C17D4A_1.5px,transparent_1.5px)] bg-[size:16px_16px] opacity-25" />
-                        <div className="relative flex justify-between font-mono text-[8px] text-[#A89E94]">
-                          <span>WEIGHTS_L1</span>
-                          <span>0x9F42</span>
-                        </div>
-                        <div className="relative font-mono text-[8px] text-[#C17D4A] tracking-wider font-semibold">
-                          MODEL_DEPTH_BACKBONE // INT8
-                        </div>
-                      </motion.div>
-
-                      {/* Layer 2: Middle Layer - Neon Attention heat map */}
-                      <motion.div
-                        variants={{
-                          default: { transform: 'translateZ(0px) rotateX(0deg) rotateY(0deg)', opacity: 0 },
-                          hover: { transform: 'translateZ(0px) scale(1.02) rotateX(15deg) rotateY(-10deg)', opacity: 0.95 }
-                        }}
-                        initial="default"
-                        animate="default"
-                        transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-                        className="absolute inset-0 rounded-[1.2rem] overflow-hidden border border-[#C17D4A]/60 bg-amber-950/20 mix-blend-color-burn"
-                      >
-                        <img
-                          src="https://avatars.githubusercontent.com/u/161421872?q=80&w=400&h=400&fit=crop"
-                          alt="Attention heat map"
-                          className="w-full h-full object-cover filter saturate-[2.2] contrast-[1.8] brightness-[0.9] sepia-[1] hue-rotate-[10deg]"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-tr from-[#C17D4A]/35 to-transparent pointer-events-none" />
-                        {/* Overlaying node connection lines */}
-                        <svg className="absolute inset-0 w-full h-full stroke-[#C17D4A]/60 stroke-[1.5] fill-none z-10">
-                          <line x1="38%" y1="40%" x2="62%" y2="40%" strokeDasharray="3,3" />
-                          <line x1="38%" y1="40%" x2="50%" y2="68%" />
-                          <line x1="62%" y1="40%" x2="50%" y2="68%" />
-                          <circle cx="38%" cy="40%" r="3.5" fill="#C17D4A" className="animate-pulse" />
-                          <circle cx="62%" cy="40%" r="3.5" fill="#C17D4A" className="animate-pulse" />
-                          <circle cx="50%" cy="68%" r="3.5" fill="#C17D4A" className="animate-pulse" />
-                        </svg>
-                      </motion.div>
-
-                      {/* Layer 3: Top Layer - High Resolution Portrait */}
-                      <motion.div
-                        variants={{
-                          default: { transform: 'translateZ(0px) translateX(0px) translateY(0px) rotateX(0deg) rotateY(0deg)' },
-                          hover: { transform: 'translateZ(40px) translateX(-25px) translateY(-25px) rotateX(15deg) rotateY(-10deg)' }
-                        }}
-                        initial="default"
-                        animate="default"
-                        transition={{ type: 'spring', stiffness: 100, damping: 15 }}
-                        className="absolute inset-0 rounded-[1.2rem] overflow-hidden border border-[#E0D9CF]/60 shadow-[0_15px_30px_rgba(44,40,37,0.12)] bg-[#FAF7F2]"
-                      >
-                        <img
-                          src="https://avatars.githubusercontent.com/u/161421872?q=80&w=400&h=400&fit=crop"
-                          alt="Shivam Prasad"
-                          className="w-full h-full object-cover"
-                        />
-                        {/* Golden alignment ticks */}
-                        <div className="absolute inset-3 border border-[#C17D4A]/30 rounded-[0.8rem] pointer-events-none">
-                          <div className="absolute -top-0.5 -left-0.5 h-3.5 w-3.5 border-t-2 border-l-2 border-[#C17D4A]" />
-                          <div className="absolute -top-0.5 -right-0.5 h-3.5 w-3.5 border-t-2 border-r-2 border-[#C17D4A]" />
-                          <div className="absolute -bottom-0.5 -left-0.5 h-3.5 w-3.5 border-b-2 border-l-2 border-[#C17D4A]" />
-                          <div className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 border-b-2 border-r-2 border-[#C17D4A]" />
-                        </div>
-                      </motion.div>
-                    </motion.div>
-                  </div>
-                </div>
-
-                {/* Profile highlights row */}
-                <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                <div className="mt-4 grid gap-3 sm:grid-cols-3">
                   {[
                     ['Model focus', 'LLMs, NLP, CV'],
                     ['Deployment', 'Inference-ready apps'],
                     ['Stack', 'Python, FastAPI, React'],
                   ].map(([title, value]) => (
-                    <div key={title} className="rounded-2xl px-4 py-3 neu-raised text-center sm:text-left transition-all duration-300 hover:translate-y-[-2px]">
-                      <p className="font-mono text-[9px] uppercase tracking-[0.24em] text-[#A89E94] font-semibold">{title}</p>
-                      <p className="mt-2 text-xs font-semibold text-[#7A6E65]">{value}</p>
+                    <div key={title} className="rounded-2xl px-4 py-3 neu-raised text-center sm:text-left">
+                      <p className="font-mono text-[11px] uppercase tracking-[0.24em] text-[#A89E94]">{title}</p>
+                      <p className="mt-2 text-sm text-[#7A6E65]">{value}</p>
                     </div>
                   ))}
                 </div>
               </div>
-            </TiltCard>
+            </div>
+
           </motion.div>
         </div>
       </div>

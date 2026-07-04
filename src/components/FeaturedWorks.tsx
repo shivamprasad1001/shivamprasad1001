@@ -4,6 +4,7 @@ import { ArrowUpRight, Github, Star } from 'lucide-react';
 import type { WorkProject } from '../../types';
 import projectsData from '../data/projectsData.json';
 import TiltCard from './TiltCard';
+import { ProjectIllustration } from './ProjectIllustration';
 
 const projects = projectsData as WorkProject[];
 const spotlight = projects[0];
@@ -47,30 +48,32 @@ const getProjectTags = (title: string) => {
   return ['AI', 'Web App', 'Deployment'];
 };
 
-// Custom high-performance image component with graceful fallback
-const ImageWithFallback: React.FC<{ src: string; alt: string; className?: string }> = ({ src, alt, className }) => {
+// Custom high-performance image component with vector illustration background and load transitions
+const ImageWithFallback: React.FC<{ src: string; alt: string; projectTitle: string; className?: string }> = ({
+  src,
+  alt,
+  projectTitle,
+  className,
+}) => {
   const [error, setError] = React.useState(false);
   const [loaded, setLoaded] = React.useState(false);
 
   return (
     <div className="relative w-full h-full bg-[#FAF7F2] flex items-center justify-center overflow-hidden">
-      {!loaded && !error && (
-        <div className="absolute inset-0 flex items-center justify-center bg-[#FAF7F2]">
-          <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#C17D4A]/20 border-t-[#C17D4A]" />
-        </div>
-      )}
-      {error ? (
-        <div className="flex flex-col items-center justify-center text-[#A89E94] p-6 text-center select-none">
-          <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#C17D4A] font-semibold">Preview Asset</span>
-          <span className="text-[11px] text-[#7A6E65] mt-1 font-medium max-w-[80%] truncate">{alt}</span>
-        </div>
-      ) : (
+      {/* Illustrated background: instantly renders responsive styled SVG design asset */}
+      <div className="absolute inset-0 z-0 w-full h-full">
+        <ProjectIllustration title={projectTitle} />
+      </div>
+
+      {!error && (
         <img
           src={src}
           alt={alt}
           onLoad={() => setLoaded(true)}
           onError={() => setError(true)}
-          className={`${className} ${loaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
+          className={`${className} absolute inset-0 z-10 w-full h-full object-cover transition-opacity duration-500 ${
+            loaded ? 'opacity-100' : 'opacity-0'
+          }`}
         />
       )}
     </div>
@@ -111,6 +114,7 @@ const FeaturedWorks: React.FC = () => {
                   <ImageWithFallback
                     src={spotlight.imageUrl}
                     alt={spotlight.title}
+                    projectTitle={spotlight.title}
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#FAF7F2]/10 to-transparent pointer-events-none" />
@@ -179,6 +183,7 @@ const FeaturedWorks: React.FC = () => {
                         <ImageWithFallback
                           src={project.imageUrl}
                           alt={project.title}
+                          projectTitle={project.title}
                           className="h-full w-full object-cover transition duration-500 group-hover:scale-104"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#FAF7F2]/10 to-transparent pointer-events-none" />
