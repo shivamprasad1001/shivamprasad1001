@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
-import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail, Menu, X } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, Bot, BrainCircuit, Github, Linkedin, Mail, Menu, Network, ScanSearch, X } from 'lucide-react';
 import projects from '../data/projectsData.json';
 import GwenWidget from './GwenWidget';
 import WelcomeIntro from './WelcomeIntro';
@@ -64,6 +64,16 @@ function About() {
   </div><div className="container fact-grid">{facts.map(([number, label], i) => <Reveal key={label} delay={i * .08}><div className="fact"><strong>{number}</strong><span>{label}</span></div></Reveal>)}</div></section>;
 }
 
+function AgentConstellation() {
+  const nodes = [
+    { title: 'Observe', text: 'Context, signals, and the right question.', icon: ScanSearch, className: 'node-observe' },
+    { title: 'Debate', text: 'Agents with opposing incentives challenge the answer.', icon: Network, className: 'node-debate' },
+    { title: 'Learn', text: 'PPO, reward shaping, and experiments refine the policy.', icon: BrainCircuit, className: 'node-learn' },
+    { title: 'Build', text: 'Research becomes systems people can use.', icon: Bot, className: 'node-build' },
+  ];
+  return <section className="constellation-section"><div className="container"><Reveal><p className="eyebrow">The research universe</p><div className="constellation-intro"><h2>Where agents learn<br />to disagree well.</h2><p>My current work explores cooperative multi-agent debate: a system where different reward signals create productive disagreement before a model commits to an answer.</p></div></Reveal><div className="constellation-layout"><Reveal className="constellation-map" delay={.08}><div className="constellation-lines"><i /><i /><i /><i /></div><div className="constellation-core"><span>RL<br />×<br />MARL</span></div>{nodes.map(({ title, icon: Icon, className }) => <div className={`constellation-node ${className}`} key={title}><Icon size={18} /><span>{title}</span></div>)}<div className="constellation-pulse pulse-one" /><div className="constellation-pulse pulse-two" /></Reveal><div className="constellation-notes">{nodes.map(({ title, text, icon: Icon }, index) => <Reveal key={title} delay={.12 + index * .08}><article><span>0{index + 1}</span><Icon size={17} /><div><h3>{title}</h3><p>{text}</p></div></article></Reveal>)}</div></div><Reveal delay={.25}><div className="constellation-footer"><span><i /> Current exploration</span><p>Cooperative Multi-Agent Debate with PPO</p><a className="text-link" href="/papers">Read the research <ArrowUpRight size={15} /></a></div></Reveal></div></section>;
+}
+
 const featured = projects.slice(0, 4);
 function StackedWork() {
   const [selectedProject, setSelectedProject] = useState<(typeof featured)[number] | null>(null);
@@ -99,6 +109,7 @@ function Footer() { return <footer className="footer"><div className="container"
 
 export default function PortfolioHome() {
   const { scrollYProgress } = useScroll(); const progress = useSpring(scrollYProgress, { stiffness: 130, damping: 26 });
-  const [introComplete, setIntroComplete] = useState(false);
-  return <div className="portfolio">{!introComplete && <WelcomeIntro onComplete={() => setIntroComplete(true)} />}<motion.div className="scroll-progress" style={{ scaleX: progress }} /><Navbar /><main><Hero /><About /><StackedWork /><Skills /><LabNotes /><Contact /></main><Footer /><GwenWidget /></div>;
+  const [introComplete, setIntroComplete] = useState(() => localStorage.getItem('shivam-portfolio-welcomed') === 'true');
+  const finishIntro = () => { localStorage.setItem('shivam-portfolio-welcomed', 'true'); setIntroComplete(true); };
+  return <div className="portfolio">{!introComplete && <WelcomeIntro onComplete={finishIntro} />}<motion.div className="scroll-progress" style={{ scaleX: progress }} /><Navbar /><main><Hero /><AgentConstellation /><About /><StackedWork /><Skills /><LabNotes /><Contact /></main><Footer /><GwenWidget /></div>;
 }

@@ -399,3 +399,11 @@
 .gwen-window-container.gwen-open { opacity:1; pointer-events:auto; transform:translateY(0) scale(1); visibility:visible; animation:gwenSlideIn .32s cubic-bezier(.22,1,.36,1) both; }
 .gwen-focus-backdrop { position:fixed; z-index:9996; inset:0; border:0; background:rgba(29,29,31,.12); backdrop-filter:blur(3px); cursor:default; }
 .gwen-fab-btn.gwen-fab-open { opacity:0; pointer-events:none; transform:scale(.86)!important; }
+
+@media (min-width: 481px) and (max-width: 760px) {
+  .gwen-widget { --gw-right:20px; --gw-bottom:20px; --gw-window-width:min(380px,calc(100vw - 40px)); --gw-window-height:min(560px,calc(100vh - 120px)); }
+}
+
+@media (max-width: 480px) {
+  .gwen-header { padding:13px 14px; }.gwen-message-area { padding:15px 12px; }.gwen-mode { padding:8px 12px; }.gwen-welcome h3 { font-size:19px; }
+}
