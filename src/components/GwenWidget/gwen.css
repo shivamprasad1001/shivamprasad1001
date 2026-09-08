@@ -1,18 +1,18 @@
 .gwen-widget {
-  --gw-glass-bg: rgba(250, 247, 242, 0.70);
-  --gw-glass-bg-deep: rgba(250, 247, 242, 0.90);
-  --gw-glass-border: rgba(224, 217, 207, 0.80);
-  --gw-glass-shadow: 0 8px 32px rgba(44, 40, 37, 0.08);
-  --gw-glass-shadow-lg: 0 16px 48px rgba(44, 40, 37, 0.12);
+  --gw-glass-bg: rgba(255, 255, 255, 0.74);
+  --gw-glass-bg-deep: rgba(255, 255, 255, 0.92);
+  --gw-glass-border: rgba(0, 0, 0, 0.10);
+  --gw-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --gw-glass-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.14);
   --gw-backdrop: blur(16px) saturate(180%);
-  --gw-accent: #C17D4A;
-  --gw-accent-soft: rgba(193, 125, 74, 0.12);
-  --gw-accent-glow: 0 0 20px rgba(193, 125, 74, 0.25);
-  --gw-text-primary: #2C2825;
-  --gw-text-secondary: #7A6E65;
-  --gw-text-muted: #A89E94;
-  --gw-user-bubble: rgba(193, 125, 74, 0.90);
-  --gw-bot-bubble: rgba(250, 247, 242, 0.85);
+  --gw-accent: #0071E3;
+  --gw-accent-soft: rgba(0, 113, 227, 0.12);
+  --gw-accent-glow: 0 0 20px rgba(0, 113, 227, 0.20);
+  --gw-text-primary: #1D1D1F;
+  --gw-text-secondary: #6E6E73;
+  --gw-text-muted: #86868B;
+  --gw-user-bubble: rgba(0, 113, 227, 0.92);
+  --gw-bot-bubble: rgba(255, 255, 255, 0.85);
   --gw-border-radius: 20px;
   --gw-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --gw-bottom: 24px;
@@ -385,3 +385,17 @@
     height: 100% !important;
   }
 }
+
+/* Apple-inspired Gwen interface */
+.gwen-window-container { border-radius: 24px; background: rgba(255,255,255,.82); border-color: rgba(0,0,0,.09); box-shadow: 0 20px 60px rgba(0,0,0,.16); transform-origin: bottom right; }
+.gwen-header { display: flex; align-items: center; gap: 10px; padding: 15px 16px; border-bottom: 1px solid rgba(0,0,0,.07); background: rgba(255,255,255,.66); }.gwen-header-avatar { width: 34px; height: 34px; padding: 3px; border-radius: 50%; background: #fff; border: 1px solid rgba(0,113,227,.2); }.gwen-header strong { display:block; font-size: 14px; letter-spacing: -.02em; color: var(--gw-text-primary); }.gwen-header span { display:flex; align-items:center; gap:5px; margin-top:2px; color:var(--gw-text-muted); font-size:11px; }.gwen-header span i { width:6px; height:6px; border-radius:50%; background:#30d158; }.gwen-header-actions { display:flex; gap:2px; margin-left:auto; }.gwen-header-actions button { display:grid; place-items:center; width:30px; height:30px; border:0; border-radius:50%; background:transparent; color:var(--gw-text-muted); cursor:pointer; font-size:20px; transition:.2s ease; }.gwen-header-actions button:hover { background:#f2f2f7; color:#0071e3; }
+.gwen-mode { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:9px 14px; border-bottom:1px solid rgba(0,0,0,.06); background:#fafafa; }.gwen-mode > span { color:#86868b; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }.gwen-mode > div { display:flex; padding:2px; border-radius:999px; background:#e9e9ee; }.gwen-mode button { border:0; padding:5px 10px; border-radius:999px; background:transparent; color:#6e6e73; font-size:11px; cursor:pointer; transition:.2s ease; }.gwen-mode button.active { color:#1d1d1f; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.12); font-weight:600; }
+.gwen-message-area { flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:14px; padding:18px 16px; background:linear-gradient(180deg,#fff,#fafafa); }.gwen-message { display:flex; gap:8px; max-width:88%; animation:msgIn .25s ease forwards; }.gwen-message.is-user { align-self:flex-end; }.gwen-message.is-assistant { align-self:flex-start; }.gwen-message > img { width:24px; height:24px; margin-top:2px; border-radius:50%; }.gwen-bubble { padding:10px 13px; border:1px solid rgba(0,0,0,.07); border-radius:5px 16px 16px; background:#fff; color:#1d1d1f; font-size:13px; line-height:1.55; box-shadow:0 2px 7px rgba(0,0,0,.035); }.is-user .gwen-bubble { border:0; border-radius:16px 5px 16px 16px; background:#0071e3; color:#fff; box-shadow:0 5px 13px rgba(0,113,227,.2); }.gwen-message time { display:block; margin-top:4px; color:#86868b; font-size:10px; }.is-user time { text-align:right; }.gwen-error { align-self:center; margin:8px 0; padding:8px 11px; border-radius:10px; color:#c5221f; font-size:12px; background:#fff2f1; }
+.gwen-welcome { display:flex; flex:1; flex-direction:column; align-items:center; justify-content:center; padding:20px 8px 12px; text-align:center; }.gwen-welcome > img { width:60px; height:60px; padding:5px; border:1px solid rgba(0,113,227,.2); border-radius:50%; background:#fff; }.gwen-welcome-kicker { margin:15px 0 6px!important; color:#0071e3!important; font-size:10px!important; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }.gwen-welcome h3 { margin:0; color:#1d1d1f; font-size:20px; letter-spacing:-.04em; }.gwen-welcome > p:not(.gwen-welcome-kicker) { max-width:265px; margin:8px 0 17px; color:#6e6e73; font-size:13px; line-height:1.6; }.gwen-welcome > div { display:flex; flex-wrap:wrap; justify-content:center; gap:7px; }.gwen-welcome button { display:inline-flex; align-items:center; gap:5px; border:1px solid #d2d2d7; border-radius:999px; padding:7px 10px; color:#3a3a3c; background:#fff; font-size:11px; cursor:pointer; transition:.2s ease; }.gwen-welcome button span { color:#0071e3; font-size:16px; line-height:9px; }.gwen-welcome button:hover { border-color:#0071e3; color:#0071e3; transform:translateY(-1px); }
+.gwen-input-container { padding:10px 12px 12px; border-top:1px solid rgba(0,0,0,.07); background:rgba(255,255,255,.94); }.gwen-input-wrapper { border-color:#d2d2d7; background:#f5f5f7; border-radius:17px; }.gwen-input-wrapper:focus-within { background:#fff; border-color:#0071e3; box-shadow:0 0 0 3px rgba(0,113,227,.12); }.gwen-input-send-btn { background:#0071e3; }.gwen-input-disclaimer { color:#86868b; }
+
+/* Open/closed states are CSS-driven so every close path behaves consistently. */
+.gwen-window-container.gwen-closed { opacity:0; pointer-events:none; transform:translateY(18px) scale(.97); visibility:hidden; }
+.gwen-window-container.gwen-open { opacity:1; pointer-events:auto; transform:translateY(0) scale(1); visibility:visible; animation:gwenSlideIn .32s cubic-bezier(.22,1,.36,1) both; }
+.gwen-focus-backdrop { position:fixed; z-index:9996; inset:0; border:0; background:rgba(29,29,31,.12); backdrop-filter:blur(3px); cursor:default; }
+.gwen-fab-btn.gwen-fab-open { opacity:0; pointer-events:none; transform:scale(.86)!important; }

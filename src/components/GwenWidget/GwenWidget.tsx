@@ -57,6 +57,14 @@ const GwenWidget: React.FC = () => {
 
   return (
     <div className="gwen-widget">
+      {isOpen && (
+        <button
+          type="button"
+          className="gwen-focus-backdrop"
+          onClick={() => setIsOpen(false)}
+          aria-label="Close Gwen"
+        />
+      )}
       {/* COSMIC ORBITS */}
       {!isOpen && (
         <svg
@@ -103,7 +111,7 @@ const GwenWidget: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="gwen-fab-btn"
+        className={`gwen-fab-btn ${isOpen ? 'gwen-fab-open' : ''}`}
         style={{
           boxShadow: isHovered
             ? 'var(--gw-glass-shadow-lg), 0 0 28px rgba(193,125,74,0.35)'
